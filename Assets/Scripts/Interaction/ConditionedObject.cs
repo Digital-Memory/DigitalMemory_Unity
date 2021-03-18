@@ -15,6 +15,15 @@ public class ConditionedObject : InputObject
 
     private bool CheckAllConditionsForTrue()
     {
+        foreach (Condition condition in conditions)
+        {
+            if (condition.behaviour != null)
+            {
+                if (!condition.IsMet())
+                    return false;
+            }
+        }
+
         return true;
     }
 
@@ -24,7 +33,7 @@ public class ConditionedObject : InputObject
         {
             if (condition.behaviour != null)
             {
-                Gizmos.color = Color.white;
+                Gizmos.color = condition.IsMet()?Color.green:Color.red;
                 Gizmos.DrawLine(transform.position, condition.behaviour.transform.position);
             }
         }

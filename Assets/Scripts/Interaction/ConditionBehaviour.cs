@@ -4,15 +4,9 @@ using UnityEngine;
 
 public class ConditionBehaviour : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public virtual bool GetBool()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        Debug.LogError("Checked for bool value on an object that does not support bool value checks...");
+        return true;
     }
 }

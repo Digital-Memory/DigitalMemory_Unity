@@ -31,6 +31,9 @@ public class MouseInteractor : Singleton<MouseInteractor>
         {
             currenHoverTEMP = hit.collider.gameObject;
 
+            //Debug.DrawLine(hit.point + Vector3.right + Vector3.forward, hit.point + Vector3.left + Vector3.back, Color.magenta);
+            //Debug.DrawLine(hit.point + Vector3.left + Vector3.forward, hit.point + Vector3.right + Vector3.back, Color.magenta);
+
             if (IsInCloseup)
             {
                 UpdateCloseup(hit);

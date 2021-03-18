@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using NaughtyAttributes;
+using System;
 
 [ExecuteAlways]
 [System.Serializable]
@@ -17,7 +18,7 @@ public class Condition : MonoBehaviour
     [HideInInspector] public bool TypeIsBool { get => type == ConditionType.BOOL; }
     [HideInInspector] public bool TypeIsFloat { get => type == ConditionType.FLOAT; }
 
-    void OnEable()
+    void OnEnable()
     {
         ConditionedObject connectTo = GetComponent<ConditionedObject>();
         if (connectTo != null)
@@ -29,6 +30,18 @@ public class Condition : MonoBehaviour
         ConditionedObject connectTo = GetComponent<ConditionedObject>();
         if (connectTo != null)
             connectTo.conditions.Remove(this);
+    }
+
+    public bool IsMet()
+    {
+        switch (type)
+        {
+            case ConditionType.BOOL:
+                return (behaviour.GetBool() == MustBeTrue);
+                break;
+        }
+
+        return false;
     }
 }
 
