@@ -22,9 +22,10 @@ public class Attacher : MonoBehaviour, IAttacher
     public event System.Action<bool, string> OnChangeAttached;
     public bool IsAttached => isAttached;
 
-    private void Start()
+    protected void Start()
     {
         IAttachable attachable = GetComponentInChildren<IAttachable>();
+        isAttached = attachable != null;
         OnChangeAttached?.Invoke(isAttached, attachable != null ? attachable.GetAttachment() : "");
     }
 

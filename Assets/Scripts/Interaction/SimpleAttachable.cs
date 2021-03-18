@@ -33,7 +33,25 @@ public class SimpleAttachable : SimpleDragable, IAttachable, ICloseupable
     public event Action OnStartCloseupEvent;
     public event Action OnEndCloseupEvent;
 
-    public void Attach(IAttacher toAttachTo)
+    void Start()
+    {
+        if (isAttached)
+        {
+            IAttacher parent = GetComponentInParent<IAttacher>();
+
+            if (parent != null)
+            {
+                Attach(parent);
+                parent.OnAttach(this);
+            }
+            else
+            {
+                Debug.LogError("No parent attacher found, uncheck the bool or find a proper parent");
+            }
+        }
+    }
+
+    public virtual void Attach(IAttacher toAttachTo)
     {
         isBeeingDragged = false;
         isAttached = true;
@@ -50,6 +68,7 @@ public class SimpleAttachable : SimpleDragable, IAttachable, ICloseupable
             transform.localRotation = Quaternion.identity;
 
         SetMouseRaycastable(true);
+        SetPhysicsActive(false);
 
         Game.EffectHandler.Play(attachEffect, gameObject);
         Game.EffectHandler.StopOnAllPotentialAttachables(attachment);
