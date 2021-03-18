@@ -33,8 +33,6 @@ public class IsAttachedConditioner : MonoBehaviour
             Debug.LogWarning("No Attacher found.");
             Destroy(this);
         }
-
-        Game.TimeHandler.OnTimeUpdate += OnTimeUpdate;
     }
 
     private void OnDisable()
@@ -48,14 +46,12 @@ public class IsAttachedConditioner : MonoBehaviour
             Debug.LogWarning("No Attacher found.");
             Destroy(this);
         }
-
-        Game.TimeHandler.OnTimeUpdate -= OnTimeUpdate;
     }
 
     private void OnTimeUpdate(float newTime)
     {
         if ((timeBefore < timeMinToPlayEffects || timeBefore > timeMaxToPlayEffects) && newTime > timeMinToPlayEffects && newTime < timeMaxToPlayEffects)
-            ChangedAttached(attacher.IsAttached,attacher.attachmentName);
+            ChangedAttached(attacher.IsAttached, attacher.attachmentName);
 
         timeBefore = newTime;
     }
@@ -69,7 +65,6 @@ public class IsAttachedConditioner : MonoBehaviour
         if (animator != null)
             animator.SetBool(variableName, isAttached);
 
-        if ((playEffectsOnlyAtTime && Game.TimeHandler.Time < timeMaxToPlayEffects && Game.TimeHandler.Time > timeMinToPlayEffects) || !playEffectsOnlyAtTime)
-            Game.EffectHandler.Play(isAttached ? onAttachEffect : onDetachEffect, gameObject);
+        Game.EffectHandler.Play(isAttached ? onAttachEffect : onDetachEffect, gameObject);
     }
 }

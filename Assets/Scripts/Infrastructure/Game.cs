@@ -37,14 +37,6 @@ public class Game : MonoBehaviour
         }
     }
 
-    public static TimeHandler TimeHandler
-    {
-        get
-        {
-            return TimeHandler.GetInstance(usePrefab: true);
-        }
-    }
-
     public static SoundPlayer SoundPlayer
     {
         get

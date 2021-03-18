@@ -41,22 +41,18 @@ public class AttachableWatch : SimpleAttachable
 
     private void OnEnable()
     {
-        Game.TimeHandler.OnForceTimeReset += OnForceTimeReset;
-        Game.TimeHandler.OnTimeChange += OnTimeChange;
         Game.SequenceHandler.OnStartNewSeqeunce += OnStartNewSeqeunce;
     }
 
     private void OnDisable()
     {
-        Game.TimeHandler.OnForceTimeReset -= OnForceTimeReset;
-        Game.TimeHandler.OnTimeChange -= OnTimeChange;
         Game.SequenceHandler.OnStartNewSeqeunce += OnStartNewSeqeunce;
     }
 
     private void OnStartNewSeqeunce(Sequence newSeqence)
     {
         currentSequence = newSeqence;
-        CreateNewTimeDots(newSeqence.TimeDots);
+        //CreateNewTimeDots(newSeqence.TimeDots);
     }
 
     private void CreateNewTimeDots(List<int> timeDots)
@@ -118,7 +114,7 @@ public class AttachableWatch : SimpleAttachable
                 Game.SoundPlayer.Play(watchTick);
                 timeLastTick = time;
             }
-            Game.TimeHandler.MoveHand(time);
+            //Game.TimeHandler.MoveHand(time);
             SetVisualsForTime(time);
 
             if (Mathf.Abs(time % 12 - targetTime) < 0.01f)
