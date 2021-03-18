@@ -1,0 +1,70 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c8b6a931fb936dc4d85362f97739cf34, type: 3}
+  m_Name: NonInteractableSlot
+  m_EditorClassIdentifier: 
+  PlaySoundEffect: 1
+  soundEffect:
+    clip: {fileID: 8300000, guid: b8100d638c7e1934ab7596b829653106, type: 3}
+    playFromOrigin: 1
+    volume: 1
+    randomPitchRange: 0.1
+  PlayVisualEffect: 0
+  visualEffect:
+    prefab: {fileID: 0}
+    spawnRelativeToOrigin: 0
+    spawnOffset: {x: 0, y: 0, z: 0}
+    destroyDelay: 0
+  ClearVisualEffect: 0
+  PlayChangeShaderEffect: 0
+  changeShaderEffect:
+    shader: {fileID: 0}
+    boolName: 
+    boolValue: 0
+  PlayPulsingEffect: 1
+  pulsingEffect:
+    LimitedPulsing: 1
+    duration: 1
+    pulseCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 1
+        inSlope: -0.6949031
+        outSlope: -0.6949031
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0.1249047
+      - serializedVersion: 3
+        time: 0.27927095
+        value: 0.9999861
+        inSlope: 0.39473593
+        outSlope: 0.39473593
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.18811949
+        outWeight: 0.21698387
+      - serializedVersion: 3
+        time: 0.5
+        value: 1
+        inSlope: -0.3011037
+        outSlope: -0.3011037
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.101185866
+        outWeight: 0
+      m_PreInfinity: 1
+      m_PostInfinity: 1
+      m_RotationOrder: 4
+  ClearPulsingEffect: 0
