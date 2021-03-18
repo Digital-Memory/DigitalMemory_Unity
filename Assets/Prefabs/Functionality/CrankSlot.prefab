@@ -47,11 +47,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attachmentName: Crank
-  isAttached: 1
+  isAttached: 0
   attachmentOffset: {x: 0, y: 0, z: 0}
   startValue: 0
   minValue: 0
   maxValue: 1
+  factor: 360
 --- !u!135 &5881873877261564058
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -72,7 +73,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6476781290254090949}
-  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: 5423199328104135063, guid: 36b102df87bedfc40ad3185b57ad430b, type: 3}
 --- !u!23 &5509378565038196833
 MeshRenderer:
   m_ObjectHideFlags: 0
