@@ -8,6 +8,12 @@ public class AttacherCrank : Attacher
 {
     [SerializeField] float startValue, minValue, maxValue;
     [SerializeField] float factor = 360f;
+    [SerializeField] InputObject input;
+
+#if UNITY_EDITOR
+    bool __isGivingInput;
+#endif
+
     float currentValue;
 
     void Awake()
@@ -24,7 +30,7 @@ public class AttacherCrank : Attacher
         if (newValue < maxValue && newValue > minValue)
         {
             currentValue = newValue;
-            return true;
+            return TryGiveInput(((currentValue - minValue) / (maxValue - minValue)));
         }
         else
         {
@@ -34,6 +40,25 @@ public class AttacherCrank : Attacher
 
             return false;
         }
+    }
+
+#if UNITY_EDITOR
+
+    void Update()
+    {
+        __isGivingInput = false;
+    }
+
+#endif
+
+    private bool TryGiveInput(float progress)
+    {
+#if UNITY_EDITOR
+        __isGivingInput = true;
+#endif
+
+        return (input != null && input.Try(progress));
+
     }
 
     void OnDrawGizmos()
@@ -47,5 +72,14 @@ public class AttacherCrank : Attacher
 
         Gizmos.color = Color.Lerp(Color.red, Color.green, progress);
         Gizmos.DrawWireCube(center, Vector3.one * (0.5f + progress));
+
+#if UNITY_EDITOR
+
+        if (input != null)
+        {
+            Gizmos.color = __isGivingInput ? Color.yellow : Color.gray;
+            Gizmos.DrawLine(transform.position, input.transform.position);
+        }
+#endif
     }
 }
