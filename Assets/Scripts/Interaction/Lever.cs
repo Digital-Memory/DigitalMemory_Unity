@@ -32,11 +32,18 @@ public class Lever : SimpleAttachable
     {
         if (currentAttacher != null)
         {
-            float targetAngle = currentAttacher.isTop ? currentAttacher.topRotation : currentAttacher.bottomRotation;
-            transform.localRotation = Quaternion.Euler(0, 0, targetAngle > angle ? Mathf.Min(targetAngle, angle) : Mathf.Max(targetAngle, angle));
+            angle = angle % 360;
+            if (angle > 180)
+                angle = angle - 360;
 
-            if (Mathf.Abs(Mathf.DeltaAngle(angle, targetAngle)) < snapDistance)
+            float targetAngle = Mathf.Sign(angle) == -1f ? currentAttacher.topRotation : currentAttacher.bottomRotation;
+            float targetAngleClamped = Mathf.Sign(angle) == -1f ? Mathf.Max(targetAngle, angle) : Mathf.Min(targetAngle, angle);
+            Debug.Log(angle + "" + targetAngle + " = " + targetAngleClamped);
+            transform.localRotation = Quaternion.Euler(0, 0, targetAngleClamped);
+
+            if (Mathf.Abs(Mathf.DeltaAngle(angle, targetAngleClamped)) < snapDistance)
             {
+                if (currentAttacher.isTop == (Mathf.Sign(angle) == -1f))
                 currentAttacher.Switch(angle);
             }
         }
