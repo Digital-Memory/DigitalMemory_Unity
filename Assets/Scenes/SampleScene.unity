@@ -206,17 +206,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5d9be8ed8df2074daa06dac1d6ea999, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  conditions:
-  - {fileID: 881680361}
-  - {fileID: 881680361}
-  - {fileID: 881680361}
-  - {fileID: 881680361}
-  - {fileID: 881680361}
-  - {fileID: 881680361}
-  - {fileID: 881680361}
-  - {fileID: 881680361}
-  - {fileID: 881680361}
-  - {fileID: 881680361}
+  conditions: []
   point1: {x: 3, y: 0, z: -3}
   point2: {x: -3, y: 0, z: -3}
 --- !u!65 &881680355
@@ -293,7 +283,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &881680359
 MonoBehaviour:
@@ -465,102 +455,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1969151351}
-  m_Father: {fileID: 0}
-  m_RootOrder: 6
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1734832340
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1734832344}
-  - component: {fileID: 1734832343}
-  - component: {fileID: 1734832342}
-  - component: {fileID: 1734832341}
-  m_Layer: 0
-  m_Name: Plane
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!64 &1734832341
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1734832340}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
---- !u!23 &1734832342
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1734832340}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
-  m_RayTraceProcedural: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_AdditionalVertexStreams: {fileID: 0}
---- !u!33 &1734832343
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1734832340}
-  m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
---- !u!4 &1734832344
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1734832340}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 10, y: 10, z: 10}
-  m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -744,7 +638,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 0, y: NaN, z: 4.5905e-41, w: 0}
+  m_BoundingSphereOverride: {x: 4.5905e-41, y: 4.258025e+24, z: 4.5905e-41, w: 9.403955e-38}
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
@@ -829,7 +723,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1470470239723308815, guid: 31462b95b1ce8d44783ebf0b307a5878, type: 3}
       propertyPath: m_RootOrder
-      value: 8
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 1470470239723308815, guid: 31462b95b1ce8d44783ebf0b307a5878, type: 3}
       propertyPath: m_LocalPosition.x
@@ -965,8 +859,12 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6476781290254090948, guid: 868a07d6a3b27034283ba378be3ae289, type: 3}
+      propertyPath: isAttached
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6476781290254090948, guid: 868a07d6a3b27034283ba378be3ae289, type: 3}
       propertyPath: startValue
-      value: 0
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6476781290254090949, guid: 868a07d6a3b27034283ba378be3ae289, type: 3}
       propertyPath: m_Name
@@ -981,6 +879,58 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 986796148}
     m_Modifications:
+    - target: {fileID: 2720366340013129403, guid: 1b3decec290a5964fbf4674a1bfdfe5a, type: 3}
+      propertyPath: distanceToRotationCurve.m_PostInfinity
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2720366340013129403, guid: 1b3decec290a5964fbf4674a1bfdfe5a, type: 3}
+      propertyPath: distanceToRotationCurve.m_Curve.Array.data[0].time
+      value: -6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2720366340013129403, guid: 1b3decec290a5964fbf4674a1bfdfe5a, type: 3}
+      propertyPath: distanceToRotationCurve.m_Curve.Array.data[2].time
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2720366340013129403, guid: 1b3decec290a5964fbf4674a1bfdfe5a, type: 3}
+      propertyPath: distanceToRotationCurve.m_Curve.Array.data[0].value
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 2720366340013129403, guid: 1b3decec290a5964fbf4674a1bfdfe5a, type: 3}
+      propertyPath: distanceToRotationCurve.m_Curve.Array.data[2].value
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 2720366340013129403, guid: 1b3decec290a5964fbf4674a1bfdfe5a, type: 3}
+      propertyPath: distanceToRotationCurve.m_Curve.Array.data[0].inSlope
+      value: -0.35331228
+      objectReference: {fileID: 0}
+    - target: {fileID: 2720366340013129403, guid: 1b3decec290a5964fbf4674a1bfdfe5a, type: 3}
+      propertyPath: distanceToRotationCurve.m_Curve.Array.data[2].inSlope
+      value: -0.1937024
+      objectReference: {fileID: 0}
+    - target: {fileID: 2720366340013129403, guid: 1b3decec290a5964fbf4674a1bfdfe5a, type: 3}
+      propertyPath: distanceToRotationCurve.m_Curve.Array.data[0].outSlope
+      value: -0.35331228
+      objectReference: {fileID: 0}
+    - target: {fileID: 2720366340013129403, guid: 1b3decec290a5964fbf4674a1bfdfe5a, type: 3}
+      propertyPath: distanceToRotationCurve.m_Curve.Array.data[2].inWeight
+      value: 0.27604192
+      objectReference: {fileID: 0}
+    - target: {fileID: 2720366340013129403, guid: 1b3decec290a5964fbf4674a1bfdfe5a, type: 3}
+      propertyPath: distanceToRotationCurve.m_Curve.Array.data[2].outSlope
+      value: -0.1937024
+      objectReference: {fileID: 0}
+    - target: {fileID: 2720366340013129403, guid: 1b3decec290a5964fbf4674a1bfdfe5a, type: 3}
+      propertyPath: distanceToRotationCurve.m_Curve.Array.data[0].outWeight
+      value: 0.22671248
+      objectReference: {fileID: 0}
+    - target: {fileID: 2720366340013129403, guid: 1b3decec290a5964fbf4674a1bfdfe5a, type: 3}
+      propertyPath: distanceToRotationCurve.m_Curve.Array.data[0].tangentMode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2720366340013129403, guid: 1b3decec290a5964fbf4674a1bfdfe5a, type: 3}
+      propertyPath: distanceToRotationCurve.m_Curve.Array.data[2].tangentMode
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8985428912084992308, guid: 1b3decec290a5964fbf4674a1bfdfe5a, type: 3}
       propertyPath: m_Name
       value: Lever

@@ -32,16 +32,12 @@ public class Lever : SimpleAttachable
     {
         if (currentAttacher != null)
         {
-            float targetAngle = (currentAttacher.isTop ? currentAttacher.topRotation : currentAttacher.bottomRotation).eulerAngles.z;
+            float targetAngle = currentAttacher.isTop ? currentAttacher.topRotation : currentAttacher.bottomRotation;
+            transform.localRotation = Quaternion.Euler(0, 0, targetAngle > angle ? Mathf.Min(targetAngle, angle) : Mathf.Max(targetAngle, angle));
 
             if (Mathf.Abs(Mathf.DeltaAngle(angle, targetAngle)) < snapDistance)
             {
-                Debug.LogWarning("snap!");
-                Quaternion targetRotation = currentAttacher.Switch(angle);
-                Game.MouseInteractor.ForceEndDrag();
-            } else
-            {
-                transform.localRotation = Quaternion.Euler(0,0,angle);
+                currentAttacher.Switch(angle);
             }
         }
     }

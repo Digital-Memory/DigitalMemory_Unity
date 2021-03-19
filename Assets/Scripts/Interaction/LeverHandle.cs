@@ -10,6 +10,7 @@ public class LeverHandle : MonoBehaviour, IDragable
 
     bool isDragging = false;
 
+    float startRotation;
     Vector3 startPosition;
 
     public bool IsDragging => isDragging;
@@ -33,7 +34,9 @@ public class LeverHandle : MonoBehaviour, IDragable
 
     public void StartDrag()
     {
+        startRotation = lever.GetRotation().eulerAngles.z;
         startPosition = Vector3.zero;
+
         isDragging = true;
         handleCollider.enabled = false;
     }
@@ -43,7 +46,7 @@ public class LeverHandle : MonoBehaviour, IDragable
         if (startPosition == Vector3.zero)
             startPosition = point;
 
-        float angle = distanceToRotationCurve.Evaluate((point - startPosition).x);
+        float angle = startRotation - distanceToRotationCurve.Evaluate(point.x - startPosition.x);
         lever.Turn(angle);
     }
 }
