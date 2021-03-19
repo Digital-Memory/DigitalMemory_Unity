@@ -24,13 +24,18 @@ public class AttacherCrank : Attacher
 
     internal bool TryTurn(float degrees)
     {
-
         float newValue = currentValue + (degrees / factor);
 
         if (newValue < maxValue && newValue > minValue)
         {
-            currentValue = newValue;
-            return TryGiveInput(((currentValue - minValue) / (maxValue - minValue)));
+            if (TryGiveInput(((currentValue - minValue) / (maxValue - minValue))))
+            {
+                currentValue = newValue;
+                return true;
+            } else
+            {
+                return false;
+            }
         }
         else
         {

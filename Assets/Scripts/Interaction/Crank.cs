@@ -30,12 +30,13 @@ public class Crank : SimpleAttachable
             return;
         }
 
-        //Debug.Log("angle: " + angle + " (relative: " + (angle - angleBefore) + ")");
-
         if (angleBefore == float.MinValue)
             angleBefore = angle;
 
-        if (currentAttacher.TryTurn(Mathf.DeltaAngle(angleBefore, angle)))
+        float deltaAngle = Mathf.DeltaAngle(angleBefore, angle);
+        //Debug.Log("deltaAngle between: "+ deltaAngle + " (" + angleBefore + " / " + angle + ")");
+
+        if (currentAttacher.TryTurn(deltaAngle))
         {
             transform.Rotate(Vector3.up, angle - angleBefore);
             angleBefore = angle;

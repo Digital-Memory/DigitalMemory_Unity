@@ -15,7 +15,9 @@ public class MouseInteractor : Singleton<MouseInteractor>
     IAttachable currentAttachable;
     ICloseupable currentCloseupable;
 
-
+    private bool raycastDistanceIsLocked = false;
+    private Plane lockedRaycastPlane;
+    private const float FLOOR_RAYCAST_DISTANCE = 15f;
 
     public bool IsInCloseup { get => (currentCloseupable != null); }
     public bool IsDragging { get => (currentDrag != null); }
@@ -27,33 +29,38 @@ public class MouseInteractor : Singleton<MouseInteractor>
         RaycastHit hit;
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
-        if (Physics.Raycast(ray, out hit, 100, ~ignoreRaycast))
+        float lockedRaycastDistance = 0;
+        if (raycastDistanceIsLocked)
+            lockedRaycastPlane.Raycast(ray, out lockedRaycastDistance);
+
+        if (Physics.Raycast(ray, out hit, raycastDistanceIsLocked ? lockedRaycastDistance : 100f, ~ignoreRaycast))
         {
             currenHoverTEMP = hit.collider.gameObject;
-
-            //Debug.DrawLine(hit.point + Vector3.right + Vector3.forward, hit.point + Vector3.left + Vector3.back, Color.magenta);
-            //Debug.DrawLine(hit.point + Vector3.left + Vector3.forward, hit.point + Vector3.right + Vector3.back, Color.magenta);
-
-            if (IsInCloseup)
-            {
-                UpdateCloseup(hit);
-            }
-            else
-            {
-
-                if (IsDragging)
-                {
-                    UpdateDrag(hit, ray);
-                }
-                else
-                {
-                    UpdateNonDrag(hit);
-                }
-            }
         }
         else
         {
+            hit.point = ray.GetPoint(raycastDistanceIsLocked ? lockedRaycastDistance : FLOOR_RAYCAST_DISTANCE);
             currenHoverTEMP = null;
+        }
+
+        Debug.DrawLine(hit.point + Vector3.right + Vector3.forward, hit.point + Vector3.left + Vector3.back, Color.magenta);
+        Debug.DrawLine(hit.point + Vector3.left + Vector3.forward, hit.point + Vector3.right + Vector3.back, Color.magenta);
+
+        if (IsInCloseup)
+        {
+            UpdateCloseup(hit);
+        }
+        else
+        {
+
+            if (IsDragging)
+            {
+                UpdateDrag(hit, ray);
+            }
+            else
+            {
+                UpdateNonDrag(hit);
+            }
         }
     }
 
@@ -83,9 +90,16 @@ public class MouseInteractor : Singleton<MouseInteractor>
 
     private void UpdateNonDrag(RaycastHit hit)
     {
-        IDragable dragable = hit.collider.GetComponent<IDragable>();
-        IClickable clickable = hit.collider.GetComponent<IClickable>();
-        IAttachable attachable = hit.collider.GetComponent<IAttachable>();
+        IDragable dragable = null;
+        IClickable clickable = null;
+        IAttachable attachable = null;
+
+        if (hit.collider != null)
+        {
+            dragable = hit.collider.GetComponent<IDragable>();
+            clickable = hit.collider.GetComponent<IClickable>();
+            attachable = hit.collider.GetComponent<IAttachable>();
+        }
 
         //Hover
         IHoverable newDragHover = null;
@@ -113,7 +127,7 @@ public class MouseInteractor : Singleton<MouseInteractor>
         if (Input.GetMouseButtonDown(0))
         {
             if (dragable != null && dragable.IsDragable())
-                StartDrag(dragable, attachable);
+                StartDrag(hit, dragable, attachable);
             else if (clickable != null && clickable.IsClickable())
                 ClickOn(clickable);
         }
@@ -130,7 +144,10 @@ public class MouseInteractor : Singleton<MouseInteractor>
 
     private void UpdateDrag(RaycastHit hit, Ray ray)
     {
-        IAttacher attacher = hit.collider.GetComponent<IAttacher>();
+        IAttacher attacher = null;
+
+        if (hit.collider != null)
+            attacher = hit.collider.GetComponent<IAttacher>();
 
         //preview
         if (IsDraggingAttachable && attacher != null && attacher.CanAttach(currentAttachable.GetAttachment()))
@@ -158,7 +175,7 @@ public class MouseInteractor : Singleton<MouseInteractor>
         clickable.Click();
     }
 
-    private void StartDrag(IDragable dragable, IAttachable attachable)
+    private void StartDrag(RaycastHit hit, IDragable dragable, IAttachable attachable)
     {
         currentDrag = dragable;
         currentAttachable = attachable;
@@ -169,6 +186,8 @@ public class MouseInteractor : Singleton<MouseInteractor>
 
         dragable.StartDrag();
 
+        LockRaycastDistance(hit.point);
+
     }
 
     private void EndDrag(IDragable dragable, Vector3 point)
@@ -176,6 +195,8 @@ public class MouseInteractor : Singleton<MouseInteractor>
         currentAttachable = null;
         currentDrag = null;
         dragable.EndDrag(point + dragable.GetEndDragYOffset() * Vector3.up);
+
+        UnlockRaycastDistance();
     }
 
     public void ForceEndDrag()
@@ -200,6 +221,16 @@ public class MouseInteractor : Singleton<MouseInteractor>
 
         attacher.OnAttach(attachable);
         attachable.Attach(attacher);
+    }
+
+    private void LockRaycastDistance(Vector3 point)
+    {
+        raycastDistanceIsLocked = true;
+        lockedRaycastPlane = new Plane(Vector3.up, point);
+    }
+    private void UnlockRaycastDistance()
+    {
+        raycastDistanceIsLocked = false;
     }
 
     private void OnGUI()

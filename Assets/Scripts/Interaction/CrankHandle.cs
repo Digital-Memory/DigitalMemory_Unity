@@ -16,7 +16,7 @@ public class CrankHandle : MonoBehaviour, IDragable
     {
         isDragging = false;
         handleCollider.enabled = true;
-        //crank.TrySnapToClosestDot();
+        Debug.Log("End Drag");
     }
 
     public float GetEndDragYOffset()
@@ -33,6 +33,7 @@ public class CrankHandle : MonoBehaviour, IDragable
     {
         isDragging = true;
         handleCollider.enabled = false;
+        Debug.Log("Start Drag");
     }
 
     public void UpdateDragPosition(Vector3 point, Vector3 vector3)
@@ -41,6 +42,8 @@ public class CrankHandle : MonoBehaviour, IDragable
         Vector2 target = point.To2D();
 
         float angle = (Mathf.Atan2((target.x - head.x) / 2, target.y - head.y) * Mathf.Rad2Deg); //-180 => 180
+        Debug.DrawLine(head, target, Color.white);
+        Debug.DrawLine(Vector3.zero, new Vector2((float)Mathf.Cos(angle), (float)Mathf.Sin(angle)), Color.red);
         crank.Turn(angle);
     }
 }
