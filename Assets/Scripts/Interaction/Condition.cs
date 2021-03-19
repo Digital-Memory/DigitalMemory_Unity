@@ -4,7 +4,6 @@ using UnityEngine;
 using NaughtyAttributes;
 using System;
 
-[ExecuteAlways]
 [System.Serializable]
 public class Condition : MonoBehaviour
 {
@@ -17,20 +16,6 @@ public class Condition : MonoBehaviour
 
     [HideInInspector] public bool TypeIsBool { get => type == ConditionType.BOOL; }
     [HideInInspector] public bool TypeIsFloat { get => type == ConditionType.FLOAT; }
-
-    void OnEnable()
-    {
-        ConditionedObject connectTo = GetComponent<ConditionedObject>();
-        if (connectTo != null)
-            connectTo.conditions.Add(this);
-    }
-
-    void OnDisable()
-    {
-        ConditionedObject connectTo = GetComponent<ConditionedObject>();
-        if (connectTo != null)
-            connectTo.conditions.Remove(this);
-    }
 
     public bool IsMet()
     {

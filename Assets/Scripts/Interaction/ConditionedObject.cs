@@ -6,7 +6,13 @@ using UnityEngine;
 
 public class ConditionedObject : InputObject
 {
-    public List<Condition> conditions = new List<Condition>();
+    [SerializeField]
+    private List<Condition> conditions;
+
+    protected virtual void OnEnable()
+    {
+        conditions = new List<Condition>(GetComponents<Condition>());
+    }
 
     public override bool Try(float progress)
     {
