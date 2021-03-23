@@ -15,7 +15,7 @@ public class Crank : SimpleAttachable
         base.Attach(toAttachTo);
         currentAttacher = GetComponentInParent<AttacherCrank>();
         Debug.LogWarning("attached to " + currentAttacher.name);
-        angleBefore = float.MinValue;
+        ResetAngleBefore();
     }
 
     public override void StartDrag()
@@ -24,7 +24,7 @@ public class Crank : SimpleAttachable
         currentAttacher = null;
     }
 
-    internal void Turn(float angle)
+    internal void TryTurnTo(float angle)
     {
         if (currentAttacher == null)
         {
@@ -38,14 +38,28 @@ public class Crank : SimpleAttachable
         float deltaAngle = Mathf.DeltaAngle(angleBefore, angle);
         //Debug.Log("deltaAngle between: "+ deltaAngle + " (" + angleBefore + " / " + angle + ")");
 
-        if (currentAttacher.TryTurn(deltaAngle))
-        {
-            transform.Rotate(Vector3.up, angle - angleBefore);
-            angleBefore = angle;
-        } else
+        if (Mathf.Abs(deltaAngle) > 45f)
         {
             Game.EffectHandler.Play(crankBlockedEffect, gameObject);
+            Game.MouseInteractor.ForceEndDrag();
         }
+        else
+        {
+            if (currentAttacher.TryRotate(deltaAngle))
+            {
+                transform.Rotate(Vector3.up, angle - angleBefore);
+                angleBefore = angle;
+            }
+            else
+            {
+                Game.EffectHandler.Play(crankBlockedEffect, gameObject);
+            }
+        }
+    }
+
+    public void ResetAngleBefore()
+    {
+        angleBefore = float.MinValue;
     }
 
 #if UNITY_EDITOR

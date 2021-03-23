@@ -24,9 +24,11 @@ public class AttacherCrank : Attacher
         Start();
     }
 
-    internal bool TryTurn(float degrees)
+    internal bool TryRotate(float degrees)
     {
         float newValue = currentValue + (degrees / factor);
+
+        //Debug.Log("change value: " + degrees/factor + "New value: " + newValue + " min: "+ minValue + " max: " + maxValue);
 
         if (newValue < maxValue && newValue > minValue)
         {

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -38,6 +39,7 @@ public class CrankHandle : MonoBehaviour, IDragable
     {
         isDragging = true;
         handleCollider.enabled = false;
+        crank.ResetAngleBefore();
         Debug.Log("Start Drag");
     }
 
@@ -47,8 +49,8 @@ public class CrankHandle : MonoBehaviour, IDragable
         Vector2 target = point.To2D();
 
         float angle = (Mathf.Atan2((target.x - head.x) / 2, target.y - head.y) * Mathf.Rad2Deg); //-180 => 180
-        Debug.DrawLine(head, target, Color.white);
-        Debug.DrawLine(Vector3.zero, new Vector2((float)Mathf.Cos(angle), (float)Mathf.Sin(angle)), Color.red);
-        crank.Turn(angle);
+        Debug.DrawLine(new Vector3(head.x,0, head.y), new Vector3(target.x, 0, target.y), Color.white);
+        Debug.DrawLine(Vector3.zero, new Vector3((float)Mathf.Sin(angle * Mathf.Deg2Rad), 0f, (float)Mathf.Cos(angle * Mathf.Deg2Rad)), Color.cyan);
+        crank.TryTurnTo(angle);
     }
 }

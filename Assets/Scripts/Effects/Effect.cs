@@ -36,8 +36,6 @@ public class Effect : ScriptableObject
 
     public void Play(GameObject origin)
     {
-        Debug.Log("Play Effect: " + this.name);
-
         if (PlaySoundEffect)
             soundEffect.PlayEffect(origin);
 
