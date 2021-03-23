@@ -38,7 +38,7 @@ public class Lever : SimpleAttachable
 
             float targetAngle = Mathf.Sign(angle) == -1f ? currentAttacher.topRotation : currentAttacher.bottomRotation;
             float targetAngleClamped = Mathf.Sign(angle) == -1f ? Mathf.Max(targetAngle, angle) : Mathf.Min(targetAngle, angle);
-            Debug.Log(angle + "" + targetAngle + " = " + targetAngleClamped);
+            //Debug.Log(angle + "" + targetAngle + " = " + targetAngleClamped);
             transform.localRotation = Quaternion.Euler(0, 0, targetAngleClamped);
 
             if (Mathf.Abs(Mathf.DeltaAngle(angle, targetAngleClamped)) < snapDistance)
@@ -47,5 +47,13 @@ public class Lever : SimpleAttachable
                 currentAttacher.Switch(angle);
             }
         }
+    }
+
+    public Vector2 GetMinMaxRotations ()
+    {
+        if (currentAttacher != null)
+            return new Vector2(currentAttacher.bottomRotation, currentAttacher.topRotation);
+        else
+            return Vector2.zero;
     }
 }
