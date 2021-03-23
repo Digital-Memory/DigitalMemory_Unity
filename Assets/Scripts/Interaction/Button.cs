@@ -10,12 +10,15 @@ public class Button : MonoBehaviour, IClickable
 
     [SerializeField] AnimationCurve buttonHeightOnClick;
     [SerializeField] Transform button;
+    [SerializeField] Effect onClickEffect;
 
     public void Click()
     {
         isClicked = true;
         clickedTimestamp = Time.time;
         heightAnimationDuration = buttonHeightOnClick[buttonHeightOnClick.length - 1].time;
+
+        Game.EffectHandler.Play(onClickEffect, gameObject);
     }
 
     public bool IsClickable()
