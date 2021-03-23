@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -20,6 +21,7 @@ public class Attacher : MonoBehaviour, IAttacher
     [SerializeField] protected bool isAttached;
     [SerializeField] Vector3 attachmentOffset;
     public event System.Action<bool, string> OnChangeAttached;
+
     public bool IsAttached => isAttached;
 
     protected void Start()
