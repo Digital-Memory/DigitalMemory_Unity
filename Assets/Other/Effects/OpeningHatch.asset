@@ -10,15 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c8b6a931fb936dc4d85362f97739cf34, type: 3}
-  m_Name: OpenHatch
+  m_Name: OpeningHatch
   m_EditorClassIdentifier: 
-  PlaySoundEffect: 0
+  PlaySoundEffect: 1
   soundEffect:
-    clip: {fileID: 0}
-    playFromOrigin: 0
-    playOnlyIfFinished: 0
+    clip: {fileID: 8300000, guid: cc2630de95d3b7d4f9334d79936c57d8, type: 3}
+    playFromOrigin: 1
+    playOnlyIfFinished: 1
     volume: 1
-    randomPitchRange: 0
+    randomPitchRange: 0.2
   PlayVisualEffect: 0
   visualEffect:
     prefab: {fileID: 0}
