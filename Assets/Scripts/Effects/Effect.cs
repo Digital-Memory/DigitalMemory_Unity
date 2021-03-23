@@ -16,7 +16,7 @@ public class Effect : ScriptableObject
     [ShowIf("PlayVisualEffect")] [Header("VisualEffect")] [SerializeField] VisualEffectData visualEffect;
     [ShowIf("NotPlayVisualEffect")] [Space] public bool ClearVisualEffect;
     [Space]
-    
+
 
     public bool PlayChangeShaderEffect;
     [ShowIf("PlayChangeShaderEffect")] [Header("ChangeShader")] [SerializeField] ChangeShaderEffectData changeShaderEffect;
@@ -131,9 +131,10 @@ public class ChangeShaderEffectData : EffectData
 [System.Serializable]
 public class PulsingEffectData : EffectData
 {
-    public bool LimitedPulsing;
-    public float duration;
+    public bool loopPulsing;
     public AnimationCurve pulseCurve;
+    [EnumFlags]
+    public PulsingEffectType type;
 
     public override void PlayEffect(GameObject origin)
     {
@@ -143,10 +144,12 @@ public class PulsingEffectData : EffectData
             effector = origin.AddComponent<PulsingEffector>();
         }
 
-        if (LimitedPulsing)
-            effector.StartPulsing(duration, pulseCurve);
+        if (loopPulsing)
+            effector.StartPulsing(pulseCurve, type);
         else
-            effector.StartPulsing(pulseCurve);
+        {
+            effector.StartPulsing(pulseCurve[pulseCurve.length - 1].time, pulseCurve, type);
+        }
     }
 }
 
