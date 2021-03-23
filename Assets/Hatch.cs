@@ -7,6 +7,7 @@ public class Hatch : ConditionedObject
 {
     [SerializeField] Transform doorRight, doorLeft;
     [SerializeField] AnimationCurve doorZRotation;
+    [SerializeField] Effect openningEffect;
 
     bool isOpen;
     bool isAnimating;
@@ -39,6 +40,8 @@ public class Hatch : ConditionedObject
         clickedTimestamp = Time.time;
         rotationAnimationDuration = doorZRotation[doorZRotation.length - 1].time;
         isOpen = true;
+
+        Game.EffectHandler.Play(openningEffect, gameObject);
     }
 
     [Button]
