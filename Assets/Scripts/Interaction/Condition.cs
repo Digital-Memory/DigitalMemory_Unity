@@ -7,7 +7,11 @@ using System;
 [System.Serializable]
 public class Condition : MonoBehaviour
 {
+    [OnValueChanged("OnChangeBehaviourReference")]
     public ConditionBehaviour behaviour;
+    [ShowIf("behaviourObjectIsCorrect")]
+    [ShowAssetPreview(128, 128)]
+    public GameObject behaviourObject;
     public ConditionType type;
 
     [ShowIf("TypeIsBool")] public bool MustBeTrue;
@@ -16,6 +20,12 @@ public class Condition : MonoBehaviour
 
     [HideInInspector] public bool TypeIsBool { get => type == ConditionType.BOOL; }
     [HideInInspector] public bool TypeIsFloat { get => type == ConditionType.FLOAT; }
+    [HideInInspector] public bool behaviourObjectIsCorrect { get => (behaviourObject != null && behaviourObject == behaviour.gameObject); }
+
+    private void OnChangeBehaviourReference()
+    {
+        behaviourObject = behaviour.gameObject;
+    }
 
     public bool IsMet()
     {

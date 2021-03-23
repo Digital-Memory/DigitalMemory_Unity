@@ -1,19 +1,23 @@
+using NaughtyAttributes;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class MotorObject : MonoBehaviour
 {
-    MovingObject objectToMove;
-    float current = 0f;
     [SerializeField] float speed;
+    [SerializeField] bool defineObjectToMoveManually = false;
+    [ShowIf("defineObjectToMoveManually")]
+    [SerializeField] MovingObject objectToMove;
+    float current = 0f;
 
     private void OnEnable ()
     {
+        if (!defineObjectToMoveManually)
         objectToMove = GetComponent<MovingObject>();
 
         if (objectToMove == null)
-            Debug.LogWarning("no moving object found... please add one to " + gameObject.name);
+            Debug.LogError("no moving object found..." + gameObject.name);
     }
 
     private void Update()
