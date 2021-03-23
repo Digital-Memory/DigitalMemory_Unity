@@ -35,9 +35,10 @@ public class SoundPlayer : Singleton<SoundPlayer>
 
     private bool ClipIsBeingPlayed(AudioClip clip)
     {
-        foreach (var playing in currentlyPlaying.Where(g => g.source.clip == clip))
+        foreach (var playing in currentlyPlaying)
         {
-            return true;
+            if (playing != null && playing.source != null && playing.source.clip == clip)
+                return true;
         }
 
         return false;
