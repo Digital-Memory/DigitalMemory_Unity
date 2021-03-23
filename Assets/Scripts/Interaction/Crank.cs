@@ -5,6 +5,8 @@ using System.Collections.Generic;
 using UnityEngine;
 public class Crank : SimpleAttachable
 {
+    [Expandable] [SerializeField] Effect crankBlockedEffect;
+
     [ShowNonSerializedField] AttacherCrank currentAttacher;
     float angleBefore;
 
@@ -40,6 +42,9 @@ public class Crank : SimpleAttachable
         {
             transform.Rotate(Vector3.up, angle - angleBefore);
             angleBefore = angle;
+        } else
+        {
+            Game.EffectHandler.Play(crankBlockedEffect, gameObject);
         }
     }
 
