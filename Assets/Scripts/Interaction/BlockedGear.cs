@@ -25,6 +25,6 @@ public class BlockedGear : MonoBehaviour, IClickable
 
     private void Update()
     {
-        transform.localRotation = Quaternion.Euler((blocked?xRotationIfBlocked:xRotationIfFree).Evaluate(Time.time),0,0);
+        transform.localRotation = Quaternion.Euler(0,(blocked ? xRotationIfBlocked : xRotationIfFree).Evaluate(Time.time), 0);
     }
 }
