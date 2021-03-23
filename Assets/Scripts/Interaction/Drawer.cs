@@ -106,4 +106,9 @@ public class Drawer : MonoBehaviour, IDragable, IAttacher
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireCube(transform.position + attachOffset, new Vector3(10,1,10));
     }
+
+    public bool ShouldLockOnDrag()
+    {
+        return true;
+    }
 }

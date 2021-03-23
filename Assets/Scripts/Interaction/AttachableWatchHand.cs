@@ -35,6 +35,11 @@ public class AttachableWatchHand : MonoBehaviour, IDragable
         return true;
     }
 
+    public bool ShouldLockOnDrag()
+    {
+        return true;
+    }
+
     public void StartDrag()
     {
         isDragging = true;

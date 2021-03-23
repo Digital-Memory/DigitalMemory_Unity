@@ -35,6 +35,11 @@ public class LeverHandle : MonoBehaviour, IDragable
         return true;
     }
 
+    public bool ShouldLockOnDrag()
+    {
+        return true;
+    }
+
     public void StartDrag()
     {
         startRotation = lever.GetRotation().eulerAngles.z;

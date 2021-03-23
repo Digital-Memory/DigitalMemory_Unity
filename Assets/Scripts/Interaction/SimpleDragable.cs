@@ -19,6 +19,7 @@ public interface IDragable
     void EndDrag(Vector3 position);
     float GetEndDragYOffset();
     bool IsDragable();
+    bool ShouldLockOnDrag();
     void UpdateDragPosition(Vector3 point, Vector3 vector3);
 }
 
@@ -96,5 +97,10 @@ public class SimpleDragable : MonoBehaviour, IDragable, IHoverable
     public void EndHover()
     {
         OnEndHoverEvent?.Invoke();
+    }
+
+    public bool ShouldLockOnDrag()
+    {
+        return false;
     }
 }

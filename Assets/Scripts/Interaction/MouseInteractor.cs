@@ -185,8 +185,8 @@ public class MouseInteractor : Singleton<MouseInteractor>
             attacher.OnDetach();
 
         dragable.StartDrag();
-
-        LockRaycastDistance(hit.point);
+        if (dragable.ShouldLockOnDrag())
+            LockRaycastDistance(hit.point);
 
     }
 
