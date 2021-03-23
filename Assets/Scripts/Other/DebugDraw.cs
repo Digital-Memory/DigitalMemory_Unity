@@ -1,8 +1,9 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DebugDraw : MonoBehaviour
+public static class DebugDraw
 {
     public static void Circle(Vector3 position, Color color, float size, int segmentLength = 15)
     {
@@ -20,5 +21,11 @@ public class DebugDraw : MonoBehaviour
 
             lastPosition = positionxyz;
         }
+    }
+
+    public static void Cross(Vector3 position, Color color, float size)
+    {
+        Debug.DrawLine(position + new Vector3(size / 2, 0, size / 2), position + new Vector3(-size / 2, 0, -size / 2),color);
+        Debug.DrawLine(position + new Vector3(-size / 2, 0, size / 2), position + new Vector3(size / 2, 0, -size / 2), color);
     }
 }

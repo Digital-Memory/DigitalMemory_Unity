@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Hatch : MonoBehaviour
+public class Hatch : ConditionedObject
 {
     [SerializeField] Transform doorRight, doorLeft;
     [SerializeField] AnimationCurve doorZRotation;
@@ -13,10 +13,28 @@ public class Hatch : MonoBehaviour
     float clickedTimestamp;
     float rotationAnimationDuration;
 
+    public override bool Try(bool on)
+    {
+        if (base.Try(on))
+        {
+            if (on)
+                TryOpen();
+            else
+                TryClose();
+
+            return true;
+        }
+
+        return false;
+    }
+
 
     [Button]
-    public void Open()
+    public void TryOpen()
     {
+        if (isOpen)
+            return;
+
         isAnimating = true;
         clickedTimestamp = Time.time;
         rotationAnimationDuration = doorZRotation[doorZRotation.length - 1].time;
@@ -24,8 +42,11 @@ public class Hatch : MonoBehaviour
     }
 
     [Button]
-    public void Close()
+    public void TryClose()
     {
+        if (!isOpen)
+            return;
+
         isAnimating = true;
         clickedTimestamp = Time.time;
         rotationAnimationDuration = doorZRotation[doorZRotation.length - 1].time;
