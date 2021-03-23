@@ -10,6 +10,8 @@ public class AttacherCrank : Attacher
     [SerializeField] float factor = 360f;
     [SerializeField] InputObject input;
 
+    [SerializeField] Effect tickEffect;
+
 #if UNITY_EDITOR
     bool __isGivingInput;
 #endif
@@ -31,6 +33,9 @@ public class AttacherCrank : Attacher
             if (TryGiveInput(((currentValue - minValue) / (maxValue - minValue))))
             {
                 currentValue = newValue;
+
+                Game.EffectHandler.Play(tickEffect, gameObject);
+
                 return true;
             } else
             {
