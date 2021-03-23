@@ -7,6 +7,7 @@ public class Hatch : ConditionedObject
 {
     [SerializeField] Transform doorRight, doorLeft;
     [SerializeField] AnimationCurve doorZRotation;
+    [Expandable]
     [SerializeField] Effect openningEffect;
 
     bool isOpen;
