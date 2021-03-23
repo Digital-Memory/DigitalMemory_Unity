@@ -10,6 +10,8 @@ public class AttacherLever : Attacher
     public float topRotation, bottomRotation;
     public event System.Action<bool> OnLeverTurn;
 
+    [SerializeField] Effect onSwitchEffect;
+
     void Awake()
     {
         attachmentName = "Lever";
@@ -22,6 +24,8 @@ public class AttacherLever : Attacher
 
     internal Quaternion Switch(float angle)
     {
+        Game.EffectHandler.Play(onSwitchEffect,gameObject);
+
         isTop = !isTop;
         OnLeverTurn(isTop);
         return GetLeverRotationForCurrentPosition();

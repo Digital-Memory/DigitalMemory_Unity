@@ -11,6 +11,7 @@ public class Button : MonoBehaviour, IClickable
 
     [SerializeField] AnimationCurve buttonHeightOnClick;
     [SerializeField] Transform button;
+    [SerializeField] Effect onClickEffect;
 
     [OnValueChanged("OnChangeInputObject")]
     [SerializeField] InputObject inputObject;
@@ -30,6 +31,8 @@ public class Button : MonoBehaviour, IClickable
         isClicked = true;
         clickedTimestamp = Time.time;
         heightAnimationDuration = buttonHeightOnClick[buttonHeightOnClick.length - 1].time;
+
+        Game.EffectHandler.Play(onClickEffect, gameObject);
         if (inputObject != null)
             inputObject.Try(true);
     }
