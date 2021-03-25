@@ -54,7 +54,9 @@ public class LeverHandle : MonoBehaviour, IDragable
         if (startPosition == Vector3.zero)
             startPosition = point;
 
-        float angle = startRotation - distanceToRotationCurve.Evaluate(point.x - startPosition.x);
+
+
+        float angle = startRotation - distanceToRotationCurve.Evaluate((point - startPosition).InvertAxis(Vector3.forward).GetLongestAxis());
         lever.Turn(angle);
     }
 

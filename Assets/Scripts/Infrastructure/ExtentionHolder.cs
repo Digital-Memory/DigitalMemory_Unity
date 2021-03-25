@@ -30,6 +30,33 @@ public static class ExtentionHolder
             return vector3.z;
     }
 
+    public static Vector3 InvertAxis (this Vector3 vector3, Vector3 axisVector)
+    {
+        return Vector3.Scale(vector3, Vector3.one - axisVector) + Vector3.Scale(-vector3, axisVector);
+    }
+
+    public static float GetLongestAxis(this Vector3 vector3)
+    {
+        //Debug.LogWarning(vector3);
+
+        float absX = Mathf.Abs(vector3.x);
+        float absY = Mathf.Abs(vector3.y);
+        float absZ = Mathf.Abs(vector3.z);
+
+        if (absX > absY && absX > absZ)
+        {
+            return vector3.x;
+        }
+        else if (absY > absX && absY > absZ)
+        {
+            return vector3.y;
+        }
+        else
+        {
+            return vector3.z;
+        }
+    }
+
     public static float Min(this Vector3 vector3)
     {
         return Mathf.Min(vector3.x, vector3.y, vector3.z);
