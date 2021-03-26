@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ConditionBlockedGear : ConditionBehaviour
+public class ConditionListenerBlockedGear : ConditionListenerBehaviour
 {
     BlockedGear gear;
     public bool IsFree;

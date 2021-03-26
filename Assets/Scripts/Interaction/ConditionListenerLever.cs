@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ConditionLever : ConditionBehaviour
+public class ConditionListenerLever : ConditionListenerBehaviour
 {
     AttacherLever attacher;
     public bool IsUp;

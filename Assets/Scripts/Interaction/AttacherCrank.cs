@@ -4,13 +4,16 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [ExecuteAlways]
-public class AttacherCrank : Attacher
+public class AttacherCrank : Attacher, IInputSender
 {
     [SerializeField] float startValue, minValue, maxValue;
     [SerializeField] float factor = 360f;
     [SerializeField] InputObject input;
 
     [SerializeField] Effect tickEffect;
+
+    public event System.Action<float> OnChangeValue;
+    public event Action OnSendInput;
 
 #if UNITY_EDITOR
     bool __isGivingInput;
@@ -35,6 +38,8 @@ public class AttacherCrank : Attacher
             if (TryGiveInput(((currentValue - minValue) / (maxValue - minValue))))
             {
                 currentValue = newValue;
+                OnChangeValue?.Invoke(newValue);
+                OnSendInput?.Invoke();
 
                 Game.EffectHandler.Play(tickEffect, gameObject);
 

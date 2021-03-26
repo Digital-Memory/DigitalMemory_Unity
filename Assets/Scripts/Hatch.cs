@@ -15,6 +15,16 @@ public class Hatch : ConditionedObject
     float clickedTimestamp;
     float rotationAnimationDuration;
 
+    public override bool Try()
+    {
+        if (base.Try())
+            TryOpen();
+        else
+            TryClose();
+
+        return true;
+    }
+
     public override bool Try(bool on)
     {
         if (base.Try(on))

@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3331542015259244765}
   - component: {fileID: 426646233903748002}
   - component: {fileID: 1127935659441193971}
+  - component: {fileID: 6657576988726994764}
   m_Layer: 0
   m_Name: HatchDoorLeft
   m_TagString: Untagged
@@ -81,6 +82,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &6657576988726994764
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4431425891164901271}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.4574249, y: 0.34118098, z: 4.9148498}
+  m_Center: {x: 1.2287124, y: -0.17059049, z: 0}
 --- !u!1 &6078530236439785836
 GameObject:
   m_ObjectHideFlags: 0
@@ -92,6 +106,7 @@ GameObject:
   - component: {fileID: 563791744264712705}
   - component: {fileID: 4891577784108380548}
   - component: {fileID: 4080057566240290975}
+  - component: {fileID: 3281116477200461009}
   m_Layer: 0
   m_Name: HatchDoorRight
   m_TagString: Untagged
@@ -162,6 +177,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &3281116477200461009
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6078530236439785836}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.4574258, y: 0.34118098, z: 4.91485}
+  m_Center: {x: -1.2287124, y: -0.17059049, z: 0.00000023841858}
 --- !u!1 &6206304065706785669
 GameObject:
   m_ObjectHideFlags: 0
@@ -217,20 +245,20 @@ MonoBehaviour:
     - serializedVersion: 3
       time: 0
       value: 0
-      inSlope: 100
-      outSlope: 100
-      tangentMode: 34
+      inSlope: -19.046524
+      outSlope: -19.046524
+      tangentMode: 0
       weightedMode: 0
       inWeight: 0
-      outWeight: 0.33333334
+      outWeight: 0.12023593
     - serializedVersion: 3
-      time: 1
+      time: 0.5
       value: 100
-      inSlope: 100
-      outSlope: 100
-      tangentMode: 34
+      inSlope: -260.46173
+      outSlope: -260.46173
+      tangentMode: 0
       weightedMode: 0
-      inWeight: 0.33333334
+      inWeight: 0.10843927
       outWeight: 0
     m_PreInfinity: 1
     m_PostInfinity: 2

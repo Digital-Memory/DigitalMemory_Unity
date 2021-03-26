@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ConditionAttacher : ConditionBehaviour
+public class ConditionListenerAttacher : ConditionListenerBehaviour
 {
     Attacher attacher;
     public bool IsAttached;

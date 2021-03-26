@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 4477214404994513110}
   - component: {fileID: 4477214404994513105}
   - component: {fileID: 4477214404994513104}
-  - component: {fileID: 4477214404994513107}
   - component: {fileID: 4477214404994513106}
+  - component: {fileID: 106374568189624334}
   m_Layer: 0
   m_Name: Button
   m_TagString: Untagged
@@ -84,19 +84,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!135 &4477214404994513107
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4477214404994514733}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 1.4128458
-  m_Center: {x: 0, y: 0.19356778, z: 0}
 --- !u!114 &4477214404994513106
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -144,6 +131,21 @@ MonoBehaviour:
     m_RotationOrder: 4
   button: {fileID: 4477214405454235176}
   onClickEffect: {fileID: 11400000, guid: ebffebceada315c41b6a755c1199f543, type: 2}
+  inputObject: {fileID: 0}
+  inputObjectGameObject: {fileID: 0}
+--- !u!65 &106374568189624334
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4477214404994514733}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.85, y: 0.38713557, z: 1.85}
+  m_Center: {x: 0, y: 0.19356778, z: 0}
 --- !u!1 &4477214405454235179
 GameObject:
   m_ObjectHideFlags: 0

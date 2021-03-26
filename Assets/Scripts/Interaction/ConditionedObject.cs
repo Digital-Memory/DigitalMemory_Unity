@@ -38,12 +38,15 @@ public class ConditionedObject : InputObject
 
     private bool CheckAllConditionsForTrue()
     {
-        foreach (Condition condition in conditions)
+        if (conditions != null)
         {
-            if (condition.behaviour != null)
+            foreach (Condition condition in conditions)
             {
-                if (!condition.IsMet())
-                    return false;
+                if (condition.behaviour != null)
+                {
+                    if (!condition.IsMet())
+                        return false;
+                }
             }
         }
 
@@ -52,12 +55,21 @@ public class ConditionedObject : InputObject
 
     protected virtual void OnDrawGizmos()
     {
-        foreach (Condition condition in conditions)
+        if (conditions != null)
         {
-            if (condition.behaviour != null)
+
+            for (int i = 0; i < conditions.Count; i++)
             {
-                Gizmos.color = condition.IsMet() ? Color.green : Color.red;
-                Gizmos.DrawLine(transform.position, condition.behaviour.transform.position);
+                if (conditions[i] != null)
+                {
+                    Condition condition = conditions[i];
+
+                    if (condition.behaviour != null)
+                    {
+                        Gizmos.color = condition.IsMet() ? Color.green : Color.red;
+                        Gizmos.DrawLine(transform.position + transform.forward * 0.1f * i, condition.behaviour.transform.position + transform.forward * 0.1f * i);
+                    }
+                }
             }
         }
 

@@ -8,7 +8,7 @@ using System;
 public class Condition : MonoBehaviour
 {
     [OnValueChanged("OnChangeBehaviourReference")]
-    public ConditionBehaviour behaviour;
+    public ConditionListenerBehaviour behaviour;
     [ShowIf("behaviourObjectIsCorrect")]
     [ShowAssetPreview(128, 128)]
     public GameObject behaviourObject;
@@ -17,6 +17,8 @@ public class Condition : MonoBehaviour
     [ShowIf("TypeIsBool")] public bool MustBeTrue;
     [ShowIf("TypeIsFloat")] public FloatCompare FloatIs;
     [ShowIf("TypeIsFloat")] public float toCompareWith;
+
+    private const float MAX_DISTANCE_TO_COUNT_AS_EQUAL = 0.1f;
 
     [HideInInspector] public bool TypeIsBool { get => type == ConditionType.BOOL; }
     [HideInInspector] public bool TypeIsFloat { get => type == ConditionType.FLOAT; }
@@ -33,6 +35,18 @@ public class Condition : MonoBehaviour
         {
             case ConditionType.BOOL:
                 return (behaviour.GetBool() == MustBeTrue);
+                break;
+
+            case ConditionType.FLOAT:
+                switch (FloatIs)
+                {
+                    case FloatCompare.EQUALS:
+                        return (Mathf.Abs(behaviour.GetFloat() - toCompareWith) < MAX_DISTANCE_TO_COUNT_AS_EQUAL);
+                    case FloatCompare.GREATER:
+                        return (behaviour.GetFloat() > toCompareWith);
+                    case FloatCompare.SMALLER:
+                        return (behaviour.GetFloat() < toCompareWith);
+                }
                 break;
         }
 

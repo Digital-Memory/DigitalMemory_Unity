@@ -4,11 +4,13 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [ExecuteAlways]
-public class AttacherLever : Attacher
+public class AttacherLever : Attacher, IInputSender
 {
     public bool isTop;
     public float topRotation, bottomRotation;
+
     public event System.Action<bool> OnLeverTurn;
+    public event Action OnSendInput;
 
     [SerializeField] Effect onSwitchEffect;
 
@@ -28,6 +30,8 @@ public class AttacherLever : Attacher
 
         isTop = !isTop;
         OnLeverTurn(isTop);
+        OnSendInput?.Invoke();
+
         return GetLeverRotationForCurrentPosition();
     }
 }

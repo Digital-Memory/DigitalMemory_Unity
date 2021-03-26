@@ -29,6 +29,14 @@ public class Game : MonoBehaviour
         }
     }
 
+    public static TimeHandler TimeHandler
+    {
+        get
+        {
+            return TimeHandler.GetInstance();
+        }
+    }
+
     public static SequenceHandler SequenceHandler
     {
         get

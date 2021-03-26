@@ -1,9 +1,10 @@
 using NaughtyAttributes;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Button : MonoBehaviour, IClickable
+public class Button : MonoBehaviour, IClickable, IInputSender
 {
     bool isClicked;
     float clickedTimestamp;
@@ -19,7 +20,10 @@ public class Button : MonoBehaviour, IClickable
     [ShowIf("inputObjectGameObjectIsCorrect")]
     [ShowAssetPreview(128, 128)]
     [SerializeField] GameObject inputObjectGameObject;
-    [HideInInspector] public bool inputObjectGameObjectIsCorrect { get => (inputObjectGameObject != null && inputObjectGameObject == inputObject.gameObject); }
+
+    public event Action OnSendInput;
+
+    [HideInInspector] public bool inputObjectGameObjectIsCorrect { get => (inputObjectGameObject != null && inputObject != null && inputObjectGameObject == inputObject.gameObject); }
 
     private void OnChangeInputObject()
     {
@@ -34,7 +38,11 @@ public class Button : MonoBehaviour, IClickable
 
         Game.EffectHandler.Play(onClickEffect, gameObject);
         if (inputObject != null)
-            inputObject.Try(true);
+        {
+            if (inputObject.Try(true))
+                OnSendInput?.Invoke();
+        }
+
     }
 
     public bool IsClickable()
