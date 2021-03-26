@@ -71,7 +71,7 @@ public class AttachableWatch : SimpleAttachable
         moves = true;
         cursorSpeed = resetCursorSpeed;
         if (hand.IsDragging)
-            Game.MouseInteractor.ForceEndDrag();
+            Game.DragHandler.ForceEndDrag();
     }
 
     private void OnTimeChange(float newTime)

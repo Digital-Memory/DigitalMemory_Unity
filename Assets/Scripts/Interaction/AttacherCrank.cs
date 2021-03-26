@@ -56,7 +56,7 @@ public class AttacherCrank : Attacher, IInputSender
         {
             if (newValue < minValue && Mathf.Abs(newValue - minValue) > (180f / factor)
                 && newValue > maxValue && Mathf.Abs(newValue - maxValue) > (180f / factor))
-                Game.MouseInteractor.ForceEndDrag();
+                Game.DragHandler.ForceEndDrag();
 
             return false;
         }

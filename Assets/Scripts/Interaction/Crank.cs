@@ -41,7 +41,7 @@ public class Crank : SimpleAttachable
         if (Mathf.Abs(deltaAngle) > 45f)
         {
             Game.EffectHandler.Play(crankBlockedEffect, gameObject);
-            Game.MouseInteractor.ForceEndDrag();
+            Game.DragHandler.ForceEndDrag();
         }
         else
         {

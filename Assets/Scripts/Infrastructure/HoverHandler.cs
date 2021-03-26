@@ -10,6 +10,18 @@ public class HoverHandler : Singleton<HoverHandler>
     [SerializeField] [Expandable] Effect onHoverEnter, onHoverExit;
     [SerializeField] Texture2D defaultCursor, dragableCursor, dragggingCursor;
 
+    private void OnEnable()
+    {
+        Game.DragHandler.OnStartDrag += OnStartDrag;
+        Game.DragHandler.OnEndDrag += OnEndDrag;
+    }
+
+    private void OnDisable()
+    {
+        Game.DragHandler.OnStartDrag -= OnStartDrag;
+        Game.DragHandler.OnEndDrag -= OnEndDrag;
+    }
+
     public void UpdateHover(RaycastHit hit, IDragable dragable)
     {
         //Hover
@@ -48,12 +60,12 @@ public class HoverHandler : Singleton<HoverHandler>
         }
     }
 
-    internal void NotifyStartDrag()
+    internal void OnStartDrag(IDragable dragable, RaycastHit hit)
     {
         Cursor.SetCursor(dragggingCursor, Vector2.zero, CursorMode.Auto);
     }
 
-    internal void NotifyEndDrag()
+    internal void OnEndDrag()
     {
         Cursor.SetCursor(defaultCursor, Vector2.zero, CursorMode.Auto);
         currentHover = null;
@@ -63,15 +75,7 @@ public class HoverHandler : Singleton<HoverHandler>
     {
         if (currentHover != null)
         {
-            DebugDraw.Circle(currentHover.GetGameObject().transform.position, Color.yellow, 0.5f);
-        }
-    }
-
-    private void OnGUI()
-    {
-        if (currentHover != null)
-        {
-            GUILayout.Box(currentHover.GetGameObject().name);
+            DebugDraw.Circle(currentHover.GetGameObject().transform.position, Color.white, 0.5f);
         }
     }
 }

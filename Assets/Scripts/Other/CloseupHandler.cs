@@ -15,18 +15,23 @@ public class CloseupHandler : Singleton<CloseupHandler>
     Vector2 mousePositionBefore;
     bool offsetToTheLeftToMakeSpaceForInspectionText;
 
+    ICloseupable currentCloseupable;
+
     [SerializeField] float closeupSpeed;
     [SerializeField] Transform closeupTransform;
     [SerializeField] AudioClip startCloseupSound, endCloseupSound;
-    public void StartCloseup(ICloseupable currentCloseupable)
+
+    public bool IsInCloseup { get => (currentCloseupable != null); }
+    public void StartCloseup(ICloseupable newCloseupable)
     {
         Debug.Log("start closeup");
-        offsetToTheLeftToMakeSpaceForInspectionText = currentCloseupable.ShouldOffset();
+        currentCloseupable = newCloseupable;
+        offsetToTheLeftToMakeSpaceForInspectionText = newCloseupable.ShouldOffset();
         Game.SoundPlayer.Play(startCloseupSound, randomPitchRange: 0.15f);
         Game.HoverHandler.ForceEndHover();
-        currentCloseupable.OnStartCloseup();
-        originalPosition = currentCloseupable.GetPosition();
-        originalRotation = currentCloseupable.GetRotation();
+        newCloseupable.OnStartCloseup();
+        originalPosition = newCloseupable.GetPosition();
+        originalRotation = newCloseupable.GetRotation();
     }
 
     public void EndCloseup(ICloseupable currentCloseupable)
@@ -35,7 +40,7 @@ public class CloseupHandler : Singleton<CloseupHandler>
         Game.SoundPlayer.Play(endCloseupSound, randomPitchRange: 0.15f);
         StartCoroutine(PanBackRoutine(currentCloseupable));
     }
-    public void UpdateCloseup(ICloseupable currentCloseupable)
+    public void UpdateCloseupMode(ICloseupable currentCloseupable)
     {
         targetPosition = closeupTransform.position - (offsetToTheLeftToMakeSpaceForInspectionText?closeupTransform.right:Vector3.zero);
 
@@ -50,6 +55,29 @@ public class CloseupHandler : Singleton<CloseupHandler>
         UpdatePositionAndRotation(currentCloseupable, targetPosition, targetRotation, Vector3.Distance(targetPosition, currentCloseupable.GetPosition()) > 0.01f);
     }
 
+    internal void UpdateCloseup(RaycastHit hit, bool v1, bool v2)
+    {
+        if (v2)
+        {
+            EndCloseup(currentCloseupable);
+            currentCloseupable = null;
+        }
+        else
+        {
+            UpdateCloseupMode(currentCloseupable);
+
+            if (v1)
+            {
+                HiddenAttachable hiddenAttachable = hit.collider.GetComponent<HiddenAttachable>();
+                if (hiddenAttachable != null)
+                {
+                    EndCloseup(currentCloseupable);
+                    currentCloseupable = hiddenAttachable;
+                    StartCloseup(hiddenAttachable);
+                }
+            }
+        }
+    }
 
     IEnumerator PanBackRoutine(ICloseupable closeupable)
     {

@@ -17,7 +17,7 @@ public class CameraController : Singleton<CameraController>
     // Update is called once per frame
     void Update()
     {
-        if (Game.MouseInteractor.IsInCloseup)
+        if (Game.CloseupHandler.IsInCloseup)
             return;
 
         var x = Input.mousePosition.x / Screen.width;
@@ -74,16 +74,6 @@ public class CameraController : Singleton<CameraController>
         current = face;
         isRotating = false;
     }
-
-    //private Vector3 RoundToFullRotation(Vector3 eulerAngles)
-    //{
-    //    return new Vector3(ToTenthInt(eulerAngles.x), ToTenthInt(eulerAngles.y), ToTenthInt(eulerAngles.z));
-    //}
-    //
-    //private int ToTenthInt(float f)
-    //{
-    //    return (Mathf.RoundToInt(f / 10f)) * 10;
-    //}
 
     private void OnGUI()
     {

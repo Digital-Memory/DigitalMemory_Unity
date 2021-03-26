@@ -68,6 +68,14 @@ public class Game : MonoBehaviour
         }
     }
 
+    public static DragHandler DragHandler
+    {
+        get
+        {
+            return DragHandler.GetInstance();
+        }
+    }
+
     public static CloseupHandler CloseupHandler
     {
         get
