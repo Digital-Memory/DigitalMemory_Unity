@@ -36,7 +36,7 @@ public class ConditionedObject : InputObject
         return Try();
     }
 
-    private bool CheckAllConditionsForTrue()
+    protected bool CheckAllConditionsForTrue()
     {
         if (conditions != null)
         {

@@ -20,10 +20,12 @@ public class AttacherCrank : Attacher, IInputSender
 #endif
 
     float currentValue;
+    FloatLimiter[] limits;
 
     void Awake()
     {
         attachmentName = "Crank";
+        limits = GetComponents<FloatLimiter>();
         Start();
     }
 
@@ -33,7 +35,7 @@ public class AttacherCrank : Attacher, IInputSender
 
         //Debug.Log("change value: " + degrees/factor + "New value: " + newValue + " min: "+ minValue + " max: " + maxValue);
 
-        if (newValue < maxValue && newValue > minValue)
+        if (IsInsideInputRange(newValue) && !IsInsideLimiter(newValue, limits))
         {
             if (TryGiveInput(((currentValue - minValue) / (maxValue - minValue))))
             {
@@ -44,7 +46,8 @@ public class AttacherCrank : Attacher, IInputSender
                 Game.EffectHandler.Play(tickEffect, gameObject);
 
                 return true;
-            } else
+            }
+            else
             {
                 return false;
             }
@@ -57,6 +60,25 @@ public class AttacherCrank : Attacher, IInputSender
 
             return false;
         }
+    }
+
+    private bool IsInsideLimiter(float newValue, FloatLimiter[] limits)
+    {
+        if (limits != null)
+        {
+            foreach (FloatLimiter limit in limits)
+            {
+                if (limit.IsInside(newValue))
+                    return true;
+            }
+        }
+
+        return false;
+    }
+
+    private bool IsInsideInputRange(float newValue)
+    {
+        return newValue < maxValue && newValue > minValue;
     }
 
 #if UNITY_EDITOR
