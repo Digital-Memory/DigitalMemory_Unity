@@ -23,7 +23,7 @@ public class CloseupHandler : Singleton<CloseupHandler>
         Debug.Log("start closeup");
         offsetToTheLeftToMakeSpaceForInspectionText = currentCloseupable.ShouldOffset();
         Game.SoundPlayer.Play(startCloseupSound, randomPitchRange: 0.15f);
-        Game.MouseInteractor.ForceEndHover();
+        Game.HoverHandler.ForceEndHover();
         currentCloseupable.OnStartCloseup();
         originalPosition = currentCloseupable.GetPosition();
         originalRotation = currentCloseupable.GetRotation();

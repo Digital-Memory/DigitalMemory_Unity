@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -18,12 +19,30 @@ public class AttachableWatchHand : MonoBehaviour, IDragable
 
     public bool IsDragging => isDragging;
 
+    public event Action OnStartHoverEvent;
+    public event Action OnEndHoverEvent;
+    public void StartHover()
+    {
+        OnStartHoverEvent?.Invoke();
+    }
+
+    public void EndHover()
+    {
+        OnEndHoverEvent?.Invoke();
+    }
+
+    public GameObject GetGameObject()
+    {
+        return gameObject;
+    }
+
     public void EndDrag(Vector3 position)
     {
         isDragging = false;
         pin.transform.localPosition = pinLocalPositionIn;
         watch.TrySnapToClosestDot();
     }
+
 
     public float GetEndDragYOffset()
     {

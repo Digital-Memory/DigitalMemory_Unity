@@ -18,6 +18,24 @@ public class LeverHandle : MonoBehaviour, IDragable
 
     public bool IsDragging => isDragging;
 
+
+    public event System.Action OnStartHoverEvent;
+    public event System.Action OnEndHoverEvent;
+    public void StartHover()
+    {
+        OnStartHoverEvent?.Invoke();
+    }
+
+    public void EndHover()
+    {
+        OnEndHoverEvent?.Invoke();
+    }
+
+    public GameObject GetGameObject()
+    {
+        return gameObject;
+    }
+
     public void EndDrag(Vector3 position)
     {
         isDragging = false;

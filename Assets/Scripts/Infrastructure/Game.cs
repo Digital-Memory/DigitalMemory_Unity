@@ -60,6 +60,14 @@ public class Game : MonoBehaviour
         }
     }
 
+    public static HoverHandler HoverHandler
+    {
+        get
+        {
+            return HoverHandler.GetInstance(usePrefab: true);
+        }
+    }
+
     public static CloseupHandler CloseupHandler
     {
         get

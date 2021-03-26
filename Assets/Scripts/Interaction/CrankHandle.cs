@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CrankHandle : MonoBehaviour, IDragable
+public class CrankHandle : MonoBehaviour, IDragable, IHoverable
 {
     [SerializeField] Crank crank;
 
@@ -13,11 +13,28 @@ public class CrankHandle : MonoBehaviour, IDragable
 
     public bool IsDragging => isDragging;
 
+    public event Action OnStartHoverEvent;
+    public event Action OnEndHoverEvent;
+
     public void EndDrag(Vector3 position)
     {
         isDragging = false;
         handleCollider.enabled = true;
         Debug.Log("End Drag");
+    }
+
+    public void StartHover()
+    {
+        OnStartHoverEvent?.Invoke();
+    }
+
+    public void EndHover()
+    {
+        OnEndHoverEvent?.Invoke();
+    }
+    public GameObject GetGameObject()
+    {
+        return gameObject;
     }
 
     public float GetEndDragYOffset()

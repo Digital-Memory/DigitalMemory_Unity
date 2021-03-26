@@ -4,7 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Button : MonoBehaviour, IClickable, IInputSender
+public class Button : MonoBehaviour, IClickable, IInputSender, IHoverable
 {
     bool isClicked;
     float clickedTimestamp;
@@ -22,6 +22,8 @@ public class Button : MonoBehaviour, IClickable, IInputSender
     [SerializeField] GameObject inputObjectGameObject;
 
     public event Action OnSendInput;
+    public event Action OnStartHoverEvent;
+    public event Action OnEndHoverEvent;
 
     [HideInInspector] public bool inputObjectGameObjectIsCorrect { get => (inputObjectGameObject != null && inputObject != null && inputObjectGameObject == inputObject.gameObject); }
 
@@ -72,5 +74,20 @@ public class Button : MonoBehaviour, IClickable, IInputSender
             if (inputObject != null)
                 Debug.DrawLine(transform.position + Vector3.up, inputObject.transform.position + Vector3.up, Color.grey);
         }
+    }
+
+    public void StartHover()
+    {
+        OnStartHoverEvent?.Invoke();
+    }
+
+    public void EndHover()
+    {
+        OnEndHoverEvent?.Invoke();
+    }
+
+    public GameObject GetGameObject()
+    {
+        return gameObject;
     }
 }

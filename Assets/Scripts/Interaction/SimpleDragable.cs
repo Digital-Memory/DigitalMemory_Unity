@@ -13,7 +13,7 @@ public interface IHoverable
 
 }
 
-public interface IDragable
+public interface IDragable : IHoverable
 {
     void StartDrag();
     void EndDrag(Vector3 position);
@@ -30,7 +30,7 @@ public interface IAttachable : IDragable
     IAttacher GetCurrentAttached();
 }
 
-public class SimpleDragable : MonoBehaviour, IDragable, IHoverable
+public class SimpleDragable : MonoBehaviour, IDragable
 {
     [SerializeField] protected Rigidbody rigidbody;
     [SerializeField] private float YOffsetOnDrop;

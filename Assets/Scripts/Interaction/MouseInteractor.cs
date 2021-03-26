@@ -10,7 +10,6 @@ public class MouseInteractor : Singleton<MouseInteractor>
 
     GameObject currenHoverTEMP;
 
-    IHoverable currentHover;
     IDragable currentDrag;
     IAttachable currentAttachable;
     ICloseupable currentCloseupable;
@@ -101,27 +100,7 @@ public class MouseInteractor : Singleton<MouseInteractor>
             attachable = hit.collider.GetComponent<IAttachable>();
         }
 
-        //Hover
-        IHoverable newDragHover = null;
-        if (dragable != null)
-            newDragHover = hit.collider.GetComponent<IHoverable>();
-
-        if (currentHover != newDragHover)
-        {
-            if (currentHover != null)
-            {
-                Game.EffectHandler.Play(onHoverDragableExit, currentHover.GetGameObject());
-                currentHover.EndHover();
-            }
-
-            if (newDragHover != null)
-            {
-                Game.EffectHandler.Play(onHoverDragableEnter, newDragHover.GetGameObject());
-                newDragHover.StartHover();
-            }
-
-            currentHover = newDragHover;
-        }
+        Game.HoverHandler.UpdateHover(hit, dragable);
 
         //Mouse
         if (Input.GetMouseButtonDown(0))
@@ -188,6 +167,8 @@ public class MouseInteractor : Singleton<MouseInteractor>
         if (dragable.ShouldLockOnDrag())
             LockRaycastDistance(hit.point);
 
+        Game.HoverHandler.NotifyStartDrag();
+
     }
 
     private void EndDrag(IDragable dragable, Vector3 point)
@@ -197,21 +178,13 @@ public class MouseInteractor : Singleton<MouseInteractor>
         dragable.EndDrag(point + dragable.GetEndDragYOffset() * Vector3.up);
 
         UnlockRaycastDistance();
+
+        Game.HoverHandler.NotifyEndDrag();
     }
 
     public void ForceEndDrag()
     {
         EndDrag(currentDrag, Vector3.zero);
-    }
-
-    public void ForceEndHover()
-    {
-        if (currentHover != null)
-        {
-            Game.EffectHandler.Play(onHoverDragableExit, currentHover.GetGameObject());
-            currentHover.EndHover();
-            currentHover = null;
-        }
     }
 
     private void Attach(IAttachable attachable, IAttacher attacher)
@@ -235,9 +208,9 @@ public class MouseInteractor : Singleton<MouseInteractor>
 
     private void OnGUI()
     {
-        if (currenHoverTEMP != null)
-            GUILayout.Box("hover: " + currenHoverTEMP + "\n closeup: " + IsInCloseup);
-        else
-            GUILayout.Box("no hover.");
+       //if (currenHoverTEMP != null)
+       //    GUILayout.Box("hover: " + currenHoverTEMP + "\n closeup: " + IsInCloseup);
+       //else
+       //    GUILayout.Box("no hover.");
     }
 }

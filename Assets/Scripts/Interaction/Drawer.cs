@@ -11,6 +11,9 @@ public class Drawer : MonoBehaviour, IDragable, IAttacher
     [SerializeField] Vector3 dragAxis, position, current, target, minDrag, maxDrag;
     [SerializeField] Vector3 attachOffset;
 
+    public event Action OnStartHoverEvent;
+    public event Action OnEndHoverEvent;
+
     public void EndDrag(Vector3 position)
     {
         SetPulledOut(startDragPosition, position);
@@ -110,5 +113,20 @@ public class Drawer : MonoBehaviour, IDragable, IAttacher
     public bool ShouldLockOnDrag()
     {
         return true;
+    }
+
+    public void StartHover()
+    {
+        OnStartHoverEvent?.Invoke();
+    }
+
+    public void EndHover()
+    {
+        OnEndHoverEvent?.Invoke();
+    }
+
+    public GameObject GetGameObject()
+    {
+        return gameObject;
     }
 }
