@@ -129,4 +129,10 @@ public class Drawer : MonoBehaviour, IDragable, IAttacher
     {
         return gameObject;
     }
+
+    public void HandleTransformOnAttach(Transform transformAttached)
+    {
+        transformAttached.parent = transform;
+        transformAttached.localPosition += attachOffset;
+    }
 }

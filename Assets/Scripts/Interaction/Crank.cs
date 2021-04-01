@@ -14,15 +14,17 @@ public class Crank : SimpleAttachable
     {
         base.Attach(toAttachTo);
         floatSender = GetComponentInParent<FloatSender>();
-        floatSender.OnSendCallbackWithFactor += SetRotationFromAngle;
-        Debug.LogWarning("attached to " + floatSender.name);
+        if (floatSender != null)
+            floatSender.OnSendCallbackWithFactor += SetRotationFromAngle;
+        Debug.LogWarning("attached to " + toAttachTo.GetTransform().gameObject.name);
         ResetAngleBefore();
     }
 
     public override void StartDrag()
     {
         base.StartDrag();
-        floatSender.OnSendCallbackWithFactor -= SetRotationFromAngle;
+        if (floatSender != null)
+            floatSender.OnSendCallbackWithFactor -= SetRotationFromAngle;
         floatSender = null;
     }
 
@@ -38,7 +40,7 @@ public class Crank : SimpleAttachable
             angleBefore = angle;
 
         float deltaAngle = Mathf.DeltaAngle(angleBefore, angle);
-        Debug.Log("deltaAngle between: "+ deltaAngle + " (" + angleBefore + " / " + angle + ")");
+        Debug.Log("deltaAngle between: " + deltaAngle + " (" + angleBefore + " / " + angle + ")");
 
         if (Mathf.Abs(deltaAngle) > 45f)
         {

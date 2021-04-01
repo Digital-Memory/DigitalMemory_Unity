@@ -13,6 +13,7 @@ public interface IAttacher
     bool ResetPositionOnAttach();
     bool ResetOrientationOnAttach();
     Vector3 GetAttachOffset();
+    void HandleTransformOnAttach(Transform transformAttached);
 }
 
 public class Attacher : MonoBehaviour, IAttacher
@@ -77,5 +78,12 @@ public class Attacher : MonoBehaviour, IAttacher
     {
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireSphere(transform.position + attachmentOffset, 0.5f);
+    }
+
+    public void HandleTransformOnAttach(Transform transformToAttach)
+    {
+        transformToAttach.parent = transform;
+        transformToAttach.localPosition = attachmentOffset;
+        transformToAttach.localRotation = Quaternion.identity;
     }
 }

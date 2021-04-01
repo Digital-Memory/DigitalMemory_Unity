@@ -57,15 +57,7 @@ public class SimpleAttachable : SimpleDragable, IAttachable, ICloseupable
         isAttached = true;
 
         defaultParent = transform.parent;
-        transform.parent = toAttachTo.GetTransform();
-
-        if (toAttachTo.ResetPositionOnAttach())
-            transform.localPosition = toAttachTo.GetAttachOffset();
-        else
-            transform.localPosition += toAttachTo.GetAttachOffset();
-
-        if (toAttachTo.ResetOrientationOnAttach())
-            transform.localRotation = Quaternion.identity;
+        toAttachTo.HandleTransformOnAttach(transform);
 
         SetMouseRaycastable(true);
         SetPhysicsActive(false);
@@ -82,6 +74,7 @@ public class SimpleAttachable : SimpleDragable, IAttachable, ICloseupable
         if (isAttached)
         {
             Game.EffectHandler.Play(detachEffect, gameObject);
+            transform.localScale = Vector3.one;
 
             isAttached = false;
             if (defaultParent != null)

@@ -13,7 +13,9 @@ public class CinemachineCameraSwitcher : MonoBehaviour
 	{
         return DropdownMonobehaviourList<CinemachineVirtualCamera>.FromObjectsOfType(FindObjectsOfType<CinemachineVirtualCamera>());
 	}
-	private void Start()
+
+    [Button]
+	private void Switch()
     {
         cinemachineVirtualCamera.MoveToTopOfPrioritySubqueue();
     }

@@ -66,6 +66,7 @@ public class DragHandler : Singleton<DragHandler>
     {
         currentAttachable = null;
         currentDrag = null;
+
         dragable.EndDrag(point + dragable.GetEndDragYOffset() * Vector3.up);
 
         OnEndDrag?.Invoke();
@@ -78,6 +79,9 @@ public class DragHandler : Singleton<DragHandler>
 
         attacher.OnAttach(attachable);
         attachable.Attach(attacher);
+
+
+        OnEndDrag?.Invoke();
     }
 
     public void ForceEndDrag()
