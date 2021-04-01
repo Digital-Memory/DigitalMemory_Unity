@@ -7,26 +7,57 @@ using System;
 [System.Serializable]
 public class Condition : MonoBehaviour
 {
+
+
+    [Dropdown("GetConditionListenerBehaviours")]
     [OnValueChanged("OnChangeBehaviourReference")]
+    [ValidateInput("BehaviourObjectIsCorrect", "Select a correct behaviour!")]
     public ConditionListenerBehaviour behaviour;
     [ShowIf("behaviourObjectIsCorrect")]
     [ShowAssetPreview(128, 128)]
     public GameObject behaviourObject;
+    [OnValueChanged("OnTypeChangedCallback")]
     public ConditionType type;
 
     [ShowIf("TypeIsBool")] public bool MustBeTrue;
     [ShowIf("TypeIsFloat")] public FloatCompare FloatIs;
-    [ShowIf("TypeIsFloat")] public float toCompareWith;
+    [ShowIf("TypeIsFloat")] [Range(0f, 1f)] public float toCompareWith;
 
     private const float MAX_DISTANCE_TO_COUNT_AS_EQUAL = 0.1f;
 
     [HideInInspector] public bool TypeIsBool { get => type == ConditionType.BOOL; }
     [HideInInspector] public bool TypeIsFloat { get => type == ConditionType.FLOAT; }
-    [HideInInspector] public bool behaviourObjectIsCorrect { get => (behaviour != null && behaviourObject != null && behaviourObject == behaviour.gameObject); }
+    [HideInInspector] public bool behaviourObjectIsCorrect { get => BehaviourObjectIsCorrect(); }
 
+    private bool BehaviourObjectIsCorrect()
+    {
+        return (behaviour != null && behaviourObject != null && behaviourObject == behaviour.gameObject);
+    }
+
+    private DropdownList<ConditionListenerBehaviour> GetConditionListenerBehaviours()
+    {
+        return DropdownMonobehaviourList<ConditionListenerBehaviour>.FromObjectsOfType(FindObjectsOfType<ConditionListenerBehaviour>());
+    }
     private void OnChangeBehaviourReference()
     {
         behaviourObject = behaviour.gameObject;
+    }
+
+    private void OnTypeChangedCallback()
+    {
+        if (behaviour != null)
+        {
+            if (type == ConditionType.BOOL && !behaviour.SupportsBool())
+            {
+                type = ConditionType.FLOAT;
+                Debug.LogError("This behaviour does not support bool conditions.");
+            }
+            if (type == ConditionType.FLOAT && !behaviour.SupportsFloat())
+            {
+                type = ConditionType.BOOL;
+                Debug.LogError("This behaviour does not support float conditions.");
+            }
+        }
     }
 
     public bool IsMet()
