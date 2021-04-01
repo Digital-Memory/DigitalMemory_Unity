@@ -6,12 +6,19 @@ using NaughtyAttributes;
 
 public class InputSender : MonoBehaviour, IInputSender
 {
+    [ValidateInput("ObjectsMatchBehaviours", "Select a matching Input Objects")]
     [OnValueChanged("OnChangeInputReference")]
+    [Dropdown("CreateInputDropdown")]
     public InputObject input;
     [ShowIf("behaviourObjectIsCorrect")]
     [ShowAssetPreview(128, 128)]
     public GameObject inputObject;
     [HideInInspector] public bool behaviourObjectIsCorrect { get => ObjectsMatchBehaviours(); }
+
+    protected DropdownList<InputObject> CreateInputDropdown()
+    {
+        return DropdownMonobehaviourList<InputObject>.FromObjectsOfType(FindObjectsOfType<InputObject>());
+    }
 
     public event Action OnSendInput;
     protected void OnChangeInputReference()
