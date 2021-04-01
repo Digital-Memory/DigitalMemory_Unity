@@ -4,7 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Button : MonoBehaviour, IClickable, IInputSender, IHoverable
+public class Button : InputSender, IClickable, IInputSender, IHoverable
 {
     bool isClicked;
     float clickedTimestamp;
@@ -14,23 +14,8 @@ public class Button : MonoBehaviour, IClickable, IInputSender, IHoverable
     [SerializeField] Transform button;
     [SerializeField] Effect onClickEffect;
 
-    [OnValueChanged("OnChangeInputObject")]
-    [SerializeField] InputObject inputObject;
-
-    [ShowIf("inputObjectGameObjectIsCorrect")]
-    [ShowAssetPreview(128, 128)]
-    [SerializeField] GameObject inputObjectGameObject;
-
-    public event Action OnSendInput;
     public event Action OnStartHoverEvent;
     public event Action OnEndHoverEvent;
-
-    [HideInInspector] public bool inputObjectGameObjectIsCorrect { get => (inputObjectGameObject != null && inputObject != null && inputObjectGameObject == inputObject.gameObject); }
-
-    private void OnChangeInputObject()
-    {
-        inputObjectGameObject = inputObject.gameObject;
-    }
 
     public void Click()
     {
@@ -39,10 +24,15 @@ public class Button : MonoBehaviour, IClickable, IInputSender, IHoverable
         heightAnimationDuration = buttonHeightOnClick[buttonHeightOnClick.length - 1].time;
 
         Game.EffectHandler.Play(onClickEffect, gameObject);
-        if (inputObject != null)
+        if (input != null)
         {
-            if (inputObject.Try(true))
-                OnSendInput?.Invoke();
+            if (input.Try(true))
+            {
+                CallOnSendInputEvents(0f);
+            }
+        } else
+        {
+            Debug.LogWarning("No Input " + input);
         }
 
     }
