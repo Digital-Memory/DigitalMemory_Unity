@@ -1,19 +1,22 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using NaughtyAttributes;
+using System;
 
-[ExecuteAlways]
-public class AttacherCrank : Attacher, IInputSender
+public class FloatSender : InputSender
 {
-    [SerializeField] float startValue, minValue, maxValue;
+    private const int MIN_VALUE = 0, MAX_VALUE = 1;
+    [Range(MIN_VALUE, MAX_VALUE)]
+    [SerializeField] float startValue;
     [SerializeField] float factor = 360f;
-    [SerializeField] InputObject input;
 
     [SerializeField] Effect tickEffect;
 
-    public event System.Action<float> OnChangeValue;
-    public event Action OnSendInput;
+    public event System.Action<float> OnSendInputValue;
+    public event System.Action<float> OnSendCallbackWithFactor;
+
+    Crank attachedCrank;
 
 #if UNITY_EDITOR
     bool __isGivingInput;
@@ -24,25 +27,20 @@ public class AttacherCrank : Attacher, IInputSender
 
     void Awake()
     {
-        attachmentName = "Crank";
         limits = GetComponents<FloatLimiter>();
-        Start();
     }
 
-    internal bool TryRotate(float degrees)
+    internal bool TryGiveInput(float degrees)
     {
         float newValue = currentValue + (degrees / factor);
 
-        //Debug.Log("change value: " + degrees/factor + "New value: " + newValue + " min: "+ minValue + " max: " + maxValue);
-
         if (IsInsideInputRange(newValue) && !IsInsideLimiter(newValue, limits))
         {
-            if (TryGiveInput(((currentValue - minValue) / (maxValue - minValue))))
+            if (TrySendInput(newValue))
             {
                 currentValue = newValue;
-                OnChangeValue?.Invoke(newValue);
-                OnSendInput?.Invoke();
-
+                CallOnSendInputEvents(newValue);
+                OnSendCallbackWithFactor?.Invoke(newValue * factor);
                 Game.EffectHandler.Play(tickEffect, gameObject);
 
                 return true;
@@ -54,12 +52,24 @@ public class AttacherCrank : Attacher, IInputSender
         }
         else
         {
-            if (newValue < minValue && Mathf.Abs(newValue - minValue) > (180f / factor)
-                && newValue > maxValue && Mathf.Abs(newValue - maxValue) > (180f / factor))
+            if (newValue < MIN_VALUE && Mathf.Abs(newValue - MIN_VALUE) > (180f / factor)
+                && newValue > MAX_VALUE && Mathf.Abs(newValue - MAX_VALUE) > (180f / factor))
                 Game.DragHandler.ForceEndDrag();
 
             return false;
         }
+    }
+
+    protected override void CallOnSendInputEvents(float value)
+    {
+        base.CallOnSendInputEvents(value);
+        OnSendInputValue?.Invoke(value);
+    }
+
+    public void SendCallback(float progression)
+    {
+        currentValue = progression;
+        OnSendCallbackWithFactor?.Invoke(progression * factor);
     }
 
     private bool IsInsideLimiter(float newValue, FloatLimiter[] limits)
@@ -78,7 +88,7 @@ public class AttacherCrank : Attacher, IInputSender
 
     private bool IsInsideInputRange(float newValue)
     {
-        return newValue < maxValue && newValue > minValue;
+        return newValue < MAX_VALUE && newValue > MIN_VALUE;
     }
 
 #if UNITY_EDITOR
@@ -90,7 +100,7 @@ public class AttacherCrank : Attacher, IInputSender
 
 #endif
 
-    private bool TryGiveInput(float progress)
+    private bool TrySendInput(float progress)
     {
 #if UNITY_EDITOR
         __isGivingInput = true;
@@ -107,7 +117,7 @@ public class AttacherCrank : Attacher, IInputSender
         Gizmos.color = Color.white;
         Gizmos.DrawWireCube(center, Vector3.one * 1.5f);
 
-        float progress = ((currentValue - minValue) / (maxValue - minValue));
+        float progress = ((currentValue - MIN_VALUE) / (MAX_VALUE - MIN_VALUE));
 
         Gizmos.color = Color.Lerp(Color.red, Color.green, progress);
         Gizmos.DrawWireCube(center, Vector3.one * (0.5f + progress));

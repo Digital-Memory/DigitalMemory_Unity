@@ -13,6 +13,7 @@ public class ConditionListenerBehaviour : MonoBehaviour
 
     public virtual float GetFloat()
     {
+        Debug.LogError("Checked for float value on an object that does not support float value checks...");
         return float.MinValue;
     }
 }

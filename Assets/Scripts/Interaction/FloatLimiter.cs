@@ -7,11 +7,12 @@ using NaughtyAttributes;
 public class FloatLimiter : ConditionedObject
 {
     public bool active = true;
-    public float minValue, maxValue;
+    [MinMaxSlider(0f, 1f)]
+    public Vector2 minMaxValue;
 
     internal bool IsInside(float newValue)
     {
-        if (IsActive() && newValue > minValue && newValue < maxValue)
+        if (IsActive() && newValue > minMaxValue.x && newValue < minMaxValue.y)
             return true;
 
         return false;

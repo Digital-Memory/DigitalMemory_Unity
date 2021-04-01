@@ -2,25 +2,25 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ConditionListenerCrank : ConditionListenerBehaviour
+public class ConditionListenerFloatSender : ConditionListenerBehaviour
 {
-    AttacherCrank attacher;
+    FloatSender floatSender;
     float value;
 
     void OnEnable()
     {
-        attacher = GetComponent<AttacherCrank>();
-        if (attacher != null)
+        floatSender = GetComponent<FloatSender>();
+        if (floatSender != null)
         {
-            attacher.OnChangeValue += AttacherChangeAttached;
+            floatSender.OnSendInputValue += AttacherChangeAttached;
         }
     }
 
     void OnDisable()
     {
-        if (attacher != null)
+        if (floatSender != null)
         {
-            attacher.OnChangeValue -= AttacherChangeAttached;
+            floatSender.OnSendInputValue -= AttacherChangeAttached;
         }
     }
 

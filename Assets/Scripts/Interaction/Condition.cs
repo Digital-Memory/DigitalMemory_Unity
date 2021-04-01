@@ -22,7 +22,7 @@ public class Condition : MonoBehaviour
 
     [HideInInspector] public bool TypeIsBool { get => type == ConditionType.BOOL; }
     [HideInInspector] public bool TypeIsFloat { get => type == ConditionType.FLOAT; }
-    [HideInInspector] public bool behaviourObjectIsCorrect { get => (behaviourObject != null && behaviourObject == behaviour.gameObject); }
+    [HideInInspector] public bool behaviourObjectIsCorrect { get => (behaviour != null && behaviourObject != null && behaviourObject == behaviour.gameObject); }
 
     private void OnChangeBehaviourReference()
     {

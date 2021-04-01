@@ -3,7 +3,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CrankHandle : MonoBehaviour, IDragable, IHoverable
+public interface IChargeInput
+{
+    event Action OnStartChargeEvent;
+    event Action OnEndChargeEvent;
+}
+
+public class CrankHandle : MonoBehaviour, IDragable, IHoverable, IChargeInput
 {
     [SerializeField] Crank crank;
 
@@ -16,10 +22,14 @@ public class CrankHandle : MonoBehaviour, IDragable, IHoverable
     public event Action OnStartHoverEvent;
     public event Action OnEndHoverEvent;
 
+    public event Action OnStartChargeEvent;
+    public event Action OnEndChargeEvent;
+
     public void EndDrag(Vector3 position)
     {
         isDragging = false;
         handleCollider.enabled = true;
+        OnEndChargeEvent?.Invoke();
         Debug.Log("End Drag");
     }
 
@@ -57,6 +67,7 @@ public class CrankHandle : MonoBehaviour, IDragable, IHoverable
         isDragging = true;
         handleCollider.enabled = false;
         crank.ResetAngleBefore();
+        OnStartChargeEvent?.Invoke();
         Debug.Log("Start Drag");
     }
 
@@ -68,6 +79,6 @@ public class CrankHandle : MonoBehaviour, IDragable, IHoverable
         float angle = (Mathf.Atan2(target.x - head.x, target.y - head.y) * Mathf.Rad2Deg); //-180 => 180
         Debug.DrawLine(new Vector3(head.x,0, head.y), new Vector3(target.x, 0, target.y), Color.white);
         Debug.DrawLine(Vector3.zero, new Vector3((float)Mathf.Sin(angle * Mathf.Deg2Rad), 0f, (float)Mathf.Cos(angle * Mathf.Deg2Rad)), Color.cyan);
-        crank.TryTurnTo(angle);
+        crank.TryTurnTo(angle - 90);
     }
 }

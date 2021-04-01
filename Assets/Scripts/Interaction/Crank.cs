@@ -7,26 +7,28 @@ public class Crank : SimpleAttachable
 {
     [Expandable] [SerializeField] Effect crankBlockedEffect;
 
-    [ShowNonSerializedField] AttacherCrank currentAttacher;
-    float angleBefore;
+    [ShowNonSerializedField] FloatSender floatSender;
+    [ShowNonSerializedField] float angleBefore;
 
     public override void Attach(IAttacher toAttachTo)
     {
         base.Attach(toAttachTo);
-        currentAttacher = GetComponentInParent<AttacherCrank>();
-        Debug.LogWarning("attached to " + currentAttacher.name);
+        floatSender = GetComponentInParent<FloatSender>();
+        floatSender.OnSendCallbackWithFactor += SetRotationFromAngle;
+        Debug.LogWarning("attached to " + floatSender.name);
         ResetAngleBefore();
     }
 
     public override void StartDrag()
     {
         base.StartDrag();
-        currentAttacher = null;
+        floatSender.OnSendCallbackWithFactor -= SetRotationFromAngle;
+        floatSender = null;
     }
 
     internal void TryTurnTo(float angle)
     {
-        if (currentAttacher == null)
+        if (floatSender == null)
         {
             Debug.LogError("No parent attacher found...");
             return;
@@ -36,7 +38,7 @@ public class Crank : SimpleAttachable
             angleBefore = angle;
 
         float deltaAngle = Mathf.DeltaAngle(angleBefore, angle);
-        //Debug.Log("deltaAngle between: "+ deltaAngle + " (" + angleBefore + " / " + angle + ")");
+        Debug.Log("deltaAngle between: "+ deltaAngle + " (" + angleBefore + " / " + angle + ")");
 
         if (Mathf.Abs(deltaAngle) > 45f)
         {
@@ -45,16 +47,25 @@ public class Crank : SimpleAttachable
         }
         else
         {
-            if (currentAttacher.TryRotate(deltaAngle))
+            if (floatSender.TryGiveInput(deltaAngle))
             {
-                transform.Rotate(Vector3.up, angle - angleBefore);
-                angleBefore = angle;
+                //Rotate(angle - angleBefore);
+                //angleBefore = angle;
+                //SetRotationFromAngle(angle);
             }
             else
             {
                 Game.EffectHandler.Play(crankBlockedEffect, gameObject);
             }
         }
+    }
+
+    private void SetRotationFromAngle(float angle)
+    {
+        angleBefore = angle;
+        float angleCorrected = angle;
+        Debug.Log("Set Rotatation: " + angleCorrected);
+        transform.rotation = Quaternion.Euler(0, angleCorrected, 0);
     }
 
     public void ResetAngleBefore()

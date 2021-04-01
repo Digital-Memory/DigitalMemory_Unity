@@ -9,7 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6476781290254090947}
-  - component: {fileID: 6476781290254090948}
+  - component: {fileID: 2888878142523164873}
+  - component: {fileID: 3458194863511574890}
   - component: {fileID: 5881873877261564058}
   - component: {fileID: 6194026550668163357}
   - component: {fileID: 5509378565038196833}
@@ -34,7 +35,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6476781290254090948
+--- !u!114 &2888878142523164873
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -43,18 +44,29 @@ MonoBehaviour:
   m_GameObject: {fileID: 6476781290254090949}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2590515a8e07aff4a9b4008bbeee1f9c, type: 3}
+  m_Script: {fileID: 11500000, guid: b2c5b8f9ab5dc124eafc71e42afc143f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   attachmentName: Crank
   isAttached: 0
   attachmentOffset: {x: 0, y: 0, z: 0}
-  startValue: 0
-  minValue: 0
-  maxValue: 1
-  factor: 360
+--- !u!114 &3458194863511574890
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6476781290254090949}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb28ff5ef79b5844e842845f793281db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   input: {fileID: 0}
-  tickEffect: {fileID: 11400000, guid: fb4135650a2d2e64ba3109d397333ab6, type: 2}
+  inputObject: {fileID: 0}
+  startValue: 0
+  factor: 360
+  tickEffect: {fileID: 0}
 --- !u!135 &5881873877261564058
 SphereCollider:
   m_ObjectHideFlags: 0

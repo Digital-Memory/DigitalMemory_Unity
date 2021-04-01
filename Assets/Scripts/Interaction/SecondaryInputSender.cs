@@ -4,6 +4,7 @@ using UnityEngine;
 using NaughtyAttributes;
 using System.Linq;
 using System;
+using UnityEngine.Assertions.Must;
 
 public interface IInputSender
 {
@@ -12,12 +13,15 @@ public interface IInputSender
 public class SecondaryInputSender : MonoBehaviour
 {
     [InfoBox("Use this component to send Input to other objects without blockig input if they dont meet all conditions.", EInfoBoxType.Normal)]
+
     [OnValueChanged("OnChangeInputReference")]
     public List<InputObject> input;
     [ShowIf("behaviourObjectIsCorrect")]
     [ShowAssetPreview(128, 128)]
     public GameObject[] inputObject;
     [HideInInspector] public bool behaviourObjectIsCorrect { get => ObjectsMatchBehaviours(); }
+
+    public event Action OnSendInput;
 
     private bool ObjectsMatchBehaviours()
     {
@@ -51,9 +55,10 @@ public class SecondaryInputSender : MonoBehaviour
         }
     }
 
+
     private void OnEnable()
     {
-        IInputSender sender = GetComponent<IInputSender>();
+        InputSender sender = GetComponent<InputSender>();
 
         if (sender == null)
             Debug.LogError("No IInputSender found on " + gameObject.name);
