@@ -6,13 +6,17 @@ using NaughtyAttributes;
 
 public class InputSender : MonoBehaviour, IInputSender
 {
-    [ValidateInput("ObjectsMatchBehaviours", "Select a matching Input Objects")]
     [OnValueChanged("OnChangeInputReference")]
+    [ValidateInput("ObjectsMatchBehaviours", "Select a matching Input Objects")]
     [Dropdown("CreateInputDropdown")]
     public InputObject input;
     [ShowIf("behaviourObjectIsCorrect")]
     [ShowAssetPreview(128, 128)]
     public GameObject inputObject;
+    public bool useReference;
+    [ShowIf("useReference")]
+    [OnValueChanged("OnChangeManualInputReference")]
+    public InputObject manualInput;
     [HideInInspector] public bool behaviourObjectIsCorrect { get => ObjectsMatchBehaviours(); }
 
     protected DropdownList<InputObject> CreateInputDropdown()
@@ -29,7 +33,16 @@ public class InputSender : MonoBehaviour, IInputSender
         }
     }
 
-    private bool ObjectsMatchBehaviours()
+    protected void OnChangeManualInputReference()
+    {
+        if (manualInput != null)
+        {
+            input = manualInput;
+            inputObject = input.gameObject;
+        }
+    }
+
+    protected bool ObjectsMatchBehaviours()
     {
         return (input != null && inputObject != null && input.gameObject == inputObject);
     }
