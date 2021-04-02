@@ -4,23 +4,23 @@ using UnityEngine;
 
 public class ConditionListenerLever : ConditionListenerBehaviour
 {
-    AttacherLever attacher;
+    FloatSender floatSender;
     public bool IsUp;
 
     void OnEnable()
     {
-        attacher = GetComponent<AttacherLever>();
-        if (attacher != null)
+        floatSender = GetComponent<FloatSender>();
+        if (floatSender != null)
         {
-            attacher.OnLeverTurn += AttacherChangeAttached;
+            floatSender.OnSendInputValue += AttacherChangeAttached;
         }
     }
 
     void OnDisable()
     {
-        if (attacher != null)
+        if (floatSender != null)
         {
-            attacher.OnLeverTurn -= AttacherChangeAttached;
+            floatSender.OnSendInputValue -= AttacherChangeAttached;
         }
     }
 
@@ -29,8 +29,8 @@ public class ConditionListenerLever : ConditionListenerBehaviour
         return IsUp;
     }
 
-    private void AttacherChangeAttached(bool isUp)
+    private void AttacherChangeAttached(float value)
     {
-        IsUp = isUp;
+        IsUp = value > 0.5f;
     }
 }

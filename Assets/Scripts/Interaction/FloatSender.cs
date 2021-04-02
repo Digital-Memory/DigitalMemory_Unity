@@ -9,6 +9,7 @@ public class FloatSender : InputSender
     private const int MIN_VALUE = 0, MAX_VALUE = 1;
     [Range(MIN_VALUE, MAX_VALUE)]
     [SerializeField] float startValue;
+    [SerializeField] float factorOffset = 0;
     [SerializeField] float factor = 360f;
 
     [SerializeField] Effect tickEffect;
@@ -23,16 +24,23 @@ public class FloatSender : InputSender
 #endif
 
     float currentValue;
+    public float CurrentValue { get => currentValue; }
+
+
     FloatLimiter[] limits;
+
 
     void Awake()
     {
         limits = GetComponents<FloatLimiter>();
     }
 
-    internal bool TryGiveInput(float degrees)
+    internal bool TryGiveInput(float degrees, bool isAbsolute = false)
     {
-        float newValue = currentValue + (degrees / factor);
+
+        float newValue = isAbsolute ? ((degrees + factorOffset) / factor) : currentValue + ((degrees + factorOffset) / factor);
+
+        //Debug.LogWarning("Float Sender is receiving " + newValue);
 
         if (IsInsideInputRange(newValue) && !IsInsideLimiter(newValue, limits))
         {
@@ -40,7 +48,7 @@ public class FloatSender : InputSender
             {
                 currentValue = newValue;
                 CallOnSendInputEvents(newValue);
-                OnSendCallbackWithFactor?.Invoke(newValue * factor);
+                OnSendCallbackWithFactor?.Invoke(Factorize(newValue));
                 Game.EffectHandler.Play(tickEffect, gameObject);
 
                 return true;
@@ -60,6 +68,11 @@ public class FloatSender : InputSender
         }
     }
 
+    public float Factorize(float valueWithoutFactor)
+    {
+        return valueWithoutFactor * factor - factorOffset;
+    }
+
     protected override void CallOnSendInputEvents(float value)
     {
         base.CallOnSendInputEvents(value);
@@ -69,7 +82,7 @@ public class FloatSender : InputSender
     public void SendCallback(float progression)
     {
         currentValue = progression;
-        OnSendCallbackWithFactor?.Invoke(progression * factor);
+        OnSendCallbackWithFactor?.Invoke(progression * factor - factorOffset);
     }
 
     private bool IsInsideLimiter(float newValue, FloatLimiter[] limits)
@@ -106,7 +119,7 @@ public class FloatSender : InputSender
         __isGivingInput = true;
 #endif
 
-        return (input != null && input.Try(progress));
+        return (input == null || input.Try(progress));
 
     }
 

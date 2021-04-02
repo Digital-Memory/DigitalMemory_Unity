@@ -12,7 +12,9 @@ GameObject:
   - component: {fileID: 1397441275778109133}
   - component: {fileID: 6936457697676745022}
   - component: {fileID: 6589564694200120552}
-  - component: {fileID: 6847231382024302686}
+  - component: {fileID: 7277762036587609146}
+  - component: {fileID: 976612781}
+  - component: {fileID: 976612782}
   m_Layer: 0
   m_Name: LeverSlot
   m_TagString: Untagged
@@ -96,7 +98,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 4, y: 1, z: 2}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &6847231382024302686
+--- !u!114 &7277762036587609146
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -105,13 +107,44 @@ MonoBehaviour:
   m_GameObject: {fileID: 9138321620747625100}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e7a197328193b734d908ba247cd2ff03, type: 3}
+  m_Script: {fileID: 11500000, guid: b2c5b8f9ab5dc124eafc71e42afc143f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   attachmentName: Lever
   isAttached: 0
   attachmentOffset: {x: 0, y: 0, z: 0}
-  isTop: 0
-  topRotation: 35
-  bottomRotation: -35
-  onSwitchEffect: {fileID: 11400000, guid: 7db3c77f32a580b45b1fd23e344bd270, type: 2}
+--- !u!114 &976612781
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9138321620747625100}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb28ff5ef79b5844e842845f793281db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  input: {fileID: 0}
+  inputObject: {fileID: 0}
+  startValue: 0
+  factorOffset: 35
+  factor: 70
+  tickEffect: {fileID: 0}
+--- !u!114 &976612782
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9138321620747625100}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf14ac3c1376bc74389b72e88a816a7a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  snapValues:
+  - 0
+  - 1
+  snapDistance: 0.5
+  reachedDistance: 0.01

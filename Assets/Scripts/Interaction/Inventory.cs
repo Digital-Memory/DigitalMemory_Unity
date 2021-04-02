@@ -32,7 +32,7 @@ public class Inventory : MonoBehaviour, IAttacher
 
     private void OnStartDragAny(IDragable dragging, RaycastHit hit)
     {
-        collider.enabled = true;
+        collider.enabled = (dragging as IAttachable) != null;
     }
 
     public bool CanAttach(string attachBehaviour)

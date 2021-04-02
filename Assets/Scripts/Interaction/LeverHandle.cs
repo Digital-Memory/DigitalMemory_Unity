@@ -18,9 +18,9 @@ public class LeverHandle : MonoBehaviour, IDragable
 
     public bool IsDragging => isDragging;
 
-
     public event System.Action OnStartHoverEvent;
     public event System.Action OnEndHoverEvent;
+
     public void StartHover()
     {
         OnStartHoverEvent?.Invoke();
@@ -41,6 +41,7 @@ public class LeverHandle : MonoBehaviour, IDragable
         isDragging = false;
         handleCollider.enabled = true;
         isSnapping = true;
+        lever.TrySnap();
     }
 
     public float GetEndDragYOffset()
@@ -60,10 +61,11 @@ public class LeverHandle : MonoBehaviour, IDragable
 
     public void StartDrag()
     {
-        startRotation = lever.GetRotation().eulerAngles.z;
+        startRotation = lever.transform.localRotation.eulerAngles.GetLongestAxis();
         startPosition = Vector3.zero;
 
         isDragging = true;
+        lever.StopAnySnap();
         handleCollider.enabled = false;
     }
 
@@ -72,34 +74,13 @@ public class LeverHandle : MonoBehaviour, IDragable
         if (startPosition == Vector3.zero)
             startPosition = point;
 
+        float distance = (point - startPosition).InvertAxis(Vector3.forward).GetLongestAxis();
 
+        float currentRotation = distance * 10;
+        float angle = startRotation - currentRotation;
 
-        float angle = startRotation - distanceToRotationCurve.Evaluate((point - startPosition).InvertAxis(Vector3.forward).GetLongestAxis());
+        //Debug.LogWarning(lever.transform.localRotation.eulerAngles + " => " + startRotation + " - (" + distance + " => )" + currentRotation + " = " + angle);
+
         lever.Turn(angle);
-    }
-
-    private void Update()
-    {
-        if (isSnapping && !isDragging)
-        {
-            float current = lever.GetRotation().eulerAngles.z;
-            Vector2 minMax = lever.GetMinMaxRotations();
-
-            float deltaMin = Mathf.Abs(Mathf.DeltaAngle(current, minMax.x));
-            float deltaMax = Mathf.Abs(Mathf.DeltaAngle(current, minMax.y));
-
-            if (deltaMax <= 1f || deltaMin <= 1f)
-            {
-                Debug.Log("target reached... min:" + deltaMin + " max:"+deltaMax);
-                isSnapping = false;
-            }
-            else
-            {
-                bool minIsCloser = (deltaMin < deltaMax);
-                Debug.Log("lerping to " + (minIsCloser ? "min" : "max"));
-                lever.Turn(Mathf.LerpAngle(current, minIsCloser ? minMax.x : minMax.y, Time.deltaTime * snapSpeed));
-                //lever.Turn(minIsCloser ? -1f : 1f);
-            }
-        }
     }
 }

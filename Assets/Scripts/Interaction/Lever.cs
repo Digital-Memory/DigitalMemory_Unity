@@ -2,25 +2,46 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using NaughtyAttributes;
+using System;
 
 public class Lever : SimpleAttachable
 {
-    [ShowNonSerializedField] AttacherLever currentAttacher;
-    [SerializeField] float snapDistance;
+    FloatSender floatSender;
+    FloatSnapper floatSnapper;
 
     public override void Attach(IAttacher toAttachTo)
     {
         base.Attach(toAttachTo);
-        currentAttacher = GetComponentInParent<AttacherLever>();
-        transform.localRotation = currentAttacher.GetLeverRotationForCurrentPosition();
+        floatSender = GetComponentInParent<FloatSender>();
+        if (floatSender != null)
+        {
+            SetRotationFromAngle(floatSender.Factorize(floatSender.CurrentValue));
+            floatSender.OnSendCallbackWithFactor += SetRotationFromAngle;
+        }
 
-        Debug.LogWarning("attached to " + currentAttacher.name);
+        floatSnapper = GetComponentInParent<FloatSnapper>();
+    }
+
+    private void SetRotationFromAngle(float angle)
+    {
+        transform.localRotation = Quaternion.Euler(0, 0, angle);
     }
 
     public override void StartDrag()
     {
         base.StartDrag();
-        currentAttacher = null;
+
+        if (floatSender != null)
+            floatSender.OnSendCallbackWithFactor -= SetRotationFromAngle;
+
+        floatSender = null;
+        floatSnapper = null;
+    }
+
+    internal void TrySnap()
+    {
+        if (floatSnapper != null)
+            floatSnapper.TrySnap();
     }
 
     public override void EndDrag(Vector3 position)
@@ -28,32 +49,21 @@ public class Lever : SimpleAttachable
         base.EndDrag(position);
     }
 
-    internal void Turn(float angle)
+    public virtual void Turn(float angle)
     {
-        if (currentAttacher != null)
+        if (floatSender != null)
         {
             angle = angle % 360;
             if (angle > 180)
                 angle = angle - 360;
 
-            float targetAngle = Mathf.Sign(angle) == -1f ? currentAttacher.topRotation : currentAttacher.bottomRotation;
-            float targetAngleClamped = Mathf.Sign(angle) == -1f ? Mathf.Max(targetAngle, angle) : Mathf.Min(targetAngle, angle);
-            //Debug.Log(angle + "" + targetAngle + " = " + targetAngleClamped);
-            transform.localRotation = Quaternion.Euler(0, 0, targetAngleClamped);
-
-            if (Mathf.Abs(Mathf.DeltaAngle(angle, targetAngleClamped)) < snapDistance)
-            {
-                if (currentAttacher.isTop == (Mathf.Sign(angle) == -1f))
-                currentAttacher.Switch(angle);
-            }
+            floatSender.TryGiveInput(angle, isAbsolute: true);
         }
     }
 
-    public Vector2 GetMinMaxRotations ()
+    internal void StopAnySnap()
     {
-        if (currentAttacher != null)
-            return new Vector2(currentAttacher.bottomRotation, currentAttacher.topRotation);
-        else
-            return Vector2.zero;
+        if (floatSnapper != null)
+            floatSnapper.StopAnySnap();
     }
 }

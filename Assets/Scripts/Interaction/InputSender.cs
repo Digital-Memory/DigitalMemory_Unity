@@ -17,7 +17,7 @@ public class InputSender : MonoBehaviour, IInputSender
 
     protected DropdownList<InputObject> CreateInputDropdown()
     {
-        return DropdownMonobehaviourList<InputObject>.FromObjectsOfType(FindObjectsOfType<InputObject>());
+        return DropdownMonobehaviourList<InputObject>.FromObjectsOfType(FindObjectsOfType<InputObject>(), AddNullOption: true);
     }
 
     public event Action OnSendInput;

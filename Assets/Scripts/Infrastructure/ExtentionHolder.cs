@@ -37,8 +37,6 @@ public static class ExtentionHolder
 
     public static float GetLongestAxis(this Vector3 vector3)
     {
-        //Debug.LogWarning(vector3);
-
         float absX = Mathf.Abs(vector3.x);
         float absY = Mathf.Abs(vector3.y);
         float absZ = Mathf.Abs(vector3.z);
