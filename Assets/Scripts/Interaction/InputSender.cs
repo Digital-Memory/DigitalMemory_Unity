@@ -13,10 +13,6 @@ public class InputSender : MonoBehaviour, IInputSender
     [ShowIf("behaviourObjectIsCorrect")]
     [ShowAssetPreview(128, 128)]
     public GameObject inputObject;
-    public bool useReference;
-    [ShowIf("useReference")]
-    [OnValueChanged("OnChangeManualInputReference")]
-    public InputObject manualInput;
     [HideInInspector] public bool behaviourObjectIsCorrect { get => ObjectsMatchBehaviours(); }
 
     protected DropdownList<InputObject> CreateInputDropdown()
@@ -33,13 +29,10 @@ public class InputSender : MonoBehaviour, IInputSender
         }
     }
 
-    protected void OnChangeManualInputReference()
+    [Button]
+    protected void FixInput()
     {
-        if (manualInput != null)
-        {
-            input = manualInput;
-            inputObject = input.gameObject;
-        }
+        input = input;
     }
 
     protected bool ObjectsMatchBehaviours()
