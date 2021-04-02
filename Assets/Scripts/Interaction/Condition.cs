@@ -60,6 +60,17 @@ public class Condition : MonoBehaviour
         }
     }
 
+#if UNITY_EDITOR
+    private void Reset()
+    {
+        ConditionedObject co = GetComponent<ConditionedObject>();
+        if (co == null)
+            Debug.LogError("Conditions can only be added to Conditioned Objects.");
+        else
+            co.TryLoadConditions();
+    }
+#endif
+
     public bool IsMet()
     {
         switch (type)

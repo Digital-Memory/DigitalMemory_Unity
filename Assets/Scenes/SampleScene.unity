@@ -154,7 +154,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef3627d0010eada468c5f80cf57fe321, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  conditions: []
+  conditions:
+  - {fileID: 61875573}
   cinemachineVirtualCamera: {fileID: 61875571}
   isDefault: 0
 --- !u!114 &61875571
@@ -219,8 +220,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a51a1d086a1b8541becd2e3767b4af8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  behaviour: {fileID: 976612776}
-  behaviourObject: {fileID: 976612775}
+  behaviour: {fileID: 0}
+  behaviourObject: {fileID: 0}
   type: 0
   MustBeTrue: 0
   FloatIs: 0

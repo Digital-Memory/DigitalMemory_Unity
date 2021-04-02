@@ -18,12 +18,13 @@ public class SpringObject : ConditionedObject
 
     [SerializeField] InputObject outputObject;
     [SerializeField] FloatSender objectChargedWith;
+    IChargeInput chargeInput;
 
     protected override void OnEnable()
     {
         base.OnEnable();
 
-        IChargeInput chargeInput = objectChargedWith.GetComponentInChildren<IChargeInput>();
+        chargeInput = objectChargedWith.GetComponentInChildren<IChargeInput>();
         if (chargeInput != null)
         {
             chargeInput.OnStartChargeEvent += StartBuildingUpTension;
@@ -33,7 +34,6 @@ public class SpringObject : ConditionedObject
 
     protected void OnDisable()
     {
-        IChargeInput chargeInput = objectChargedWith.GetComponentInChildren<IChargeInput>();
         if (chargeInput != null)
         {
             chargeInput.OnStartChargeEvent -= StartBuildingUpTension;

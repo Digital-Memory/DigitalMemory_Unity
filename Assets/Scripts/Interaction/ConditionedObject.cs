@@ -11,6 +11,11 @@ public class ConditionedObject : InputObject
 
     protected virtual void OnEnable()
     {
+        TryLoadConditions();
+    }
+
+    public void TryLoadConditions()
+    {
         if (GetComponents<ConditionedObject>().Length > 1)
         {
             Debug.LogWarning("Multiple conditioned objects found, please define conditions manually to decide which conditions should affect which object");
