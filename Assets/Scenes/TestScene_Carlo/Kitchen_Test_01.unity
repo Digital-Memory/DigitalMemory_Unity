@@ -4408,6 +4408,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 241671395}
     m_Modifications:
+    - target: {fileID: 2720366340013129403, guid: 1b3decec290a5964fbf4674a1bfdfe5a, type: 3}
+      propertyPath: scaleMultiplier
+      value: 6.6666665
+      objectReference: {fileID: 0}
     - target: {fileID: 8985428912084992308, guid: 1b3decec290a5964fbf4674a1bfdfe5a, type: 3}
       propertyPath: m_Name
       value: Lever
@@ -4484,6 +4488,18 @@ PrefabInstance:
     - target: {fileID: 1470470239723308815, guid: 31462b95b1ce8d44783ebf0b307a5878, type: 3}
       propertyPath: m_RootOrder
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1470470239723308815, guid: 31462b95b1ce8d44783ebf0b307a5878, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 1470470239723308815, guid: 31462b95b1ce8d44783ebf0b307a5878, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 1470470239723308815, guid: 31462b95b1ce8d44783ebf0b307a5878, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.15
       objectReference: {fileID: 0}
     - target: {fileID: 1470470239723308815, guid: 31462b95b1ce8d44783ebf0b307a5878, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4814,7 +4830,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   conditions: []
-  animator: {fileID: 0}
   varibleFloat: Mother_Interp.
 --- !u!95 &1041030639
 Animator:
