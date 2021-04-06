@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 public class ConditionListenerFloatSender : ConditionListenerBehaviour
@@ -23,7 +24,10 @@ public class ConditionListenerFloatSender : ConditionListenerBehaviour
             floatSender.OnSendInputValue -= AttacherChangeAttached;
         }
     }
-
+    public override bool SupportsFloat()
+    {
+        return true;
+    }
     public override float GetFloat()
     {
         return value;
