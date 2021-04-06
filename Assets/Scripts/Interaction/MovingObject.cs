@@ -9,8 +9,13 @@ public class MovingObject : ConditionedObject
 
     public override bool Try(float progress)
     {
-        UpdateMovement(progress);
-        return base.Try(progress);
+        if (base.Try(progress))
+        {
+            UpdateMovement(progress);
+            return true;
+        }
+
+        return false;
     }
 
     private void UpdateMovement(float progress)
