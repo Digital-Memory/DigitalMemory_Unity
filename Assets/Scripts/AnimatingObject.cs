@@ -5,14 +5,26 @@ using NaughtyAttributes;
 
 public class AnimatingObject : ConditionedObject
 {
-    [SerializeField]
+    [ShowNonSerializedField]
     Animator animator;
     [SerializeField]
     [AnimatorParam("animator")]
     string varibleFloat;
 
+    private void Reset()
+    {
+        animator = GetComponent<Animator>();
+    }
+
+    private void Start()
+    {
+        animator = GetComponent<Animator>();
+    }
+
     public override bool Try(float progress)
     {
+        Debug.Log("ahahahah");
+
         UpdateAnimationVariable(progress);
         return base.Try(progress);
     }
