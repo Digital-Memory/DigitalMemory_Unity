@@ -7,7 +7,7 @@ using NaughtyAttributes;
 public class InputSender : MonoBehaviour, IInputSender
 {
     [OnValueChanged("OnChangeInputReference")]
-    [ValidateInput("ObjectsMatchBehaviours", "Select a matching Input Objects")]
+    [ValidateInput("ObjectsMatchBehaviours", "Select a matching Input Objects, or ignore if you are using a SecondaryInputSender")]
     [Dropdown("CreateInputDropdown")]
     public InputObject input;
     [ShowIf("behaviourObjectIsCorrect")]

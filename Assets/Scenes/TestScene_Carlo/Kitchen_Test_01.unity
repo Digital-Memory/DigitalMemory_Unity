@@ -5370,7 +5370,7 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 4477214404994514733, guid: cfd0b409d16c2d1459553f09f7bdee73, type: 3}
   m_PrefabInstance: {fileID: 1592574392}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1149066588
+--- !u!114 &1149066583
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -5383,11 +5383,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   input:
+  - {fileID: 242941901}
   - {fileID: 1204926970}
   - {fileID: 662558609}
   - {fileID: 1490431748}
-  - {fileID: 242941901}
-  inputObject: []
 --- !u!1 &1171022448
 GameObject:
   m_ObjectHideFlags: 0
@@ -8566,7 +8565,7 @@ PrefabInstance:
     - target: {fileID: 4477214404994513106, guid: cfd0b409d16c2d1459553f09f7bdee73, type: 3}
       propertyPath: input
       value: 
-      objectReference: {fileID: 242941901}
+      objectReference: {fileID: 0}
     - target: {fileID: 4477214404994513106, guid: cfd0b409d16c2d1459553f09f7bdee73, type: 3}
       propertyPath: inputObject
       value: 

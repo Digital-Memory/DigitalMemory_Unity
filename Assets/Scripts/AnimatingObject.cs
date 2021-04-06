@@ -23,15 +23,18 @@ public class AnimatingObject : ConditionedObject
 
     public override bool Try(float progress)
     {
-        Debug.Log("ahahahah");
+        if (base.Try(progress))
+        {
+            UpdateAnimationVariable(progress);
+            return true;
+        }
 
-        UpdateAnimationVariable(progress);
-        return base.Try(progress);
+        return false;
     }
 
     private void UpdateAnimationVariable(float progress)
     {
         if (animator != null && varibleFloat != "")
-            animator.SetFloat(varibleFloat,progress);
+            animator.SetFloat(varibleFloat, progress);
     }
 }

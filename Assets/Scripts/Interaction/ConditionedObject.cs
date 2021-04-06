@@ -33,12 +33,12 @@ public class ConditionedObject : InputObject
 
     public override bool Try(bool on)
     {
-        return Try();
+        return CheckAllConditionsForTrue();
     }
 
     public override bool Try(float progress)
     {
-        return Try();
+        return CheckAllConditionsForTrue();
     }
 
     protected bool CheckAllConditionsForTrue()

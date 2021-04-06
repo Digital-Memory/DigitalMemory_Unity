@@ -34,7 +34,8 @@ public class Button : InputSender, IClickable, IInputSender, IHoverable
             }
         } else
         {
-            Debug.LogWarning("No Input " + input);
+            CallOnSendInputEvents(0f);
+            Debug.Log("No Input on " + gameObject + " sending out secondary input.");
         }
 
     }
