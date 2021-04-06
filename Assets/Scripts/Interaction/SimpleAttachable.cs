@@ -74,7 +74,6 @@ public class SimpleAttachable : SimpleDragable, IAttachable, ICloseupable
         if (isAttached)
         {
             Game.EffectHandler.Play(detachEffect, gameObject);
-            transform.localScale = Vector3.one;
 
             isAttached = false;
             if (defaultParent != null)
