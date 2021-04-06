@@ -59,7 +59,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   crank: {fileID: 8784270499028962104}
   handleCollider: {fileID: 4474354097617030595}
-  crankCollider: {fileID: 8712069549100698434}
 --- !u!1 &8784270499028962110
 GameObject:
   m_ObjectHideFlags: 0
@@ -74,6 +73,7 @@ GameObject:
   - component: {fileID: 8682629903812595340}
   - component: {fileID: 8712069549100698434}
   - component: {fileID: 6333214746412624451}
+  - component: {fileID: 5880310822280133959}
   m_Layer: 0
   m_Name: Crank
   m_TagString: Untagged
@@ -197,3 +197,16 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &5880310822280133959
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8784270499028962110}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81bb967f47403af42b6752e1d9f4b876, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inventoryObjectData: {fileID: 11400000, guid: 27372494056e49f4e865d538db4414b2, type: 2}

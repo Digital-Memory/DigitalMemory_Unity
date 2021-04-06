@@ -19,6 +19,8 @@ public class AttachableWatchHand : MonoBehaviour, IDragable
 
     public bool IsDragging => isDragging;
 
+    public bool IsNull => this == null;
+
     public event Action OnStartHoverEvent;
     public event Action OnEndHoverEvent;
     public void StartHover()

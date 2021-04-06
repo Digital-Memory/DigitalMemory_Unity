@@ -19,6 +19,8 @@ public class CrankHandle : MonoBehaviour, IDragable, IHoverable, IChargeInput
 
     public bool IsDragging => isDragging;
 
+    public bool IsNull => this == null;
+
     public event Action OnStartHoverEvent;
     public event Action OnEndHoverEvent;
 

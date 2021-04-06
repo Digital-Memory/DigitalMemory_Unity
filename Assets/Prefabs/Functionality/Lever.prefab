@@ -94,6 +94,7 @@ MonoBehaviour:
     m_RotationOrder: 4
   handleCollider: {fileID: 2565178243891227367}
   snapSpeed: 10
+  scaleMultiplier: 1
 --- !u!1 &8985428912084992308
 GameObject:
   m_ObjectHideFlags: 0
@@ -108,6 +109,7 @@ GameObject:
   - component: {fileID: 8985428912084992311}
   - component: {fileID: 8985428912084992310}
   - component: {fileID: 5027683925319869620}
+  - component: {fileID: 2630109641395014266}
   m_Layer: 0
   m_Name: Lever
   m_TagString: Untagged
@@ -214,7 +216,6 @@ MonoBehaviour:
   attachEffect: {fileID: 0}
   detachEffect: {fileID: 0}
   potentialSlotEffect: {fileID: 0}
-  snapDistance: 10
 --- !u!54 &5027683925319869620
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -231,3 +232,16 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &2630109641395014266
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8985428912084992308}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81bb967f47403af42b6752e1d9f4b876, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inventoryObjectData: {fileID: 11400000, guid: 5c8a2c75d100df14a9adf020476f238e, type: 2}

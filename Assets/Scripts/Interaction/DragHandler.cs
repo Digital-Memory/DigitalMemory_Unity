@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,7 +12,24 @@ public class DragHandler : Singleton<DragHandler>
     public bool IsDraggingAttachable { get => (currentAttachable != null); }
 
     public event System.Action<IDragable, RaycastHit> OnStartDrag;
-    public event System.Action OnEndDrag;
+    public event System.Action<IDragable> OnEndDrag;
+
+    internal void ShowDragging()
+    {
+        if (IsDragging)
+            currentDrag.GetGameObject().layer = LayerMask.NameToLayer("Water");
+    }
+    internal void HideDragging()
+    {
+        if (IsDragging)
+            currentDrag.GetGameObject().layer = LayerMask.NameToLayer("Hidden");
+    }
+
+    internal GameObject GetDragging()
+    {
+        return currentDrag.GetGameObject();
+    }
+
 
     public void UpdateDrag(RaycastHit hit, Ray ray)
     {
@@ -47,6 +65,7 @@ public class DragHandler : Singleton<DragHandler>
         }
     }
 
+
     public void StartDrag(RaycastHit hit, IDragable dragable, IAttachable attachable)
     {
         currentDrag = dragable;
@@ -69,7 +88,7 @@ public class DragHandler : Singleton<DragHandler>
 
         dragable.EndDrag(point + dragable.GetEndDragYOffset() * Vector3.up);
 
-        OnEndDrag?.Invoke();
+        OnEndDrag?.Invoke(dragable);
     }
 
     private void Attach(IAttachable attachable, IAttacher attacher)
@@ -80,8 +99,7 @@ public class DragHandler : Singleton<DragHandler>
         attacher.OnAttach(attachable);
         attachable.Attach(attacher);
 
-
-        OnEndDrag?.Invoke();
+        OnEndDrag?.Invoke(attachable);
     }
 
     public void ForceEndDrag()

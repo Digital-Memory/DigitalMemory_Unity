@@ -14,6 +14,8 @@ public class Button : InputSender, IClickable, IInputSender, IHoverable
     [SerializeField] Transform button;
     [SerializeField] Effect onClickEffect;
 
+    public bool IsNull => this == null;
+
     public event Action OnStartHoverEvent;
     public event Action OnEndHoverEvent;
 

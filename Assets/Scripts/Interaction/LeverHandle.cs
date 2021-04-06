@@ -19,6 +19,8 @@ public class LeverHandle : MonoBehaviour, IDragable
 
     public bool IsDragging => isDragging;
 
+    public bool IsNull => this == null;
+
     public event System.Action OnStartHoverEvent;
     public event System.Action OnEndHoverEvent;
 

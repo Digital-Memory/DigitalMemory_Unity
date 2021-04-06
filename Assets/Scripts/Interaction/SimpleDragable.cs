@@ -5,6 +5,7 @@ using UnityEngine;
 
 public interface IHoverable
 {
+    bool IsNull { get; }
     void StartHover();
     void EndHover();
     event Action OnStartHoverEvent;
@@ -38,6 +39,8 @@ public class SimpleDragable : MonoBehaviour, IDragable
 
 
     protected bool isBeeingDragged = false;
+
+    public bool IsNull => this == null;
 
     public event Action OnStartHoverEvent;
     public event Action OnEndHoverEvent;

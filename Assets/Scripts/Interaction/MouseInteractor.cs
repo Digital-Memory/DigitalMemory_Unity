@@ -108,7 +108,7 @@ public class MouseInteractor : Singleton<MouseInteractor>
             lockedRaycastPlane = new Plane(Vector3.up, hit.point);
         }
     }
-    private void UnlockRaycastDistance()
+    private void UnlockRaycastDistance(IDragable dragable)
     {
         raycastDistanceIsLocked = false;
     }
