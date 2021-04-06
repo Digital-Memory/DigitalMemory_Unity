@@ -9,7 +9,7 @@ public class LeverHandle : MonoBehaviour, IDragable
     [SerializeField] Collider handleCollider;
 
     [SerializeField] float snapSpeed = 10f;
-    [SerializeField] float scaleMultiplier;
+    [SerializeField] float scaleMultiplier = 1;
 
     bool isSnapping = false;
     bool isDragging = false;
