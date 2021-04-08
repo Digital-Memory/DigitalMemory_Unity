@@ -30,7 +30,7 @@ public class MouseInteractor : Singleton<MouseInteractor>
     {
 
         RaycastHit hit;
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        Ray ray = Game.CameraController.Camera.ScreenPointToRay(Input.mousePosition);
 
         float lockedRaycastDistance = 0;
         if (raycastDistanceIsLocked)

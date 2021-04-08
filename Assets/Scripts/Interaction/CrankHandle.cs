@@ -12,8 +12,8 @@ public interface IChargeInput
 public class CrankHandle : MonoBehaviour, IDragable, IHoverable, IChargeInput
 {
     [SerializeField] Crank crank;
-
     [SerializeField] Collider handleCollider;
+    [SerializeField] Transform cursorParent;
 
     bool isDragging = false;
 
@@ -26,14 +26,6 @@ public class CrankHandle : MonoBehaviour, IDragable, IHoverable, IChargeInput
 
     public event Action OnStartChargeEvent;
     public event Action OnEndChargeEvent;
-
-    public void EndDrag(Vector3 position)
-    {
-        isDragging = false;
-        handleCollider.enabled = true;
-        OnEndChargeEvent?.Invoke();
-        Debug.Log("End Drag");
-    }
 
     public void StartHover()
     {
@@ -68,6 +60,8 @@ public class CrankHandle : MonoBehaviour, IDragable, IHoverable, IChargeInput
     {
         isDragging = true;
         handleCollider.enabled = false;
+        Game.UIHandler.CustomCursor.SetCursorForcedState(isForced: true);
+
         crank.ResetAngleBefore();
         OnStartChargeEvent?.Invoke();
         Debug.Log("Start Drag");
@@ -75,6 +69,7 @@ public class CrankHandle : MonoBehaviour, IDragable, IHoverable, IChargeInput
 
     public void UpdateDragPosition(Vector3 point, Vector3 vector3)
     {
+        Game.UIHandler.CustomCursor.ForceCursorPosition(cursorParent.position);
         Vector2 head = crank.transform.position.To2D();
         Vector2 target = point.To2D();
 
@@ -82,5 +77,14 @@ public class CrankHandle : MonoBehaviour, IDragable, IHoverable, IChargeInput
         Debug.DrawLine(new Vector3(head.x,0, head.y), new Vector3(target.x, 0, target.y), Color.white);
         Debug.DrawLine(Vector3.zero, new Vector3((float)Mathf.Sin(angle * Mathf.Deg2Rad), 0f, (float)Mathf.Cos(angle * Mathf.Deg2Rad)), Color.cyan);
         crank.TryTurnTo(angle - 90);
+    }
+    public void EndDrag(Vector3 position)
+    {
+        isDragging = false;
+        handleCollider.enabled = true;
+        Game.UIHandler.CustomCursor.SetCursorForcedState(isForced: false);
+
+        OnEndChargeEvent?.Invoke();
+        Debug.Log("End Drag");
     }
 }

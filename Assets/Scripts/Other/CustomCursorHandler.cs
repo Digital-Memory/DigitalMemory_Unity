@@ -18,6 +18,8 @@ public class CustomCursorHandler : Image
     Sprite before;
     CustomCursorType beforeType;
 
+    bool cursorIsFree = true;
+
     protected override void Start()
     {
         base.Start();
@@ -54,7 +56,8 @@ public class CustomCursorHandler : Image
 
     private void Update()
     {
-        transform.position = Input.mousePosition;
+        if (cursorIsFree)
+            transform.position = Input.mousePosition;
     }
 
     public void ResetCursor(params CustomCursorType[] allowedTypes)
@@ -67,6 +70,8 @@ public class CustomCursorHandler : Image
     {
         if (this.sprite != sprite)
         {
+            Cursor.visible = false;
+
             before = this.sprite;
             beforeType = this.currentType;
 
@@ -74,6 +79,23 @@ public class CustomCursorHandler : Image
             currentType = type;
 
             transform.localScale = Vector3.one * size;
+        }
+    }
+
+    public void SetCursorForcedState(bool isForced)
+    {
+        cursorIsFree = !isForced;
+    }
+
+    internal void ForceCursorPosition(Vector3 point)
+    {
+        if (cursorIsFree)
+        {
+            Debug.LogWarning("Tried forcing the cursor position while it was free. Please use SetCursorForcedState() before and after.");
+        }
+        else
+        {
+            transform.position = Game.CameraController.Camera.WorldToScreenPoint(point);
         }
     }
 }
