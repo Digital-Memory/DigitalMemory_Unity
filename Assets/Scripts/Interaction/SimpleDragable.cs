@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using NaughtyAttributes;
 
 public interface IHoverable
 {
@@ -35,8 +36,9 @@ public class SimpleDragable : MonoBehaviour, IDragable
 {
     [SerializeField] protected Rigidbody rigidbody;
     [SerializeField] private float YOffsetOnDrop;
-    [SerializeField] protected AudioClip startDragClip, endDragClip;
+    [SerializeField] Transform customDragPivot;
 
+    [Foldout("Effects")] [Expandable] [SerializeField] Effect startDragEffect, endDragEffect;
 
     protected bool isBeeingDragged = false;
 
@@ -67,7 +69,7 @@ public class SimpleDragable : MonoBehaviour, IDragable
         isBeeingDragged = true;
         SetPhysicsActive(false);
         SetMouseRaycastable(false);
-        Game.SoundPlayer.Play(startDragClip, gameObject);
+        Game.EffectHandler.Play(startDragEffect, gameObject);
     }
     public virtual void EndDrag(Vector3 position)
     {
@@ -75,11 +77,11 @@ public class SimpleDragable : MonoBehaviour, IDragable
         transform.position = position;
         SetPhysicsActive(true);
         SetMouseRaycastable(true);
-        Game.SoundPlayer.Play(endDragClip, gameObject);
+        Game.EffectHandler.Play(endDragEffect, gameObject);
     }
     public void UpdateDragPosition(Vector3 hitpoint, Vector3 position)
     {
-        transform.position = position;
+        transform.position = position - ((customDragPivot == null) ? Vector3.zero : (customDragPivot.position - transform.position));
     }
 
     public float GetEndDragYOffset()
