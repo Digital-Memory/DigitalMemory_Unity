@@ -35,8 +35,8 @@ public interface IAttachable : IDragable
 public class SimpleDragable : MonoBehaviour, IDragable
 {
     [SerializeField] protected Rigidbody rigidbody;
+    [SerializeField] protected Transform customDragPivot;
     [SerializeField] private float YOffsetOnDrop;
-    [SerializeField] Transform customDragPivot;
 
     [Foldout("Effects")] [Expandable] [SerializeField] Effect startDragEffect, endDragEffect;
 

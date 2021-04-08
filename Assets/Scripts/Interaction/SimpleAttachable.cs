@@ -7,6 +7,7 @@ using UnityEngine;
 public interface ICloseupable
 {
     Vector3 GetPosition();
+    Vector3 GetCustomGlobalOffset();
     Quaternion GetRotation();
     void UpdatePositionAndRotation(Vector3 pos, Quaternion rot);
     void OnStartCloseup();
@@ -145,5 +146,10 @@ public class SimpleAttachable : SimpleDragable, IAttachable, ICloseupable
     {
         TextDisplayer textDisplayer = GetComponent<TextDisplayer>();
         return (textDisplayer != null && textDisplayer.HasCloseupText);
+    }
+
+    public Vector3 GetCustomGlobalOffset()
+    {
+        return (customDragPivot == null) ? Vector3.zero : (customDragPivot.position - transform.position);
     }
 }

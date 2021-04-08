@@ -42,17 +42,18 @@ public class CloseupHandler : Singleton<CloseupHandler>
     }
     public void UpdateCloseupMode(ICloseupable currentCloseupable)
     {
-        targetPosition = closeupTransform.position - (offsetToTheLeftToMakeSpaceForInspectionText?closeupTransform.right:Vector3.zero);
+        targetPosition = closeupTransform.position - (offsetToTheLeftToMakeSpaceForInspectionText?closeupTransform.right:Vector3.zero) - currentCloseupable.GetCustomGlobalOffset();
+        Debug.DrawLine(targetPosition, targetPosition + currentCloseupable.GetCustomGlobalOffset());
 
         if (Input.GetMouseButton(0))
         {
             var x = mousePositionBefore.x - Input.mousePosition.x;
             var y = Input.mousePosition.y - mousePositionBefore.y;
-            targetRotation = Quaternion.Euler(-x/2, x/2, y) * currentCloseupable.GetRotation();
+            targetRotation = Quaternion.Euler(-x, x, y*2) * currentCloseupable.GetRotation();
         }
 
         mousePositionBefore = Input.mousePosition;
-        UpdatePositionAndRotation(currentCloseupable, targetPosition, targetRotation, Vector3.Distance(targetPosition, currentCloseupable.GetPosition()) > 0.01f);
+        UpdatePositionAndRotation(currentCloseupable, targetPosition, targetRotation, Vector3.Distance(targetPosition, (currentCloseupable.GetPosition() - currentCloseupable.GetCustomGlobalOffset())) > 0.01f);
     }
 
     internal void UpdateCloseup(RaycastHit hit, bool v1, bool v2)
