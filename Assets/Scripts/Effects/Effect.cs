@@ -6,53 +6,57 @@ using NaughtyAttributes;
 [CreateAssetMenu]
 public class Effect : ScriptableObject
 {
-    public bool PlaySoundEffect;
-    [ShowIf("PlaySoundEffect")] [Header("Sound")] [SerializeField] SoundEffectData soundEffect;
-    [Space]
+    [EnumFlags]
+    [SerializeField]
+    private EffectType effectType;
+
+    private bool SoundEffect => effectType.HasFlag(EffectType.SoundEffect);
+    private bool VisualEffect => effectType.HasFlag(EffectType.VisualEffect);
+    private bool ChangeShaderEffect => effectType.HasFlag(EffectType.ChangeShaderEffect);
+    private bool PulsingEffect => effectType.HasFlag(EffectType.PulsingEffect);
 
 
-    [ShowIf("NotClearVisualEffect")]
-    public bool PlayVisualEffect;
-    [ShowIf("PlayVisualEffect")] [Header("VisualEffect")] [SerializeField] VisualEffectData visualEffect;
-    [ShowIf("NotPlayVisualEffect")] [Space] public bool ClearVisualEffect;
-    [Space]
+    [ShowIf("SoundEffect")] [Space] [Header("Sound")] [SerializeField] SoundEffectData soundEffect;
 
+    [ShowIf("VisualEffect")] [Space] [Header("VisualEffect")] [SerializeField] private bool ClearVisualEffect;
+    [ShowIf(EConditionOperator.And, "VisualEffect", "NotClearVisualEffect")] [SerializeField] VisualEffectData visualEffect;
 
-    public bool PlayChangeShaderEffect;
-    [ShowIf("PlayChangeShaderEffect")] [Header("ChangeShader")] [SerializeField] ChangeShaderEffectData changeShaderEffect;
-    [Space]
+    [ShowIf("ChangeShaderEffect")] [Space] [Header("ChangeShader")] [SerializeField] ChangeShaderEffectData changeShaderEffect;
 
+    [ShowIf("PulsingEffect")] [Space] [Header("PulsingEffect")] [SerializeField] private bool ClearPulsingEffect;
+    [ShowIf(EConditionOperator.And, "PulsingEffect", "NotClearPulsingEffect")] [Header("PulsingEffect")] [SerializeField] PulsingEffectData pulsingEffect;
 
-    [ShowIf("NotClearPulsingEffect")] public bool PlayPulsingEffect;
-    [ShowIf(EConditionOperator.And, "PlayPulsingEffect", "NotClearPulsingEffect")] [Header("PulsingEffect")] [SerializeField] PulsingEffectData pulsingEffect;
-    [ShowIf("NotPlayPulsingEffect")] [Space] public bool ClearPulsingEffect;
-
-    public bool NotPlayPulsingEffect() { return !PlayPulsingEffect; }
+    public bool NotPlayPulsingEffect() { return !PulsingEffect; }
     public bool NotClearPulsingEffect() { return !ClearPulsingEffect; }
 
-    public bool NotPlayVisualEffect() { return !PlayVisualEffect; }
+    public bool NotPlayVisualEffect() { return !VisualEffect; }
     public bool NotClearVisualEffect() { return !ClearVisualEffect; }
 
 
     public void Play(GameObject origin)
     {
-        if (PlaySoundEffect)
+        if (SoundEffect)
             soundEffect.PlayEffect(origin);
 
-        if (ClearVisualEffect)
-            ClearAllVisualEffectsFrom(origin);
+        if (VisualEffect)
+        {
+            if (ClearVisualEffect)
+                ClearAllVisualEffectsFrom(origin);
+            else
+                visualEffect.PlayEffect(origin);
+        }
 
-        if (PlayVisualEffect)
-            visualEffect.PlayEffect(origin);
-
-        if (PlayChangeShaderEffect)
+        if (ChangeShaderEffect)
             changeShaderEffect.PlayEffect(origin);
 
-        if (ClearPulsingEffect)
-            ClearAllPulsingEffectsFrom(origin);
 
-        if (PlayPulsingEffect)
-            pulsingEffect.PlayEffect(origin);
+        if (PulsingEffect)
+        {
+            if (ClearPulsingEffect)
+                ClearAllPulsingEffectsFrom(origin);
+            else
+                pulsingEffect.PlayEffect(origin);
+        }
 
     }
 
@@ -70,6 +74,15 @@ public class Effect : ScriptableObject
         {
             effect.Destroy();
         }
+    }
+
+    private enum EffectType
+    {
+        None = 0,
+        SoundEffect = 1 << 0,
+        VisualEffect = 1 << 2,
+        ChangeShaderEffect = 1 << 4,
+        PulsingEffect = 1 << 6,
     }
 }
 

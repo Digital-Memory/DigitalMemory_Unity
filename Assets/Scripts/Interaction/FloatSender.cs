@@ -12,7 +12,7 @@ public class FloatSender : InputSender
     [SerializeField] float factorOffset = 0;
     [SerializeField] float factor = 360f;
 
-    [SerializeField] Effect tickEffect;
+    [Foldout("Effects")] [Expandable] [SerializeField] Effect whileChangeEffect, cantChangeEffect, forcedEndDragEffect;
 
     public event System.Action<float> OnSendInputValue;
     public event System.Action<float> OnSendCallbackWithFactor;
@@ -59,20 +59,24 @@ public class FloatSender : InputSender
                 currentValue = newValue;
                 CallOnSendInputEvents(newValue);
                 OnSendCallbackWithFactor?.Invoke(Factorize(newValue));
-                Game.EffectHandler.Play(tickEffect, gameObject);
+                Game.EffectHandler.Play(whileChangeEffect, gameObject);
 
                 return true;
             }
             else
             {
+
+                Game.EffectHandler.Play(whileChangeEffect, gameObject);
                 return false;
             }
         }
         else
         {
-            if (newValue < MIN_VALUE && Mathf.Abs(newValue - MIN_VALUE) > (180f / factor)
-                && newValue > MAX_VALUE && Mathf.Abs(newValue - MAX_VALUE) > (180f / factor))
+            if (newValue < MIN_VALUE && Mathf.Abs(newValue - MIN_VALUE) > (180f / factor) && newValue > MAX_VALUE && Mathf.Abs(newValue - MAX_VALUE) > (180f / factor))
+            {
                 Game.DragHandler.ForceEndDrag();
+                Game.EffectHandler.Play(forcedEndDragEffect, gameObject);
+            }
 
             return false;
         }

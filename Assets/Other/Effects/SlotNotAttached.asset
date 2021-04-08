@@ -12,28 +12,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8b6a931fb936dc4d85362f97739cf34, type: 3}
   m_Name: SlotNotAttached
   m_EditorClassIdentifier: 
-  PlaySoundEffect: 0
+  effectType: 0
   soundEffect:
     clip: {fileID: 0}
     playFromOrigin: 0
+    playOnlyIfFinished: 0
     volume: 1
     randomPitchRange: 0
-  PlayVisualEffect: 0
+  ClearVisualEffect: 0
   visualEffect:
     prefab: {fileID: 0}
     spawnRelativeToOrigin: 0
     spawnOffset: {x: 0, y: 0, z: 0}
     destroyDelay: 0
-  ClearVisualEffect: 0
-  PlayChangeShaderEffect: 0
   changeShaderEffect:
     shader: {fileID: 0}
     boolName: 
     boolValue: 0
-  PlayPulsingEffect: 1
+  ClearPulsingEffect: 0
   pulsingEffect:
-    LimitedPulsing: 0
-    duration: 0
+    loopPulsing: 0
     pulseCurve:
       serializedVersion: 2
       m_Curve:
@@ -67,4 +65,4 @@ MonoBehaviour:
       m_PreInfinity: 1
       m_PostInfinity: 1
       m_RotationOrder: 4
-  ClearPulsingEffect: 0
+    type: 0

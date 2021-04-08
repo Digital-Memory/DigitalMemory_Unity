@@ -13,6 +13,9 @@ public class FloatSnapper : MonoBehaviour
     public List<float> snapValues = new List<float>(new float[] { 0f, 1f });
     public float snapDistance = 0.1f;
     public float reachedDistance = 0.01f;
+
+    [Foldout("Effects")] [SerializeField] [Expandable] Effect startSnapEffect, endSnapEffect;
+
     float snapValue;
     bool isSnapping = false;
 
@@ -31,6 +34,7 @@ public class FloatSnapper : MonoBehaviour
 
     internal void StopAnySnap()
     {
+        Debug.Log("End Snap");
         isSnapping = false;
     }
 
@@ -60,8 +64,7 @@ public class FloatSnapper : MonoBehaviour
 
             if (distance < reachedDistance)
             {
-                Debug.Log("End Snap");
-                isSnapping = false;
+                StopAnySnap();
             }
             else
             {
