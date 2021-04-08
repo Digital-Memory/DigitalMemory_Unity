@@ -83,6 +83,13 @@ public class Game : MonoBehaviour
             return CloseupHandler.GetInstance();
         }
     }
+    public static UIHandler UIHandler
+    {
+        get
+        {
+            return UIHandler.GetInstance(usePrefab: true);
+        }
+    }
 
     public static TextDispayHandler TextDispayHandler
     {

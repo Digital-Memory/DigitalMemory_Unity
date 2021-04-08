@@ -4,19 +4,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum CustomCursorType
-{
-    DEFAULT,
-    DRAGABLE,
-    DRAGGING,
-}
-
 public class HoverHandler : Singleton<HoverHandler>
 {
-    CustomCursorType customCursor;
     IHoverable currentHover;
     [SerializeField] [Expandable] Effect onHoverEnter, onHoverExit;
-    [SerializeField] Texture2D defaultCursor, dragableCursor, dragggingCursor;
 
     private void OnEnable()
     {
@@ -48,11 +39,12 @@ public class HoverHandler : Singleton<HoverHandler>
             if (newDragHover != null)
             {
                 Game.EffectHandler.Play(onHoverEnter, newDragHover.GetGameObject());
-                SetCursorType(CustomCursorType.DRAGABLE);
+                Game.UIHandler.CustomCursor.SetCursorType(CustomCursorType.DRAGABLE);
                 newDragHover.StartHover();
-            } else
+            }
+            else
             {
-                SetCursorType(CustomCursorType.DEFAULT);
+                Game.UIHandler.CustomCursor.SetCursorType(CustomCursorType.DEFAULT);
             }
 
             currentHover = newDragHover;
@@ -67,13 +59,14 @@ public class HoverHandler : Singleton<HoverHandler>
 
             if (inventoryObject != null)
             {
-                Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
+                Game.UIHandler.CustomCursor.SetCursorType(CustomCursorType.MANUAL ,inventoryObject.GetData().icon, 4f);
                 Game.DragHandler.HideDragging();
             }
         }
     }
     internal void ExitUI()
     {
+        Game.UIHandler.CustomCursor.ResetCursor(CustomCursorType.DEFAULT, CustomCursorType.DRAGABLE, CustomCursorType.DRAGGING);
         Game.DragHandler.ShowDragging();
     }
 
@@ -90,38 +83,13 @@ public class HoverHandler : Singleton<HoverHandler>
 
     internal void OnStartDrag(IDragable dragable, RaycastHit hit)
     {
-        SetCursorType(CustomCursorType.DRAGGING);
+        Game.UIHandler.CustomCursor.SetCursorType(CustomCursorType.DRAGGING);
     }
 
     internal void OnEndDrag(IDragable dragable)
     {
-        SetCursorType(CustomCursorType.DEFAULT);
+        Game.UIHandler.CustomCursor.SetCursorType(CustomCursorType.DEFAULT);
         currentHover = null;
-    }
-
-    private void SetCursorType(CustomCursorType customCursorType)
-    {
-        if (customCursor != customCursorType)
-        {
-            Cursor.SetCursor(GetCursorTextureByType(customCursorType), Vector2.zero, CursorMode.Auto);
-            customCursor = customCursorType;
-        }
-    }
-
-    private Texture2D GetCursorTextureByType(CustomCursorType customCursorType)
-    {
-        switch (customCursorType)
-        {
-            case CustomCursorType.DRAGABLE:
-                return dragableCursor;
-                break;
-
-            case CustomCursorType.DRAGGING:
-                return dragggingCursor;
-                break;
-        }
-
-        return defaultCursor; 
     }
 
     private void OnDrawGizmos()
