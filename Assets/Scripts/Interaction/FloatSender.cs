@@ -35,6 +35,16 @@ public class FloatSender : InputSender
         limits = GetComponents<FloatLimiter>();
     }
 
+    private void Start()
+    {
+        currentValue = startValue;
+        if (TrySendInput(currentValue))
+        {
+            CallOnSendInputEvents(currentValue);
+            OnSendCallbackWithFactor?.Invoke(Factorize(currentValue));
+        }
+    }
+
     internal bool TryGiveInput(float degrees, bool isAbsolute = false)
     {
 

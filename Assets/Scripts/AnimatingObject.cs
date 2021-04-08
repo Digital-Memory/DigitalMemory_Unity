@@ -16,8 +16,9 @@ public class AnimatingObject : ConditionedObject
         animator = GetComponent<Animator>();
     }
 
-    private void Start()
+    protected override void OnEnable()
     {
+        base.OnEnable();
         animator = GetComponent<Animator>();
     }
 
