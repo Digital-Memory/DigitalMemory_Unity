@@ -34,7 +34,7 @@ public class Inventory : MonoBehaviour
         }
     }
 
-    private void AddItem(InventoryObjectData data)
+    public void AddItem(InventoryObjectData data)
     {
         Instantiate(ItemPrefab, transform).Init(data);
     }

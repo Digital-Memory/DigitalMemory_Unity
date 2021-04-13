@@ -1349,11 +1349,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 703202738924049381, guid: 17df770930a37044aa8997303091e642, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 148.30565
+      value: -502.5249
       objectReference: {fileID: 0}
     - target: {fileID: 703202738924049381, guid: 17df770930a37044aa8997303091e642, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 413.62125
+      value: -359.80066
       objectReference: {fileID: 0}
     - target: {fileID: 7330337493363920225, guid: 17df770930a37044aa8997303091e642, type: 3}
       propertyPath: m_Name
@@ -1445,6 +1445,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 17df770930a37044aa8997303091e642, type: 3}
+--- !u!224 &1234801429 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 7330337493363920229, guid: 17df770930a37044aa8997303091e642, type: 3}
+  m_PrefabInstance: {fileID: 1234801428}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1583872814
 GameObject:
   m_ObjectHideFlags: 0
@@ -1722,6 +1727,41 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6476781290254090947, guid: 868a07d6a3b27034283ba378be3ae289, type: 3}
   m_PrefabInstance: {fileID: 6476781291650159815}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1921639784
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1921639785}
+  m_Layer: 5
+  m_Name: InventoryAdder
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1921639785
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1921639784}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1234801429}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1969151350
 GameObject:
   m_ObjectHideFlags: 0
