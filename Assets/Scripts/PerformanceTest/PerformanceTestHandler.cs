@@ -20,7 +20,7 @@ namespace performanceTest
 
         public PerformanceTest performanceTest;
         int counter = 0;
-        float fps = float.MaxValue;
+        float fps = 99999f;
         public void RunTest()
         {
             counter = 0;
@@ -42,7 +42,7 @@ namespace performanceTest
 
             while (fps > 30f)
             {
-                for (int i = 0; i < amount; i++)
+                for (int i = 0; i < (int)amount; i++)
                 {
                     GameObject instance = Instantiate(test.toDuplicate, new Vector3(UnityEngine.Random.Range(-10f, 10f), 0, UnityEngine.Random.Range(-10f, 10f)), Quaternion.identity, parent);
 
@@ -86,7 +86,7 @@ namespace performanceTest
 
         private float FPS()
         {
-            return 1.0f / Time.smoothDeltaTime;
+            return 1.0f / Mathf.Max(Time.smoothDeltaTime,0.0000001f);
         }
 
         private void OnGUI()

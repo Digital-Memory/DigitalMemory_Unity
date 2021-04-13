@@ -7,6 +7,9 @@ using UnityEngine.UI;
 public class Inventory : MonoBehaviour
 {
     [SerializeField] InventoryObjectUI ItemPrefab;
+
+    Dictionary<InventoryObjectData, InventoryObjectUI> content = new Dictionary<InventoryObjectData, InventoryObjectUI>();
+
     bool mouseAbove;
 
     private void OnEnable()
@@ -34,9 +37,26 @@ public class Inventory : MonoBehaviour
         }
     }
 
-    private void AddItem(InventoryObjectData data)
+    public void RemoveLast(InventoryObjectData data)
     {
-        Instantiate(ItemPrefab, transform).Init(data);
+        if (content.ContainsKey(data))
+        {
+            content.Remove(data);
+        }
+    }
+
+    public void AddItem(InventoryObjectData data)
+    {
+        if (content.ContainsKey(data))
+        {
+            content[data].ChangeAmount(1);
+        }
+        else
+        {
+            InventoryObjectUI uiElement = Instantiate(ItemPrefab, transform);
+            uiElement.Init(this,data);
+            content.Add(data, uiElement);
+        }
     }
 
     public void OnMouseEnter()
