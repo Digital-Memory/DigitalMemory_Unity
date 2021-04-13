@@ -12,26 +12,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8b6a931fb936dc4d85362f97739cf34, type: 3}
   m_Name: CrankBlocked
   m_EditorClassIdentifier: 
-  PlaySoundEffect: 1
+  effectType: 65
   soundEffect:
     clip: {fileID: 8300000, guid: b8100d638c7e1934ab7596b829653106, type: 3}
     playFromOrigin: 1
     playOnlyIfFinished: 1
     volume: 0.5
     randomPitchRange: 0.25
-  PlayVisualEffect: 0
+  ClearVisualEffect: 0
   visualEffect:
     prefab: {fileID: 0}
     spawnRelativeToOrigin: 0
     spawnOffset: {x: 0, y: 0, z: 0}
     destroyDelay: -1
-  ClearVisualEffect: 0
-  PlayChangeShaderEffect: 0
   changeShaderEffect:
     shader: {fileID: 0}
     boolName: 
     boolValue: 0
-  PlayPulsingEffect: 1
+  ClearPulsingEffect: 0
   pulsingEffect:
     loopPulsing: 0
     pulseCurve:
@@ -77,4 +75,3 @@ MonoBehaviour:
       m_PostInfinity: 2
       m_RotationOrder: 4
     type: 4
-  ClearPulsingEffect: 0
