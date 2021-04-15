@@ -16,6 +16,9 @@ public class Drawer : MonoBehaviour, IDragable, IAttacher
     public event Action OnStartHoverEvent;
     public event Action OnEndHoverEvent;
 
+    public bool allowsDetach;
+    [HideInInspector] public bool AllowsDetach => allowsDetach;
+
     public void EndDrag(Vector3 position)
     {
         SetPulledOut(startDragPosition, position);

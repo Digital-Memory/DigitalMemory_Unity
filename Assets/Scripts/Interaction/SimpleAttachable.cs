@@ -26,6 +26,7 @@ public class SimpleAttachable : SimpleDragable, IAttachable, ICloseupable
     public string attachment;
     private bool isInCloseup;
     [SerializeField] private bool isAttached;
+    IAttacher currentAttacher;
     [SerializeField] private Transform defaultParent;
 
     [Expandable]
@@ -56,7 +57,7 @@ public class SimpleAttachable : SimpleDragable, IAttachable, ICloseupable
     {
         isBeeingDragged = false;
         isAttached = true;
-
+        currentAttacher = toAttachTo;
         defaultParent = transform.parent;
         toAttachTo.HandleTransformOnAttach(transform);
 
@@ -77,6 +78,7 @@ public class SimpleAttachable : SimpleDragable, IAttachable, ICloseupable
             Game.EffectHandler.Play(detachEffect, gameObject);
 
             isAttached = false;
+            currentAttacher = null;
             if (defaultParent != null)
                 transform.parent = defaultParent;
             else
@@ -139,7 +141,7 @@ public class SimpleAttachable : SimpleDragable, IAttachable, ICloseupable
 
     public override bool IsDragable()
     {
-        return base.IsDragable() && !isInCloseup;
+        return base.IsDragable() && !isInCloseup && !(isAttached && currentAttacher != null && !currentAttacher.AllowsDetach);
     }
 
     public bool ShouldOffset()
