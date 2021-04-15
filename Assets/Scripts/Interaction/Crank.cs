@@ -57,7 +57,8 @@ public class Crank : SimpleAttachable
             }
             else
             {
-                Game.EffectHandler.Play(crankBlockedEffect, gameObject);
+                if (Mathf.Abs(deltaAngle) > 15f)
+                    Game.EffectHandler.Play(crankBlockedEffect, gameObject);
             }
         }
     }
