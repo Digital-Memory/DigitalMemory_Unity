@@ -31,6 +31,7 @@ public class InventoryObjectUI : UnityEngine.UI.Button, IDragHandler, IBeginDrag
     public void OnBeginDrag(PointerEventData eventData)
     {
         GameObject go = Instantiate(data.prefab);
+        go.transform.localScale = Game.Settings.CurrentZoomLevel * Vector3.one;
         IDragable dragable = go.GetComponent<IDragable>();
         if (dragable != null)
         {
