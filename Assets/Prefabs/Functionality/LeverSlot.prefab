@@ -30,7 +30,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9138321620747625100}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 4}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -130,7 +130,9 @@ MonoBehaviour:
   startValue: 0
   factorOffset: 35
   factor: 70
-  tickEffect: {fileID: 0}
+  whileChangeEffect: {fileID: 0}
+  cantChangeEffect: {fileID: 0}
+  forcedEndDragEffect: {fileID: 0}
 --- !u!114 &976612782
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -148,3 +150,5 @@ MonoBehaviour:
   - 1
   snapDistance: 0.5
   reachedDistance: 0.01
+  startSnapEffect: {fileID: 0}
+  endSnapEffect: {fileID: 0}
