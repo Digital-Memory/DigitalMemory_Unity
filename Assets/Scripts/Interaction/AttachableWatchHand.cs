@@ -67,7 +67,7 @@ public class AttachableWatchHand : MonoBehaviour, IDragable
         pin.transform.localPosition = pinLocalPositionOut;
     }
 
-    public void UpdateDragPosition(Vector3 point, Vector3 vector3)
+    public void UpdateDragPosition(Vector3 point, Vector3 vector3, bool useCustomPivot)
     {
         Vector2 head = transform.position.To2D();
         Vector2 target = point.To2D();

@@ -48,7 +48,7 @@ public class Drawer : MonoBehaviour, IDragable, IAttacher
         startDragPosition = Vector3.zero;
     }
 
-    public void UpdateDragPosition(Vector3 hitpoint, Vector3 position)
+    public void UpdateDragPosition(Vector3 hitpoint, Vector3 position, bool useCustomPivot)
     {
         if (startDragPosition == Vector3.zero)
             startDragPosition = hitpoint;

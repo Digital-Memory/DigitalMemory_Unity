@@ -35,19 +35,23 @@ public class DragHandler : Singleton<DragHandler>
     {
         IAttacher attacher = null;
 
+        Debug.LogWarning("Hover: " + (hit.collider != null));
+
         if (hit.collider != null)
             attacher = hit.collider.GetComponent<IAttacher>();
+
+        Debug.LogWarning("Hover attacher: " + (attacher != null));
 
         if (IsDraggingAttachable && attacher != null && attacher.CanAttach(currentAttachable.GetAttachment()))
         {
             //attachment preview
-            currentDrag.UpdateDragPosition(hit.point, attacher.GetPreviewPosition(hit.point) + Game.Settings.AttachPreviewOffset * (3.5f + Mathf.Sin(Time.time * 2f) * 0.5f));
+            currentDrag.UpdateDragPosition(hit.point, attacher.GetPreviewPosition(hit.point) + Game.Settings.AttachPreviewOffset * (3.5f + Mathf.Sin(Time.time * 2f) * 0.5f) * Game.Settings.CurrentZoomLevel, useCustomPivot: false);
         }
         else
         {
             //regular drag
-            float dragDistance = Vector3.Distance(ray.origin, hit.point) - Game.Settings.DragDistanceToFloor;
-            currentDrag.UpdateDragPosition(hit.point, ray.GetPoint(dragDistance));
+            float dragDistance = Vector3.Distance(ray.origin, hit.point) - Game.Settings.DragDistanceToFloor * Game.Settings.CurrentZoomLevel;
+            currentDrag.UpdateDragPosition(hit.point, ray.GetPoint(dragDistance), useCustomPivot: false);
         }
 
         if (Input.GetMouseButtonUp(0))

@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2223798064899866197}
   - component: {fileID: 1519226509451516052}
   - component: {fileID: 1302111631529250436}
-  - component: {fileID: 1719824485146594893}
+  - component: {fileID: 4825015769399726880}
   m_Layer: 0
   m_Name: Attacher_Universal (1)
   m_TagString: Untagged
@@ -99,7 +99,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attachmentName: Attachment
   isAttached: 0
-  attachmentOffset: {x: 0, y: 0, z: 0}
+  attachmentOffset: {x: 0, y: 0.05, z: 0}
 --- !u!114 &1302111631529250436
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -113,8 +113,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IsAttached: 0
---- !u!135 &1719824485146594893
-SphereCollider:
+--- !u!65 &4825015769399726880
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -124,5 +124,5 @@ SphereCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 1.1
+  m_Size: {x: 2, y: 0.5, z: 2}
   m_Center: {x: 0, y: 0.15858133, z: 0}
