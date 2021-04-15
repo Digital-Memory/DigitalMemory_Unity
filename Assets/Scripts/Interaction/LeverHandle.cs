@@ -72,7 +72,7 @@ public class LeverHandle : MonoBehaviour, IDragable
         handleCollider.enabled = false;
     }
 
-    public void UpdateDragPosition(Vector3 point, Vector3 vector3)
+    public void UpdateDragPosition(Vector3 point, Vector3 vector3, bool useCustomPivot)
     {
         if (startPosition == Vector3.zero)
             startPosition = point;

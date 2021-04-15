@@ -67,7 +67,7 @@ public class CrankHandle : MonoBehaviour, IDragable, IHoverable, IChargeInput
         Debug.Log("Start Drag");
     }
 
-    public void UpdateDragPosition(Vector3 point, Vector3 vector3)
+    public void UpdateDragPosition(Vector3 point, Vector3 vector3, bool useCustomPivot)
     {
         Game.UIHandler.CustomCursor.ForceCursorPosition(cursorParent.position);
         Vector2 head = crank.transform.position.To2D();

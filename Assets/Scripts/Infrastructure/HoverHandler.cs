@@ -99,4 +99,10 @@ public class HoverHandler : Singleton<HoverHandler>
             DebugDraw.Circle(currentHover.GetGameObject().transform.position, Color.white, 0.5f);
         }
     }
+
+    private void OnGUI()
+    {
+        string name = currentHover != null ? currentHover.GetGameObject().name : "";
+        GUI.Box(new Rect(10,10,100,50), name);
+    }
 }

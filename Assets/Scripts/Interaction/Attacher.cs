@@ -77,7 +77,7 @@ public class Attacher : MonoBehaviour, IAttacher
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.yellow;
-        Gizmos.DrawWireSphere(transform.position + attachmentOffset, 0.5f);
+        Gizmos.DrawWireSphere(transform.position + attachmentOffset, 0.5f * Game.Settings.CurrentZoomLevel);
     }
 
     public void HandleTransformOnAttach(Transform transformToAttach)
