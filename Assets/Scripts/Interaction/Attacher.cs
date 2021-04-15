@@ -5,6 +5,8 @@ using UnityEngine;
 
 public interface IAttacher
 {
+    bool AllowsDetach { get; }
+
     bool CanAttach(string attachBehaviour);
     Transform GetTransform();
     void OnAttach(IAttachable attachable);
@@ -24,6 +26,9 @@ public class Attacher : MonoBehaviour, IAttacher
     public event System.Action<bool, string> OnChangeAttached;
 
     public bool IsAttached => isAttached;
+
+    public bool allowsDetach = false;
+    [HideInInspector] public bool AllowsDetach => allowsDetach;
 
     protected void Start()
     {

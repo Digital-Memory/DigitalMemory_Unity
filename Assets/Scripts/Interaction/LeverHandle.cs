@@ -9,7 +9,6 @@ public class LeverHandle : MonoBehaviour, IDragable
     [SerializeField] Collider handleCollider;
 
     [SerializeField] float snapSpeed = 10f;
-    [SerializeField] float scaleMultiplier = 1;
 
     bool isSnapping = false;
     bool isDragging = false;
@@ -77,7 +76,7 @@ public class LeverHandle : MonoBehaviour, IDragable
         if (startPosition == Vector3.zero)
             startPosition = point;
 
-        float distance = (point - startPosition).InvertAxis(Vector3.forward).GetLongestAxis() * scaleMultiplier;
+        float distance = (point - startPosition).InvertAxis(Vector3.forward).GetLongestAxis() * (1 / Game.Settings.CurrentZoomLevel);
 
         float currentRotation = distance * 10;
         float angle = startRotation - currentRotation;
