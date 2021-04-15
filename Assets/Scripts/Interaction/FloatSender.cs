@@ -133,7 +133,17 @@ public class FloatSender : InputSender
         __isGivingInput = true;
 #endif
 
-        return (input == null || input.Try(progress));
+        bool canTryInput = (input == null || input.Try(progress));
+
+        if (canTryInput && hasSecondaryInput && secondary != null && secondary.Length > 0)
+        {
+            foreach (InputObject inputObject in secondary)
+            {
+                inputObject.Try(progress);
+            }
+        }
+
+        return canTryInput;
 
     }
 

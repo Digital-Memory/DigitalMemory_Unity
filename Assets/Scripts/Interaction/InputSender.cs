@@ -15,6 +15,11 @@ public class InputSender : MonoBehaviour, IInputSender
     public GameObject inputObject;
     [HideInInspector] public bool behaviourObjectIsCorrect { get => ObjectsMatchBehaviours(); }
 
+    [SerializeField ] protected bool hasSecondaryInput;
+    [SerializeField] [ShowIf("hasSecondaryInput")] protected InputObject[] secondary;
+
+
+
     protected DropdownList<InputObject> CreateInputDropdown()
     {
         return DropdownMonobehaviourList<InputObject>.FromObjectsOfType(FindObjectsOfType<InputObject>(), AddNullOption: true);
