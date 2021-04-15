@@ -438,6 +438,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   conditions: []
   varibleFloat: Turning
+--- !u!114 &78641525 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3394351793069227551, guid: 39cfe47102146e9449482ad7aa014c5c, type: 3}
+  m_PrefabInstance: {fileID: 2047945086}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81278b0024b455041ac664058be6d923, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &141079746
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -523,6 +534,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 303879778}
     m_Modifications:
+    - target: {fileID: 2890272126539638799, guid: 39cfe47102146e9449482ad7aa014c5c, type: 3}
+      propertyPath: attachmentName
+      value: Citizen
+      objectReference: {fileID: 0}
     - target: {fileID: 3719558827347817889, guid: 39cfe47102146e9449482ad7aa014c5c, type: 3}
       propertyPath: m_RootOrder
       value: 10
@@ -650,6 +665,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 959378102}
     m_Modifications:
+    - target: {fileID: 2890272126539638799, guid: 39cfe47102146e9449482ad7aa014c5c, type: 3}
+      propertyPath: attachmentName
+      value: Citizen
+      objectReference: {fileID: 0}
     - target: {fileID: 3719558827347817889, guid: 39cfe47102146e9449482ad7aa014c5c, type: 3}
       propertyPath: m_RootOrder
       value: 5
@@ -768,6 +787,7 @@ GameObject:
   - component: {fileID: 303879778}
   - component: {fileID: 303879779}
   - component: {fileID: 303879780}
+  - component: {fileID: 303879781}
   m_Layer: 0
   m_Name: Buildings_2.1
   m_TagString: Untagged
@@ -832,8 +852,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d3eb08c50e9154340a756dc5bf920a14, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  conditions: []
+  conditions:
+  - {fileID: 303879781}
   varibleFloat: movement
+--- !u!114 &303879781
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 303879777}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f415d8d861e0d084b98e56be7aab40a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  behaviours:
+  - {fileID: 78641525}
+  - {fileID: 1499627721}
+  - {fileID: 347728526}
+  type: 0
+  MustBeTrue: 1
+  FloatIs: 0
+  toCompareWith: 0
 --- !u!1 &305111328
 GameObject:
   m_ObjectHideFlags: 0
@@ -1060,6 +1101,17 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 322826795}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &347728526 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3394351793069227551, guid: 39cfe47102146e9449482ad7aa014c5c, type: 3}
+  m_PrefabInstance: {fileID: 650331357}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81278b0024b455041ac664058be6d923, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &357472697
 GameObject:
   m_ObjectHideFlags: 0
@@ -1994,6 +2046,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 818650676}
     m_Modifications:
+    - target: {fileID: 2890272126539638799, guid: 39cfe47102146e9449482ad7aa014c5c, type: 3}
+      propertyPath: attachmentName
+      value: Citizen
+      objectReference: {fileID: 0}
     - target: {fileID: 3719558827347817889, guid: 39cfe47102146e9449482ad7aa014c5c, type: 3}
       propertyPath: m_RootOrder
       value: 11
@@ -2999,6 +3055,7 @@ MonoBehaviour:
   triggerEnter: Enter
   trainPosition: trainPos
   position: 0
+  spawnOswiecimCitizenEffect: {fileID: 11400000, guid: d84949fd2af88464c8f82f397251b517, type: 2}
 --- !u!114 &958058856
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3098,6 +3155,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 303879778}
     m_Modifications:
+    - target: {fileID: 2890272126539638799, guid: 39cfe47102146e9449482ad7aa014c5c, type: 3}
+      propertyPath: attachmentName
+      value: Citizen
+      objectReference: {fileID: 0}
     - target: {fileID: 3719558827347817889, guid: 39cfe47102146e9449482ad7aa014c5c, type: 3}
       propertyPath: m_RootOrder
       value: 11
@@ -3612,11 +3673,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4441062669104978110, guid: b74563ea4b152a54f9b8d5cb4f5df27b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 49.64
+      value: 49.01
       objectReference: {fileID: 0}
     - target: {fileID: 4441062669104978110, guid: b74563ea4b152a54f9b8d5cb4f5df27b, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -20.59
+      value: -22.54
       objectReference: {fileID: 0}
     - target: {fileID: 4441062669104978110, guid: b74563ea4b152a54f9b8d5cb4f5df27b, type: 3}
       propertyPath: m_LocalRotation.w
@@ -4053,6 +4114,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 959378102}
     m_Modifications:
+    - target: {fileID: 2890272126539638799, guid: 39cfe47102146e9449482ad7aa014c5c, type: 3}
+      propertyPath: attachmentName
+      value: Citizen
+      objectReference: {fileID: 0}
     - target: {fileID: 3719558827347817889, guid: 39cfe47102146e9449482ad7aa014c5c, type: 3}
       propertyPath: m_RootOrder
       value: 6
@@ -5604,6 +5669,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8458909725923145718, guid: f88548e437755b54a8a6a284241fe292, type: 3}
   m_PrefabInstance: {fileID: 1498050862}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1499627721 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3394351793069227551, guid: 39cfe47102146e9449482ad7aa014c5c, type: 3}
+  m_PrefabInstance: {fileID: 1820334629}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81278b0024b455041ac664058be6d923, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1513998782
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5950,6 +6026,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 303879778}
     m_Modifications:
+    - target: {fileID: 2890272126539638799, guid: 39cfe47102146e9449482ad7aa014c5c, type: 3}
+      propertyPath: attachmentName
+      value: Citizen
+      objectReference: {fileID: 0}
     - target: {fileID: 3719558827347817889, guid: 39cfe47102146e9449482ad7aa014c5c, type: 3}
       propertyPath: m_RootOrder
       value: 9
@@ -6007,6 +6087,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 959378102}
     m_Modifications:
+    - target: {fileID: 2890272126539638799, guid: 39cfe47102146e9449482ad7aa014c5c, type: 3}
+      propertyPath: attachmentName
+      value: Citizen
+      objectReference: {fileID: 0}
     - target: {fileID: 3719558827347817889, guid: 39cfe47102146e9449482ad7aa014c5c, type: 3}
       propertyPath: m_RootOrder
       value: 7
@@ -6471,6 +6555,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 818650676}
     m_Modifications:
+    - target: {fileID: 2890272126539638799, guid: 39cfe47102146e9449482ad7aa014c5c, type: 3}
+      propertyPath: attachmentName
+      value: Citizen
+      objectReference: {fileID: 0}
     - target: {fileID: 3719558827347817889, guid: 39cfe47102146e9449482ad7aa014c5c, type: 3}
       propertyPath: m_RootOrder
       value: 10
@@ -7249,6 +7337,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 818650676}
     m_Modifications:
+    - target: {fileID: 2890272126539638799, guid: 39cfe47102146e9449482ad7aa014c5c, type: 3}
+      propertyPath: attachmentName
+      value: Citizen
+      objectReference: {fileID: 0}
     - target: {fileID: 3719558827347817889, guid: 39cfe47102146e9449482ad7aa014c5c, type: 3}
       propertyPath: m_RootOrder
       value: 9

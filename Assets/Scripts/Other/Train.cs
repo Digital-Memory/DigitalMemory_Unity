@@ -12,8 +12,10 @@ public class Train : ConditionedObject
     [ShowNonSerializedField] bool forwardHasGreen;
     [ShowNonSerializedField] bool facingForward = true;
     [ShowNonSerializedField] bool switchIsUp = false;
-    [SerializeField] [Range(0,1)] float position = 0f;
+    [SerializeField] [Range(0, 1)] float position = 0f;
     [ShowNonSerializedField] float acceleration = 0f;
+
+    [SerializeField] Effect spawnOswiecimCitizenEffect;
 
     public override bool Try(float progress)
     {
@@ -23,7 +25,8 @@ public class Train : ConditionedObject
             {
                 SetGreenForward(false);
             }
-        } else
+        }
+        else
         {
             if (progress > 0.9f)
             {
@@ -46,7 +49,7 @@ public class Train : ConditionedObject
             if (switchIsUp != SwitchIsUp())
             {
                 switchIsUp = !switchIsUp;
-                animator.SetTrigger(switchIsUp?triggerEnter:triggerPass);
+                animator.SetTrigger(switchIsUp ? triggerEnter : triggerPass);
             }
         }
 
@@ -57,14 +60,37 @@ public class Train : ConditionedObject
             targetSpeed = (facingForward ? 0.1f : -0.1f);
 
             if (position > 1)
-                facingForward = false;
+                TurnBack();
             else if (position < 0)
-                facingForward = true;
+                TurnForward();
         }
 
 
         position += Accelerate(targetSpeed) * Time.deltaTime;
         animator.SetFloat(trainPosition, position);
+    }
+
+    private void TurnForward()
+    {
+        if (!facingForward)
+        {
+            facingForward = true;
+        }
+    }
+
+    private void TurnBack()
+    {
+        if (facingForward)
+        {
+            if (switchIsUp)
+            {
+                for (int i = 0; i < 3; i++)
+                {
+                    Game.EffectHandler.Play(spawnOswiecimCitizenEffect,gameObject);
+                }
+            }
+            facingForward = false;
+        }
     }
 
     private float Accelerate(float target)

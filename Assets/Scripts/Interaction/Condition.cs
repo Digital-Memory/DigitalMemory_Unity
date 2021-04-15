@@ -5,10 +5,8 @@ using NaughtyAttributes;
 using System;
 
 [System.Serializable]
-public class Condition : MonoBehaviour
+public class Condition : ConditionBase
 {
-
-
     [Dropdown("GetConditionListenerBehaviours")]
     [OnValueChanged("OnChangeBehaviourReference")]
     [ValidateInput("BehaviourObjectIsCorrect", "Select a correct behaviour!")]
@@ -71,7 +69,7 @@ public class Condition : MonoBehaviour
     }
 #endif
 
-    public bool IsMet()
+    public override bool IsMet()
     {
         switch (type)
         {

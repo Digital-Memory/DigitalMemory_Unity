@@ -7,7 +7,7 @@ using UnityEngine;
 public class ConditionedObject : InputObject
 {
     [SerializeField]
-    private List<Condition> conditions;
+    private List<ConditionBase> conditions;
 
     protected virtual void OnEnable()
     {
@@ -22,7 +22,7 @@ public class ConditionedObject : InputObject
         }
         else
         {
-            conditions = new List<Condition>(GetComponents<Condition>());
+            conditions = new List<ConditionBase>(GetComponents<ConditionBase>());
         }
     }
 
@@ -45,13 +45,10 @@ public class ConditionedObject : InputObject
     {
         if (conditions != null)
         {
-            foreach (Condition condition in conditions)
+            foreach (ConditionBase condition in conditions)
             {
-                if (condition.behaviour != null)
-                {
-                    if (!condition.IsMet())
-                        return false;
-                }
+                if (!condition.IsMet())
+                    return false;
             }
         }
 
@@ -67,9 +64,9 @@ public class ConditionedObject : InputObject
             {
                 if (conditions[i] != null)
                 {
-                    Condition condition = conditions[i];
+                    Condition condition = conditions[i] as Condition;
 
-                    if (condition.behaviour != null)
+                    if (condition != null && condition.behaviour != null)
                     {
                         Gizmos.color = condition.IsMet() ? Color.green : Color.red;
                         Gizmos.DrawLine(transform.position + transform.forward * 0.1f * i, condition.behaviour.transform.position + transform.forward * 0.1f * i);

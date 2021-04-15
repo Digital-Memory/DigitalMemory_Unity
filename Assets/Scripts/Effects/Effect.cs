@@ -107,13 +107,14 @@ public class VisualEffectData : EffectData
 {
     public Transform prefab;
     public bool spawnRelativeToOrigin;
+    public bool spawnParented;
     public Vector3 spawnOffset;
     public float destroyDelay = -1f;
 
     public override void PlayEffect(GameObject origin)
     {
         Vector3 spawnPosition = (spawnRelativeToOrigin ? origin.transform.position : Vector3.zero) + spawnOffset;
-        Transform effectInstance = GameObject.Instantiate(prefab, spawnPosition, Quaternion.identity, origin.transform);
+        Transform effectInstance = GameObject.Instantiate(prefab, spawnPosition, Quaternion.identity, spawnParented ? origin.transform : null);
         effectInstance.gameObject.AddComponent<VisualEffectInstance>().DestroyDelayed(destroyDelay);
     }
 }
