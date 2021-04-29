@@ -1133,7 +1133,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 0194f69a3eb78c746a777ce762c7cc42, type: 2}
+  - {fileID: 2100000, guid: 78f1fbfca859cef4f8d8968d9fb8f532, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1195,8 +1195,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   conditions:
   - {fileID: 671618060}
-  materialTEMP: {fileID: 2100000, guid: 7552d40b1bd72f54a9712b7b3dd19aeb, type: 2}
-  videoPlayer: {fileID: 799020014}
+  url: https://l-boe.de/p/dm/auschwitz_interview.mp4
+  meshRenderer: {fileID: 671618058}
+  projectorEffects: {fileID: 1777517079931385725}
 --- !u!1001 &678404306
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1589,6 +1590,7 @@ GameObject:
   m_Component:
   - component: {fileID: 799020015}
   - component: {fileID: 799020014}
+  - component: {fileID: 799020016}
   m_Layer: 0
   m_Name: VideoPlayer
   m_TagString: Untagged
@@ -1614,14 +1616,14 @@ VideoPlayer:
   m_TargetMaterialProperty: _MainTex
   m_RenderMode: 2
   m_AspectRatio: 2
-  m_DataSource: 1
+  m_DataSource: 0
   m_PlaybackSpeed: 1
   m_AudioOutputMode: 2
   m_TargetAudioSources:
   - {fileID: 0}
   m_DirectAudioVolumes:
   - 1
-  m_Url: https://l-boe.de/p/dm/auschwitz_interview.mp4
+  m_Url: 
   m_EnabledAudioTracks: 01
   m_DirectAudioMutes: 00
   m_ControlledAudioTrackCount: 1
@@ -1645,6 +1647,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &799020016
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 799020013}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 056f77a21f26a0245844d763065d9e56, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  loading: {fileID: 32900000, guid: c85a0047c6e3e2e45945a6f80a2c72de, type: 3}
+  videoMaterial: {fileID: 2100000, guid: 0194f69a3eb78c746a777ce762c7cc42, type: 2}
+  loadingMaterial: {fileID: 2100000, guid: 5fc6a93bb4e697745bb481cf371de1ff, type: 2}
 --- !u!1 &826496267
 GameObject:
   m_ObjectHideFlags: 0
@@ -3289,7 +3306,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!33 &2616320233891209826
 MeshFilter:
   m_ObjectHideFlags: 0

@@ -6,9 +6,9 @@ using UnityEngine.Video;
 
 public class VideoWall : ConditionedObject
 {
-    [SerializeField] Material materialTEMP;
-    [SerializeField] VideoPlayer videoPlayer;
-
+    [SerializeField] string url;
+    [SerializeField] MeshRenderer meshRenderer;
+    [SerializeField] GameObject projectorEffects;
     public override bool Try(bool on)
     {
         if (base.Try(on))
@@ -24,6 +24,12 @@ public class VideoWall : ConditionedObject
 
     private void PlayVideo()
     {
-        videoPlayer.Play();
+        Game.VideoPlayerHandler.Play(url, this);
+        projectorEffects.SetActive(true);
+    }
+
+    internal void SetMaterial(Material material)
+    {
+        meshRenderer.material = material;
     }
 }

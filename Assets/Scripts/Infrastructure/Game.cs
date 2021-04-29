@@ -52,6 +52,15 @@ public class Game : MonoBehaviour
             return SoundPlayer.GetInstance();
         }
     }
+
+    public static VideoPlayerHandler VideoPlayerHandler
+    {
+        get
+        {
+            return VideoPlayerHandler.GetInstance();
+        }
+    }
+
     public static EffectHandler EffectHandler
     {
         get
