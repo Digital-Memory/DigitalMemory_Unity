@@ -11,6 +11,12 @@ public class AnimatingObject : ConditionedObject
     [AnimatorParam("animator")]
     string varibleFloat;
 
+    [CurveRange(0f,0f,1f,1f)]
+    [SerializeField] AnimationCurve animationCurve;
+
+    float time = 0f;
+    bool isAnimating = false;
+
     private void Reset()
     {
         animator = GetComponent<Animator>();
@@ -22,6 +28,17 @@ public class AnimatingObject : ConditionedObject
         animator = GetComponent<Animator>();
     }
 
+    public override bool Try()
+    {
+        if (base.Try())
+        {
+            isAnimating = true;
+            return true;
+        }
+
+        return true;
+    }
+
     public override bool Try(float progress)
     {
         if (base.Try(progress))
@@ -31,6 +48,19 @@ public class AnimatingObject : ConditionedObject
         }
 
         return false;
+    }
+
+    private void Update()
+    {
+        if (isAnimating)
+        {
+            UpdateAnimationVariable(animationCurve.Evaluate(time));
+            time += Time.deltaTime;
+            if (time >= 1f)
+            {
+                isAnimating = false;
+            }
+        }
     }
 
     private void UpdateAnimationVariable(float progress)
