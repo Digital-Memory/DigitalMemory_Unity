@@ -9,7 +9,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7033817646825189703}
-  m_Layer: 0
+  - component: {fileID: 5055588864666005557}
+  - component: {fileID: 7229808523134866452}
+  - component: {fileID: 3952559743398401430}
+  m_Layer: 8
   m_Name: Food_Potatoes_Prfb
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -31,6 +34,58 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &5055588864666005557
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2985416752866232440}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.25, y: 0.1, z: 0.25}
+  m_Center: {x: 0, y: 0.04, z: -0.015}
+--- !u!54 &7229808523134866452
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2985416752866232440}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 126
+  m_CollisionDetection: 0
+--- !u!114 &3952559743398401430
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2985416752866232440}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3aee1cc419bc32446b3799e74e13d819, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rigidbody: {fileID: 7229808523134866452}
+  customDragPivot: {fileID: 0}
+  YOffsetOnDrop: 0
+  startDragEffect: {fileID: 0}
+  endDragEffect: {fileID: 0}
+  attachment: Food
+  isAttached: 0
+  defaultParent: {fileID: 0}
+  attachEffect: {fileID: 0}
+  detachEffect: {fileID: 0}
+  potentialSlotEffect: {fileID: 0}
 --- !u!1001 &4972020002194869386
 PrefabInstance:
   m_ObjectHideFlags: 0

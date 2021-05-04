@@ -99,7 +99,7 @@ Camera:
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 63
+    m_Bits: 4294967295
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -163,9 +163,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c526030010204e04098635100e7ed8f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ignoreRaycast:
+  draggingLayerMask:
     serializedVersion: 2
-    m_Bits: 16
+    m_Bits: 235
+  notDraggingLayerMask:
+    serializedVersion: 2
+    m_Bits: 363
   onHoverDragableEnter: {fileID: 11400000, guid: 5fe1544588a2380428fdd65417d02db1, type: 2}
   onHoverDragableExit: {fileID: 11400000, guid: a9980cc6411067f4cb31d8abf0b82490, type: 2}
 --- !u!114 &2859037308052614216

@@ -26,7 +26,7 @@ public class HoverHandler : Singleton<HoverHandler>
         //Hover
         IHoverable newDragHover = null;
         if (hit.collider != null)
-            newDragHover = hit.collider.GetComponent<IHoverable>();
+            newDragHover = hit.collider.GetComponentInParent<IHoverable>();
 
         if (currentHover != newDragHover)
         {

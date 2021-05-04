@@ -58,7 +58,15 @@ public class Condition : ConditionBase
         }
     }
 
+
+
 #if UNITY_EDITOR
+    [Button]
+    protected void FixBehaviour()
+    {
+        behaviour = behaviour;
+    }
+
     private void Reset()
     {
         ConditionedObject co = GetComponent<ConditionedObject>();

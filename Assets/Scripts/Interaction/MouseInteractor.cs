@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class MouseInteractor : Singleton<MouseInteractor>
 {
-    [SerializeField] LayerMask ignoreRaycast;
+    [SerializeField] LayerMask draggingLayerMask, notDraggingLayerMask;
     [SerializeField] Effect onHoverDragableEnter, onHoverDragableExit;
 
     GameObject currenHoverTEMP;
@@ -36,7 +36,9 @@ public class MouseInteractor : Singleton<MouseInteractor>
         if (raycastDistanceIsLocked)
             lockedRaycastPlane.Raycast(ray, out lockedRaycastDistance);
 
-        if (!Physics.Raycast(ray, out hit, raycastDistanceIsLocked ? lockedRaycastDistance : 100f, ~ignoreRaycast))
+        LayerMask layerMask = Game.DragHandler.IsDragging ? draggingLayerMask : notDraggingLayerMask;
+
+        if (!Physics.Raycast(ray, out hit, raycastDistanceIsLocked ? lockedRaycastDistance : 100f, layerMask))
         {
             hit.point = ray.GetPoint(raycastDistanceIsLocked ? lockedRaycastDistance : FLOOR_RAYCAST_DISTANCE);
         }
@@ -70,9 +72,9 @@ public class MouseInteractor : Singleton<MouseInteractor>
 
         if (hit.collider != null)
         {
-            dragable = hit.collider.GetComponent<IDragable>();
+            dragable = hit.collider.GetComponentInParent<IDragable>();
             clickable = hit.collider.GetComponent<IClickable>();
-            attachable = hit.collider.GetComponent<IAttachable>();
+            attachable = hit.collider.GetComponentInParent<IAttachable>();
         }
 
         Game.HoverHandler.UpdateHover(hit, dragable);

@@ -28,10 +28,12 @@ public class Attacher : MonoBehaviour, IAttacher
     public bool IsAttached => isAttached;
 
     public bool allowsDetach = false;
+    public bool destroyColliderOnAttachment = false;
     [HideInInspector] public bool AllowsDetach => allowsDetach;
 
     protected void Start()
     {
+        gameObject.layer = 7;
         IAttachable attachable = GetComponentInChildren<IAttachable>();
         isAttached = attachable != null;
         OnChangeAttached?.Invoke(isAttached, attachable != null ? attachable.GetAttachment() : "");
@@ -39,6 +41,7 @@ public class Attacher : MonoBehaviour, IAttacher
 
     public bool CanAttach(string attachmentName)
     {
+        Debug.Log(((this.attachmentName == attachmentName || this.attachmentName == "")? "Can attach: " : " Can NOT attach: ") + this.attachmentName + " == " + attachmentName);
         return this.attachmentName == attachmentName || this.attachmentName == "";
     }
 
@@ -90,5 +93,14 @@ public class Attacher : MonoBehaviour, IAttacher
         transformToAttach.parent = transform;
         transformToAttach.localPosition = attachmentOffset;
         transformToAttach.localRotation = Quaternion.identity;
+
+        if (destroyColliderOnAttachment)
+        {
+            Collider[] colliders = GetComponentsInChildren<Collider>();
+            foreach (Collider collider in colliders)
+            {
+                Destroy(collider);
+            }
+        }
     }
 }
