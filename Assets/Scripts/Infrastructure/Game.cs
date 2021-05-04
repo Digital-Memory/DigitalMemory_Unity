@@ -57,7 +57,7 @@ public class Game : MonoBehaviour
     {
         get
         {
-            return VideoPlayerHandler.GetInstance();
+            return VideoPlayerHandler.GetInstance(usePrefab: true);
         }
     }
 

@@ -9,21 +9,34 @@ public class VideoWall : ConditionedObject
     [SerializeField] string url;
     [SerializeField] MeshRenderer meshRenderer;
     [SerializeField] GameObject projectorEffects;
+
+    bool playedVideo = false;
+
+    public override bool Try(float progress)
+    {
+        if (base.Try(progress) && !playedVideo)
+        {
+            PlayVideo();
+            return true;
+        }
+
+        return false;
+    }
+
     public override bool Try(bool on)
     {
         if (base.Try(on))
         {
             PlayVideo();
-            Debug.Log("Play");
             return true;
         }
 
-        Debug.Log("Dont Play");
         return false;
     }
 
     private void PlayVideo()
     {
+        playedVideo = true;
         Game.VideoPlayerHandler.Play(url, this);
         projectorEffects.SetActive(true);
     }
