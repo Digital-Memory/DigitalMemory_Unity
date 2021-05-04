@@ -6,4 +6,5 @@ public class UIHandler : Singleton<UIHandler>
 {
     public CustomCursorHandler CustomCursor;
     public InventoryAdder InventoryAdder;
+    public QuoteDisplayer QuoteDisplayer;
 }
