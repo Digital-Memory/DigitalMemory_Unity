@@ -9,6 +9,7 @@ public class Hatch : ConditionedObject
     [SerializeField] AnimationCurve doorZRotation;
     [Expandable]
     [SerializeField] Effect openningEffect;
+    [SerializeField] Vector3 axisMultiplier;
 
     bool isOpen;
     bool isAnimating;
@@ -83,8 +84,10 @@ public class Hatch : ConditionedObject
             else
             {
                 float rotation = doorZRotation.Evaluate(isOpen ? (Time.time - clickedTimestamp) : ((Time.time - clickedTimestamp) * -1));
-                doorLeft.localRotation = Quaternion.Euler(0, 0, rotation);
-                doorRight.localRotation = Quaternion.Euler(0, 0, -rotation);
+                if (doorLeft != null)
+                    doorLeft.localRotation = Quaternion.Euler(axisMultiplier * rotation);
+                if (doorRight != null)
+                    doorRight.localRotation = Quaternion.Euler(axisMultiplier * -rotation);
             }
         }
     }
