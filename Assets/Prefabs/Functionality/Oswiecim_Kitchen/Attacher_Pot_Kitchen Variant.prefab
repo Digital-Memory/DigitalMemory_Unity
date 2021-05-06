@@ -13,6 +13,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.5, y: 0.5, z: 1.5}
   m_Center: {x: -0.0000076293945, y: 0.15858133, z: 0.000015258789}
+--- !u!114 &1096365556572908384
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2580680611740919486}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81278b0024b455041ac664058be6d923, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  IsAttached: 1
 --- !u!114 &7000186412375891420
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -30,19 +43,6 @@ MonoBehaviour:
   attachmentOffset: {x: 0, y: 0.1, z: 0}
   allowsDetach: 0
   destroyColliderOnAttachment: 1
---- !u!114 &7912257388187504253
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2580680611740919486}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 81278b0024b455041ac664058be6d923, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  IsAttached: 0
 --- !u!114 &8407973074151932312
 MonoBehaviour:
   m_ObjectHideFlags: 0

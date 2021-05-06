@@ -59,13 +59,13 @@ public class ConditionedObject : InputObject
     {
         if (conditions != null)
         {
-
+    
             for (int i = 0; i < conditions.Count; i++)
             {
                 if (conditions[i] != null)
                 {
                     Condition condition = conditions[i] as Condition;
-
+    
                     if (condition != null && condition.behaviour != null)
                     {
                         Gizmos.color = condition.IsMet() ? Color.green : Color.red;
@@ -74,8 +74,10 @@ public class ConditionedObject : InputObject
                 }
             }
         }
-
+    
         if (!CheckAllConditionsForTrue())
-            DebugDraw.Cross(transform.position, Color.red, 1);
+            DebugDraw.Cross(transform.position, Color.red, 1 * Game.Settings.CurrentZoomLevel);
+        else
+            DebugDraw.Circle(transform.position, Color.green, 1 * Game.Settings.CurrentZoomLevel);
     }
 }

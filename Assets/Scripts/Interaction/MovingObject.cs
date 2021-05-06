@@ -26,7 +26,7 @@ public class MovingObject : ConditionedObject
     protected override void OnDrawGizmos()
     {
         base.OnDrawGizmos();
-
+    
         Gizmos.color = Color.yellow;
         Gizmos.DrawLine(point1, point2);
     }

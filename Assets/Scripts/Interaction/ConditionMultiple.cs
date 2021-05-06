@@ -53,15 +53,17 @@ public class ConditionMultiple : ConditionBase
                     {
                         if (behaviour.GetBool() != MustBeTrue)
                         {
-                            DebugDraw.Cross(behaviour.gameObject.transform.position + Vector3.up * 2, Color.red,2);
+                            DebugDraw.Cross(behaviour.gameObject.transform.position + Vector3.up * Game.Settings.CurrentZoomLevel, Color.red, 2 * Game.Settings.CurrentZoomLevel);
                             return false;
                         } else
                         {
-                            DebugDraw.Circle(behaviour.gameObject.transform.position + Vector3.up * 2, Color.green, 1);
+                            DebugDraw.Circle(behaviour.gameObject.transform.position + Vector3.up * Game.Settings.CurrentZoomLevel, Color.green, 1 * Game.Settings.CurrentZoomLevel);
                         }
                     }
                 }
                 break;
+
+
 
             case ConditionType.FLOAT:
                 switch (FloatIs)

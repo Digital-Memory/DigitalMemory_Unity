@@ -41,7 +41,6 @@ public class Attacher : MonoBehaviour, IAttacher
 
     public bool CanAttach(string attachmentName)
     {
-        Debug.Log(((this.attachmentName == attachmentName || this.attachmentName == "")? "Can attach: " : " Can NOT attach: ") + this.attachmentName + " == " + attachmentName);
         return this.attachmentName == attachmentName || this.attachmentName == "";
     }
 

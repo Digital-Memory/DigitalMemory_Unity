@@ -7,7 +7,7 @@ public class ConditionListenerAttacher : ConditionListenerBehaviour
     Attacher attacher;
     public bool IsAttached;
 
-    void OnEnable()
+    void Awake()
     {
         attacher = GetComponent<Attacher>();
         if (attacher != null)
