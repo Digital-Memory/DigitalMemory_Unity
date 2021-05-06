@@ -17,6 +17,7 @@ public class CinemachineCameraSwitcher : ConditionedObject
 
     private void Start()
     {
+        cinemachineVirtualCamera.Priority = 10;
         if (isDefault)
             Switch();
     }
