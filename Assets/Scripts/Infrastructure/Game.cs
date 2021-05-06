@@ -125,6 +125,14 @@ public class Game : MonoBehaviour
         }
     }
 
+    public static AssetBundleHandler AssetBundleHandler
+    {
+        get
+        {
+            return AssetBundleHandler.GetInstance(usePrefab: true);
+        }
+    }
+
     private void Start()
     {
         //Initialize Default Objects
