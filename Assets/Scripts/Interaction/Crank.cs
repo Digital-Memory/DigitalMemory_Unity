@@ -40,7 +40,7 @@ public class Crank : SimpleAttachable
             angleBefore = angle;
 
         float deltaAngle = Mathf.DeltaAngle(angleBefore, angle);
-        Debug.Log("deltaAngle between: " + deltaAngle + " (" + angleBefore + " / " + angle + ")");
+        //Debug.Log("deltaAngle between: " + deltaAngle + " (" + angleBefore + " / " + angle + ")");
 
         if (Mathf.Abs(deltaAngle) > 45f)
         {

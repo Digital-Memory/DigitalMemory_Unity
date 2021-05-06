@@ -24,7 +24,10 @@ public class CollectToInventoryOnClick : MonoBehaviour, IClickable, IHoverable
 
     public GameObject GetGameObject()
     {
-        return gameObject;
+        if (this != null)
+            return gameObject;
+
+        return null;
     }
 
     public bool IsClickable()

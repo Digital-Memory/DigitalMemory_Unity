@@ -29,17 +29,11 @@ public class VideoPlayerHandler : Singleton<VideoPlayerHandler>
 
     private void Update()
     {
-        if (isLoading)
+        if (isLoading && videoPlayer.isPrepared == true)
         {
-            if (videoPlayer.isPrepared == false)
-            {
-                Debug.LogWarning("LOADDDING");
-            } else
-            {
-                videoWall.SetMaterial(videoMaterial);
-                videoPlayer.Play();
-                isLoading = false;
-            }
+            videoWall.SetMaterial(videoMaterial);
+            videoPlayer.Play();
+            isLoading = false;
         }
     }
 }

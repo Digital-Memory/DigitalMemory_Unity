@@ -35,8 +35,6 @@ public class DragHandler : Singleton<DragHandler>
     {
         IAttacher attacher = null;
 
-        Debug.Log("Hover: " + (hit.collider != null));
-
         if (hit.collider != null)
             attacher = hit.collider.GetComponent<IAttacher>();
 
