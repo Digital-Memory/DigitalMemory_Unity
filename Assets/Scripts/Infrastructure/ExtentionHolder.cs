@@ -65,6 +65,11 @@ public static class ExtentionHolder
         return Mathf.Max(vector3.x, vector3.y, vector3.z);
     }
 
+    public static Vector3 Clamp (this Vector3 vector3, Vector3 min, Vector3 max)
+    {
+        return new Vector3(Mathf.Clamp(vector3.x, min.x, max.x), Mathf.Clamp(vector3.y, min.y, max.y), Mathf.Clamp(vector3.z, min.z, max.z));
+    }
+
     public static float[] NotZero(this Vector3 vector3)
     {
         List<float> floats = new List<float>();

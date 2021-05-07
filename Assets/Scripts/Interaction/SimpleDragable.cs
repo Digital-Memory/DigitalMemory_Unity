@@ -22,6 +22,7 @@ public interface IDragable : IHoverable
     float GetEndDragYOffset();
     bool IsDragable();
     bool ShouldLockOnDrag();
+    Vector3 GetRaycastPlaneLockDirection();
     void UpdateDragPosition(Vector3 point, Vector3 vector3, bool useCustomPivot);
 }
 
@@ -107,5 +108,10 @@ public class SimpleDragable : MonoBehaviour, IDragable
     public bool ShouldLockOnDrag()
     {
         return false;
+    }
+
+    public Vector3 GetRaycastPlaneLockDirection()
+    {
+        return Vector3.zero;
     }
 }
