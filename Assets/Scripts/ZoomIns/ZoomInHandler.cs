@@ -42,7 +42,7 @@ public class ZoomInHandler : Singleton<ZoomInHandler>
 
         float factor = Mathf.Max(x < 0.5f ? 1 - x : x, y < 0.5f ? 1 - y : y);
         current.TryChangeFadeoutPreview(factor > 0.9f);
-        if (Input.GetMouseButton(0) && factor > 0.9f) {
+        if (Input.GetMouseButtonDown(0) && factor > 0.9f) {
             ZoomOut();
         }
     }
