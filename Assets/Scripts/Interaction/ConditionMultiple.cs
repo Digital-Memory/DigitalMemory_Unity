@@ -47,6 +47,7 @@ public class ConditionMultiple : ConditionBase
         {
             case ConditionType.BOOL:
 
+                int i = 0;
                 foreach (ConditionListenerAttacher behaviour in behaviours)
                 {
                     if (behaviour != null)
@@ -54,14 +55,25 @@ public class ConditionMultiple : ConditionBase
                         if (behaviour.GetBool() != MustBeTrue)
                         {
                             DebugDraw.Cross(behaviour.gameObject.transform.position + Vector3.up * Game.Settings.CurrentZoomLevel, Color.red, 2 * Game.Settings.CurrentZoomLevel);
-                            return false;
                         } else
                         {
+                            i++;
                             DebugDraw.Circle(behaviour.gameObject.transform.position + Vector3.up * Game.Settings.CurrentZoomLevel, Color.green, 1 * Game.Settings.CurrentZoomLevel);
                         }
                     }
                 }
+                if (i == behaviours.Length)
+                {
+                    Debug.Log($"Conditon check success ({behaviours.Length}) on {gameObject.name}");
+                    return true;
+                } else
+                {
+                    Debug.Log($"Conditon check failed ({i} / {behaviours.Length}) on {gameObject.name}");
+                    return false;
+                }
+
                 break;
+
 
 
 

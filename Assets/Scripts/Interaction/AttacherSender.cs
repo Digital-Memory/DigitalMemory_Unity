@@ -18,7 +18,7 @@ public class AttacherSender : InputSender
     [HideInInspector] public bool TypeIsImpulse => (typeToSend == InputType.Impulse);
 
     Attacher attacher;
-    private void OnEnable()
+    private void Start()
     {
         attacher = GetComponent<Attacher>();
 
@@ -40,6 +40,8 @@ public class AttacherSender : InputSender
 
     private void OnChangeAttached(bool isAttached, string attachment)
     {
+        Debug.Log($"Attacher: {gameObject.name} send attach input: {isAttached}");
+
         switch (typeToSend)
         {
             case InputType.Impulse:

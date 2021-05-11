@@ -7,7 +7,7 @@ public class ConditionListenerAttacher : ConditionListenerBehaviour
     Attacher attacher;
     public bool IsAttached;
 
-    void Awake()
+    void OnEnable()
     {
         attacher = GetComponent<Attacher>();
         if (attacher != null)
@@ -31,6 +31,7 @@ public class ConditionListenerAttacher : ConditionListenerBehaviour
 
     private void AttacherChangeAttached(bool isAttached, string attachment)
     {
+        Debug.Log($"Attacher: {gameObject.name} changed attached to: {isAttached}");
         IsAttached = isAttached;
     }
 }
