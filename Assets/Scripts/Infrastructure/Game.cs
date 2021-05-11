@@ -125,6 +125,13 @@ public class Game : MonoBehaviour
         }
     }
 
+    public static ZoomInHandler ZoomInHandler
+    {
+        get {
+            return ZoomInHandler.GetInstance();
+        }
+    }
+
     public static AssetBundleHandler AssetBundleHandler
     {
         get
