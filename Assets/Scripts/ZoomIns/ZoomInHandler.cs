@@ -12,6 +12,7 @@ public class ZoomInHandler : Singleton<ZoomInHandler>
     public System.Action<bool> ChangedZoomIn;
 
     public void ZoomIn(ZoomIn zoom) {
+        Debug.Log($"Zoom in on: {zoom.name}");
         current = zoom;
         ChangedZoomIn?.Invoke(true);
     }
@@ -21,8 +22,6 @@ public class ZoomInHandler : Singleton<ZoomInHandler>
 
         if (overview == null)
             Debug.LogError("No overview found. Make sure you have and active ZoomOverview script with a virtual camera present.");
-        else
-            overview.MoveToTopOfPrioritySubqueue();
 
         ChangedZoomIn?.Invoke(false);
     }
@@ -42,8 +41,22 @@ public class ZoomInHandler : Singleton<ZoomInHandler>
 
         float factor = Mathf.Max(x < 0.5f ? 1 - x : x, y < 0.5f ? 1 - y : y);
         current.TryChangeFadeoutPreview(factor > 0.9f);
-        if (Input.GetMouseButtonDown(0) && factor > 0.9f) {
+        if (Input.GetMouseButtonUp(0) && factor > 0.9f) {
             ZoomOut();
         }
+
+        Debug.Log($"cam: {FindObjectOfType<CinemachineBrain>().ActiveVirtualCamera.Name} with prio {FindObjectOfType<CinemachineBrain>().ActiveVirtualCamera.Priority}");
+    }
+
+    private void OnGUI()
+    {
+        string str = "";
+        foreach (CinemachineVirtualCamera vcam in FindObjectsOfType<CinemachineVirtualCamera>())
+        {
+            str += (vcam == (FindObjectOfType<CinemachineBrain>().ActiveVirtualCamera) ? ">>> " : "");
+            str += vcam.gameObject.transform.parent ? vcam.gameObject.transform.parent.name : vcam.gameObject.name;
+            str += " - " + vcam.Name + " - " + vcam.Priority.ToString() + "\n";
+        }
+        GUILayout.Box(str, GUILayout.Width(450));
     }
 }

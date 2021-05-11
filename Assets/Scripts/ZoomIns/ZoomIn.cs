@@ -31,7 +31,7 @@ public class ZoomIn : MonoBehaviour, IClickable, IHoverable
 
     private void Zoom()
     {
-        cinemachineVirtualCamera.MoveToTopOfPrioritySubqueue();
+        cinemachineVirtualCamera.Priority = 100;
         active = true;
         Game.ZoomInHandler.ZoomIn(this);
     }
@@ -85,7 +85,10 @@ public class ZoomIn : MonoBehaviour, IClickable, IHoverable
         coll.enabled = !isZoomedIn;
 
         if (!isZoomedIn)
+        {
             active = false;
+            cinemachineVirtualCamera.Priority = 10;
+        }
     }
 
     public void StartHover()
