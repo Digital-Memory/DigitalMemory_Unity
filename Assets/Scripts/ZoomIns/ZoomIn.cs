@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Cinemachine;
@@ -5,17 +6,23 @@ using NaughtyAttributes;
 using UnityEngine;
 
 [RequireComponent(typeof(Collider))]
-public class ZoomIn : MonoBehaviour, IClickable
+public class ZoomIn : MonoBehaviour, IClickable, IHoverable
 {
     [SerializeField] CinemachineVirtualCamera cinemachineVirtualCamera;
     [SerializeField] AnimationCurve zoomOutCurve;
     Vector3 virtualCameraPosition;
     Collider coll;
+    Material desaturationMaterial;
     [ShowNonSerializedField] bool active = false;
     [ShowNonSerializedField] bool inFadeoutPreview = false;
     [ShowNonSerializedField] bool animate = false;
     float current, target;
     int direction;
+
+    public event Action OnStartHoverEvent;
+    public event Action OnEndHoverEvent;
+
+    public bool IsNull => this == null;
 
     public void Click()
     {
@@ -65,6 +72,7 @@ public class ZoomIn : MonoBehaviour, IClickable
     {
         coll = GetComponent<Collider>();
         virtualCameraPosition = cinemachineVirtualCamera.transform.position;
+        desaturationMaterial = Game.Settings.DesaturationMaterial;
         Game.ZoomInHandler.ChangedZoomIn += OnChangeZoom;
     }
 
@@ -78,5 +86,27 @@ public class ZoomIn : MonoBehaviour, IClickable
 
         if (!isZoomedIn)
             active = false;
+    }
+
+    public void StartHover()
+    {
+        Camera cam = Game.CameraController.Camera;
+        Vector2 p = cam.WorldToScreenPoint(transform.position);
+        Vector2 p2 = cam.WorldToScreenPoint(transform.position + cam.transform.right * 8);
+        float size = Vector2.Distance(p, p2);
+
+        desaturationMaterial.SetInt("mask", 1);
+        desaturationMaterial.SetVector("pos", new Vector4(p.x, p.y, 0, 0));
+        desaturationMaterial.SetFloat("size", size);
+    }
+
+    public void EndHover()
+    {
+        desaturationMaterial.SetInt("mask", 0);
+    }
+
+    public GameObject GetGameObject()
+    {
+        return gameObject;
     }
 }

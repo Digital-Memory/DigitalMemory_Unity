@@ -12,4 +12,5 @@ public class GameSettings : ScriptableObject
     [Scene]
     public List<int> playableLevels = new List<int>();
     public float CurrentZoomLevel = 1;
+    public Material DesaturationMaterial;
 }
