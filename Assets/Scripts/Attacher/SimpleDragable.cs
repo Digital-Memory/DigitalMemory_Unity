@@ -31,6 +31,7 @@ public interface IAttachable : IDragable
     void Attach(IAttacher toAttachTo);
     string GetAttachment();
     IAttacher GetCurrentAttached();
+    InventoryObjectData GetInventoryObjectData();
 }
 
 public class SimpleDragable : MonoBehaviour, IDragable

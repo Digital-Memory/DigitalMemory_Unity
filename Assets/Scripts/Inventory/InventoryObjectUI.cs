@@ -31,7 +31,8 @@ public class InventoryObjectUI : UnityEngine.UI.Button, IDragHandler, IBeginDrag
     public void OnBeginDrag(PointerEventData eventData)
     {
         GameObject go = Instantiate(data.prefab);
-        go.transform.localScale = Game.Settings.CurrentZoomLevel * Vector3.one;
+        float scaleMultiplier = Game.ZoomInHandler.IsZoomedIn ? data.zoomInSceneScaleMultiplier : data.overviewSceneScaleMultiplier;
+        go.transform.localScale = scaleMultiplier * Vector3.one;
         IDragable dragable = go.GetComponent<IDragable>();
         if (dragable != null)
         {
@@ -47,6 +48,16 @@ public class InventoryObjectUI : UnityEngine.UI.Button, IDragHandler, IBeginDrag
     public void OnDrag(PointerEventData eventData)
     {
         //
+    }
+
+    public override void OnPointerEnter(PointerEventData eventData)
+    {
+        Game.UIHandler.Tooltip.Show(gameObject, data.hoverText);
+    }
+
+    public override void OnPointerExit(PointerEventData eventData)
+    {
+        Game.UIHandler.Tooltip.TryHide(gameObject);
     }
 
     internal void ChangeAmount(int change)

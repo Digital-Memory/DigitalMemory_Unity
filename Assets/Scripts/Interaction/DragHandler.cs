@@ -89,6 +89,20 @@ public class DragHandler : Singleton<DragHandler>
         dragable.EndDrag(point + dragable.GetEndDragYOffset() * Vector3.up);
 
         OnEndDrag?.Invoke(dragable);
+
+        IAttachable attachable = dragable as IAttachable;
+        if (attachable != null) {
+            InventoryObjectData data = attachable.GetInventoryObjectData();
+
+            if (data != null)
+            {
+                Game.UIHandler.InventoryAdder.MoveToInventory(data, Input.mousePosition);
+                Destroy(dragable.GetGameObject());
+            } else {
+                Debug.LogWarning("Droppped Attachable unattached but no Inventory Data was found, could not be get moved back to inventory.");
+            }
+
+        }
     }
 
     private void Attach(IAttachable attachable, IAttacher attacher)

@@ -25,6 +25,7 @@ public class SimpleAttachable : SimpleDragable, IAttachable, ICloseupable
 {
     public string attachment;
     private bool isInCloseup;
+    [SerializeField] private InventoryObjectData inventoryObjectData;
     [SerializeField] private bool isAttached;
     IAttacher currentAttacher;
     [SerializeField] private Transform defaultParent;
@@ -153,5 +154,10 @@ public class SimpleAttachable : SimpleDragable, IAttachable, ICloseupable
     public Vector3 GetCustomGlobalOffset()
     {
         return (customDragPivot == null) ? Vector3.zero : (customDragPivot.position - transform.position);
+    }
+
+    public InventoryObjectData GetInventoryObjectData()
+    {
+        return inventoryObjectData;
     }
 }

@@ -14,4 +14,8 @@ public class InventoryObjectData : ScriptableObject
     [ShowAssetPreview(128, 128)]
     public Sprite icon;
 
+    public float overviewSceneScaleMultiplier = 1f, zoomInSceneScaleMultiplier = 0.2f;
+
+    [ResizableTextArea]
+    public string hoverText;
 }
