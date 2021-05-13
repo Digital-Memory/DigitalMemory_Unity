@@ -5,13 +5,13 @@ using Cinemachine;
 using NaughtyAttributes;
 using UnityEngine;
 
-[RequireComponent(typeof(Collider))]
+[RequireComponent(typeof(SphereCollider))]
 public class ZoomIn : MonoBehaviour, IClickable, IHoverable
 {
     [SerializeField] CinemachineVirtualCamera cinemachineVirtualCamera;
     [SerializeField] AnimationCurve zoomOutCurve;
     Vector3 virtualCameraPosition;
-    Collider coll;
+    SphereCollider coll;
     Material desaturationMaterial;
     [ShowNonSerializedField] bool active = false;
     [ShowNonSerializedField] bool inFadeoutPreview = false;
@@ -70,7 +70,7 @@ public class ZoomIn : MonoBehaviour, IClickable, IHoverable
 
     private void OnEnable()
     {
-        coll = GetComponent<Collider>();
+        coll = GetComponent<SphereCollider>();
         virtualCameraPosition = cinemachineVirtualCamera.transform.position;
         desaturationMaterial = Game.Settings.DesaturationMaterial;
         Game.ZoomInHandler.ChangedZoomIn += OnChangeZoom;
@@ -95,7 +95,7 @@ public class ZoomIn : MonoBehaviour, IClickable, IHoverable
     {
         Camera cam = Game.CameraController.Camera;
         Vector2 p = cam.WorldToScreenPoint(transform.position);
-        Vector2 p2 = cam.WorldToScreenPoint(transform.position + cam.transform.right * 8);
+        Vector2 p2 = cam.WorldToScreenPoint(transform.position + cam.transform.right * coll.radius * 2);
         float size = Vector2.Distance(p, p2);
 
         desaturationMaterial.SetInt("mask", 1);
