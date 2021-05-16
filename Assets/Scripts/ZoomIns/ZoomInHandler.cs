@@ -48,12 +48,13 @@ public class ZoomInHandler : Singleton<ZoomInHandler>
         Debug.Log($"cam: {FindObjectOfType<CinemachineBrain>().ActiveVirtualCamera.Name} with prio {FindObjectOfType<CinemachineBrain>().ActiveVirtualCamera.Priority}");
     }
 
+    //Need to Improve this at some point
     private void OnGUI()
     {
         string str = "";
         foreach (CinemachineVirtualCamera vcam in FindObjectsOfType<CinemachineVirtualCamera>())
         {
-            str += (vcam == (FindObjectOfType<CinemachineBrain>().ActiveVirtualCamera) ? ">>> " : "");
+            str += (vcam == (FindObjectOfType<CinemachineBrain>().ActiveVirtualCamera as CinemachineVirtualCamera) ? ">>> " : "");
             str += vcam.gameObject.transform.parent ? vcam.gameObject.transform.parent.name : vcam.gameObject.name;
             str += " - " + vcam.Name + " - " + vcam.Priority.ToString() + "\n";
         }

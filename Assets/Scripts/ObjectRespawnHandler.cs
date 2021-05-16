@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class ObjectRespawnHandler : MonoBehaviour
 {
+    //Need to Improve this at some point
     private const int RESPAWN_DISTANCE_TO_CENTER = 20;
     private void OnTriggerExit(Collider other)
     {

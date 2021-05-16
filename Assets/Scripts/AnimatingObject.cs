@@ -49,6 +49,7 @@ public class AnimatingObject : ConditionedObject
         }
         else
         {
+            //Need to Improve this at some point
             return false;
         }
     }

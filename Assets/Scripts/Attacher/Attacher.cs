@@ -33,6 +33,7 @@ public class Attacher : MonoBehaviour, IAttacher
 
     protected void Start()
     {
+        //Need to Improve this at some point
         gameObject.layer = 7;
         IAttachable attachable = GetComponentInChildren<IAttachable>();
         isAttached = attachable != null;

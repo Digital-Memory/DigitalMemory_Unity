@@ -56,12 +56,11 @@ public class DragableImageHandle : MonoBehaviour, IDragable
 
     public void EndDrag(Vector3 position)
     {
-        
     }
 
     public void EndHover()
     {
-        
+        OnEndHoverEvent?.Invoke();
     }
 
     public float GetEndDragYOffset()
@@ -96,7 +95,7 @@ public class DragableImageHandle : MonoBehaviour, IDragable
 
     public void StartHover()
     {
-        //
+        OnStartHoverEvent?.Invoke();
     }
 
     public void UpdateDragPosition(Vector3 point, Vector3 vector3, bool useCustomPivot)

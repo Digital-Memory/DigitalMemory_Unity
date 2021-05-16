@@ -56,6 +56,7 @@ public class CloseupHandler : Singleton<CloseupHandler>
         UpdatePositionAndRotation(currentCloseupable, targetPosition, targetRotation, Vector3.Distance(targetPosition, (currentCloseupable.GetPosition() - currentCloseupable.GetCustomGlobalOffset())) > 0.01f);
     }
 
+    //Need to Improve this at some point
     internal void UpdateCloseup(RaycastHit hit, bool v1, bool v2)
     {
         if (v2)

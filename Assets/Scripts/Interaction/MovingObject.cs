@@ -23,10 +23,8 @@ public class MovingObject : ConditionedObject
         transform.position = Vector3.Lerp(point1, point2, progress);
     }
 
-    protected override void OnDrawGizmos()
-    {
-        base.OnDrawGizmos();
-    
+    private void OnDrawGizmos()
+    {    
         Gizmos.color = Color.yellow;
         Gizmos.DrawLine(point1, point2);
     }

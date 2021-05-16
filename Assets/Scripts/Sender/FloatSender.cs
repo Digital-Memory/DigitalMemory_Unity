@@ -133,6 +133,8 @@ public class FloatSender : InputSender
         return newValue < MAX_VALUE && newValue > MIN_VALUE;
     }
 
+
+    //Need to Improve this at some point
 #if UNITY_EDITOR
 
     void Update()

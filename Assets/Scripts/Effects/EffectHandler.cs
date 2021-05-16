@@ -15,6 +15,7 @@ public class EffectHandler : Singleton<EffectHandler>
     {
         get
         {
+            //Need to Improve this at some point
             if (attachers == null)
                 attachers = FindObjectsOfType<Attacher>();
 

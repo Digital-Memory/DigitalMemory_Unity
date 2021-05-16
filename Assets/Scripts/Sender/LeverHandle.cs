@@ -8,9 +8,6 @@ public class LeverHandle : MonoBehaviour, IDragable
     [SerializeField] AnimationCurve distanceToRotationCurve;
     [SerializeField] Collider handleCollider;
 
-    [SerializeField] float snapSpeed = 10f;
-
-    bool isSnapping = false;
     bool isDragging = false;
 
     float startRotation;
@@ -42,7 +39,6 @@ public class LeverHandle : MonoBehaviour, IDragable
     {
         isDragging = false;
         handleCollider.enabled = true;
-        isSnapping = true;
         lever.EndPlayerInput();
     }
 
@@ -75,6 +71,7 @@ public class LeverHandle : MonoBehaviour, IDragable
         handleCollider.enabled = false;
     }
 
+    //Need to Improve this at some point
     public void UpdateDragPosition(Vector3 point, Vector3 vector3, bool useCustomPivot)
     {
         if (startPosition == Vector3.zero)

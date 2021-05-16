@@ -64,6 +64,7 @@ public class SpringObject : ConditionedObject
             StartCoroutine(TensionReleaseRoutine());
     }
 
+    //Need to Improve this at some point
     IEnumerator TensionReleaseRoutine()
     {
         isReleasingTension = true;

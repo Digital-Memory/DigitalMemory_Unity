@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using NaughtyAttributes;
 using System;
+using UnityEditor.Experimental.SceneManagement;
+using UnityEditor.SceneManagement;
 
 [System.Serializable]
 public class Condition : ConditionBase
@@ -36,6 +38,7 @@ public class Condition : ConditionBase
     {
         return DropdownMonobehaviourList<ConditionListenerBehaviour>.FromObjectsOfType(FindObjectsOfType<ConditionListenerBehaviour>());
     }
+
     private void OnChangeBehaviourReference()
     {
         behaviourObject = behaviour.gameObject;
@@ -57,7 +60,6 @@ public class Condition : ConditionBase
             }
         }
     }
-
 
 
 #if UNITY_EDITOR
@@ -83,7 +85,6 @@ public class Condition : ConditionBase
         {
             case ConditionType.BOOL:
                 return (behaviour.GetBool() == MustBeTrue);
-                break;
 
             case ConditionType.FLOAT:
                 switch (FloatIs)

@@ -3,6 +3,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using NaughtyAttributes;
+public interface IInputSender
+{
+    event System.Action OnSendInput;
+}
 
 public class InputSender : MonoBehaviour, IInputSender
 {
@@ -34,11 +38,13 @@ public class InputSender : MonoBehaviour, IInputSender
         }
     }
 
+#if UNITY_EDITOR
     [Button]
     protected void FixInput()
     {
         input = input;
     }
+#endif
 
     protected bool ObjectsMatchBehaviours()
     {

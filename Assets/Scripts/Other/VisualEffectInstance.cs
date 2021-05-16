@@ -4,5 +4,5 @@ using UnityEngine;
 
 public class VisualEffectInstance : Selfdestroy
 {
-
+    //Need to Improve this at some point
 }

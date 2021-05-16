@@ -54,30 +54,4 @@ public class ConditionedObject : InputObject
 
         return true;
     }
-
-    protected virtual void OnDrawGizmos()
-    {
-        //if (conditions != null)
-        //{
-        //
-        //    for (int i = 0; i < conditions.Count; i++)
-        //    {
-        //        if (conditions[i] != null)
-        //        {
-        //            Condition condition = conditions[i] as Condition;
-        //
-        //            if (condition != null && condition.behaviour != null)
-        //            {
-        //                Gizmos.color = condition.IsMet() ? Color.green : Color.red;
-        //                Gizmos.DrawLine(transform.position + transform.forward * 0.1f * i, condition.behaviour.transform.position + transform.forward * 0.1f * i);
-        //            }
-        //        }
-        //    }
-        //}
-        //
-        //if (!CheckAllConditionsForTrue())
-        //    DebugDraw.Cross(transform.position, Color.red, 1 * Game.Settings.CurrentZoomLevel);
-        //else
-        //    DebugDraw.Circle(transform.position, Color.green, 1 * Game.Settings.CurrentZoomLevel);
-    }
 }

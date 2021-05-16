@@ -13,7 +13,6 @@ public class ZoomIn : MonoBehaviour, IClickable, IHoverable
     Vector3 virtualCameraPosition;
     SphereCollider coll;
     Material desaturationMaterial;
-    [ShowNonSerializedField] bool active = false;
     [ShowNonSerializedField] bool inFadeoutPreview = false;
     [ShowNonSerializedField] bool animate = false;
     float current, target;
@@ -32,7 +31,6 @@ public class ZoomIn : MonoBehaviour, IClickable, IHoverable
     private void Zoom()
     {
         cinemachineVirtualCamera.Priority = 100;
-        active = true;
         Game.ZoomInHandler.ZoomIn(this);
     }
 
@@ -86,7 +84,6 @@ public class ZoomIn : MonoBehaviour, IClickable, IHoverable
 
         if (!isZoomedIn)
         {
-            active = false;
             cinemachineVirtualCamera.Priority = 10;
         }
     }
@@ -94,6 +91,13 @@ public class ZoomIn : MonoBehaviour, IClickable, IHoverable
     public void StartHover()
     {
         StartCoroutine(HoverRoutine());
+        OnStartHoverEvent?.Invoke();
+    }
+    public void EndHover()
+    {
+        StopAllCoroutines();
+        desaturationMaterial.SetInt("mask", 0);
+        OnEndHoverEvent?.Invoke();
     }
 
     private IEnumerator HoverRoutine()
@@ -110,11 +114,6 @@ public class ZoomIn : MonoBehaviour, IClickable, IHoverable
         desaturationMaterial.SetFloat("size", size);
     }
 
-    public void EndHover()
-    {
-        StopAllCoroutines();
-        desaturationMaterial.SetInt("mask", 0);
-    }
 
     public GameObject GetGameObject()
     {

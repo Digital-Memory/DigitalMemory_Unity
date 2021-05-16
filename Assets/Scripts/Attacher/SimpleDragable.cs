@@ -36,7 +36,7 @@ public interface IAttachable : IDragable
 
 public class SimpleDragable : MonoBehaviour, IDragable
 {
-    [SerializeField] protected Rigidbody rigidbody;
+    [SerializeField] protected Rigidbody rb;
     [SerializeField] protected Transform customDragPivot;
     [SerializeField] private float YOffsetOnDrop;
 
@@ -52,9 +52,9 @@ public class SimpleDragable : MonoBehaviour, IDragable
     protected virtual void SetPhysicsActive(bool active)
     {
         if (active)
-            rigidbody.constraints = RigidbodyConstraints.FreezeRotationY;
+            rb.constraints = RigidbodyConstraints.FreezeRotationY;
         else
-            rigidbody.constraints = RigidbodyConstraints.FreezeAll;
+            rb.constraints = RigidbodyConstraints.FreezeAll;
     }
 
     protected virtual void SetMouseRaycastable(bool raycastable)

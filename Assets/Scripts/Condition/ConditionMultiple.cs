@@ -52,10 +52,11 @@ public class ConditionMultiple : ConditionBase
                 {
                     if (behaviour != null)
                     {
-                        if (behaviour.GetBool() != MustBeTrue)
+                        if (CeckBehaviourConditionToBeTrue(behaviour))
                         {
                             DebugDraw.Cross(behaviour.gameObject.transform.position + Vector3.up * Game.Settings.CurrentZoomLevel, Color.red, 2 * Game.Settings.CurrentZoomLevel);
-                        } else
+                        }
+                        else
                         {
                             i++;
                             DebugDraw.Circle(behaviour.gameObject.transform.position + Vector3.up * Game.Settings.CurrentZoomLevel, Color.green, 1 * Game.Settings.CurrentZoomLevel);
@@ -66,58 +67,52 @@ public class ConditionMultiple : ConditionBase
                 {
                     Debug.Log($"Conditon check success ({behaviours.Length}) on {gameObject.name}");
                     return true;
-                } else
+                }
+                else
                 {
                     Debug.Log($"Conditon check failed ({i} / {behaviours.Length}) on {gameObject.name}");
                     return false;
                 }
-
-                break;
-
-
-
-
-            case ConditionType.FLOAT:
-                switch (FloatIs)
-                {
-                    case FloatCompare.EQUALS:
-
-                        foreach (ConditionListenerAttacher behaviour in behaviours)
-                        {
-                            if (behaviour != null)
-                            {
-                                if (Mathf.Abs(behaviour.GetFloat() - toCompareWith) > MAX_DISTANCE_TO_COUNT_AS_EQUAL)
-                                    return false;
-                            }
-                        }
-                        break;
-
-                    case FloatCompare.GREATER:
-                        foreach (ConditionListenerAttacher behaviour in behaviours)
-                        {
-                            if (behaviour != null)
-                            {
-                                if (behaviour.GetFloat() < toCompareWith)
-                                    return false;
-                            }
-                        }
-                        break;
-
-                    case FloatCompare.SMALLER:
-                        foreach (ConditionListenerAttacher behaviour in behaviours)
-                        {
-                            if (behaviour != null)
-                            {
-                                if (behaviour.GetFloat() > toCompareWith)
-                                    return false;
-                            }
-                        }
-                        break;
-                }
-                break;
         }
 
         return true;
+    }
+
+    private bool CeckBehaviourConditionToBeTrue(ConditionListenerAttacher behaviour)
+    {
+        if (behaviour == null)
+        {
+            Debug.LogWarning("Behaviour on ConditionMultiple was null, returned true for that one");
+            return true;
+        }
+
+        if (type == ConditionType.FLOAT)
+        {
+            switch (FloatIs)
+            {
+                case FloatCompare.EQUALS:
+                    if (Mathf.Abs(behaviour.GetFloat() - toCompareWith) > MAX_DISTANCE_TO_COUNT_AS_EQUAL)
+                        return false;
+                    break;
+
+                case FloatCompare.GREATER:
+                    if (behaviour.GetFloat() < toCompareWith)
+                        return false;
+                    break;
+
+                case FloatCompare.SMALLER:
+
+                    if (behaviour.GetFloat() > toCompareWith)
+                        return false;
+                    break;
+            }
+        }
+        else if (type == ConditionType.BOOL)
+        {
+            return behaviour.GetBool() != MustBeTrue;
+        }
+
+        return false;
     }
 
 #if UNITY_EDITOR
