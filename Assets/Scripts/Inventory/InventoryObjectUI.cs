@@ -67,6 +67,7 @@ public class InventoryObjectUI : UnityEngine.UI.Button, IDragHandler, IBeginDrag
         if (amount <= 0)
         {
             inventory.RemoveLast(data);
+            Game.UIHandler.Tooltip.TryHide(gameObject);
             Destroy(gameObject);
         }
         else
