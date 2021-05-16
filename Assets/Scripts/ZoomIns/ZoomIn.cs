@@ -93,6 +93,13 @@ public class ZoomIn : MonoBehaviour, IClickable, IHoverable
 
     public void StartHover()
     {
+        StartCoroutine(HoverRoutine());
+    }
+
+    private IEnumerator HoverRoutine()
+    {
+        yield return new WaitForSeconds(0.5f);
+
         Camera cam = Game.CameraController.Camera;
         Vector2 p = cam.WorldToScreenPoint(transform.position);
         Vector2 p2 = cam.WorldToScreenPoint(transform.position + cam.transform.right * coll.radius * 2);
@@ -105,6 +112,7 @@ public class ZoomIn : MonoBehaviour, IClickable, IHoverable
 
     public void EndHover()
     {
+        StopAllCoroutines();
         desaturationMaterial.SetInt("mask", 0);
     }
 

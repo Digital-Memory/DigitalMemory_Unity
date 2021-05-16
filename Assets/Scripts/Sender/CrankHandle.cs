@@ -67,6 +67,8 @@ public class CrankHandle : MonoBehaviour, IDragable, IHoverable, IChargeInput
         Game.UIHandler.CustomCursor.SetCursorForcedState(isForced: true);
 
         crank.ResetAngleBefore();
+        crank.StartPlayerInput();
+
         OnStartChargeEvent?.Invoke();
         Debug.Log("Start Drag");
     }
@@ -87,6 +89,8 @@ public class CrankHandle : MonoBehaviour, IDragable, IHoverable, IChargeInput
         isDragging = false;
         handleCollider.enabled = true;
         Game.UIHandler.CustomCursor.SetCursorForcedState(isForced: false);
+
+        crank.EndPlayerInput();
 
         OnEndChargeEvent?.Invoke();
         Debug.Log("End Drag");

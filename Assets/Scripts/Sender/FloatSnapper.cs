@@ -38,6 +38,7 @@ public class FloatSnapper : MonoBehaviour
         isSnapping = false;
     }
 
+    //replace this with listener logic
     internal void TrySnap()
     {
         float currentValue = sender.CurrentValue;

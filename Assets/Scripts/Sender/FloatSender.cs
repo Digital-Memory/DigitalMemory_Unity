@@ -17,6 +17,9 @@ public class FloatSender : InputSender
     public event System.Action<float> OnSendInputValue;
     public event System.Action<float> OnSendCallbackWithFactor;
 
+    public event System.Action OnStartPlayerInput;
+    public event System.Action OnEndPlayerInput;
+
     Crank attachedCrank;
 
 #if UNITY_EDITOR
@@ -45,20 +48,22 @@ public class FloatSender : InputSender
         }
     }
 
-    internal bool TryGiveInput(float degrees, bool isAbsolute = false)
+    public bool TryGiveInput(float degrees, bool isAbsolute = false)
     {
 
-        float newValue = isAbsolute ? ((degrees + factorOffset) / factor) : currentValue + ((degrees + factorOffset) / factor);
+        float rawValue = isAbsolute ? ((degrees + factorOffset) / factor) : currentValue + ((degrees + factorOffset) / factor);
+        return TryGiveInputRaw(rawValue);
+    }
 
-        //Debug.LogWarning("Float Sender is receiving " + newValue);
-
-        if (IsInsideInputRange(newValue) && !IsInsideLimiter(newValue, limits))
+    public bool TryGiveInputRaw(float rawValue)
+    {
+        if (IsInsideInputRange(rawValue) && !IsInsideLimiter(rawValue, limits))
         {
-            if (TrySendInput(newValue))
+            if (TrySendInput(rawValue))
             {
-                currentValue = newValue;
-                CallOnSendInputEvents(newValue);
-                OnSendCallbackWithFactor?.Invoke(Factorize(newValue));
+                currentValue = rawValue;
+                CallOnSendInputEvents(rawValue);
+                OnSendCallbackWithFactor?.Invoke(Factorize(rawValue));
                 Game.EffectHandler.Play(whileChangeEffect, gameObject);
 
                 return true;
@@ -72,7 +77,7 @@ public class FloatSender : InputSender
         }
         else
         {
-            if (newValue < MIN_VALUE && Mathf.Abs(newValue - MIN_VALUE) > (180f / factor) && newValue > MAX_VALUE && Mathf.Abs(newValue - MAX_VALUE) > (180f / factor))
+            if (rawValue < MIN_VALUE && Mathf.Abs(rawValue - MIN_VALUE) > (180f / factor) && rawValue > MAX_VALUE && Mathf.Abs(rawValue - MAX_VALUE) > (180f / factor))
             {
                 Game.DragHandler.ForceEndDrag();
                 Game.EffectHandler.Play(forcedEndDragEffect, gameObject);
@@ -80,6 +85,16 @@ public class FloatSender : InputSender
 
             return false;
         }
+    }
+
+    public void StartPlayerInput()
+    {
+        OnStartPlayerInput?.Invoke();
+    }
+
+    public void EndPlayerInput()
+    {
+        OnEndPlayerInput?.Invoke();
     }
 
     public float Factorize(float valueWithoutFactor)

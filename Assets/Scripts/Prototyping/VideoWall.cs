@@ -38,7 +38,9 @@ public class VideoWall : ConditionedObject
     {
         playedVideo = true;
         Game.VideoPlayerHandler.Play(url, this);
-        projectorEffects.SetActive(true);
+
+        if (projectorEffects != null)
+            projectorEffects.SetActive(true);
     }
 
     internal void SetMaterial(Material material)

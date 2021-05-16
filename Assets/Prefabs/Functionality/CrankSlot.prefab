@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 6476781290254090947}
   - component: {fileID: 2888878142523164873}
   - component: {fileID: 3458194863511574890}
+  - component: {fileID: 4569421820086830493}
   - component: {fileID: 5881873877261564058}
   - component: {fileID: 6194026550668163357}
   - component: {fileID: 5509378565038196833}
@@ -50,6 +51,8 @@ MonoBehaviour:
   attachmentName: Crank
   isAttached: 0
   attachmentOffset: {x: 0, y: 0, z: 0}
+  allowsDetach: 0
+  destroyColliderOnAttachment: 0
 --- !u!114 &3458194863511574890
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -64,9 +67,29 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   input: {fileID: 0}
   inputObject: {fileID: 0}
+  hasSecondaryInput: 0
+  secondary: []
   startValue: 0
+  factorOffset: 0
   factor: 360
-  tickEffect: {fileID: 0}
+  whileChangeEffect: {fileID: 0}
+  cantChangeEffect: {fileID: 0}
+  forcedEndDragEffect: {fileID: 0}
+--- !u!114 &4569421820086830493
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6476781290254090949}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d931a50ed056c5b48b0782a9a7772d3f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseValue: 0
+  targetValue: 1
+  maxDistanceFromTargetToNotMoveBack: 0.1
 --- !u!135 &5881873877261564058
 SphereCollider:
   m_ObjectHideFlags: 0

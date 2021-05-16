@@ -63,6 +63,16 @@ public class Crank : SimpleAttachable
         }
     }
 
+    public void StartPlayerInput()
+    {
+        floatSender.StartPlayerInput();
+    }
+
+    public void EndPlayerInput()
+    {
+        floatSender.EndPlayerInput();
+    }
+
     private void SetRotationFromAngle(float angle)
     {
         angleBefore = angle;
