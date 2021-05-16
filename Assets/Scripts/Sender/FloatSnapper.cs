@@ -19,12 +19,28 @@ public class FloatSnapper : MonoBehaviour
     float snapValue;
     bool isSnapping = false;
 
-    FloatSender sender;
+    FloatSender floatSender;
+
 
     private void OnEnable()
     {
-        sender = GetComponent<FloatSender>();
+        floatSender = GetComponent<FloatSender>();
+        if (floatSender != null)
+        {
+            floatSender.OnStartPlayerInput += StopAnySnap;
+            floatSender.OnEndPlayerInput += TrySnap;
+        }
+
         snapValues = snapValues.OrderBy(f => f).ToList();
+    }
+
+    private void OnDisable()
+    {
+        if (floatSender != null)
+        {
+            floatSender.OnStartPlayerInput -= StopAnySnap;
+            floatSender.OnEndPlayerInput -= TrySnap;
+        }
     }
 
     private void OnValueChangedCallback()
@@ -38,10 +54,9 @@ public class FloatSnapper : MonoBehaviour
         isSnapping = false;
     }
 
-    //replace this with listener logic
     internal void TrySnap()
     {
-        float currentValue = sender.CurrentValue;
+        float currentValue = floatSender.CurrentValue;
         snapValue = GetClosestSnapValue(currentValue);
 
         if (Mathf.Abs(currentValue - snapValue) < snapDistance)
@@ -60,7 +75,7 @@ public class FloatSnapper : MonoBehaviour
     {
         if (isSnapping)
         {
-            float current = sender.CurrentValue;
+            float current = floatSender.CurrentValue;
             float distance = Mathf.Abs(current - snapValue);
 
             if (distance < reachedDistance)
@@ -69,7 +84,7 @@ public class FloatSnapper : MonoBehaviour
             }
             else
             {
-                sender.TryGiveInput(sender.Factorize(Mathf.MoveTowards(current, snapValue, Time.deltaTime)), isAbsolute:true);
+                floatSender.TryGiveInput(floatSender.Factorize(Mathf.MoveTowards(current, snapValue, Time.deltaTime)), isAbsolute:true);
             }
         }
     }

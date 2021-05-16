@@ -19,6 +19,15 @@ public class FloatSenderMoveBack : MonoBehaviour
         }
     }
 
+    private void OnDisable()
+    {
+        if (floatSender != null)
+        {
+            floatSender.OnStartPlayerInput -= StopMoveBack;
+            floatSender.OnEndPlayerInput -= TryMoveBack;
+        }
+    }
+
     private void StopMoveBack()
     {
         StopAllCoroutines();

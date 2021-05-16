@@ -43,7 +43,7 @@ public class LeverHandle : MonoBehaviour, IDragable
         isDragging = false;
         handleCollider.enabled = true;
         isSnapping = true;
-        lever.TrySnap();
+        lever.EndPlayerInput();
     }
 
     public float GetEndDragYOffset()
@@ -71,7 +71,7 @@ public class LeverHandle : MonoBehaviour, IDragable
         startPosition = Vector3.zero;
 
         isDragging = true;
-        lever.StopAnySnap();
+        lever.StartPlayerInput();
         handleCollider.enabled = false;
     }
 

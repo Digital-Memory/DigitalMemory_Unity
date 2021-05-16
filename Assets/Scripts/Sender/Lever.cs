@@ -38,10 +38,14 @@ public class Lever : SimpleAttachable
         floatSnapper = null;
     }
 
-    internal void TrySnap()
+    public void StartPlayerInput()
     {
-        if (floatSnapper != null)
-            floatSnapper.TrySnap();
+        floatSender.StartPlayerInput();
+    }
+
+    public void EndPlayerInput()
+    {
+        floatSender.EndPlayerInput();
     }
 
     public override void EndDrag(Vector3 position)
@@ -59,11 +63,5 @@ public class Lever : SimpleAttachable
 
             floatSender.TryGiveInput(angle, isAbsolute: true);
         }
-    }
-
-    internal void StopAnySnap()
-    {
-        if (floatSnapper != null)
-            floatSnapper.StopAnySnap();
     }
 }
