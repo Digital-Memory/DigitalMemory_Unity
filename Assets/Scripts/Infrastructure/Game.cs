@@ -37,14 +37,6 @@ public class Game : MonoBehaviour
         }
     }
 
-    public static SequenceHandler SequenceHandler
-    {
-        get
-        {
-            return SequenceHandler.GetInstance();
-        }
-    }
-
     public static SoundPlayer SoundPlayer
     {
         get
