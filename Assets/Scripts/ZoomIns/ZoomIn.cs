@@ -22,6 +22,15 @@ public class ZoomIn : MonoBehaviour, IClickable, IHoverable
     public event Action OnEndHoverEvent;
 
     [SerializeField] List<InputObject> InputObjects = new List<InputObject>();
+    [SerializeField] private bool isStartingPoint;
+
+    private void Awake()
+    {
+        if (isStartingPoint)
+        {
+            DoZoomIn();
+        }
+    }
 
     public bool IsNull => this == null;
 
