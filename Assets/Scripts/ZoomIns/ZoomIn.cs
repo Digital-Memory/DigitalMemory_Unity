@@ -102,7 +102,7 @@ public class ZoomIn : MonoBehaviour, IClickable, IHoverable
 
     private IEnumerator HoverRoutine()
     {
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.2f);
 
         Camera cam = Game.CameraController.Camera;
         Vector2 p = cam.WorldToScreenPoint(transform.position);
