@@ -7,11 +7,11 @@ using UnityEngine;
 public class MovingObject : ChangingOverTimeObject
 {
     [OnValueChanged("ChangeObjectToFollow")]
-    [SerializeField] Transform objectToMove;
+    [SerializeField] protected Transform objectToMove;
     [OnValueChanged("PreviewTruePosition")]
-    [SerializeField] Vector3 localPositionTrue;
+    [SerializeField] protected Vector3 localPositionTrue;
     [OnValueChanged("PreviewFalsePosition")]
-    [SerializeField] Vector3 localPositionFalse;
+    [SerializeField] protected Vector3 localPositionFalse;
 
 #if UNITY_EDITOR
 
@@ -29,7 +29,7 @@ public class MovingObject : ChangingOverTimeObject
         }
     }
 
-    private void ChangeObjectToFollow()
+    protected void ChangeObjectToFollow()
     {
         if (objectToMove != null)
         {
@@ -38,12 +38,12 @@ public class MovingObject : ChangingOverTimeObject
         }   
     }
 
-    private void PreviewTruePosition()
+    protected void PreviewTruePosition()
     {
         objectToMove.localPosition = localPositionTrue;
     }
 
-    private void PreviewFalsePosition()
+    protected void PreviewFalsePosition()
     {
         objectToMove.localPosition = localPositionFalse;
     }
