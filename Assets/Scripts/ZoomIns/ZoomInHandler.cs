@@ -56,7 +56,7 @@ public class ZoomInHandler : Singleton<ZoomInHandler>
         {
             str += (vcam == (FindObjectOfType<CinemachineBrain>().ActiveVirtualCamera as CinemachineVirtualCamera) ? ">>> " : "");
             str += vcam.gameObject.transform.parent ? vcam.gameObject.transform.parent.name : vcam.gameObject.name;
-            str += " - " + vcam.Name + " - " + vcam.Priority.ToString() + "\n";
+            str += $" - {vcam.Name } - {vcam.Priority.ToString() }\n";
         }
         GUILayout.Box(str, GUILayout.Width(450));
     }

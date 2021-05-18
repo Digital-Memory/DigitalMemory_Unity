@@ -57,9 +57,9 @@ public class CloseupHandler : Singleton<CloseupHandler>
     }
 
     //Need to Improve this at some point
-    internal void UpdateCloseup(RaycastHit hit, bool v1, bool v2)
+    internal void UpdateCloseup(RaycastHit hit, bool MouseButtonPressed)
     {
-        if (v2)
+        if (MouseButtonPressed)
         {
             EndCloseup(currentCloseupable);
             currentCloseupable = null;
@@ -67,17 +67,6 @@ public class CloseupHandler : Singleton<CloseupHandler>
         else
         {
             UpdateCloseupMode(currentCloseupable);
-
-            if (v1)
-            {
-                HiddenAttachable hiddenAttachable = hit.collider.GetComponent<HiddenAttachable>();
-                if (hiddenAttachable != null)
-                {
-                    EndCloseup(currentCloseupable);
-                    currentCloseupable = hiddenAttachable;
-                    StartCloseup(hiddenAttachable);
-                }
-            }
         }
     }
 
