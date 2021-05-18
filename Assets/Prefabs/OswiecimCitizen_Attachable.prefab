@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 4433731013659832847}
   - component: {fileID: 4433731013659832844}
   m_Layer: 0
-  m_Name: OswiecimCitizen
+  m_Name: OswiecimCitizen_Attachable
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -46,12 +46,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3aee1cc419bc32446b3799e74e13d819, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rigidbody: {fileID: 4433731013659832847}
   customDragPivot: {fileID: 0}
   YOffsetOnDrop: 0
   startDragEffect: {fileID: 0}
   endDragEffect: {fileID: 0}
   attachment: Citizen
+  inventoryObjectData: {fileID: 11400000, guid: 888b4fc150ab1684b88a4b652f655fab, type: 2}
   isAttached: 0
   defaultParent: {fileID: 0}
   attachEffect: {fileID: 0}
