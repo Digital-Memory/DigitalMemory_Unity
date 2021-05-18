@@ -36,7 +36,7 @@ public interface IAttachable : IDragable
 
 public class SimpleDragable : MonoBehaviour, IDragable
 {
-    [SerializeField] protected Rigidbody rb;
+    protected Rigidbody rb;
     [SerializeField] protected Transform customDragPivot;
     [SerializeField] private float YOffsetOnDrop;
 
@@ -48,6 +48,11 @@ public class SimpleDragable : MonoBehaviour, IDragable
 
     public event Action OnStartHoverEvent;
     public event Action OnEndHoverEvent;
+
+    private void OnEnable()
+    {
+        rb = GetComponent<Rigidbody>();
+    }
 
     protected virtual void SetPhysicsActive(bool active)
     {
