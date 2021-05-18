@@ -36,19 +36,6 @@ public class HiddenAttachable : SimpleAttachable
         }
     }
 
-    public override void OnStartCloseup()
-    {
-        OnDisable();
-        isHidden = false;
-        base.OnStartCloseup();
-    }
-
-    public override void OnEndCloseup()
-    {
-        base.OnEndCloseup();
-        Destroy(gameObject);
-    }
-
     void OnParentStartCloseup()
     {
         SetMouseRaycastable(true);

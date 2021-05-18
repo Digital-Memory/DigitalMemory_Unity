@@ -12,6 +12,7 @@ public interface ICloseupable
     void UpdatePositionAndRotation(Vector3 pos, Quaternion rot);
     void OnStartCloseup();
     void OnEndCloseup();
+    bool IsInCloseup { get; }
 
     event Action OnStartCloseupEvent;
     event Action OnEndCloseupEvent;
@@ -21,7 +22,7 @@ public interface ICloseupable
 
 
 [SelectionBase]
-public class SimpleAttachable : SimpleDragable, IAttachable, ICloseupable
+public class SimpleAttachable : SimpleDragable, IAttachable
 {
     public string attachment;
     private bool isInCloseup;
@@ -107,53 +108,10 @@ public class SimpleAttachable : SimpleDragable, IAttachable, ICloseupable
 
         return null;
     }
-    public Vector3 GetPosition()
-    {
-        return transform.position;
-    }
-
-    public Quaternion GetRotation()
-    {
-        return transform.rotation;
-    }
-
-    public void UpdatePositionAndRotation(Vector3 pos, Quaternion rot)
-    {
-        transform.position = pos;
-        transform.rotation = rot;
-    }
-
-    public virtual void OnStartCloseup()
-    {
-        isInCloseup = true;
-        SetPhysicsActive(false);
-        SetMouseRaycastable(false);
-        OnStartCloseupEvent?.Invoke();
-    }
-
-    public virtual void OnEndCloseup()
-    {
-        isInCloseup = false;
-        SetMouseRaycastable(true);
-        if (!isAttached)
-            SetPhysicsActive(true);
-        OnEndCloseupEvent?.Invoke();
-    }
 
     public override bool IsDragable()
     {
         return base.IsDragable() && !isInCloseup && !(isAttached && currentAttacher != null && !currentAttacher.AllowsDetach);
-    }
-
-    public bool ShouldOffset()
-    {
-        TextDisplayer textDisplayer = GetComponent<TextDisplayer>();
-        return (textDisplayer != null && textDisplayer.HasCloseupText);
-    }
-
-    public Vector3 GetCustomGlobalOffset()
-    {
-        return (customDragPivot == null) ? Vector3.zero : (customDragPivot.position - transform.position);
     }
 
     public InventoryObjectData GetInventoryObjectData()

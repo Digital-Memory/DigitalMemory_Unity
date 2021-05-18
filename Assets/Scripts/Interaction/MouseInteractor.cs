@@ -48,7 +48,7 @@ public class MouseInteractor : Singleton<MouseInteractor>
 
         if (Game.CloseupHandler.IsInCloseup)
         {
-            Game.CloseupHandler.UpdateCloseup(hit, Input.GetMouseButtonDown(0), Input.GetMouseButtonDown(1));
+            Game.CloseupHandler.UpdateCloseup(hit, Input.GetMouseButtonDown(1));
         }
         else
         {
@@ -90,7 +90,7 @@ public class MouseInteractor : Singleton<MouseInteractor>
         else if (Input.GetMouseButtonUp(1))
         {
             ICloseupable closeupable = hit.collider.GetComponent<ICloseupable>();
-            if (closeupable != null)
+            if (closeupable != null && !closeupable.IsInCloseup)
             {
                 Game.CloseupHandler.StartCloseup(closeupable);
             }
