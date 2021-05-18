@@ -22,14 +22,6 @@ public class CollectToInventoryOnClick : MonoBehaviour, IClickable, IHoverable
         OnEndHoverEvent?.Invoke();
     }
 
-    public GameObject GetGameObject()
-    {
-        if (this != null)
-            return gameObject;
-
-        return null;
-    }
-
     public bool IsClickable()
     {
         return true;

@@ -30,11 +30,6 @@ public class LeverHandle : MonoBehaviour, IDragable
         OnEndHoverEvent?.Invoke();
     }
 
-    public GameObject GetGameObject()
-    {
-        return gameObject;
-    }
-
     public void EndDrag(Vector3 position)
     {
         isDragging = false;

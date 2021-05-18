@@ -11,6 +11,7 @@ public enum CustomCursorType
     DRAGABLE,
     DRAGGING,
     MANUAL,
+    X,
 }
 
 public class CustomCursorHandler : Image

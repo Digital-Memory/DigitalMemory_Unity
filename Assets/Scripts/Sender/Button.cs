@@ -78,9 +78,4 @@ public class Button : InputSender, IClickable, IInputSender, IHoverable
     {
         OnEndHoverEvent?.Invoke();
     }
-
-    public GameObject GetGameObject()
-    {
-        return gameObject;
-    }
 }

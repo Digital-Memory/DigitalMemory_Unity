@@ -32,13 +32,13 @@ public class HoverHandler : Singleton<HoverHandler>
         {
             if (currentHover != null && !currentHover.IsNull)
             {
-                Game.EffectHandler.Play(onHoverExit, currentHover.GetGameObject());
+                Game.EffectHandler.Play(onHoverExit, currentHover.gameObject);
                 currentHover.EndHover();
             }
 
             if (newDragHover != null)
             {
-                Game.EffectHandler.Play(onHoverEnter, newDragHover.GetGameObject());
+                Game.EffectHandler.Play(onHoverEnter, newDragHover.gameObject);
                 Game.UIHandler.CustomCursor.SetCursorType(CustomCursorType.DRAGABLE);
                 newDragHover.StartHover();
             }
@@ -75,7 +75,7 @@ public class HoverHandler : Singleton<HoverHandler>
     {
         if (currentHover != null)
         {
-            Game.EffectHandler.Play(onHoverExit, currentHover.GetGameObject());
+            Game.EffectHandler.Play(onHoverExit, currentHover.gameObject);
             currentHover.EndHover();
             currentHover = null;
         }
@@ -94,15 +94,15 @@ public class HoverHandler : Singleton<HoverHandler>
 
     private void OnDrawGizmos()
     {
-        if (currentHover != null && currentHover.GetGameObject() != null)
+        if (currentHover != null && currentHover.gameObject != null)
         {
-            DebugDraw.Circle(currentHover.GetGameObject().transform.position, Color.white, 0.5f);
+            DebugDraw.Circle(currentHover.gameObject.transform.position, Color.white, 0.5f);
         }
     }
 
     private void OnGUI()
     {
-        string name = (currentHover != null && currentHover.GetGameObject() != null)? currentHover.GetGameObject().name : "";
+        string name = (currentHover != null && currentHover.gameObject != null)? currentHover.gameObject.name : "";
         GUI.Box(new Rect(10,10,100,50), name);
     }
 }

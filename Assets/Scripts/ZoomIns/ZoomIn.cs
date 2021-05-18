@@ -113,10 +113,4 @@ public class ZoomIn : MonoBehaviour, IClickable, IHoverable
         desaturationMaterial.SetVector("pos", new Vector4(p.x, p.y, 0, 0));
         desaturationMaterial.SetFloat("size", size);
     }
-
-
-    public GameObject GetGameObject()
-    {
-        return gameObject;
-    }
 }
