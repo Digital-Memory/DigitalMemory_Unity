@@ -21,17 +21,40 @@ public class ZoomIn : MonoBehaviour, IClickable, IHoverable
     public event Action OnStartHoverEvent;
     public event Action OnEndHoverEvent;
 
+    [SerializeField] List<InputObject> InputObjects = new List<InputObject>();
+
     public bool IsNull => this == null;
 
     public void Click()
     {
-        Zoom();
+        DoZoomIn();
     }
 
-    private void Zoom()
+    private void DoZoomIn()
     {
         cinemachineVirtualCamera.Priority = 100;
         Game.ZoomInHandler.ZoomIn(this);
+
+        if (InputObjects != null)
+        {
+            foreach (InputObject inputObject in InputObjects)
+            {
+                inputObject.Try(true);
+            }
+        }
+    }
+
+    private void DoZoomOut()
+    {
+        cinemachineVirtualCamera.Priority = 10;
+
+        if (InputObjects != null)
+        {
+            foreach (InputObject inputObject in InputObjects)
+            {
+                inputObject.Try(false);
+            }
+        }
     }
 
     public void TryChangeFadeoutPreview(bool showPreview) {
@@ -84,7 +107,7 @@ public class ZoomIn : MonoBehaviour, IClickable, IHoverable
 
         if (!isZoomedIn)
         {
-            cinemachineVirtualCamera.Priority = 10;
+            DoZoomOut();
         }
     }
 
@@ -112,5 +135,18 @@ public class ZoomIn : MonoBehaviour, IClickable, IHoverable
         desaturationMaterial.SetInt("mask", 1);
         desaturationMaterial.SetVector("pos", new Vector4(p.x, p.y, 0, 0));
         desaturationMaterial.SetFloat("size", size);
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        if (InputObjects != null)
+        {
+                Gizmos.color = Color.yellow;
+            foreach (InputObject inputObject in InputObjects)
+            {
+                if (inputObject != null)
+                Gizmos.DrawLine(inputObject.gameObject.transform.position, transform.position);
+            }
+        }
     }
 }
