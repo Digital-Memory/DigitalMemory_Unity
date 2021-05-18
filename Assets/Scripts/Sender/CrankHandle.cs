@@ -36,10 +36,6 @@ public class CrankHandle : MonoBehaviour, IDragable, IHoverable, IChargeInput
     {
         OnEndHoverEvent?.Invoke();
     }
-    public GameObject GetGameObject()
-    {
-        return gameObject;
-    }
 
     public float GetEndDragYOffset()
     {

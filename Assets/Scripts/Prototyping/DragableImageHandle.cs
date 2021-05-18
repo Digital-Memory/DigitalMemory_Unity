@@ -68,11 +68,6 @@ public class DragableImageHandle : MonoBehaviour, IDragable
         return 0f;
     }
 
-    public GameObject GetGameObject()
-    {
-        return gameObject;
-    }
-
     public bool IsDragable()
     {
         return true;

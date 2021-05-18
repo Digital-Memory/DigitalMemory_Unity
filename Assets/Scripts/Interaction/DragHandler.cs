@@ -17,17 +17,17 @@ public class DragHandler : Singleton<DragHandler>
     internal void ShowDragging()
     {
         if (IsDragging)
-            currentDrag.GetGameObject().layer = LayerMask.NameToLayer("Water");
+            currentDrag.gameObject.layer = LayerMask.NameToLayer("Water");
     }
     internal void HideDragging()
     {
         if (IsDragging)
-            currentDrag.GetGameObject().layer = LayerMask.NameToLayer("Hidden");
+            currentDrag.gameObject.layer = LayerMask.NameToLayer("Hidden");
     }
 
     internal GameObject GetDragging()
     {
-        return currentDrag.GetGameObject();
+        return currentDrag.gameObject;
     }
 
 
@@ -38,21 +38,32 @@ public class DragHandler : Singleton<DragHandler>
         if (hit.collider != null)
             attacher = hit.collider.GetComponent<IAttacher>();
 
-        if (IsDraggingAttachable && attacher != null && attacher.CanAttach(currentAttachable.GetAttachment()))
+        bool IsAboveAttacher = attacher != null;
+        bool CanAttach = IsAboveAttacher ? attacher.CanAttach(currentAttachable.GetAttachment()) : false;
+
+        if (IsDraggingAttachable && IsAboveAttacher)
         {
-            //attachment preview
-            currentDrag.UpdateDragPosition(hit.point, attacher.GetPreviewPosition(hit.point) + Game.Settings.AttachPreviewOffset * (3.5f + Mathf.Sin(Time.time * 2f) * 0.5f) * Game.Settings.CurrentZoomLevel, useCustomPivot: false);
+            if (CanAttach)
+            {
+                //attachment preview
+                currentDrag.UpdateDragPosition(hit.point, CalculateAnimatedPreviewPosition(hit.point, attacher), useCustomPivot: false);
+                Game.UIHandler.CustomCursor.SetCursorType(CustomCursorType.DRAGGING);
+            }
+            else
+            {
+                UpdateDragPreviewRegular(hit, ray);
+                Game.UIHandler.CustomCursor.SetCursorType(CustomCursorType.X);
+            }
         }
         else
         {
-            //regular drag
-            float dragDistance = Vector3.Distance(ray.origin, hit.point) - Game.Settings.DragDistanceToFloor * Game.Settings.CurrentZoomLevel;
-            currentDrag.UpdateDragPosition(hit.point, ray.GetPoint(dragDistance), useCustomPivot: false);
+            UpdateDragPreviewRegular(hit, ray);
+            Game.UIHandler.CustomCursor.SetCursorType(CustomCursorType.DRAGGING);
         }
 
         if (Input.GetMouseButtonUp(0))
         {
-            if (IsDraggingAttachable && attacher != null && attacher.CanAttach(currentAttachable.GetAttachment()))
+            if (IsDraggingAttachable && CanAttach)
             {
                 //attach
                 Attach(currentAttachable, attacher);
@@ -65,6 +76,13 @@ public class DragHandler : Singleton<DragHandler>
         }
     }
 
+
+    private void UpdateDragPreviewRegular(RaycastHit hit, Ray ray)
+    {
+        //regular drag
+        float dragDistance = Vector3.Distance(ray.origin, hit.point) - Game.Settings.DragDistanceToFloor * Game.Settings.CurrentZoomLevel;
+        currentDrag.UpdateDragPosition(hit.point, ray.GetPoint(dragDistance), useCustomPivot: false);
+    }
 
     public void StartDrag(RaycastHit hit, IDragable dragable, IAttachable attachable)
     {
@@ -91,14 +109,17 @@ public class DragHandler : Singleton<DragHandler>
         OnEndDrag?.Invoke(dragable);
 
         IAttachable attachable = dragable as IAttachable;
-        if (attachable != null) {
+        if (attachable != null)
+        {
             InventoryObjectData data = attachable.GetInventoryObjectData();
 
             if (data != null)
             {
                 Game.UIHandler.InventoryAdder.MoveToInventory(data, Input.mousePosition);
-                Destroy(dragable.GetGameObject());
-            } else {
+                Destroy(dragable.gameObject);
+            }
+            else
+            {
                 Debug.LogWarning("Droppped Attachable unattached but no Inventory Data was found, could not be get moved back to inventory.");
             }
 
@@ -119,5 +140,9 @@ public class DragHandler : Singleton<DragHandler>
     public void ForceEndDrag()
     {
         EndDrag(currentDrag, Vector3.zero);
+    }
+    private static Vector3 CalculateAnimatedPreviewPosition(Vector3 hit, IAttacher attacher)
+    {
+        return attacher.GetPreviewPosition(hit) + Game.Settings.AttachPreviewOffset * (3.5f + Mathf.Sin(Time.time * 2f) * 0.5f) * Game.Settings.CurrentZoomLevel;
     }
 }

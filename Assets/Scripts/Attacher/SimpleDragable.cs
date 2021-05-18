@@ -11,8 +11,7 @@ public interface IHoverable
     void EndHover();
     event Action OnStartHoverEvent;
     event Action OnEndHoverEvent;
-    GameObject GetGameObject();
-
+    GameObject gameObject { get; }
 }
 
 public interface IDragable : IHoverable
@@ -94,11 +93,6 @@ public class SimpleDragable : MonoBehaviour, IDragable
     public float GetEndDragYOffset()
     {
         return YOffsetOnDrop;
-    }
-
-    public GameObject GetGameObject()
-    {
-        return gameObject;
     }
 
     public void StartHover()

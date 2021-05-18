@@ -27,7 +27,7 @@ public class Inventory : MonoBehaviour
         if (!mouseAbove)
             return;
 
-        GameObject dragging = dragable.GetGameObject();
+        GameObject dragging = dragable.gameObject;
         IInventoryObject inventoryObject = dragging.GetComponent<IInventoryObject>();
 
         if (inventoryObject != null)

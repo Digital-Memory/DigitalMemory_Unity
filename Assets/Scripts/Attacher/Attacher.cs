@@ -42,7 +42,7 @@ public class Attacher : MonoBehaviour, IAttacher
 
     public bool CanAttach(string attachmentName)
     {
-        return this.attachmentName == attachmentName || this.attachmentName == "";
+        return (this.attachmentName == attachmentName || this.attachmentName == "") && !isAttached;
     }
 
     public Vector3 GetAttachOffset()
