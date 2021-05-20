@@ -33,9 +33,15 @@ public class ImpulseSenderOnFloatReach : InputSender
 
     private void OnSendFloatValue(float value)
     {
-        if (CheckConditions(value) && input != null && input.Try())
+        if (CheckConditions(value))
         {
-            CallOnSendInputEvents(0f);
+            bool ReturnedTrue = input != null && input.Try();
+            if (ReturnedTrue)
+            {
+                CallOnSendInputEvents(0f);
+            }
+
+            Debug.LogWarning($"Send Impulse from {gameObject.name} : returned {ReturnedTrue} ");
         }
     }
 

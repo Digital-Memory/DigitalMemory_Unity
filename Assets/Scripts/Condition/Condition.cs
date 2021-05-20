@@ -2,9 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using NaughtyAttributes;
-using System;
-using UnityEditor.Experimental.SceneManagement;
-using UnityEditor.SceneManagement;
 
 [System.Serializable]
 public class Condition : ConditionBase

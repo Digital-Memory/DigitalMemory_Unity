@@ -1,31 +1,66 @@
+using NaughtyAttributes;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MovingObject : ConditionedObject
+public class MovingObject : ChangingOverTimeObject
 {
-    public Vector3 point1, point2;
+    [OnValueChanged("ChangeObjectToFollow")]
+    [SerializeField] protected Transform objectToMove;
+    [OnValueChanged("PreviewTruePosition")]
+    [SerializeField] protected Vector3 localPositionTrue;
+    [OnValueChanged("PreviewFalsePosition")]
+    [SerializeField] protected Vector3 localPositionFalse;
 
-    public override bool Try(float progress)
+#if UNITY_EDITOR
+
+    protected override void Reset()
     {
-        if (base.Try(progress))
-        {
-            UpdateMovement(progress);
-            return true;
-        }
+        base.Reset();
 
-        return false;
+        if (transform.childCount > 0)
+            objectToMove = transform.GetChild(0);
+
+        if (objectToMove != null)
+        {
+            localPositionTrue = objectToMove.localPosition;
+            localPositionFalse = objectToMove.localPosition;
+        }
     }
 
-    private void UpdateMovement(float progress)
+    protected void ChangeObjectToFollow()
     {
-        transform.position = Vector3.Lerp(point1, point2, progress);
+        if (objectToMove != null)
+        {
+            localPositionTrue = objectToMove.localPosition;
+            localPositionFalse = objectToMove.localPosition;
+        }   
+    }
+
+    protected void PreviewTruePosition()
+    {
+        objectToMove.localPosition = localPositionTrue;
+    }
+
+    protected void PreviewFalsePosition()
+    {
+        objectToMove.localPosition = localPositionFalse;
+    }
+
+#endif
+
+    protected override void UpdateChange(float progress)
+    {
+        objectToMove.localPosition = Vector3.Lerp(localPositionFalse, localPositionTrue, progress);
     }
 
     private void OnDrawGizmos()
-    {    
-        Gizmos.color = Color.yellow;
-        Gizmos.DrawLine(point1, point2);
+    {
+        if (objectToMove != null)
+        {
+            Gizmos.color = Color.yellow;
+            Gizmos.DrawLine((objectToMove.parent.position) + localPositionTrue, ((objectToMove.parent.position) + localPositionFalse));
+        }
     }
 }

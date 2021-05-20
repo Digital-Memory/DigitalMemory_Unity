@@ -45,7 +45,7 @@ public class ZoomInHandler : Singleton<ZoomInHandler>
             ZoomOut();
         }
 
-        Debug.Log($"cam: {FindObjectOfType<CinemachineBrain>().ActiveVirtualCamera.Name} with prio {FindObjectOfType<CinemachineBrain>().ActiveVirtualCamera.Priority}");
+        //Debug.Log($"cam: {FindObjectOfType<CinemachineBrain>().ActiveVirtualCamera.Name} with prio {FindObjectOfType<CinemachineBrain>().ActiveVirtualCamera.Priority}");
     }
 
     //Need to Improve this at some point
