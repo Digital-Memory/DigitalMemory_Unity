@@ -10,6 +10,9 @@ public class ChangingOverTimeObject : ConditionedObject
     [SerializeField] protected AnimationCurve animationCurve;
     [SerializeField] float durationInSeconds = 1f;
 
+    [SerializeField] bool startFromEnd = true;
+    [SerializeField] bool animateOnStart = true;
+
 #if UNITY_EDITOR
 
     protected virtual void Reset()
@@ -26,7 +29,9 @@ public class ChangingOverTimeObject : ConditionedObject
     protected override void OnEnable()
     {
         base.OnEnable();
-        Try(false);
+
+        time = animateOnStart != startFromEnd ? 0.99f : 0.01f;
+        Try(startFromEnd);
     }
 
     public override bool Try()

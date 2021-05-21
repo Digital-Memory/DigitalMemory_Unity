@@ -12,6 +12,8 @@ public enum TimePoint
 
 public class TimeHandler : Singleton<TimeHandler>
 {
+    public TimePoint CurrentTime { get; internal set; }
+
     public event System.Action<TimePoint> OnSetTime;
 
     protected override void Start()
@@ -23,6 +25,7 @@ public class TimeHandler : Singleton<TimeHandler>
     public void SetTime(TimePoint toSet)
     {
         Debug.LogWarning("Set " + toSet.ToString());
+        CurrentTime = toSet;
         OnSetTime?.Invoke(toSet);
     }
 }
