@@ -34,6 +34,8 @@ public class ZoomIn : MonoBehaviour, IClickable, IHoverable
 
     public bool IsNull => this == null;
 
+    public int Id { get; internal set; }
+
     public void Click()
     {
         DoZoomIn();
