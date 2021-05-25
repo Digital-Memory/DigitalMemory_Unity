@@ -13,12 +13,14 @@ public class ZoomInHandler : Singleton<ZoomInHandler>
 
     public void ZoomIn(ZoomIn zoom) {
         Debug.Log($"Zoom in on: {zoom.name}");
+        WebCommunicator.ZoomIn(zoom.Id);
         current = zoom;
         ChangedZoomIn?.Invoke(true);
     }
 
     public void ZoomOut() {
         current = null;
+        WebCommunicator.ZoomOut();
 
         if (overview == null)
             Debug.LogError("No overview found. Make sure you have and active ZoomOverview script with a virtual camera present.");

@@ -24,7 +24,7 @@ public class TimeHandler : Singleton<TimeHandler>
 
     public void SetTime(TimePoint toSet)
     {
-        Debug.LogWarning("Set " + toSet.ToString());
+        WebCommunicator.SetTime((int)toSet);
         CurrentTime = toSet;
         OnSetTime?.Invoke(toSet);
     }
