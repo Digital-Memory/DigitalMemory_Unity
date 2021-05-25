@@ -36,14 +36,18 @@ public class FloatSenderMoveBack : MonoBehaviour
     private void TryMoveBack()
     {
         StopAllCoroutines();
-        float currentValue = floatSender.CurrentValue;
 
-        if (currentValue > baseValue)
+        float currentValue = floatSender.CurrentValue;
+        bool upwardsDirection = baseValue < targetValue;
+
+        if (upwardsDirection ? currentValue > baseValue : currentValue < baseValue)
         {
-            if (currentValue < (targetValue - maxDistanceFromTargetToNotMoveBack))
-                StartCoroutine(MoveBackRoutine(currentValue, baseValue));
-            else
-                StartCoroutine(MoveBackRoutine(currentValue, targetValue));
+
+            bool targetReached = upwardsDirection ?
+                currentValue < (targetValue - maxDistanceFromTargetToNotMoveBack) :
+                currentValue > (targetValue + maxDistanceFromTargetToNotMoveBack);
+
+                StartCoroutine(MoveBackRoutine(currentValue, targetReached ? baseValue : targetValue));
         }
     }
 

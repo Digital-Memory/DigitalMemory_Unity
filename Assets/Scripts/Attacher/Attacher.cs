@@ -31,7 +31,7 @@ public class Attacher : MonoBehaviour, IAttacher
     public bool destroyColliderOnAttachment = false;
     [HideInInspector] public bool AllowsDetach => allowsDetach;
 
-    protected void Start()
+    protected virtual void Start()
     {
         //Need to Improve this at some point
         gameObject.layer = 7;

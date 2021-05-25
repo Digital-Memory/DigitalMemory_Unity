@@ -66,6 +66,10 @@ public class FloatSnapper : MonoBehaviour
         }
     }
 
+    public void DefineSnapValues (float[] snaps) {
+        snapValues = snaps.ToList();
+    }
+
     private float GetClosestSnapValue(float currentValue)
     {
         return snapValues.OrderBy(snapValue => Mathf.Abs(snapValue - currentValue)).FirstOrDefault();
