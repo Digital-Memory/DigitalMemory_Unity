@@ -18,13 +18,15 @@ public class AnimatingObject : ChangingOverTimeObject
 
     protected override void OnEnable()
     {
-        base.OnEnable();
         animator = GetComponent<Animator>();
+        base.OnEnable();
     }
 
     protected override void UpdateChange(float progress)
     {
         if (animator != null && varibleFloat != "")
+        {
             animator.SetFloat(varibleFloat, progress);
+        }
     }
 }
