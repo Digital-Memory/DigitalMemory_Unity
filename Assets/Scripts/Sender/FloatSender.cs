@@ -44,10 +44,7 @@ public class FloatSender : InputSender
     {
         currentValue = startValue;
         if (TrySendInput(currentValue))
-        {
-            CallOnSendInputEvents(currentValue);
-            OnSendCallbackWithFactor?.Invoke(Factorize(currentValue));
-        }
+            FactorizeAndSendInput(currentValue);
     }
 
     public bool TryGiveInput(float degrees, bool isAbsolute = false)
@@ -64,8 +61,9 @@ public class FloatSender : InputSender
             if (TrySendInput(rawValue))
             {
                 currentValue = rawValue;
-                CallOnSendInputEvents(rawValue);
-                OnSendCallbackWithFactor?.Invoke(Factorize(rawValue));
+
+                FactorizeAndSendInput(rawValue);
+
                 Game.EffectHandler.Play(whileChangeEffect, gameObject);
 
                 return true;
@@ -89,6 +87,16 @@ public class FloatSender : InputSender
         }
     }
 
+    private void FactorizeAndSendInput(float rawValue)
+    {
+        float factorized = Factorize(rawValue);
+        CallOnSendInputEvents(rawValue);
+        OnSendCallbackWithFactor?.Invoke(factorized);
+
+        if (rotatingWheel != null)
+            rotatingWheel.transform.localRotation = Quaternion.Euler(0, factorized, 0);
+    }
+
     public void StartPlayerInput()
     {
         OnStartPlayerInput?.Invoke();
@@ -106,9 +114,6 @@ public class FloatSender : InputSender
 
     protected override void CallOnSendInputEvents(float value)
     {
-        if (rotatingWheel != null)
-            rotatingWheel.transform.localRotation = Quaternion.Euler(0, Factorize(value), 0);
-
         base.CallOnSendInputEvents(value);
         OnSendInputValue?.Invoke(value);
 
