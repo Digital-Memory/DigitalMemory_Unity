@@ -33,6 +33,7 @@ public class HoverHandler : Singleton<HoverHandler>
             if (currentHover != null && !currentHover.IsNull)
             {
                 Game.EffectHandler.Play(onHoverExit, currentHover.gameObject);
+                Debug.Log($"end hover: {currentHover}");
                 currentHover.EndHover();
             }
 
@@ -40,6 +41,7 @@ public class HoverHandler : Singleton<HoverHandler>
             {
                 Game.EffectHandler.Play(onHoverEnter, newDragHover.gameObject);
                 Game.UIHandler.CustomCursor.SetCursorType(CustomCursorType.DRAGABLE);
+                Debug.Log($"start hover: {newDragHover}");
                 newDragHover.StartHover();
             }
             else

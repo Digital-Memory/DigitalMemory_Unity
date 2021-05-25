@@ -86,6 +86,8 @@ public class DragHandler : Singleton<DragHandler>
 
     public void StartDrag(RaycastHit hit, IDragable dragable, IAttachable attachable)
     {
+        Debug.Log($"start dragging: {dragable.gameObject} + {dragable.gameObject.name} ");
+
         currentDrag = dragable;
         currentAttachable = attachable;
 

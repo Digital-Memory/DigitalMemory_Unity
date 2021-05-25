@@ -16,8 +16,8 @@ public class FloatSnapper : MonoBehaviour
 
     [Foldout("Effects")] [SerializeField] [Expandable] Effect startSnapEffect, endSnapEffect;
 
-    float snapValue;
-    bool isSnapping = false;
+    [ShowNonSerializedField] float snapValue;
+    [ShowNonSerializedField] bool isSnapping = false;
 
     FloatSender floatSender;
 

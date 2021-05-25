@@ -48,7 +48,7 @@ public class SimpleDragable : MonoBehaviour, IDragable
     public event Action OnStartHoverEvent;
     public event Action OnEndHoverEvent;
 
-    private void OnEnable()
+    protected virtual void OnEnable()
     {
         rb = GetComponent<Rigidbody>();
     }
