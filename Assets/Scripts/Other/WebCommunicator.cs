@@ -16,15 +16,21 @@ public static class WebCommunicator
 
     public static void SetTime(int time)
     {
+#if !UNITY_EDITOR
         EnterTime(time);
+#endif
     }
     internal static void ZoomIn(int id)
     {
+#if !UNITY_EDITOR
         EnterCloseup(id);
+#endif
     }
 
     internal static void ZoomOut()
     {
+#if !UNITY_EDITOR
         LeaveCloseup();
+#endif
     }
 }

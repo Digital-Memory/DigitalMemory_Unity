@@ -4,8 +4,8 @@ mergeInto(LibraryManager.library, {
         window.alert("enter time: " + time);
     },
 
-  EnterCloseup: function(closeUp) {
-        window.alert("enter CloseUp: " + closeUp);
+  EnterCloseup: function(id) {
+        window.alert("enter CloseUp: " + id);
     },
   LeaveCloseup: function() {
         window.alert("leave CloseUp.");

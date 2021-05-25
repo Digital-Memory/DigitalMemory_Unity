@@ -104,7 +104,9 @@ public class HoverHandler : Singleton<HoverHandler>
 
     private void OnGUI()
     {
-        string name = (currentHover != null && currentHover.gameObject != null)? currentHover.gameObject.name : "";
+        string name = (currentHover != null
+            && currentHover.gameObject != null)?
+            currentHover.gameObject.name : "";
         GUI.Box(new Rect(10,10,100,50), name);
     }
 }

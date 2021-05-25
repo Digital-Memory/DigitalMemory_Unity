@@ -17,6 +17,7 @@ public class DragableImage : MovingObject, IDragable
     Vector3 clickPositonOnStartDrag;
 
     float distanceBetweenUpperAndLower;
+    private bool pulledOut;
 
     public bool IsNull => this == null;
 
@@ -98,7 +99,22 @@ public class DragableImage : MovingObject, IDragable
         float dragDistance = (clickPositonOnStartDrag - point).FilterByAxis((localPositionUpper - localPositionTrue).normalized);
         Vector3 lerp = (localPositionTrue - localPositionUpper) * (dragDistance / distanceBetweenUpperAndLower);
         objectToMove.localPosition = (localPositionOnStartDrag + (lerp)).Clamp(localPositionTrue, localPositionUpper);
+        pulledOut = true;
     }
+
+    protected override void UpdateChange(float progress)
+    {
+        if (pulledOut)
+        {
+            objectToMove.localPosition = Vector3.MoveTowards(objectToMove.localPosition, Vector3.Lerp(localPositionFalse, localPositionTrue, progress), Time.deltaTime);
+            if (progress < 0.05f)
+                pulledOut = false;
+        }
+        else
+        {
+            base.UpdateChange(progress);
+        }
+}
 
     private void OnDrawGizmos()
     {
