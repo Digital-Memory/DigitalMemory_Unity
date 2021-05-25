@@ -61,7 +61,8 @@ public class ZoomIn : MonoBehaviour, IClickable, IHoverable
         {
             foreach (InputObject inputObject in InputObjects)
             {
-                inputObject.Try(false);
+                if (inputObject != null)
+                    inputObject.Try(false);
             }
         }
     }
