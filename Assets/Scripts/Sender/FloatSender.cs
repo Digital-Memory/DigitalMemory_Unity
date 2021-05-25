@@ -12,6 +12,8 @@ public class FloatSender : InputSender
     [SerializeField] float factorOffset = 0;
     [SerializeField] float factor = 360f;
 
+    [SerializeField] Transform rotatingWheel;
+
     [Foldout("Effects")] [Expandable] [SerializeField] Effect whileChangeEffect, cantChangeEffect, forcedEndDragEffect;
 
     public event System.Action<float> OnSendInputValue;
@@ -104,8 +106,12 @@ public class FloatSender : InputSender
 
     protected override void CallOnSendInputEvents(float value)
     {
+        if (rotatingWheel != null)
+            rotatingWheel.transform.localRotation = Quaternion.Euler(0, Factorize(value), 0);
+
         base.CallOnSendInputEvents(value);
         OnSendInputValue?.Invoke(value);
+
     }
 
     public void SendCallback(float progression)
