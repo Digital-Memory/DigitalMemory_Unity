@@ -28,29 +28,34 @@ public class HoverHandler : Singleton<HoverHandler>
         if (hit.collider != null)
             newDragHover = hit.collider.GetComponentInParent<IHoverable>();
 
+
         if (currentHover != newDragHover)
         {
             if (currentHover != null && !currentHover.IsNull)
-            {
-                Game.EffectHandler.Play(onHoverExit, currentHover.gameObject);
-                Debug.Log($"end hover: {currentHover}");
-                currentHover.EndHover();
-            }
+                EndHoverFor(currentHover);
 
             if (newDragHover != null)
-            {
-                Game.EffectHandler.Play(onHoverEnter, newDragHover.gameObject);
-                Game.UIHandler.CustomCursor.SetCursorType(CustomCursorType.DRAGABLE);
-                Debug.Log($"start hover: {newDragHover}");
-                newDragHover.StartHover();
-            }
+                StartHoverFor(newDragHover);
             else
-            {
                 Game.UIHandler.CustomCursor.SetCursorType(CustomCursorType.DEFAULT);
-            }
 
             currentHover = newDragHover;
         }
+    }
+
+    private void StartHoverFor(IHoverable startHover)
+    {
+        Game.EffectHandler.Play(onHoverEnter, startHover.gameObject);
+        Game.UIHandler.CustomCursor.SetCursorType(CustomCursorType.DRAGABLE);
+        Debug.Log($"start hover: {startHover}");
+        startHover.StartHover();
+    }
+
+    private void EndHoverFor(IHoverable endHover)
+    {
+        Game.EffectHandler.Play(onHoverExit, endHover.gameObject);
+        Debug.Log($"end hover: {endHover}");
+        endHover.EndHover();
     }
 
     internal void EnterUI()
@@ -61,7 +66,7 @@ public class HoverHandler : Singleton<HoverHandler>
 
             if (inventoryObject != null)
             {
-                Game.UIHandler.CustomCursor.SetCursorType(CustomCursorType.MANUAL ,inventoryObject.GetData().icon, 4f);
+                Game.UIHandler.CustomCursor.SetCursorType(CustomCursorType.MANUAL, inventoryObject.GetData().icon, 4f);
                 Game.DragHandler.HideDragging();
             }
         }
@@ -73,12 +78,11 @@ public class HoverHandler : Singleton<HoverHandler>
     }
 
 
-    public void ForceEndHover()
+    public void ForceEndHoverCurrent()
     {
         if (currentHover != null)
         {
-            Game.EffectHandler.Play(onHoverExit, currentHover.gameObject);
-            currentHover.EndHover();
+            EndHoverFor(currentHover);
             currentHover = null;
         }
     }
@@ -91,7 +95,7 @@ public class HoverHandler : Singleton<HoverHandler>
     internal void OnEndDrag(IDragable dragable)
     {
         Game.UIHandler.CustomCursor.SetCursorType(CustomCursorType.DEFAULT);
-        currentHover = null;
+        ForceEndHoverCurrent();
     }
 
     private void OnDrawGizmos()
@@ -105,8 +109,8 @@ public class HoverHandler : Singleton<HoverHandler>
     private void OnGUI()
     {
         string name = (currentHover != null
-            && currentHover.gameObject != null)?
+            && currentHover.gameObject != null) ?
             currentHover.gameObject.name : "";
-        GUI.Box(new Rect(10,10,100,50), name);
+        GUI.Box(new Rect(10, 10, 100, 50), name);
     }
 }

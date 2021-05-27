@@ -13,6 +13,8 @@ public class DragableImage : MovingObject, IDragable
     public Vector3 forward;
     private Vector3[] VectorValues = new Vector3[] { Vector3.right, Vector3.left, Vector3.forward, Vector3.back, Vector3.up, Vector3.down };
 
+    [Foldout("Effects")] [Expandable] [SerializeField] Effect startUseEffect, endUseEffect;
+
     Vector3 localPositionOnStartDrag;
     Vector3 clickPositonOnStartDrag;
 
@@ -54,8 +56,12 @@ public class DragableImage : MovingObject, IDragable
 
     public void EndDrag(Vector3 position)
     {
+        Game.EffectHandler.Play(endUseEffect, gameObject);
     }
-
+    public void StartHover()
+    {
+        OnStartHoverEvent?.Invoke();
+    }
     public void EndHover()
     {
         OnEndHoverEvent?.Invoke();
@@ -84,12 +90,9 @@ public class DragableImage : MovingObject, IDragable
     {
         localPositionOnStartDrag = objectToMove.localPosition;
         clickPositonOnStartDrag = Vector3.zero;
+        Game.EffectHandler.Play(startUseEffect,gameObject);
     }
 
-    public void StartHover()
-    {
-        OnStartHoverEvent?.Invoke();
-    }
 
     public void UpdateDragPosition(Vector3 point, Vector3 vector3, bool useCustomPivot)
     {

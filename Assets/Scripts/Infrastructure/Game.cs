@@ -120,7 +120,7 @@ public class Game : MonoBehaviour
     public static ZoomInHandler ZoomInHandler
     {
         get {
-            return ZoomInHandler.GetInstance();
+            return ZoomInHandler.GetInstance(usePrefab: true);
         }
     }
 
