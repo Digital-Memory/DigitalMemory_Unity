@@ -31,6 +31,9 @@ public class FloatSender : InputSender
     float currentValue;
     public float CurrentValue { get => currentValue; }
 
+    float valueAtWhichPlayedEffectLast;
+    const float VALUE_DISTANCE_NEEDED_TO_PLAY_EFFECT = 0.1f;
+
 
     FloatLimiter[] limits;
 
@@ -63,15 +66,12 @@ public class FloatSender : InputSender
                 currentValue = rawValue;
 
                 FactorizeAndSendInput(rawValue);
-
-                Game.EffectHandler.Play(whileChangeEffect, gameObject);
+                TryPlayChangeEffectAt(rawValue);
 
                 return true;
             }
             else
             {
-
-                Game.EffectHandler.Play(whileChangeEffect, gameObject);
                 return false;
             }
         }
@@ -84,6 +84,15 @@ public class FloatSender : InputSender
             }
 
             return false;
+        }
+    }
+
+    private void TryPlayChangeEffectAt(float rawValue)
+    {
+        if (Mathf.Abs(rawValue - valueAtWhichPlayedEffectLast) > VALUE_DISTANCE_NEEDED_TO_PLAY_EFFECT)
+        {
+            valueAtWhichPlayedEffectLast = rawValue;
+            Game.EffectHandler.Play(whileChangeEffect, gameObject);
         }
     }
 
