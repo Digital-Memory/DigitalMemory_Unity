@@ -43,7 +43,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9138321620747625100}
-  m_Mesh: {fileID: 5344105237229631562, guid: 9a3c23b94f18f534cad585be5d170d49, type: 3}
+  m_Mesh: {fileID: 6581600112576959503, guid: 5f33a9171ad0a4449b2d4956f38d1deb, type: 3}
 --- !u!23 &6936457697676745022
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -63,6 +63,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
+  - {fileID: 2100000, guid: 2ef7cfd8da8c82d4f8812598bc6c91c5, type: 2}
   - {fileID: 2100000, guid: 2ef7cfd8da8c82d4f8812598bc6c91c5, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
@@ -113,6 +114,8 @@ MonoBehaviour:
   attachmentName: Lever
   isAttached: 0
   attachmentOffset: {x: 0, y: 0, z: 0}
+  allowsDetach: 0
+  destroyColliderOnAttachment: 0
 --- !u!114 &976612781
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -127,9 +130,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   input: {fileID: 0}
   inputObject: {fileID: 0}
+  hasSecondaryInput: 0
+  secondary: []
   startValue: 0
   factorOffset: 35
   factor: 70
+  rotatingWheel: {fileID: 0}
   whileChangeEffect: {fileID: 0}
   cantChangeEffect: {fileID: 0}
   forcedEndDragEffect: {fileID: 0}
