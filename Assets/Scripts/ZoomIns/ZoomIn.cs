@@ -24,17 +24,15 @@ public class ZoomIn : MonoBehaviour, IClickable, IHoverable
     [SerializeField] List<InputObject> InputObjects = new List<InputObject>();
     [SerializeField] private bool isStartingPoint;
 
-    private void Awake()
-    {
-        if (isStartingPoint)
-        {
-            DoZoomIn();
-        }
-    }
 
     public bool IsNull => this == null;
 
     public int Id { get; internal set; }
+    private void Awake()
+    {
+        if (isStartingPoint)
+            DoZoomIn();
+    }
 
     public void Click()
     {
@@ -45,43 +43,41 @@ public class ZoomIn : MonoBehaviour, IClickable, IHoverable
     {
         cinemachineVirtualCamera.Priority = 100;
         Game.ZoomInHandler.ZoomIn(this);
-
-        if (InputObjects != null)
-        {
-            foreach (InputObject inputObject in InputObjects)
-            {
-                inputObject.Try(true);
-            }
-        }
+        SendInputObjects(true);
     }
 
     private void DoZoomOut()
     {
         cinemachineVirtualCamera.Priority = 10;
-
+        SendInputObjects(false);
+    }
+    private void SendInputObjects(bool b)
+    {
         if (InputObjects != null)
         {
             foreach (InputObject inputObject in InputObjects)
             {
                 if (inputObject != null)
-                    inputObject.Try(false);
+                    inputObject.Try(b);
             }
         }
     }
 
-    public void TryChangeFadeoutPreview(bool showPreview) {
-        if (showPreview != inFadeoutPreview)
-        {
-            inFadeoutPreview = showPreview;
-            animate = true;
-            target = showPreview ? zoomOutCurve[zoomOutCurve.length - 1].time : zoomOutCurve[0].time;
-            direction = showPreview ? 1 : -1;
-        }
+    public void TryChangeFadeoutPreview(bool showPreview)
+    {
+        if (showPreview == inFadeoutPreview)
+            return;
+
+        inFadeoutPreview = showPreview;
+        animate = true;
+        target = showPreview ? zoomOutCurve[zoomOutCurve.length - 1].time : zoomOutCurve[0].time;
+        direction = showPreview ? 1 : -1;
     }
 
     private void Update()
     {
-        if (animate) {
+        if (animate)
+        {
             current += direction * Time.deltaTime;
 
             if (Mathf.Abs(current - target) < Time.deltaTime * 2)
@@ -106,6 +102,7 @@ public class ZoomIn : MonoBehaviour, IClickable, IHoverable
         coll = GetComponent<SphereCollider>();
         virtualCameraPosition = cinemachineVirtualCamera.transform.position;
         desaturationMaterial = Game.Settings.DesaturationMaterial;
+
         Game.ZoomInHandler.ChangedZoomIn += OnChangeZoom;
     }
 
@@ -114,13 +111,12 @@ public class ZoomIn : MonoBehaviour, IClickable, IHoverable
         Game.ZoomInHandler.ChangedZoomIn -= OnChangeZoom;
     }
 
-    private void OnChangeZoom(bool isZoomedIn) {
+    private void OnChangeZoom(bool isZoomedIn)
+    {
         coll.enabled = !isZoomedIn;
 
         if (!isZoomedIn)
-        {
             DoZoomOut();
-        }
     }
 
     public void StartHover()
@@ -153,11 +149,11 @@ public class ZoomIn : MonoBehaviour, IClickable, IHoverable
     {
         if (InputObjects != null)
         {
-                Gizmos.color = Color.yellow;
+            Gizmos.color = Color.yellow;
             foreach (InputObject inputObject in InputObjects)
             {
                 if (inputObject != null)
-                Gizmos.DrawLine(inputObject.gameObject.transform.position, transform.position);
+                    Gizmos.DrawLine(inputObject.gameObject.transform.position, transform.position);
             }
         }
     }

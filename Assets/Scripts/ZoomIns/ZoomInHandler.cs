@@ -8,17 +8,18 @@ public class ZoomInHandler : Singleton<ZoomInHandler>
 {
     CinemachineVirtualCamera overview;
     private ZoomIn current;
-    public bool IsZoomedIn => current != null;
+    public bool IsZoomedIn { get; internal set; }
     public System.Action<bool> ChangedZoomIn;
 
     public void ZoomIn(ZoomIn zoom) {
         Debug.Log($"Zoom in on: {zoom.name}");
         WebCommunicator.ZoomIn(zoom.Id);
         current = zoom;
+        IsZoomedIn = true;
         ChangedZoomIn?.Invoke(true);
     }
 
-    public void ZoomOut() {
+    private IEnumerator ZoomOut() {
         current = null;
         WebCommunicator.ZoomOut();
 
@@ -26,6 +27,10 @@ public class ZoomInHandler : Singleton<ZoomInHandler>
             Debug.LogError("No overview found. Make sure you have and active ZoomOverview script with a virtual camera present.");
 
         ChangedZoomIn?.Invoke(false);
+
+        yield return new WaitForSeconds(0.5f);
+
+        IsZoomedIn = false;
     }
 
     internal void RegisterAsOverview(CinemachineVirtualCamera cinemachineVirtualCamera)
@@ -35,7 +40,7 @@ public class ZoomInHandler : Singleton<ZoomInHandler>
 
     private void Update()
     {
-        if (!IsZoomedIn)
+        if (current == null)
             return;
 
         var x = Input.mousePosition.x / (float)Screen.width;
@@ -44,7 +49,7 @@ public class ZoomInHandler : Singleton<ZoomInHandler>
         float factor = Mathf.Max(x < 0.5f ? 1 - x : x, y < 0.5f ? 1 - y : y);
         current.TryChangeFadeoutPreview(factor > 0.9f);
         if (Input.GetMouseButtonDown(0) && factor > 0.9f) {
-            ZoomOut();
+            StartCoroutine(ZoomOut());
         }
 
         //Debug.Log($"cam: {FindObjectOfType<CinemachineBrain>().ActiveVirtualCamera.Name} with prio {FindObjectOfType<CinemachineBrain>().ActiveVirtualCamera.Priority}");
