@@ -14,19 +14,24 @@ public class ZoomInHandler : Singleton<ZoomInHandler>
 
     [Expandable] [SerializeField] Effect zoomIn, zoomOut;
 
-    public void ZoomIn(ZoomIn zoom) {
+    public void ZoomIn(ZoomIn zoom)
+    {
         Debug.Log($"Zoom in on: {zoom.name}");
+
         WebCommunicator.ZoomIn(zoom.Id);
         Game.EffectHandler.Play(zoomIn, gameObject);
+        Game.Settings.CurrentZoomLevel = 0.2f;
 
         current = zoom;
         IsZoomedIn = true;
         ChangedZoomIn?.Invoke(true);
     }
 
-    private IEnumerator ZoomOut() {
+    private IEnumerator ZoomOut()
+    {
         WebCommunicator.ZoomOut();
         Game.EffectHandler.Play(zoomOut, gameObject);
+        Game.Settings.CurrentZoomLevel = 1f;
 
         current = null;
 
@@ -55,7 +60,8 @@ public class ZoomInHandler : Singleton<ZoomInHandler>
 
         float factor = Mathf.Max(x < 0.5f ? 1 - x : x, y < 0.5f ? 1 - y : y);
         current.TryChangeFadeoutPreview(factor > 0.9f);
-        if (Input.GetMouseButtonDown(0) && factor > 0.9f) {
+        if (Input.GetMouseButtonDown(0) && factor > 0.9f)
+        {
             StartCoroutine(ZoomOut());
         }
 
