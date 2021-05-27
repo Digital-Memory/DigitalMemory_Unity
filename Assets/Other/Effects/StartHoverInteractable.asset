@@ -12,13 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8b6a931fb936dc4d85362f97739cf34, type: 3}
   m_Name: StartHoverInteractable
   m_EditorClassIdentifier: 
-  effectType: 1024
+  effectType: 1089
   soundEffect:
-    clip: {fileID: 0}
+    clip: {fileID: 8300000, guid: 48b65e3ab4fecfe479cdecfbc11b49e8, type: 3}
     playFromOrigin: 0
     playOnlyIfFinished: 0
-    volume: 1
-    randomPitchRange: 0
+    volume: 0.1
+    randomPitchRange: 0.25
   ClearVisualEffect: 0
   visualEffect:
     prefab: {fileID: 0}
@@ -38,11 +38,38 @@ MonoBehaviour:
     BoolValue: 1
   ClearPulsingEffect: 0
   pulsingEffect:
-    loopPulsing: 0
+    loopPulsing: 1
     pulseCurve:
       serializedVersion: 2
-      m_Curve: []
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 0.011497332
+        outSlope: 0.011497332
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 1
+      - serializedVersion: 3
+        time: 0.5
+        value: 0.05
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 34
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 1
+        value: 0
+        inSlope: -0.003816794
+        outSlope: -0.003816794
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 1
+        outWeight: 0
       m_PreInfinity: 2
-      m_PostInfinity: 2
+      m_PostInfinity: 1
       m_RotationOrder: 4
-    type: 0
+    type: 1

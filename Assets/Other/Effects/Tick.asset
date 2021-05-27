@@ -16,19 +16,26 @@ MonoBehaviour:
   soundEffect:
     clip: {fileID: 8300000, guid: a7c0e76b55cf1894d88158a4b556cc1d, type: 3}
     playFromOrigin: 1
-    playOnlyIfFinished: 1
+    playOnlyIfFinished: 0
     volume: 1
     randomPitchRange: 0.2
   ClearVisualEffect: 0
   visualEffect:
     prefab: {fileID: 0}
     spawnRelativeToOrigin: 0
+    spawnParented: 0
     spawnOffset: {x: 0, y: 0, z: 0}
     destroyDelay: -1
   changeShaderEffect:
     shader: {fileID: 0}
     boolName: 
     boolValue: 0
+  ClearChangeMaterialEffect: 0
+  changeMaterialEffect:
+    ToChangeTo: {fileID: 0}
+  changeMaterialPropertyEffect:
+    BoolName: 
+    BoolValue: 0
   ClearPulsingEffect: 0
   pulsingEffect:
     loopPulsing: 0
