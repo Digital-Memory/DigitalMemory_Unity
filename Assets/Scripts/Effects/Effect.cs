@@ -218,6 +218,9 @@ public class ChangeMaterialPropertyEffectData : EffectData
 
     public override void PlayEffect(GameObject origin)
     {
+        Debug.LogWarning("PlayEffect...");
+
+        //Need to improve this at some point
         MeshRenderer[] meshRenderers = origin.GetComponentsInChildren<MeshRenderer>();
 
         if (meshRenderers.Length == 0)
