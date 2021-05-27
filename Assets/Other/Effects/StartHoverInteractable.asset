@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8b6a931fb936dc4d85362f97739cf34, type: 3}
   m_Name: StartHoverInteractable
   m_EditorClassIdentifier: 
-  effectType: 0
+  effectType: 1024
   soundEffect:
     clip: {fileID: 0}
     playFromOrigin: 0
@@ -30,6 +30,12 @@ MonoBehaviour:
     shader: {fileID: 0}
     boolName: 
     boolValue: 0
+  ClearChangeMaterialEffect: 0
+  changeMaterialEffect:
+    ToChangeTo: {fileID: 2100000, guid: 6f9086bffcfa1fa48974709ed619ccd8, type: 2}
+  changeMaterialPropertyEffect:
+    BoolName: hover
+    BoolValue: 1
   ClearPulsingEffect: 0
   pulsingEffect:
     loopPulsing: 0

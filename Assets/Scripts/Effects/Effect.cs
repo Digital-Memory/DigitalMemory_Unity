@@ -16,6 +16,7 @@ public class Effect : ScriptableObject
     private bool ChangeShaderEffect => effectType.HasFlag(EffectType.ChangeShaderEffect);
     private bool PulsingEffect => effectType.HasFlag(EffectType.PulsingEffect);
     private bool ChangeMaterialEffect => effectType.HasFlag(EffectType.ChangeMaterialEffect);
+    private bool ChangeMaterialPropertyEffect => effectType.HasFlag(EffectType.ChangeMaterialPropertyEffect);
 
 
     [ShowIf("SoundEffect")] [Space] [Header("Sound")] [SerializeField] SoundEffectData soundEffect;
@@ -28,6 +29,7 @@ public class Effect : ScriptableObject
     [ShowIf("ChangeMaterialEffect")] [Space] [Header("ChangeMaterial")] [SerializeField] private bool ClearChangeMaterialEffect;
     [ShowIf(EConditionOperator.And, "ChangeMaterialEffect", "NotClearMaterialEffect")] [Header("ChangeMaterial")] [SerializeField] ChangeMaterialEffectData changeMaterialEffect;
 
+    [ShowIf("ChangeMaterialPropertyEffect")] [Space] [Header("ChangeMaterialProperty")] [SerializeField] ChangeMaterialPropertyEffectData changeMaterialPropertyEffect;
 
     [ShowIf("PulsingEffect")] [Space] [Header("PulsingEffect")] [SerializeField] private bool ClearPulsingEffect;
     [ShowIf(EConditionOperator.And, "PulsingEffect", "NotClearPulsingEffect")] [Header("PulsingEffect")] [SerializeField] PulsingEffectData pulsingEffect;
@@ -73,6 +75,9 @@ public class Effect : ScriptableObject
                 changeMaterialEffect.PlayEffect(origin);
         }
 
+        if (ChangeMaterialPropertyEffect)
+            changeMaterialPropertyEffect.PlayEffect(origin);
+
     }
 
     private void ClearAllChangeMaterialEffectsFrom(GameObject origin)
@@ -107,6 +112,7 @@ public class Effect : ScriptableObject
         ChangeShaderEffect = 1 << 4,
         PulsingEffect = 1 << 6,
         ChangeMaterialEffect = 1 << 8,
+        ChangeMaterialPropertyEffect = 1 << 10
     }
 }
 
@@ -192,7 +198,6 @@ public class PulsingEffectData : EffectData
 [System.Serializable]
 public class ChangeMaterialEffectData : EffectData
 {
-    [ShowIf("ResetToBefore")]
     public Material ToChangeTo;
 
     public override void PlayEffect(GameObject origin)
@@ -202,6 +207,30 @@ public class ChangeMaterialEffectData : EffectData
             effector.UpdateChangedMaterialInChilren(ToChangeTo);
         else
             origin.AddComponent<ChangeMaterialEffector>().ChangeMaterialInChildren(ToChangeTo);
+    }
+}
+
+[System.Serializable]
+public class ChangeMaterialPropertyEffectData : EffectData
+{
+    public string BoolName;
+    public bool BoolValue;
+
+    public override void PlayEffect(GameObject origin)
+    {
+        MeshRenderer[] meshRenderers = origin.GetComponentsInChildren<MeshRenderer>();
+
+        if (meshRenderers.Length == 0)
+        {
+            MeshRenderer inParent = origin.GetComponentInParent<MeshRenderer>();
+            if (inParent != null)
+                meshRenderers = new MeshRenderer[] { inParent };
+        }
+
+        foreach (MeshRenderer meshRenderer in meshRenderers)
+        {
+            meshRenderer.material.SetFloat(BoolName, BoolValue ? 1 : 0);
+        }
     }
 }
 

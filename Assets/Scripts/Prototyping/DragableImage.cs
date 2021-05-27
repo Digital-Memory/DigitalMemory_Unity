@@ -13,7 +13,7 @@ public class DragableImage : MovingObject, IDragable
     public Vector3 forward;
     private Vector3[] VectorValues = new Vector3[] { Vector3.right, Vector3.left, Vector3.forward, Vector3.back, Vector3.up, Vector3.down };
 
-    [Foldout("Effects")] [Expandable] [SerializeField] Effect startUseEffect, endUseEffect, startHoverEffect, endHoverEffect;
+    [Foldout("Effects")] [Expandable] [SerializeField] Effect startUseEffect, endUseEffect;
 
     Vector3 localPositionOnStartDrag;
     Vector3 clickPositonOnStartDrag;
@@ -60,12 +60,10 @@ public class DragableImage : MovingObject, IDragable
     }
     public void StartHover()
     {
-        Game.EffectHandler.Play(startHoverEffect, gameObject);
         OnStartHoverEvent?.Invoke();
     }
     public void EndHover()
     {
-        Game.EffectHandler.Play(endHoverEffect, gameObject);
         OnEndHoverEvent?.Invoke();
     }
 
