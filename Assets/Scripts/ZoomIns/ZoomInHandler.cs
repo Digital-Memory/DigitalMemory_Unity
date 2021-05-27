@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Cinemachine;
+using NaughtyAttributes;
 using UnityEngine;
 
 public class ZoomInHandler : Singleton<ZoomInHandler>
@@ -11,17 +12,23 @@ public class ZoomInHandler : Singleton<ZoomInHandler>
     public bool IsZoomedIn { get; internal set; }
     public System.Action<bool> ChangedZoomIn;
 
+    [Expandable] [SerializeField] Effect zoomIn, zoomOut;
+
     public void ZoomIn(ZoomIn zoom) {
         Debug.Log($"Zoom in on: {zoom.name}");
         WebCommunicator.ZoomIn(zoom.Id);
+        Game.EffectHandler.Play(zoomIn, gameObject);
+
         current = zoom;
         IsZoomedIn = true;
         ChangedZoomIn?.Invoke(true);
     }
 
     private IEnumerator ZoomOut() {
-        current = null;
         WebCommunicator.ZoomOut();
+        Game.EffectHandler.Play(zoomOut, gameObject);
+
+        current = null;
 
         if (overview == null)
             Debug.LogError("No overview found. Make sure you have and active ZoomOverview script with a virtual camera present.");

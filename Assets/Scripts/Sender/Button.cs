@@ -12,7 +12,7 @@ public class Button : InputSender, IClickable, IInputSender, IHoverable
 
     [SerializeField] AnimationCurve buttonHeightOnClick;
     [SerializeField] Transform button;
-    [SerializeField] Effect onClickEffect;
+    [Expandable] [SerializeField] Effect onClickEffect;
 
     public bool IsNull => this == null;
 

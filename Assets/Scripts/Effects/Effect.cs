@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using NaughtyAttributes;
+using System;
 
 [CreateAssetMenu]
 public class Effect : ScriptableObject
@@ -14,6 +15,7 @@ public class Effect : ScriptableObject
     private bool VisualEffect => effectType.HasFlag(EffectType.VisualEffect);
     private bool ChangeShaderEffect => effectType.HasFlag(EffectType.ChangeShaderEffect);
     private bool PulsingEffect => effectType.HasFlag(EffectType.PulsingEffect);
+    private bool ChangeMaterialEffect => effectType.HasFlag(EffectType.ChangeMaterialEffect);
 
 
     [ShowIf("SoundEffect")] [Space] [Header("Sound")] [SerializeField] SoundEffectData soundEffect;
@@ -23,14 +25,19 @@ public class Effect : ScriptableObject
 
     [ShowIf("ChangeShaderEffect")] [Space] [Header("ChangeShader")] [SerializeField] ChangeShaderEffectData changeShaderEffect;
 
+    [ShowIf("ChangeMaterialEffect")] [Space] [Header("ChangeMaterial")] [SerializeField] private bool ClearChangeMaterialEffect;
+    [ShowIf(EConditionOperator.And, "ChangeMaterialEffect", "NotClearMaterialEffect")] [Header("ChangeMaterial")] [SerializeField] ChangeMaterialEffectData changeMaterialEffect;
+
+
     [ShowIf("PulsingEffect")] [Space] [Header("PulsingEffect")] [SerializeField] private bool ClearPulsingEffect;
     [ShowIf(EConditionOperator.And, "PulsingEffect", "NotClearPulsingEffect")] [Header("PulsingEffect")] [SerializeField] PulsingEffectData pulsingEffect;
 
     public bool NotPlayPulsingEffect() { return !PulsingEffect; }
     public bool NotClearPulsingEffect() { return !ClearPulsingEffect; }
-
     public bool NotPlayVisualEffect() { return !VisualEffect; }
     public bool NotClearVisualEffect() { return !ClearVisualEffect; }
+    public bool NotChangeMaterialEffect() { return !ChangeMaterialEffect; }
+    public bool NotClearMaterialEffect() { return !ClearChangeMaterialEffect; }
 
 
     public void Play(GameObject origin)
@@ -58,6 +65,22 @@ public class Effect : ScriptableObject
                 pulsingEffect.PlayEffect(origin);
         }
 
+        if (ChangeMaterialEffect)
+        {
+            if (ClearChangeMaterialEffect)
+                ClearAllChangeMaterialEffectsFrom(origin);
+            else
+                changeMaterialEffect.PlayEffect(origin);
+        }
+
+    }
+
+    private void ClearAllChangeMaterialEffectsFrom(GameObject origin)
+    {
+        ChangeMaterialEffector effector = origin.GetComponent<ChangeMaterialEffector>();
+
+        if (effector != null)
+            effector.Clear();
     }
 
     private void ClearAllPulsingEffectsFrom(GameObject origin)
@@ -83,6 +106,7 @@ public class Effect : ScriptableObject
         VisualEffect = 1 << 2,
         ChangeShaderEffect = 1 << 4,
         PulsingEffect = 1 << 6,
+        ChangeMaterialEffect = 1 << 8,
     }
 }
 
@@ -165,10 +189,23 @@ public class PulsingEffectData : EffectData
     }
 }
 
+[System.Serializable]
+public class ChangeMaterialEffectData : EffectData
+{
+    [ShowIf("ResetToBefore")]
+    public Material ToChangeTo;
+
+    public override void PlayEffect(GameObject origin)
+    {
+        ChangeMaterialEffector effector = origin.GetComponent<ChangeMaterialEffector>();
+        if (effector != null)
+            effector.UpdateChangedMaterialInChilren(ToChangeTo);
+        else
+            origin.AddComponent<ChangeMaterialEffector>().ChangeMaterialInChildren(ToChangeTo);
+    }
+}
+
 public class EffectData
 {
-    public virtual void PlayEffect(GameObject origin)
-    {
-        //
-    }
+    public virtual void PlayEffect(GameObject origin) { }
 }

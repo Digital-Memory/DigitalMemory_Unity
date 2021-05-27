@@ -31,8 +31,7 @@ public class SimpleAttachable : SimpleDragable, IAttachable
     IAttacher currentAttacher;
     [SerializeField] private Transform defaultParent;
 
-    [Expandable]
-    [SerializeField] protected Effect attachEffect, detachEffect, potentialSlotEffect;
+    [Foldout("Effects")] [Expandable] [SerializeField] protected Effect attachEffect, detachEffect, potentialSlotEffect;
 
     public event Action OnStartCloseupEvent;
     public event Action OnEndCloseupEvent;
