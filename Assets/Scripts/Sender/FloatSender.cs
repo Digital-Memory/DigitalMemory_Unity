@@ -14,7 +14,7 @@ public class FloatSender : InputSender
 
     [SerializeField] Transform rotatingWheel;
 
-    [Foldout("Effects")] [Expandable] [SerializeField] Effect whileChangeEffect, cantChangeEffect, forcedEndDragEffect;
+    [Foldout("Effects")] [Expandable] [SerializeField] Effect startUseEffect, endUseEffect, whileChangeEffect, cantChangeEffect, forcedEndDragEffect;
 
     public event System.Action<float> OnSendInputValue;
     public event System.Action<float> OnSendCallbackWithFactor;
@@ -99,11 +99,13 @@ public class FloatSender : InputSender
 
     public void StartPlayerInput()
     {
+        Game.EffectHandler.Play(startUseEffect, gameObject);
         OnStartPlayerInput?.Invoke();
     }
 
     public void EndPlayerInput()
     {
+        Game.EffectHandler.Play(endUseEffect, gameObject);
         OnEndPlayerInput?.Invoke();
     }
 

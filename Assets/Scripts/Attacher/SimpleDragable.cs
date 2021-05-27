@@ -39,7 +39,7 @@ public class SimpleDragable : MonoBehaviour, IDragable
     [SerializeField] protected Transform customDragPivot;
     [SerializeField] private float YOffsetOnDrop;
 
-    [Foldout("Effects")] [Expandable] [SerializeField] Effect startDragEffect, endDragEffect;
+    [Foldout("Effects")] [Expandable] [SerializeField] protected Effect startDragEffect, endDragEffect;
 
     protected bool isBeeingDragged = false;
 

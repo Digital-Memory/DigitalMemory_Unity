@@ -14,7 +14,7 @@ public class CollectToInventoryOnClick : MonoBehaviour, IClickable, IHoverable
     public void Click()
     {
         Game.UIHandler.InventoryAdder.MoveToInventory(dataToMoveToInventory, Input.mousePosition);
-        Game.HoverHandler.ForceEndHover();
+        Game.HoverHandler.ForceEndHoverCurrent();
         Destroy(gameObject);
     }
 

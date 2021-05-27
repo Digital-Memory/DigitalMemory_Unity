@@ -14,6 +14,7 @@ public class InventoryAdder : MonoBehaviour
     [SerializeField] Image image;
 
     [SerializeField] InventoryObjectData dataTEMP;
+    [Expandable] [SerializeField] Effect collectEffect;
    
     float time;
     float endTime;
@@ -29,6 +30,8 @@ public class InventoryAdder : MonoBehaviour
         {
             SetHidden(false);
         }
+
+        Game.EffectHandler.Play(collectEffect,gameObject);
 
         currentlyMovedStartPosition = positionInUISpace;
         currentlyMovedData = objectData;
