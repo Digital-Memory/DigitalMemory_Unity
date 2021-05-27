@@ -11,8 +11,9 @@ public class AnimatingObject : ChangingOverTimeObject
     [AnimatorParam("animator")]
     string varibleFloat;
 
-    private void Reset()
+    protected override void Reset()
     {
+        base.Reset();
         animator = GetComponent<Animator>();
     }
 
