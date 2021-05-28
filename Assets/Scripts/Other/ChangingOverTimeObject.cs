@@ -12,6 +12,7 @@ public class ChangingOverTimeObject : ConditionedObject
 
     [SerializeField] bool startFromEnd = true;
     [SerializeField] bool animateOnStart = true;
+    [SerializeField] bool resetAtEnd = false;
 
 #if UNITY_EDITOR
 
@@ -95,7 +96,8 @@ public class ChangingOverTimeObject : ConditionedObject
             time += (Time.deltaTime / durationInSeconds) * direction;
             if (time >= 1f || time <= 0)
             {
-                time = time > 0.5f ? 1f : 0f;
+                time = time > 0.5f == resetAtEnd ? 1f : 0f;
+
                 SetAnimating(false);
             }
         }
