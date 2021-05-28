@@ -8,11 +8,14 @@ public class BlendShapingObject : ChangingOverTimeObject
 {
     [ShowNonSerializedField]
     SkinnedMeshRenderer skinnedMeshRenderer;
+
+#if UNITY_EDITOR
     protected override void Reset()
     {
         base.Reset();
         skinnedMeshRenderer = GetComponent<SkinnedMeshRenderer>();
     }
+#endif
 
     protected override void OnEnable()
     {

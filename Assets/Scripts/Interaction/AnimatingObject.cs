@@ -11,11 +11,14 @@ public class AnimatingObject : ChangingOverTimeObject
     [AnimatorParam("animator")]
     string varibleFloat;
 
+#if UNITY_EDITOR
     protected override void Reset()
     {
         base.Reset();
         animator = GetComponent<Animator>();
     }
+
+#endif
 
     protected override void OnEnable()
     {
