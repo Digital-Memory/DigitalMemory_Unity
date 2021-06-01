@@ -8,67 +8,37 @@ using UnityEngine;
 public class FactoryProductionAnimatingObject : AnimatingObject
 {
     [HideInInspector] List<ConditionBase> conditions;
-    private List<FactoryProductionStageInformation> stageInformation = new List<FactoryProductionStageInformation>();
+    [SerializeField] private List<StageInformation> stageInformation = new List<StageInformation>();
     [SerializeField] ProdctionStage currentStage;
 
     bool moving = false;
     float currentTime, targetTime;
     private ProdctionStage targetStage;
     [SerializeField] float animationSpeed;
-
-#if UNITY_EDITOR
-    protected override void Reset()
-    {
-        base.Reset();
-        GetAllStageInformationComponents();
-    }
-
-#endif
-
-    protected override void OnEnable()
-    {
-        base.OnEnable();
-        GetAllStageInformationComponents();
-    }
-
     internal void PreviewStage(float time)
     {
         UpdateChange(time);
     }
 
-    private void GetAllStageInformationComponents()
-    {
-        stageInformation = new List<FactoryProductionStageInformation>(GetComponents<FactoryProductionStageInformation>());
-    }
 
+    //Need to rework this at some point
     public override bool Try(float progress)
     {
-        if (moving) return false;
+        if (moving) return true;
 
-        switch (currentStage)
-        {
-            case ProdctionStage.Founder:
-            case ProdctionStage.Welder:
-                Debug.Log("Founder Progress: " + progress + $" greate than 95 {progress > 0.95f}.");
-
-                if (progress > 0.95f)
-                {
-                    MoveToNextStage();
-                }
-                break;
-        }
+        if ((currentStage == ProdctionStage.Founder || currentStage == ProdctionStage.Welder) && progress > 0.95f)
+            MoveToNextStage();
 
         return true;
     }
 
+    //Need to rework this at some point
     public override bool Try(bool b)
     {
         if (moving) return false;
 
         if (currentStage == ProdctionStage.Stomper)
-        {
             MoveToNextStage();
-        }
 
         return true;
     }
@@ -84,7 +54,7 @@ public class FactoryProductionAnimatingObject : AnimatingObject
 
     private float GetTimeOfStage(ProdctionStage stage)
     {
-        foreach (FactoryProductionStageInformation info in stageInformation)
+        foreach (StageInformation info in stageInformation)
         {
             if (info.Stage == stage)
                 return info.Time;
@@ -121,6 +91,14 @@ public class FactoryProductionAnimatingObject : AnimatingObject
     {
         GUILayout.Box(currentStage.ToString() + $" t: {currentTime} => {targetTime}");
     }
+}
+
+[System.Serializable]
+public class StageInformation
+{
+    public ProdctionStage Stage;
+    [Range(0, 1)]
+    public float Time;
 }
 
 public enum ProdctionStage
