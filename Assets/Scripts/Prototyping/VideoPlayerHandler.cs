@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -35,5 +36,10 @@ public class VideoPlayerHandler : Singleton<VideoPlayerHandler>
             videoPlayer.Play();
             isLoading = false;
         }
+    }
+
+    internal void Pause(VideoWall videoWall)
+    {
+        videoPlayer.Pause();
     }
 }
