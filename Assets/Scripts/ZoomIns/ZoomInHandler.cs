@@ -14,6 +14,12 @@ public class ZoomInHandler : Singleton<ZoomInHandler>
 
     [Expandable] [SerializeField] Effect zoomIn, zoomOut;
 
+
+    protected override void Start()
+    {
+        base.Start();
+        Game.Settings.CurrentZoomLevel = 1f;
+    }
     public void ZoomIn(ZoomIn zoom)
     {
         Debug.Log($"Zoom in on: {zoom.name}");

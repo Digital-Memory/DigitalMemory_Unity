@@ -28,14 +28,25 @@ public class Button : InputSender, IClickable, IInputSender, IHoverable
         Game.EffectHandler.Play(onClickEffect, gameObject);
         if (input != null)
         {
-            if (input.Try(true))
+
+            bool canTryInput = (input == null || input.Try(true));
+
+            if (canTryInput)
             {
                 CallOnSendInputEvents(0f);
+
+                if (hasSecondaryInput && secondary != null && secondary.Length > 0)
+                {
+                    foreach (InputObject inputObject in secondary)
+                    {
+                        inputObject.Try(true);
+                    }
+                }
             }
-        } else
+        }
+        else
         {
             CallOnSendInputEvents(0f);
-            Debug.Log("No Input on " + gameObject + " sending out secondary input.");
         }
 
     }

@@ -14,14 +14,18 @@ public class VideoWall : ConditionedObject
 
     public override bool Try(float progress)
     {
-        if (base.Try(progress) && !playedVideo)
+        if (base.Try(progress))
         {
-            PlayVideo();
+            if (!playedVideo)
+                PlayVideo();
+            else
+                PauseVideo();
             return true;
         }
 
         return false;
     }
+
 
     public override bool Try(bool on)
     {
@@ -41,6 +45,10 @@ public class VideoWall : ConditionedObject
 
         if (projectorEffects != null)
             projectorEffects.SetActive(true);
+    }
+    private void PauseVideo()
+    {
+        Game.VideoPlayerHandler.Pause(this);
     }
 
     internal void SetMaterial(Material material)
