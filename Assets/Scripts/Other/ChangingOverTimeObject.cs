@@ -47,7 +47,7 @@ public class ChangingOverTimeObject : ConditionedObject
         return false;
     }
 
-    private void SetAnimating(bool animating)
+    protected void SetAnimating(bool animating)
     {
         if (animating)
             Debug.Log($"Start Animating: {direction} t: {time}");
