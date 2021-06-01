@@ -52,7 +52,7 @@ public class ZoomInHandler : Singleton<ZoomInHandler>
 
     private void Update()
     {
-        if (current == null)
+        if (current == null || Game.UIHandler.EventSystem.IsPointerOverGameObject())
             return;
 
         var x = Input.mousePosition.x / (float)Screen.width;
