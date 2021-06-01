@@ -18,6 +18,18 @@ MonoBehaviour:
   secondary: []
   FloatIs: 0
   toCompareWith: 0.95
+--- !u!114 &5582825510355958722
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6130934110843334384}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 892ec87955f13b145baea8eaf9fed242, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &934305966946102325
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -49,6 +61,10 @@ PrefabInstance:
       propertyPath: secondary.Array.data[0]
       value: 
       objectReference: {fileID: 934305966643942076}
+    - target: {fileID: 5277673155107407840, guid: 868a07d6a3b27034283ba378be3ae289, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5509378565038196833, guid: 868a07d6a3b27034283ba378be3ae289, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -199,7 +215,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3375166324177194038, guid: 171608590e76ca744b7edf0cfe3e0a71, type: 3}
       propertyPath: m_Name
-      value: CrankSlot_Overview_HideAway
+      value: CrankSlot_Overview_HideAway Variant
       objectReference: {fileID: 0}
     - target: {fileID: 3375166324177194039, guid: 171608590e76ca744b7edf0cfe3e0a71, type: 3}
       propertyPath: m_RootOrder

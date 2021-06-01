@@ -1361,6 +1361,7 @@ GameObject:
   - component: {fileID: 303879779}
   - component: {fileID: 303879780}
   - component: {fileID: 303879781}
+  - component: {fileID: 303879782}
   m_Layer: 0
   m_Name: Buildings_2.1
   m_TagString: Untagged
@@ -1419,6 +1420,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   conditions:
   - {fileID: 303879781}
+  - {fileID: 303879782}
   animationCurve:
     serializedVersion: 2
     m_Curve: []
@@ -1450,6 +1452,24 @@ MonoBehaviour:
   MustBeTrue: 1
   FloatIs: 0
   toCompareWith: 0
+--- !u!114 &303879782
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 303879777}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a51a1d086a1b8541becd2e3767b4af8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  behaviour: {fileID: 1795719776}
+  behaviourObject: {fileID: 1795719767}
+  type: 1
+  MustBeTrue: 0
+  FloatIs: 1
+  toCompareWith: 0.96
 --- !u!1001 &316315636
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5048,7 +5068,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d3eb08c50e9154340a756dc5bf920a14, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  conditions: []
+  conditions:
+  - {fileID: 0}
   animationCurve:
     serializedVersion: 2
     m_Curve: []
@@ -5519,31 +5540,31 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4441062669104978110, guid: b74563ea4b152a54f9b8d5cb4f5df27b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -33.6
+      value: -43.510014
       objectReference: {fileID: 0}
     - target: {fileID: 4441062669104978110, guid: b74563ea4b152a54f9b8d5cb4f5df27b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 8.09
+      value: 44.7
       objectReference: {fileID: 0}
     - target: {fileID: 4441062669104978110, guid: b74563ea4b152a54f9b8d5cb4f5df27b, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -7.89
+      value: -30.290005
       objectReference: {fileID: 0}
     - target: {fileID: 4441062669104978110, guid: b74563ea4b152a54f9b8d5cb4f5df27b, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.8702385
+      value: 0.81949115
       objectReference: {fileID: 0}
     - target: {fileID: 4441062669104978110, guid: b74563ea4b152a54f9b8d5cb4f5df27b, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.2743851
+      value: 0.33944434
       objectReference: {fileID: 0}
     - target: {fileID: 4441062669104978110, guid: b74563ea4b152a54f9b8d5cb4f5df27b, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.3902065
+      value: 0.42660007
       objectReference: {fileID: 0}
     - target: {fileID: 4441062669104978110, guid: b74563ea4b152a54f9b8d5cb4f5df27b, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.12303161
+      value: -0.17670354
       objectReference: {fileID: 0}
     - target: {fileID: 4441062669104978110, guid: b74563ea4b152a54f9b8d5cb4f5df27b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -8580,6 +8601,10 @@ PrefabInstance:
       propertyPath: inputObject
       value: 
       objectReference: {fileID: 959378101}
+    - target: {fileID: 6130934110843334384, guid: 135c38a5d2f84dc41a43c35bd3c9d38c, type: 3}
+      propertyPath: m_Name
+      value: CrankSlot_2.1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 135c38a5d2f84dc41a43c35bd3c9d38c, type: 3}
 --- !u!1001 &1523456057
@@ -9982,6 +10007,22 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3719558827347817889, guid: 39cfe47102146e9449482ad7aa014c5c, type: 3}
   m_PrefabInstance: {fileID: 1571551253}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1795719767 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6130934110843334384, guid: 135c38a5d2f84dc41a43c35bd3c9d38c, type: 3}
+  m_PrefabInstance: {fileID: 934305967904718808}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1795719776 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5582825510355958722, guid: 135c38a5d2f84dc41a43c35bd3c9d38c, type: 3}
+  m_PrefabInstance: {fileID: 934305967904718808}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1795719767}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 892ec87955f13b145baea8eaf9fed242, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1799739472
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11878,6 +11919,10 @@ PrefabInstance:
       propertyPath: inputObject
       value: 
       objectReference: {fileID: 303879777}
+    - target: {fileID: 6130934110843334384, guid: 135c38a5d2f84dc41a43c35bd3c9d38c, type: 3}
+      propertyPath: m_Name
+      value: CrankSlot_2.0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 135c38a5d2f84dc41a43c35bd3c9d38c, type: 3}
 --- !u!1001 &2362489360726923416
