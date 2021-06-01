@@ -1,16 +1,22 @@
+using NaughtyAttributes;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(FloatSender))]
-public class FloatSenderMoveBack : MonoBehaviour
+public class FloatSenderMoveBack : ConditionedObject
 {
     FloatSender floatSender;
     [SerializeField] float baseValue = 0, targetValue = 1, maxDistanceFromTargetToNotMoveBack = 0.1f;
 
-    private void OnEnable()
+    [SerializeField] bool moveOnInput = false;
+    [SerializeField] [ShowIf("moveOnInput")] bool toBase = true;
+
+    protected override void OnEnable()
     {
+        base.OnEnable();
+
         floatSender = GetComponent<FloatSender>();
         if (floatSender != null)
         {
@@ -31,6 +37,14 @@ public class FloatSenderMoveBack : MonoBehaviour
     private void StopMoveBack()
     {
         StopAllCoroutines();
+    }
+
+    public override bool Try(bool on)
+    {
+        float currentValue = floatSender.CurrentValue;
+        StartCoroutine(MoveBackRoutine(currentValue, toBase ? baseValue : targetValue));
+
+        return base.Try(on);
     }
 
     private void TryMoveBack()
