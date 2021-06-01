@@ -77,7 +77,7 @@ public class Crank : SimpleAttachable
     {
         angleBefore = angle;
         float angleCorrected = angle;
-        Debug.Log("Set Rotatation: " + angleCorrected);
+        //Debug.Log("Set Rotatation: " + angleCorrected);
         transform.rotation = Quaternion.Euler(0, angleCorrected, 0);
     }
 

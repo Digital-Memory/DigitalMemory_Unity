@@ -7,10 +7,10 @@ using NaughtyAttributes;
 public class AnimatingObject : ChangingOverTimeObject
 {
     [ShowNonSerializedField]
-    Animator animator;
+    protected Animator animator;
     [SerializeField]
     [AnimatorParam("animator")]
-    string varibleFloat;
+    protected string varibleFloat;
 
 #if UNITY_EDITOR
     protected override void Reset()
