@@ -33,6 +33,9 @@ public class TearDownWallsOnInput : MovingObject
 
     public override bool Try(bool b)
     {
+        if (currentStage + 1 >= stages.Count)
+            return false;
+
         UpdatePostionsBasedOnStage();
 
         if (base.Try(b))
