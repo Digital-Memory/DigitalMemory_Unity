@@ -121,8 +121,8 @@ public class MaterialAssignmentRequest : UnhandeledRequest
         Texture2D tex = assetBundle.LoadAsset<Texture2D>(textureName);
         if (tex != null && meshRenderer != null)
         {
-            meshRenderer.material = new Material(defaultMaterial);
-            meshRenderer.material.mainTexture = tex;
+            meshRenderer.materials[1] = new Material(defaultMaterial);
+            meshRenderer.materials[1].mainTexture = tex;
             return true;
         }
 
