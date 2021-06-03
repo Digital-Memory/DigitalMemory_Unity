@@ -1,5 +1,19 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &5530449281389814059
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6506583364096283547}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ecaa731c51701b94ca142a01ea2afe58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  conditions: []
+  dataToMoveToInventory: {fileID: 11400000, guid: 5c8a2c75d100df14a9adf020476f238e, type: 2}
 --- !u!1001 &2809860126108095151
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7,9 +21,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2720366340013129403, guid: 1b3decec290a5964fbf4674a1bfdfe5a, type: 3}
+      propertyPath: lever
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5027683925319869620, guid: 1b3decec290a5964fbf4674a1bfdfe5a, type: 3}
+      propertyPath: m_UseGravity
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8985428912084992308, guid: 1b3decec290a5964fbf4674a1bfdfe5a, type: 3}
       propertyPath: m_Name
-      value: Lever_Kitchen
+      value: Collectable_Lever
       objectReference: {fileID: 0}
     - target: {fileID: 8985428912084992309, guid: 1b3decec290a5964fbf4674a1bfdfe5a, type: 3}
       propertyPath: m_RootOrder
@@ -17,15 +39,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8985428912084992309, guid: 1b3decec290a5964fbf4674a1bfdfe5a, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.25
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8985428912084992309, guid: 1b3decec290a5964fbf4674a1bfdfe5a, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.25
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8985428912084992309, guid: 1b3decec290a5964fbf4674a1bfdfe5a, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.25
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8985428912084992309, guid: 1b3decec290a5964fbf4674a1bfdfe5a, type: 3}
       propertyPath: m_LocalPosition.x
@@ -67,5 +89,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 8985428912084992311, guid: 1b3decec290a5964fbf4674a1bfdfe5a, type: 3}
+      propertyPath: m_Size.y
+      value: 8.032736
+      objectReference: {fileID: 0}
+    - target: {fileID: 8985428912084992311, guid: 1b3decec290a5964fbf4674a1bfdfe5a, type: 3}
+      propertyPath: m_Center.y
+      value: 4.516366
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 8985428912084992310, guid: 1b3decec290a5964fbf4674a1bfdfe5a, type: 3}
+    - {fileID: 2630109641395014266, guid: 1b3decec290a5964fbf4674a1bfdfe5a, type: 3}
+    - {fileID: 2720366340013129403, guid: 1b3decec290a5964fbf4674a1bfdfe5a, type: 3}
+    - {fileID: 2565178243891227367, guid: 1b3decec290a5964fbf4674a1bfdfe5a, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 1b3decec290a5964fbf4674a1bfdfe5a, type: 3}
+--- !u!1 &6506583364096283547 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8985428912084992308, guid: 1b3decec290a5964fbf4674a1bfdfe5a, type: 3}
+  m_PrefabInstance: {fileID: 2809860126108095151}
+  m_PrefabAsset: {fileID: 0}

@@ -7,13 +7,33 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 8784270499028962104, guid: 33c33739c63161b40b6eda1dfffe2941, type: 3}
+      propertyPath: attachment
+      value: CrankSmall
+      objectReference: {fileID: 0}
+    - target: {fileID: 8784270499028962104, guid: 33c33739c63161b40b6eda1dfffe2941, type: 3}
+      propertyPath: inventoryObjectData
+      value: 
+      objectReference: {fileID: 11400000, guid: 2e4b683717ded5848b8870ab866c431d, type: 2}
     - target: {fileID: 8784270499028962110, guid: 33c33739c63161b40b6eda1dfffe2941, type: 3}
       propertyPath: m_Name
-      value: Crank
+      value: Attachable_CrankSmall
       objectReference: {fileID: 0}
     - target: {fileID: 8784270499028962111, guid: 33c33739c63161b40b6eda1dfffe2941, type: 3}
       propertyPath: m_RootOrder
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8784270499028962111, guid: 33c33739c63161b40b6eda1dfffe2941, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8784270499028962111, guid: 33c33739c63161b40b6eda1dfffe2941, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8784270499028962111, guid: 33c33739c63161b40b6eda1dfffe2941, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 8784270499028962111, guid: 33c33739c63161b40b6eda1dfffe2941, type: 3}
       propertyPath: m_LocalPosition.x
@@ -55,5 +75,7 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4474354097617030595, guid: 33c33739c63161b40b6eda1dfffe2941, type: 3}
+    - {fileID: 7159391404091953938, guid: 33c33739c63161b40b6eda1dfffe2941, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 33c33739c63161b40b6eda1dfffe2941, type: 3}
