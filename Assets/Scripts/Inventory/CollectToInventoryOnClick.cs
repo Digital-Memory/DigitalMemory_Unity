@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CollectToInventoryOnClick : MonoBehaviour, IClickable, IHoverable
+public class CollectToInventoryOnClick : ConditionedObject, IClickable, IHoverable
 {
     [SerializeField] InventoryObjectData dataToMoveToInventory;
     public bool IsNull => this == null;
@@ -13,9 +13,12 @@ public class CollectToInventoryOnClick : MonoBehaviour, IClickable, IHoverable
 
     public void Click()
     {
-        Game.UIHandler.InventoryAdder.MoveToInventory(dataToMoveToInventory, Input.mousePosition);
-        Game.HoverHandler.ForceEndHoverCurrent();
-        Destroy(gameObject);
+        if (CheckAllConditionsForTrue())
+        {
+            Game.UIHandler.InventoryAdder.MoveToInventory(dataToMoveToInventory, Input.mousePosition);
+            Game.HoverHandler.ForceEndHoverCurrent();
+            Destroy(gameObject);
+        }
     }
 
     public void EndHover()
