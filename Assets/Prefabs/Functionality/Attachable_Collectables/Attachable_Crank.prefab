@@ -9,6 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 308717739524177398}
+  - component: {fileID: 4726643609962670479}
+  - component: {fileID: 6749525502969345150}
   m_Layer: 0
   m_Name: CrankHandle
   m_TagString: Untagged
@@ -31,6 +33,35 @@ Transform:
   m_Father: {fileID: 8784270499028962111}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4726643609962670479
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2556781242096055155}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 09cfa4b298031a3449c4a152bd5a1c28, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  crank: {fileID: 8784270499028962104}
+  handleCollider: {fileID: 6749525502969345150}
+  cursorParent: {fileID: 1592430398265813076}
+--- !u!136 &6749525502969345150
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2556781242096055155}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.62
+  m_Height: 1.39
+  m_Direction: 1
+  m_Center: {x: 0, y: -0.1, z: 0.27}
 --- !u!1 &6053061886303109816
 GameObject:
   m_ObjectHideFlags: 0
