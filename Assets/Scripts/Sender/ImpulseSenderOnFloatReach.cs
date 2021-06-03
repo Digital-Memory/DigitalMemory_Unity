@@ -41,7 +41,7 @@ public class ImpulseSenderOnFloatReach : InputSender
                 CallOnSendInputEvents(0f);
             }
 
-            Debug.LogWarning($"Send Impulse from {gameObject.name} : returned {ReturnedTrue} ");
+            Debug.Log($"Send Impulse from {gameObject.name} : returned {ReturnedTrue} ");
         }
     }
 
