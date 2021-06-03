@@ -208,6 +208,17 @@ public class FloatSender : InputSender
             Gizmos.color = __isGivingInput ? Color.yellow : Color.gray;
             Gizmos.DrawLine(transform.position, input.transform.position);
         }
+
+        if (hasSecondaryInput && secondary != null && secondary.Length > 0)
+        {
+            foreach (InputObject inputObject in secondary)
+            {
+                if (inputObject == null)
+                    Debug.LogError($"secondary input list contains empty object ({name})");
+
+                Gizmos.DrawLine(transform.position, inputObject.transform.position);
+            }
+        }
 #endif
     }
 }
