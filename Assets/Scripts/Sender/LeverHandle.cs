@@ -67,7 +67,7 @@ public class LeverHandle : MonoBehaviour, IDragable
     }
 
     //Need to Improve this at some point
-    public void UpdateDragPosition(Vector3 point, Vector3 vector3, bool useCustomPivot)
+    public void UpdateDragPositionAndRotation(Vector3 point, Vector3 vector3, bool useCustomPivot, Quaternion rotation)
     {
         if (startPosition == Vector3.zero)
             startPosition = point;

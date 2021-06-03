@@ -46,7 +46,7 @@ public class DragHandler : Singleton<DragHandler>
             if (CanAttach)
             {
                 //attachment preview
-                currentDrag.UpdateDragPosition(hit.point, CalculateAnimatedPreviewPosition(hit.point, attacher), useCustomPivot: false);
+                currentDrag.UpdateDragPositionAndRotation(hit.point, CalculateAnimatedPreviewPosition(hit.point, attacher), useCustomPivot: false, attacher.GetTransform().rotation);
                 Game.UIHandler.CustomCursor.SetCursorType(CustomCursorType.DRAGGING);
             }
             else
@@ -81,7 +81,7 @@ public class DragHandler : Singleton<DragHandler>
     {
         //regular drag
         float dragDistance = Vector3.Distance(ray.origin, hit.point) - Game.Settings.DragDistanceToFloor * Game.Settings.CurrentZoomLevel;
-        currentDrag.UpdateDragPosition(hit.point, ray.GetPoint(dragDistance), useCustomPivot: false);
+        currentDrag.UpdateDragPositionAndRotation(hit.point, ray.GetPoint(dragDistance), useCustomPivot: false, Quaternion.identity);
     }
 
     public void StartDrag(RaycastHit hit, IDragable dragable, IAttachable attachable)
@@ -145,6 +145,7 @@ public class DragHandler : Singleton<DragHandler>
     }
     private static Vector3 CalculateAnimatedPreviewPosition(Vector3 hit, IAttacher attacher)
     {
-        return attacher.GetPreviewPosition(hit) + Game.Settings.AttachPreviewOffset * (3.5f + Mathf.Sin(Time.time * 2f) * 0.5f) * Game.Settings.CurrentZoomLevel;
+        return attacher.GetPreviewPosition(hit) + attacher.GetPreviewDirectionVector() * (1f + Mathf.Sin(Time.time * 2f) * 0.2f ) * Game.Settings.CurrentZoomLevel;
+        //return attacher.GetPreviewPosition(hit) + Game.Settings.AttachPreviewOffset * (3.5f + Mathf.Sin(Time.time * 2f) * 0.5f) * Game.Settings.CurrentZoomLevel;
     }
 }
