@@ -10,9 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 4433731013659832845}
   - component: {fileID: 4433731013659832846}
-  - component: {fileID: 3390461637833283891}
-  m_Layer: 8
-  m_Name: Attachable_Meat
+  - component: {fileID: 4433731013659832847}
+  - component: {fileID: 4433731013659832844}
+  m_Layer: 0
+  m_Name: OswiecimCitizen_Attachable
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -29,7 +30,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 951879027991127744}
+  - {fileID: 4974590034090454251}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -49,15 +50,31 @@ MonoBehaviour:
   YOffsetOnDrop: 0
   startDragEffect: {fileID: 11400000, guid: a720cd0da0ecc254c976d221da72e16a, type: 2}
   endDragEffect: {fileID: 0}
-  attachment: Meat
-  inventoryObjectData: {fileID: 11400000, guid: 81ee867c1932dde43ab82919870036f2, type: 2}
+  attachment: Citizen
+  inventoryObjectData: {fileID: 11400000, guid: 888b4fc150ab1684b88a4b652f655fab, type: 2}
   isAttached: 0
   defaultParent: {fileID: 0}
   attachEffect: {fileID: 11400000, guid: 958877ec919180445a826a6117cc6107, type: 2}
   detachEffect: {fileID: 11400000, guid: a720cd0da0ecc254c976d221da72e16a, type: 2}
   potentialSlotEffect: {fileID: 0}
---- !u!135 &3390461637833283891
-SphereCollider:
+--- !u!54 &4433731013659832847
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4433731013659832842}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!136 &4433731013659832844
+CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -66,68 +83,69 @@ SphereCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.2
-  m_Center: {x: 0, y: 0.12, z: 0}
---- !u!1001 &774471336322089259
+  m_Radius: 0.65
+  m_Height: 1.5
+  m_Direction: 1
+  m_Center: {x: 0, y: 0.5, z: 0}
+--- !u!1001 &4792940763461028608
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 4433731013659832845}
     m_Modifications:
-    - target: {fileID: -8679921383154817045, guid: 2f57e4edf5b565340879dc2e35cdf7cb, type: 3}
+    - target: {fileID: -8679921383154817045, guid: 5843a19d57c5bdb49aba156e5d1c59c3, type: 3}
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 2f57e4edf5b565340879dc2e35cdf7cb, type: 3}
+    - target: {fileID: -8679921383154817045, guid: 5843a19d57c5bdb49aba156e5d1c59c3, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0
       objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 2f57e4edf5b565340879dc2e35cdf7cb, type: 3}
+    - target: {fileID: -8679921383154817045, guid: 5843a19d57c5bdb49aba156e5d1c59c3, type: 3}
       propertyPath: m_LocalPosition.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 2f57e4edf5b565340879dc2e35cdf7cb, type: 3}
+    - target: {fileID: -8679921383154817045, guid: 5843a19d57c5bdb49aba156e5d1c59c3, type: 3}
       propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 2f57e4edf5b565340879dc2e35cdf7cb, type: 3}
+    - target: {fileID: -8679921383154817045, guid: 5843a19d57c5bdb49aba156e5d1c59c3, type: 3}
       propertyPath: m_LocalRotation.w
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 2f57e4edf5b565340879dc2e35cdf7cb, type: 3}
+    - target: {fileID: -8679921383154817045, guid: 5843a19d57c5bdb49aba156e5d1c59c3, type: 3}
       propertyPath: m_LocalRotation.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 2f57e4edf5b565340879dc2e35cdf7cb, type: 3}
+    - target: {fileID: -8679921383154817045, guid: 5843a19d57c5bdb49aba156e5d1c59c3, type: 3}
       propertyPath: m_LocalRotation.y
       value: -0
       objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 2f57e4edf5b565340879dc2e35cdf7cb, type: 3}
+    - target: {fileID: -8679921383154817045, guid: 5843a19d57c5bdb49aba156e5d1c59c3, type: 3}
       propertyPath: m_LocalRotation.z
       value: -0
       objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 2f57e4edf5b565340879dc2e35cdf7cb, type: 3}
+    - target: {fileID: -8679921383154817045, guid: 5843a19d57c5bdb49aba156e5d1c59c3, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 2f57e4edf5b565340879dc2e35cdf7cb, type: 3}
+    - target: {fileID: -8679921383154817045, guid: 5843a19d57c5bdb49aba156e5d1c59c3, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 2f57e4edf5b565340879dc2e35cdf7cb, type: 3}
+    - target: {fileID: -8679921383154817045, guid: 5843a19d57c5bdb49aba156e5d1c59c3, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 919132149155446097, guid: 2f57e4edf5b565340879dc2e35cdf7cb, type: 3}
+    - target: {fileID: 919132149155446097, guid: 5843a19d57c5bdb49aba156e5d1c59c3, type: 3}
       propertyPath: m_Name
-      value: Food_Meat
+      value: mesh_OswiecimPassengerFamily
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 2f57e4edf5b565340879dc2e35cdf7cb, type: 3}
---- !u!4 &951879027991127744 stripped
+  m_SourcePrefab: {fileID: 100100000, guid: 5843a19d57c5bdb49aba156e5d1c59c3, type: 3}
+--- !u!4 &4974590034090454251 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 2f57e4edf5b565340879dc2e35cdf7cb, type: 3}
-  m_PrefabInstance: {fileID: 774471336322089259}
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 5843a19d57c5bdb49aba156e5d1c59c3, type: 3}
+  m_PrefabInstance: {fileID: 4792940763461028608}
   m_PrefabAsset: {fileID: 0}

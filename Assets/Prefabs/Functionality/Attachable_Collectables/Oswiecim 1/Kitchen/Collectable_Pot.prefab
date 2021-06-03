@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 1414277513250335457}
   - component: {fileID: 6729991361003571385}
   m_Layer: 2
-  m_Name: Pot_Collectable
+  m_Name: Collectable_Pot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -226,9 +226,13 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7765817437259734433}
     m_Modifications:
+    - target: {fileID: 2248528140486931361, guid: e9fd16dfb0394fc4181e670b48e4bf2d, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: -2557413309736598584, guid: 2c33b2933dc41b34b810659369e673b9, type: 3}
     - target: {fileID: 2580680611740919486, guid: e9fd16dfb0394fc4181e670b48e4bf2d, type: 3}
       propertyPath: m_Name
-      value: Attacher_Pot_Kitchen (3)
+      value: PotatoAttacher
       objectReference: {fileID: 0}
     - target: {fileID: 2580680611740919486, guid: e9fd16dfb0394fc4181e670b48e4bf2d, type: 3}
       propertyPath: m_Layer
@@ -237,6 +241,18 @@ PrefabInstance:
     - target: {fileID: 2926139071753255940, guid: e9fd16dfb0394fc4181e670b48e4bf2d, type: 3}
       propertyPath: m_RootOrder
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2926139071753255940, guid: e9fd16dfb0394fc4181e670b48e4bf2d, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2926139071753255940, guid: e9fd16dfb0394fc4181e670b48e4bf2d, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2926139071753255940, guid: e9fd16dfb0394fc4181e670b48e4bf2d, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2926139071753255940, guid: e9fd16dfb0394fc4181e670b48e4bf2d, type: 3}
       propertyPath: m_LocalPosition.x
@@ -278,9 +294,37 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3408847429464969103, guid: e9fd16dfb0394fc4181e670b48e4bf2d, type: 3}
+      propertyPath: m_Size.x
+      value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 3408847429464969103, guid: e9fd16dfb0394fc4181e670b48e4bf2d, type: 3}
+      propertyPath: m_Size.y
+      value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 3408847429464969103, guid: e9fd16dfb0394fc4181e670b48e4bf2d, type: 3}
+      propertyPath: m_Size.z
+      value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 3408847429464969103, guid: e9fd16dfb0394fc4181e670b48e4bf2d, type: 3}
+      propertyPath: m_Center.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3408847429464969103, guid: e9fd16dfb0394fc4181e670b48e4bf2d, type: 3}
+      propertyPath: m_Center.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3408847429464969103, guid: e9fd16dfb0394fc4181e670b48e4bf2d, type: 3}
+      propertyPath: m_Center.z
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7000186412375891420, guid: e9fd16dfb0394fc4181e670b48e4bf2d, type: 3}
       propertyPath: attachmentName
       value: Potatos
+      objectReference: {fileID: 0}
+    - target: {fileID: 7000186412375891420, guid: e9fd16dfb0394fc4181e670b48e4bf2d, type: 3}
+      propertyPath: attachmentOffset.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8407973074151932312, guid: e9fd16dfb0394fc4181e670b48e4bf2d, type: 3}
       propertyPath: input
@@ -319,9 +363,13 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7765817437259734433}
     m_Modifications:
+    - target: {fileID: 2248528140486931361, guid: e9fd16dfb0394fc4181e670b48e4bf2d, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 5874203949316286044, guid: 49bac8b6a134515458579cf73572e690, type: 3}
     - target: {fileID: 2580680611740919486, guid: e9fd16dfb0394fc4181e670b48e4bf2d, type: 3}
       propertyPath: m_Name
-      value: Attacher_Pot_Kitchen
+      value: MeatAttacher
       objectReference: {fileID: 0}
     - target: {fileID: 2580680611740919486, guid: e9fd16dfb0394fc4181e670b48e4bf2d, type: 3}
       propertyPath: m_Layer
@@ -332,12 +380,24 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2926139071753255940, guid: e9fd16dfb0394fc4181e670b48e4bf2d, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2926139071753255940, guid: e9fd16dfb0394fc4181e670b48e4bf2d, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2926139071753255940, guid: e9fd16dfb0394fc4181e670b48e4bf2d, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2926139071753255940, guid: e9fd16dfb0394fc4181e670b48e4bf2d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.01
       objectReference: {fileID: 0}
     - target: {fileID: 2926139071753255940, guid: e9fd16dfb0394fc4181e670b48e4bf2d, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.1009
+      value: 0.104
       objectReference: {fileID: 0}
     - target: {fileID: 2926139071753255940, guid: e9fd16dfb0394fc4181e670b48e4bf2d, type: 3}
       propertyPath: m_LocalPosition.z
@@ -371,9 +431,37 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3408847429464969103, guid: e9fd16dfb0394fc4181e670b48e4bf2d, type: 3}
+      propertyPath: m_Size.x
+      value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 3408847429464969103, guid: e9fd16dfb0394fc4181e670b48e4bf2d, type: 3}
+      propertyPath: m_Size.y
+      value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 3408847429464969103, guid: e9fd16dfb0394fc4181e670b48e4bf2d, type: 3}
+      propertyPath: m_Size.z
+      value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 3408847429464969103, guid: e9fd16dfb0394fc4181e670b48e4bf2d, type: 3}
+      propertyPath: m_Center.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3408847429464969103, guid: e9fd16dfb0394fc4181e670b48e4bf2d, type: 3}
+      propertyPath: m_Center.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3408847429464969103, guid: e9fd16dfb0394fc4181e670b48e4bf2d, type: 3}
+      propertyPath: m_Center.z
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7000186412375891420, guid: e9fd16dfb0394fc4181e670b48e4bf2d, type: 3}
       propertyPath: attachmentName
       value: Meat
+      objectReference: {fileID: 0}
+    - target: {fileID: 7000186412375891420, guid: e9fd16dfb0394fc4181e670b48e4bf2d, type: 3}
+      propertyPath: attachmentOffset.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8407973074151932312, guid: e9fd16dfb0394fc4181e670b48e4bf2d, type: 3}
       propertyPath: input
@@ -412,9 +500,13 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7765817437259734433}
     m_Modifications:
+    - target: {fileID: 2248528140486931361, guid: e9fd16dfb0394fc4181e670b48e4bf2d, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 6223880507288882083, guid: cc0d156806d58df4d8ac693e393ace67, type: 3}
     - target: {fileID: 2580680611740919486, guid: e9fd16dfb0394fc4181e670b48e4bf2d, type: 3}
       propertyPath: m_Name
-      value: Attacher_Pot_Kitchen (1)
+      value: OnionAttacher
       objectReference: {fileID: 0}
     - target: {fileID: 2580680611740919486, guid: e9fd16dfb0394fc4181e670b48e4bf2d, type: 3}
       propertyPath: m_Layer
@@ -425,12 +517,24 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2926139071753255940, guid: e9fd16dfb0394fc4181e670b48e4bf2d, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2926139071753255940, guid: e9fd16dfb0394fc4181e670b48e4bf2d, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2926139071753255940, guid: e9fd16dfb0394fc4181e670b48e4bf2d, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2926139071753255940, guid: e9fd16dfb0394fc4181e670b48e4bf2d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.0482
       objectReference: {fileID: 0}
     - target: {fileID: 2926139071753255940, guid: e9fd16dfb0394fc4181e670b48e4bf2d, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.1009
+      value: 0.104
       objectReference: {fileID: 0}
     - target: {fileID: 2926139071753255940, guid: e9fd16dfb0394fc4181e670b48e4bf2d, type: 3}
       propertyPath: m_LocalPosition.z
@@ -464,9 +568,37 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3408847429464969103, guid: e9fd16dfb0394fc4181e670b48e4bf2d, type: 3}
+      propertyPath: m_Size.x
+      value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 3408847429464969103, guid: e9fd16dfb0394fc4181e670b48e4bf2d, type: 3}
+      propertyPath: m_Size.y
+      value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 3408847429464969103, guid: e9fd16dfb0394fc4181e670b48e4bf2d, type: 3}
+      propertyPath: m_Size.z
+      value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 3408847429464969103, guid: e9fd16dfb0394fc4181e670b48e4bf2d, type: 3}
+      propertyPath: m_Center.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3408847429464969103, guid: e9fd16dfb0394fc4181e670b48e4bf2d, type: 3}
+      propertyPath: m_Center.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3408847429464969103, guid: e9fd16dfb0394fc4181e670b48e4bf2d, type: 3}
+      propertyPath: m_Center.z
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7000186412375891420, guid: e9fd16dfb0394fc4181e670b48e4bf2d, type: 3}
       propertyPath: attachmentName
       value: Onion
+      objectReference: {fileID: 0}
+    - target: {fileID: 7000186412375891420, guid: e9fd16dfb0394fc4181e670b48e4bf2d, type: 3}
+      propertyPath: attachmentOffset.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8407973074151932312, guid: e9fd16dfb0394fc4181e670b48e4bf2d, type: 3}
       propertyPath: input
@@ -588,9 +720,13 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7765817437259734433}
     m_Modifications:
+    - target: {fileID: 2248528140486931361, guid: e9fd16dfb0394fc4181e670b48e4bf2d, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: -3795997654464672567, guid: c811aecb46358d24f886378195295a3d, type: 3}
     - target: {fileID: 2580680611740919486, guid: e9fd16dfb0394fc4181e670b48e4bf2d, type: 3}
       propertyPath: m_Name
-      value: Attacher_Pot_Kitchen (2)
+      value: BarleyAttacher
       objectReference: {fileID: 0}
     - target: {fileID: 2580680611740919486, guid: e9fd16dfb0394fc4181e670b48e4bf2d, type: 3}
       propertyPath: m_Layer
@@ -601,12 +737,24 @@ PrefabInstance:
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2926139071753255940, guid: e9fd16dfb0394fc4181e670b48e4bf2d, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2926139071753255940, guid: e9fd16dfb0394fc4181e670b48e4bf2d, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2926139071753255940, guid: e9fd16dfb0394fc4181e670b48e4bf2d, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2926139071753255940, guid: e9fd16dfb0394fc4181e670b48e4bf2d, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.0493
       objectReference: {fileID: 0}
     - target: {fileID: 2926139071753255940, guid: e9fd16dfb0394fc4181e670b48e4bf2d, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.1009
+      value: 0.104
       objectReference: {fileID: 0}
     - target: {fileID: 2926139071753255940, guid: e9fd16dfb0394fc4181e670b48e4bf2d, type: 3}
       propertyPath: m_LocalPosition.z
@@ -640,9 +788,37 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3408847429464969103, guid: e9fd16dfb0394fc4181e670b48e4bf2d, type: 3}
+      propertyPath: m_Size.x
+      value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 3408847429464969103, guid: e9fd16dfb0394fc4181e670b48e4bf2d, type: 3}
+      propertyPath: m_Size.y
+      value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 3408847429464969103, guid: e9fd16dfb0394fc4181e670b48e4bf2d, type: 3}
+      propertyPath: m_Size.z
+      value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 3408847429464969103, guid: e9fd16dfb0394fc4181e670b48e4bf2d, type: 3}
+      propertyPath: m_Center.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3408847429464969103, guid: e9fd16dfb0394fc4181e670b48e4bf2d, type: 3}
+      propertyPath: m_Center.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3408847429464969103, guid: e9fd16dfb0394fc4181e670b48e4bf2d, type: 3}
+      propertyPath: m_Center.z
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7000186412375891420, guid: e9fd16dfb0394fc4181e670b48e4bf2d, type: 3}
       propertyPath: attachmentName
       value: BarleyPile
+      objectReference: {fileID: 0}
+    - target: {fileID: 7000186412375891420, guid: e9fd16dfb0394fc4181e670b48e4bf2d, type: 3}
+      propertyPath: attachmentOffset.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8407973074151932312, guid: e9fd16dfb0394fc4181e670b48e4bf2d, type: 3}
       propertyPath: input
