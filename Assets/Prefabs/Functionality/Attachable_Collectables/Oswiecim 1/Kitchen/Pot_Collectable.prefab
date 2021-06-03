@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 1414277513250335457}
   - component: {fileID: 6729991361003571385}
   m_Layer: 2
-  m_Name: Pot_Kitchen
+  m_Name: Pot_Collectable
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -119,12 +119,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3aee1cc419bc32446b3799e74e13d819, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rigidbody: {fileID: 4738331924056716860}
-  customDragPivot: {fileID: 0}
+  customDragPivot: {fileID: 7765817437259734433}
   YOffsetOnDrop: 0
   startDragEffect: {fileID: 0}
   endDragEffect: {fileID: 0}
   attachment: Pot
+  inventoryObjectData: {fileID: 11400000, guid: 15e970c2216e3a04ba5f489a11006ee6, type: 2}
   isAttached: 0
   defaultParent: {fileID: 0}
   attachEffect: {fileID: 0}
@@ -193,7 +193,6 @@ MonoBehaviour:
   MustBeTrue: 1
   FloatIs: 0
   toCompareWith: 0
-  debug: 0
 --- !u!65 &6729991361003571385
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -241,7 +240,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2926139071753255940, guid: e9fd16dfb0394fc4181e670b48e4bf2d, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.0116
+      value: -0.0097
       objectReference: {fileID: 0}
     - target: {fileID: 2926139071753255940, guid: e9fd16dfb0394fc4181e670b48e4bf2d, type: 3}
       propertyPath: m_LocalPosition.y
@@ -249,7 +248,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2926139071753255940, guid: e9fd16dfb0394fc4181e670b48e4bf2d, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.0513
+      value: -0.0442
       objectReference: {fileID: 0}
     - target: {fileID: 2926139071753255940, guid: e9fd16dfb0394fc4181e670b48e4bf2d, type: 3}
       propertyPath: m_LocalRotation.w
@@ -279,6 +278,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7000186412375891420, guid: e9fd16dfb0394fc4181e670b48e4bf2d, type: 3}
+      propertyPath: attachmentName
+      value: Potatos
+      objectReference: {fileID: 0}
     - target: {fileID: 8407973074151932312, guid: e9fd16dfb0394fc4181e670b48e4bf2d, type: 3}
       propertyPath: input
       value: 
@@ -287,6 +290,10 @@ PrefabInstance:
       propertyPath: inputObject
       value: 
       objectReference: {fileID: 2900910580430936146}
+    - target: {fileID: 8407973074151932312, guid: e9fd16dfb0394fc4181e670b48e4bf2d, type: 3}
+      propertyPath: sendOnlyIfAttached
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e9fd16dfb0394fc4181e670b48e4bf2d, type: 3}
 --- !u!4 &580792351839511342 stripped
@@ -326,7 +333,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2926139071753255940, guid: e9fd16dfb0394fc4181e670b48e4bf2d, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.0105
+      value: 0.01
       objectReference: {fileID: 0}
     - target: {fileID: 2926139071753255940, guid: e9fd16dfb0394fc4181e670b48e4bf2d, type: 3}
       propertyPath: m_LocalPosition.y
@@ -334,7 +341,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2926139071753255940, guid: e9fd16dfb0394fc4181e670b48e4bf2d, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.0499
+      value: 0.046
       objectReference: {fileID: 0}
     - target: {fileID: 2926139071753255940, guid: e9fd16dfb0394fc4181e670b48e4bf2d, type: 3}
       propertyPath: m_LocalRotation.w
@@ -364,6 +371,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7000186412375891420, guid: e9fd16dfb0394fc4181e670b48e4bf2d, type: 3}
+      propertyPath: attachmentName
+      value: Meat
+      objectReference: {fileID: 0}
     - target: {fileID: 8407973074151932312, guid: e9fd16dfb0394fc4181e670b48e4bf2d, type: 3}
       propertyPath: input
       value: 
@@ -372,6 +383,10 @@ PrefabInstance:
       propertyPath: inputObject
       value: 
       objectReference: {fileID: 2900910580430936146}
+    - target: {fileID: 8407973074151932312, guid: e9fd16dfb0394fc4181e670b48e4bf2d, type: 3}
+      propertyPath: sendOnlyIfAttached
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e9fd16dfb0394fc4181e670b48e4bf2d, type: 3}
 --- !u!4 &932817039785417609 stripped
@@ -449,6 +464,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7000186412375891420, guid: e9fd16dfb0394fc4181e670b48e4bf2d, type: 3}
+      propertyPath: attachmentName
+      value: Onion
+      objectReference: {fileID: 0}
     - target: {fileID: 8407973074151932312, guid: e9fd16dfb0394fc4181e670b48e4bf2d, type: 3}
       propertyPath: input
       value: 
@@ -457,6 +476,10 @@ PrefabInstance:
       propertyPath: inputObject
       value: 
       objectReference: {fileID: 2900910580430936146}
+    - target: {fileID: 8407973074151932312, guid: e9fd16dfb0394fc4181e670b48e4bf2d, type: 3}
+      propertyPath: sendOnlyIfAttached
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e9fd16dfb0394fc4181e670b48e4bf2d, type: 3}
 --- !u!4 &9001637343435361326 stripped
@@ -488,47 +511,47 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: cb7ab8f147741244fa032c5c39b18071, type: 3}
       propertyPath: m_LocalScale.x
-      value: 80
+      value: 67.2
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: cb7ab8f147741244fa032c5c39b18071, type: 3}
       propertyPath: m_LocalScale.y
-      value: 80
+      value: 67.2
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: cb7ab8f147741244fa032c5c39b18071, type: 3}
       propertyPath: m_LocalScale.z
-      value: 80
+      value: 67.2
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: cb7ab8f147741244fa032c5c39b18071, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.000000010511539
+      value: -0.0028
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: cb7ab8f147741244fa032c5c39b18071, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.1187
+      value: 0.1225
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: cb7ab8f147741244fa032c5c39b18071, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.1139
+      value: -0.0951
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: cb7ab8f147741244fa032c5c39b18071, type: 3}
       propertyPath: m_LocalRotation.w
-      value: -0.17364809
+      value: 0.34447923
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: cb7ab8f147741244fa032c5c39b18071, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.9848078
+      value: -0.93879396
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: cb7ab8f147741244fa032c5c39b18071, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: cb7ab8f147741244fa032c5c39b18071, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: cb7ab8f147741244fa032c5c39b18071, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: 200
+      value: -139.7
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: cb7ab8f147741244fa032c5c39b18071, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
@@ -617,6 +640,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7000186412375891420, guid: e9fd16dfb0394fc4181e670b48e4bf2d, type: 3}
+      propertyPath: attachmentName
+      value: BarleyPile
+      objectReference: {fileID: 0}
     - target: {fileID: 8407973074151932312, guid: e9fd16dfb0394fc4181e670b48e4bf2d, type: 3}
       propertyPath: input
       value: 
@@ -625,6 +652,10 @@ PrefabInstance:
       propertyPath: inputObject
       value: 
       objectReference: {fileID: 2900910580430936146}
+    - target: {fileID: 8407973074151932312, guid: e9fd16dfb0394fc4181e670b48e4bf2d, type: 3}
+      propertyPath: sendOnlyIfAttached
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e9fd16dfb0394fc4181e670b48e4bf2d, type: 3}
 --- !u!4 &6159385791102509401 stripped

@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &7454751673571819963
+--- !u!1 &2741665523415798871
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,48 +8,47 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 1489679063430317603}
-  - component: {fileID: 1744108488205816572}
-  - component: {fileID: 5161331799441052116}
-  - component: {fileID: 3160046373652863741}
-  - component: {fileID: 8979221957670329487}
-  - component: {fileID: 5463416572974735369}
-  m_Layer: 8
-  m_Name: Food_Meat_Prfb
+  - component: {fileID: 3262729184536039149}
+  - component: {fileID: 1938889238449553736}
+  - component: {fileID: 4399073681365398914}
+  - component: {fileID: 8784639732966686617}
+  - component: {fileID: 7524165672138664811}
+  m_Layer: 0
+  m_Name: Meat_Collectable
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &1489679063430317603
+--- !u!4 &3262729184536039149
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7454751673571819963}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_GameObject: {fileID: 2741665523415798871}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &1744108488205816572
+--- !u!33 &1938889238449553736
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7454751673571819963}
+  m_GameObject: {fileID: 2741665523415798871}
   m_Mesh: {fileID: -8513872802451524246, guid: 2f57e4edf5b565340879dc2e35cdf7cb, type: 3}
---- !u!23 &5161331799441052116
+--- !u!23 &4399073681365398914
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7454751673571819963}
+  m_GameObject: {fileID: 2741665523415798871}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -84,55 +83,29 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &3160046373652863741
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7454751673571819963}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.19773747, y: 0.07737486, z: 0.15133187}
-  m_Center: {x: -0.0034328997, y: 0.035124183, z: 0.010970574}
---- !u!54 &8979221957670329487
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7454751673571819963}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 126
-  m_CollisionDetection: 0
---- !u!114 &5463416572974735369
+--- !u!114 &8784639732966686617
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7454751673571819963}
+  m_GameObject: {fileID: 2741665523415798871}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3aee1cc419bc32446b3799e74e13d819, type: 3}
+  m_Script: {fileID: 11500000, guid: ecaa731c51701b94ca142a01ea2afe58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rigidbody: {fileID: 8979221957670329487}
-  customDragPivot: {fileID: 0}
-  YOffsetOnDrop: 0
-  startDragEffect: {fileID: 0}
-  endDragEffect: {fileID: 0}
-  attachment: Food
-  isAttached: 0
-  defaultParent: {fileID: 0}
-  attachEffect: {fileID: 0}
-  detachEffect: {fileID: 0}
-  potentialSlotEffect: {fileID: 0}
+  dataToMoveToInventory: {fileID: 11400000, guid: 81ee867c1932dde43ab82919870036f2, type: 2}
+--- !u!65 &7524165672138664811
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2741665523415798871}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.29, y: 0.11, z: 0.24}
+  m_Center: {x: -0.0034328997, y: 0.035124183, z: 0.010970574}
