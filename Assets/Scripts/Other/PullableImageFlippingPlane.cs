@@ -87,7 +87,7 @@ public class PullableImageFlippingPlane : MonoBehaviour, IDragable, IPullableIma
     }
 
 
-    public void UpdateDragPosition(Vector3 point, Vector3 vector3, bool useCustomPivot)
+    public void UpdateDragPositionAndRotation(Vector3 point, Vector3 vector3, bool useCustomPivot, Quaternion rotation)
     {
         if (clickPositonOnStartDrag == Vector3.zero)
             clickPositonOnStartDrag = point;

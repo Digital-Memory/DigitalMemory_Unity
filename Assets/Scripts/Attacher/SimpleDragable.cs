@@ -22,7 +22,7 @@ public interface IDragable : IHoverable
     bool IsDragable();
     bool ShouldLockOnDrag();
     Vector3 GetRaycastPlaneLockDirection();
-    void UpdateDragPosition(Vector3 point, Vector3 vector3, bool useCustomPivot);
+    void UpdateDragPositionAndRotation(Vector3 point, Vector3 vector3, bool useCustomPivot, Quaternion rotation);
 }
 
 public interface IAttachable : IDragable
@@ -90,9 +90,10 @@ public class SimpleDragable : MonoBehaviour, IDragable
         SetMouseRaycastable(true);
         Game.EffectHandler.Play(endDragEffect, gameObject);
     }
-    public void UpdateDragPosition(Vector3 hitpoint, Vector3 position, bool useCustomPivot)
+    public void UpdateDragPositionAndRotation(Vector3 hitpoint, Vector3 position, bool useCustomPivot, Quaternion rotation)
     {
         transform.position = position - ((!useCustomPivot || customDragPivot == null) ? Vector3.zero : (customDragPivot.position - transform.position));
+        transform.rotation = rotation;
     }
 
     public float GetEndDragYOffset()

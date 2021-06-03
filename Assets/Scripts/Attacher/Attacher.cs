@@ -1,6 +1,8 @@
+using NaughtyAttributes;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 public interface IAttacher
@@ -12,6 +14,7 @@ public interface IAttacher
     void OnAttach(IAttachable attachable);
     void OnDetach();
     Vector3 GetPreviewPosition(Vector3 point);
+    Vector3 GetPreviewDirectionVector();
     bool ResetPositionOnAttach();
     bool ResetOrientationOnAttach();
     Vector3 GetAttachOffset();
@@ -23,6 +26,11 @@ public class Attacher : MonoBehaviour, IAttacher
     public string attachmentName;
     [SerializeField] protected bool isAttached;
     [SerializeField] Vector3 attachmentOffset;
+
+    [Dropdown("VectorValues")]
+    public Vector3 attachPreviewVector = Vector3.up;
+    private Vector3[] VectorValues = new Vector3[] { Vector3.right, Vector3.left, Vector3.forward, Vector3.back, Vector3.up, Vector3.down };
+
     public event System.Action<bool, string> OnChangeAttached;
 
     public bool IsAttached => isAttached;
@@ -53,6 +61,11 @@ public class Attacher : MonoBehaviour, IAttacher
     public virtual Vector3 GetPreviewPosition(Vector3 point)
     {
         return transform.position;
+    }
+
+    public Vector3 GetPreviewDirectionVector()
+    {
+        return attachPreviewVector;
     }
 
     public Transform GetTransform()
@@ -86,6 +99,8 @@ public class Attacher : MonoBehaviour, IAttacher
     {
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireSphere(transform.position + attachmentOffset, 0.5f * Game.Settings.CurrentZoomLevel);
+        Gizmos.color = Color.cyan;
+        Gizmos.DrawLine(transform.position, transform.position + attachPreviewVector);
     }
 
     public void HandleTransformOnAttach(Transform transformToAttach)
