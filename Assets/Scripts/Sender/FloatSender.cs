@@ -178,6 +178,9 @@ public class FloatSender : InputSender
         {
             foreach (InputObject inputObject in secondary)
             {
+                if (inputObject == null)
+                    Debug.LogError($"secondary input list contains empty object ({name})");
+
                 inputObject.Try(progress);
             }
         }
