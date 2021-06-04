@@ -191,15 +191,16 @@ public class FloatSender : InputSender
 
     void OnDrawGizmos()
     {
-        Vector3 center = transform.position + Vector3.up * 2 + Vector3.forward;
+        Vector3 center = transform.position;
 
         Gizmos.color = Color.white;
-        Gizmos.DrawWireCube(center, Vector3.one * 1.5f);
-
         float progress = ((currentValue - MIN_VALUE) / (MAX_VALUE - MIN_VALUE));
 
+        Gizmos.DrawLine(center + Vector3.forward * 5 * Game.Settings.CurrentZoomLevel * progress, center);
+
+
         Gizmos.color = Color.Lerp(Color.red, Color.green, progress);
-        Gizmos.DrawWireCube(center, Vector3.one * (0.5f + progress));
+        Gizmos.DrawLine(center + Vector3.forward * 5 * Game.Settings.CurrentZoomLevel, center + Vector3.forward * 5 * Game.Settings.CurrentZoomLevel * progress);
 
 #if UNITY_EDITOR
 
