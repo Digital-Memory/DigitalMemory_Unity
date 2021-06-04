@@ -16,6 +16,7 @@ public class PullableImageFlippingPlane : MonoBehaviour, IDragable, IPullableIma
     [SerializeField] float d;
 
     [SerializeField] private bool showsImage = true;
+    [SerializeField] bool rotateVertically = false;
 
     public bool IsNull => this == null;
 
@@ -101,7 +102,7 @@ public class PullableImageFlippingPlane : MonoBehaviour, IDragable, IPullableIma
     private Quaternion DistanceToRotation(float dragDistance)
     {
         float angle = distanceToRotationCurve.Evaluate(Mathf.Abs(dragDistance)) * Mathf.Sign(dragDistance);
-        return Quaternion.Euler(new Vector3(angle, angle, angle).FilterByAxisVector(transform.parent.forward));
+        return Quaternion.Euler(new Vector3(angle, angle, angle).FilterByAxisVector(rotateVertically ? transform.parent.up : transform.parent.forward));
     }
 
     private void OnDrawGizmos()
