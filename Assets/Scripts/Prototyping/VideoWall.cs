@@ -18,8 +18,7 @@ public class VideoWall : ConditionedObject
         {
             if (!playedVideo)
                 PlayVideo();
-            else
-                PauseVideo();
+
             return true;
         }
 
@@ -31,7 +30,10 @@ public class VideoWall : ConditionedObject
     {
         if (base.Try(on))
         {
-            PlayVideo();
+            if (!playedVideo)
+                PlayVideo();
+            else
+                PauseVideo();
             return true;
         }
 
