@@ -121,9 +121,15 @@ public class MaterialAssignmentRequest : UnhandeledRequest
         Texture2D tex = assetBundle.LoadAsset<Texture2D>(textureName);
         if (tex != null && meshRenderer != null)
         {
-            meshRenderer.materials[1] = new Material(defaultMaterial);
-            meshRenderer.materials[1].mainTexture = tex;
+            Material[] mat = meshRenderer.materials;
+            mat[1] = new Material(defaultMaterial);
+            mat[1].mainTexture = tex;
+            meshRenderer.materials = mat;
+            Debug.Log($"Loaded texture: {textureName} from asset bundle. ({meshRenderer.materials[1].ToString()})",meshRenderer);
             return true;
+        } else
+        {
+            Debug.LogWarning($"Could not load texture: {textureName}. tex null? {tex == null} mesh renderer null? {meshRenderer == null}", meshRenderer);
         }
 
         return false;
