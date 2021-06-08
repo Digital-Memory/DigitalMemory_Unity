@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &1919122827558661780
+--- !u!1 &1566642337247996020
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,74 +8,46 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 1919122827558661783}
-  - component: {fileID: 67354809312707454}
-  - component: {fileID: 1919122827558661776}
-  - component: {fileID: 1919122827558661777}
-  - component: {fileID: 1919122827558661782}
-  - component: {fileID: 8307882325442670414}
+  - component: {fileID: 4017813978429607766}
+  - component: {fileID: 6234297867072093389}
+  - component: {fileID: 4039251156924770862}
+  - component: {fileID: 5478200726230765328}
   m_Layer: 8
-  m_Name: Attachable_TimePlate
+  m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &1919122827558661783
+--- !u!4 &4017813978429607766
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1919122827558661780}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.25, y: 0, z: 0}
-  m_LocalScale: {x: 0.9, y: 0.2, z: 0.95}
-  m_Children:
-  - {fileID: 7082992632563045261}
-  m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_GameObject: {fileID: 1566642337247996020}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 0.2, z: 2}
+  m_Children: []
+  m_Father: {fileID: 1919122827558661783}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &67354809312707454
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1919122827558661780}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9154b88090c4840829c3599a1efd8534, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  customDragPivot: {fileID: 0}
-  YOffsetOnDrop: 0
-  startDragEffect: {fileID: 0}
-  endDragEffect: {fileID: 0}
-  attachment: TimePlate
-  inventoryObjectData: {fileID: 0}
-  isAttached: 0
-  defaultParent: {fileID: 0}
-  attachEffect: {fileID: 0}
-  detachEffect: {fileID: 0}
-  potentialSlotEffect: {fileID: 0}
-  TimePoint: 0
-  tMP_Text: {fileID: 4843242032990382183}
---- !u!33 &1919122827558661776
+--- !u!33 &6234297867072093389
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1919122827558661780}
+  m_GameObject: {fileID: 1566642337247996020}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!23 &1919122827558661777
+--- !u!23 &4039251156924770862
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1919122827558661780}
+  m_GameObject: {fileID: 1566642337247996020}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -88,7 +60,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 96527a657d7cc0e46b075cc7e8955e84, type: 2}
+  - {fileID: 2100000, guid: 162478f5bfa7c85409a9677b1f1b5b4b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -110,6 +82,53 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &5478200726230765328
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1566642337247996020}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!1 &1919122827558661780
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1919122827558661783}
+  - component: {fileID: 1919122827558661782}
+  - component: {fileID: -1571869712970048709}
+  m_Layer: 8
+  m_Name: Collectable_TimePlatePreWar
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1919122827558661783
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1919122827558661780}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 7082992632563045261}
+  - {fileID: 4017813978429607766}
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &1919122827558661782
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -121,24 +140,22 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!54 &8307882325442670414
-Rigidbody:
+  m_Size: {x: 1, y: 0.23360568, z: 2.016427}
+  m_Center: {x: 0, y: 0.00057476386, z: 0.0013303757}
+--- !u!114 &-1571869712970048709
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1919122827558661780}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ecaa731c51701b94ca142a01ea2afe58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  conditions: []
+  dataToMoveToInventory: {fileID: 11400000, guid: 970da1f5d5c6629498aa8d4326e78846, type: 2}
 --- !u!1 &3504136991815811782
 GameObject:
   m_ObjectHideFlags: 0
@@ -173,7 +190,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 90, y: 90, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0.6}
+  m_AnchoredPosition: {x: 0, y: 0.125}
   m_SizeDelta: {x: 2, y: 1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!23 &100833930739171490
