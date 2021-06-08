@@ -9,7 +9,9 @@ public class AssetBundleBuilder : Editor
     [MenuItem("Assets/BuildAssetBundles")]
     static void BuildAllBundles()
     {
-        BuildPipeline.BuildAssetBundles(@"C:\data\projects\01_Repositorys\DigitalMemoryAssetBundles", BuildAssetBundleOptions.ChunkBasedCompression, BuildTarget.WebGL);
+        string path = EditorUtility.OpenFolderPanel("Where should the go Max Bredlau?", "", "");
+        BuildPipeline.BuildAssetBundles(path, BuildAssetBundleOptions.ChunkBasedCompression, BuildTarget.WebGL);
+        EditorUtility.DisplayDialog("Build Complete", "Congrats Max Bredlau, you build the Assets Bundles", "Ok. cool.", "Age?");
     }
 
     
