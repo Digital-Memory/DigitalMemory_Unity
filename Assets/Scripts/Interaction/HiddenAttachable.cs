@@ -8,8 +8,10 @@ public class HiddenAttachable : SimpleAttachable
     ICloseupable hiddenIn;
     [SerializeField] bool isHidden;
 
-    private void OnEnable()
+    protected override void OnEnable()
     {
+        base.OnEnable();
+
         if (isHidden)
         {
             hiddenIn = transform.parent.GetComponentInParent<ICloseupable>();
@@ -18,7 +20,7 @@ public class HiddenAttachable : SimpleAttachable
         }
     }
 
-    private void OnDisable()
+    protected void OnDisable()
     {
         if (isHidden)
         {

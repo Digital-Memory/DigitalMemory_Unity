@@ -102,7 +102,7 @@ public class PullableImageFlippingPlane : MonoBehaviour, IDragable, IPullableIma
     private Quaternion DistanceToRotation(float dragDistance)
     {
         float angle = distanceToRotationCurve.Evaluate(Mathf.Abs(dragDistance)) * Mathf.Sign(dragDistance);
-        return Quaternion.Euler(new Vector3(angle, angle, angle).FilterByAxisVector(rotateVertically ? transform.parent.up : transform.parent.forward));
+        return Quaternion.Euler(new Vector3(angle, angle, angle).FilterByAxisVector(rotateVertically ? Vector3.up : Vector3.forward));
     }
 
     private void OnDrawGizmos()
