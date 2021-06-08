@@ -1,6 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
+using System.Text;
 using UnityEngine;
+using NaughtyAttributes;
 
 public class TestingKit : MonoBehaviour
 {
@@ -19,5 +22,28 @@ public class TestingKit : MonoBehaviour
 
             index++;
         }
+    }
+
+    [Button]
+    private void CountVerts()
+    {
+        int totalVerts = 0;
+        List<KeyValuePair<string, int>> hitList = new List<KeyValuePair<string, int>>();
+
+        foreach (MeshFilter mf in FindObjectsOfType(typeof(MeshFilter)))
+        {
+            int verts = mf.mesh.vertexCount;
+            totalVerts += verts;
+            hitList.Add(new KeyValuePair<string, int>( mf.name, verts));
+        }
+
+        StringBuilder sb = new StringBuilder();
+
+        foreach (KeyValuePair<string,int> item in hitList.OrderByDescending(pairs => pairs.Value))
+        {
+            sb.Append($"{item.Key} : {item.Value} ({(((float)item.Value) / ((float)totalVerts)) * 100}%)\n");
+        }
+
+        Debug.LogWarning(sb.ToString());
     }
 }
