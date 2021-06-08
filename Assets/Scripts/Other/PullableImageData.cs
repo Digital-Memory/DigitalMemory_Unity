@@ -39,5 +39,11 @@ public class PullableImageData : ScriptableObject
                 Debug.Log($"update asset references path: {path} / bundle name: {bundleName}.");
         }
     }
+
+    [Button]
+    private void Refresh()
+    {
+        SetReferences();
+    }
 #endif
 }

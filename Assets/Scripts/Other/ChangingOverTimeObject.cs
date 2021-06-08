@@ -94,9 +94,9 @@ public class ChangingOverTimeObject : ConditionedObject
         {
             UpdateChange(animationCurve.Evaluate(time));
             time += (Time.deltaTime / durationInSeconds) * direction;
-            if (time >= 1f || time <= 0)
+            if (time > 1f || time < 0f)
             {
-                time = time > 0.5f == resetAtEnd ? 1f : 0f;
+                time = time > 0.5f != resetAtEnd ? 1f : 0f;
 
                 SetAnimating(false);
             }
