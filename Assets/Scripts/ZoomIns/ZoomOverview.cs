@@ -11,7 +11,7 @@ public class ZoomOverview : MonoBehaviour
     private void OnEnable()
     {
         cinemachineVirtualCamera = GetComponent<CinemachineVirtualCamera>();
-        cinemachineVirtualCamera.Priority = 50;
+        cinemachineVirtualCamera.Priority = 51;
         Game.ZoomInHandler.RegisterAsOverview(cinemachineVirtualCamera);
     }
 }
