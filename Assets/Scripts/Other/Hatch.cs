@@ -5,11 +5,11 @@ using UnityEngine;
 
 public class Hatch : ConditionedObject
 {
-    [SerializeField] Transform doorRight, doorLeft;
-    [SerializeField] AnimationCurve doorZRotation;
+    [SerializeField] protected Transform doorRight, doorLeft;
+    [SerializeField] protected AnimationCurve doorZRotation;
     [Expandable]
-    [SerializeField] Effect openningEffect;
-    [SerializeField] Vector3 axisMultiplier;
+    [SerializeField] protected Effect openningEffect;
+    [SerializeField] protected Vector3 axisMultiplier;
 
     bool isOpen;
     bool isAnimating;
@@ -48,10 +48,10 @@ public class Hatch : ConditionedObject
         if (isOpen)
             return;
 
-        isAnimating = true;
         clickedTimestamp = Time.time;
         rotationAnimationDuration = doorZRotation[doorZRotation.length - 1].time;
         isOpen = true;
+        StartAnimating();
 
         Game.EffectHandler.Play(openningEffect, gameObject);
     }
@@ -62,10 +62,10 @@ public class Hatch : ConditionedObject
         if (!isOpen)
             return;
 
-        isAnimating = true;
         clickedTimestamp = Time.time;
         rotationAnimationDuration = doorZRotation[doorZRotation.length - 1].time;
         isOpen = false;
+        StartAnimating();
     }
 
     public bool IsClickable()
@@ -79,7 +79,7 @@ public class Hatch : ConditionedObject
         {
             if (Time.time > clickedTimestamp + rotationAnimationDuration)
             {
-                isAnimating = false;
+                EndAnimating();
             }
             else
             {
@@ -90,5 +90,15 @@ public class Hatch : ConditionedObject
                     doorRight.localRotation = Quaternion.Euler(axisMultiplier * -rotation);
             }
         }
+    }
+
+    protected virtual void StartAnimating()
+    {
+        isAnimating = true;
+    }
+
+    protected virtual void EndAnimating()
+    {
+        isAnimating = false;
     }
 }

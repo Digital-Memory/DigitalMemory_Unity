@@ -12,8 +12,7 @@ GameObject:
   - component: {fileID: 1512082187064578483}
   - component: {fileID: 4954955079528966407}
   - component: {fileID: 4738331924056716860}
-  - component: {fileID: 7396220484503271994}
-  - component: {fileID: 206920486960742759}
+  - component: {fileID: 1871716661008802668}
   - component: {fileID: 1414277513250335457}
   - component: {fileID: 6729991361003571385}
   m_Layer: 2
@@ -107,7 +106,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
---- !u!114 &7396220484503271994
+--- !u!114 &1871716661008802668
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -116,30 +115,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2900910580430936146}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3aee1cc419bc32446b3799e74e13d819, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  customDragPivot: {fileID: 7765817437259734433}
-  YOffsetOnDrop: 0
-  startDragEffect: {fileID: 0}
-  endDragEffect: {fileID: 0}
-  attachment: Pot
-  inventoryObjectData: {fileID: 11400000, guid: 15e970c2216e3a04ba5f489a11006ee6, type: 2}
-  isAttached: 0
-  defaultParent: {fileID: 0}
-  attachEffect: {fileID: 0}
-  detachEffect: {fileID: 0}
-  potentialSlotEffect: {fileID: 0}
---- !u!114 &206920486960742759
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2900910580430936146}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 76bdc4c7d0beda5499b084e26ee37197, type: 3}
+  m_Script: {fileID: 11500000, guid: 0dbc9a5ee46aeb046b0758b7d7618aca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   conditions:
@@ -172,6 +148,8 @@ MonoBehaviour:
     m_RotationOrder: 4
   openningEffect: {fileID: 0}
   axisMultiplier: {x: 1, y: 0, z: 0}
+  potData: {fileID: 11400000, guid: 15e970c2216e3a04ba5f489a11006ee6, type: 2}
+  cart: {fileID: 0}
 --- !u!114 &1414277513250335457
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -226,6 +204,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7765817437259734433}
     m_Modifications:
+    - target: {fileID: 1096365556572908384, guid: e9fd16dfb0394fc4181e670b48e4bf2d, type: 3}
+      propertyPath: IsAttached
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2248528140486931361, guid: e9fd16dfb0394fc4181e670b48e4bf2d, type: 3}
       propertyPath: m_Mesh
       value: 
@@ -260,7 +242,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2926139071753255940, guid: e9fd16dfb0394fc4181e670b48e4bf2d, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.1009
+      value: 0.1034
       objectReference: {fileID: 0}
     - target: {fileID: 2926139071753255940, guid: e9fd16dfb0394fc4181e670b48e4bf2d, type: 3}
       propertyPath: m_LocalPosition.z
@@ -318,6 +300,14 @@ PrefabInstance:
       propertyPath: m_Center.z
       value: -0.03
       objectReference: {fileID: 0}
+    - target: {fileID: 4093938258581489515, guid: e9fd16dfb0394fc4181e670b48e4bf2d, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: f63b110fd80726445921512f110f1c85, type: 2}
+    - target: {fileID: 4093938258581489515, guid: e9fd16dfb0394fc4181e670b48e4bf2d, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 54a36ec3f804a5f44b9a5f11517ef780, type: 2}
     - target: {fileID: 7000186412375891420, guid: e9fd16dfb0394fc4181e670b48e4bf2d, type: 3}
       propertyPath: attachmentName
       value: Potatos
@@ -329,11 +319,15 @@ PrefabInstance:
     - target: {fileID: 8407973074151932312, guid: e9fd16dfb0394fc4181e670b48e4bf2d, type: 3}
       propertyPath: input
       value: 
-      objectReference: {fileID: 206920486960742759}
+      objectReference: {fileID: 1871716661008802668}
     - target: {fileID: 8407973074151932312, guid: e9fd16dfb0394fc4181e670b48e4bf2d, type: 3}
       propertyPath: inputObject
       value: 
       objectReference: {fileID: 2900910580430936146}
+    - target: {fileID: 8407973074151932312, guid: e9fd16dfb0394fc4181e670b48e4bf2d, type: 3}
+      propertyPath: inputSelectionType
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8407973074151932312, guid: e9fd16dfb0394fc4181e670b48e4bf2d, type: 3}
       propertyPath: sendOnlyIfAttached
       value: 0
@@ -363,6 +357,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7765817437259734433}
     m_Modifications:
+    - target: {fileID: 1096365556572908384, guid: e9fd16dfb0394fc4181e670b48e4bf2d, type: 3}
+      propertyPath: IsAttached
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2248528140486931361, guid: e9fd16dfb0394fc4181e670b48e4bf2d, type: 3}
       propertyPath: m_Mesh
       value: 
@@ -455,6 +453,14 @@ PrefabInstance:
       propertyPath: m_Center.z
       value: 0.02
       objectReference: {fileID: 0}
+    - target: {fileID: 4093938258581489515, guid: e9fd16dfb0394fc4181e670b48e4bf2d, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: f63b110fd80726445921512f110f1c85, type: 2}
+    - target: {fileID: 4093938258581489515, guid: e9fd16dfb0394fc4181e670b48e4bf2d, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 54a36ec3f804a5f44b9a5f11517ef780, type: 2}
     - target: {fileID: 7000186412375891420, guid: e9fd16dfb0394fc4181e670b48e4bf2d, type: 3}
       propertyPath: attachmentName
       value: Meat
@@ -466,14 +472,30 @@ PrefabInstance:
     - target: {fileID: 8407973074151932312, guid: e9fd16dfb0394fc4181e670b48e4bf2d, type: 3}
       propertyPath: input
       value: 
-      objectReference: {fileID: 206920486960742759}
+      objectReference: {fileID: 1871716661008802668}
     - target: {fileID: 8407973074151932312, guid: e9fd16dfb0394fc4181e670b48e4bf2d, type: 3}
       propertyPath: inputObject
       value: 
       objectReference: {fileID: 2900910580430936146}
     - target: {fileID: 8407973074151932312, guid: e9fd16dfb0394fc4181e670b48e4bf2d, type: 3}
+      propertyPath: inputDropown
+      value: 
+      objectReference: {fileID: 1871716661008802668}
+    - target: {fileID: 8407973074151932312, guid: e9fd16dfb0394fc4181e670b48e4bf2d, type: 3}
+      propertyPath: hasSecondaryInput
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8407973074151932312, guid: e9fd16dfb0394fc4181e670b48e4bf2d, type: 3}
+      propertyPath: inputSelectionType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8407973074151932312, guid: e9fd16dfb0394fc4181e670b48e4bf2d, type: 3}
       propertyPath: sendOnlyIfAttached
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8407973074151932312, guid: e9fd16dfb0394fc4181e670b48e4bf2d, type: 3}
+      propertyPath: secondary.Array.size
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e9fd16dfb0394fc4181e670b48e4bf2d, type: 3}
@@ -500,6 +522,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7765817437259734433}
     m_Modifications:
+    - target: {fileID: 1096365556572908384, guid: e9fd16dfb0394fc4181e670b48e4bf2d, type: 3}
+      propertyPath: IsAttached
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2248528140486931361, guid: e9fd16dfb0394fc4181e670b48e4bf2d, type: 3}
       propertyPath: m_Mesh
       value: 
@@ -592,6 +618,14 @@ PrefabInstance:
       propertyPath: m_Center.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4093938258581489515, guid: e9fd16dfb0394fc4181e670b48e4bf2d, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: f63b110fd80726445921512f110f1c85, type: 2}
+    - target: {fileID: 4093938258581489515, guid: e9fd16dfb0394fc4181e670b48e4bf2d, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 54a36ec3f804a5f44b9a5f11517ef780, type: 2}
     - target: {fileID: 7000186412375891420, guid: e9fd16dfb0394fc4181e670b48e4bf2d, type: 3}
       propertyPath: attachmentName
       value: Onion
@@ -603,11 +637,15 @@ PrefabInstance:
     - target: {fileID: 8407973074151932312, guid: e9fd16dfb0394fc4181e670b48e4bf2d, type: 3}
       propertyPath: input
       value: 
-      objectReference: {fileID: 206920486960742759}
+      objectReference: {fileID: 1871716661008802668}
     - target: {fileID: 8407973074151932312, guid: e9fd16dfb0394fc4181e670b48e4bf2d, type: 3}
       propertyPath: inputObject
       value: 
       objectReference: {fileID: 2900910580430936146}
+    - target: {fileID: 8407973074151932312, guid: e9fd16dfb0394fc4181e670b48e4bf2d, type: 3}
+      propertyPath: inputSelectionType
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8407973074151932312, guid: e9fd16dfb0394fc4181e670b48e4bf2d, type: 3}
       propertyPath: sendOnlyIfAttached
       value: 0
@@ -720,6 +758,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7765817437259734433}
     m_Modifications:
+    - target: {fileID: 1096365556572908384, guid: e9fd16dfb0394fc4181e670b48e4bf2d, type: 3}
+      propertyPath: IsAttached
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2248528140486931361, guid: e9fd16dfb0394fc4181e670b48e4bf2d, type: 3}
       propertyPath: m_Mesh
       value: 
@@ -812,6 +854,14 @@ PrefabInstance:
       propertyPath: m_Center.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4093938258581489515, guid: e9fd16dfb0394fc4181e670b48e4bf2d, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: f63b110fd80726445921512f110f1c85, type: 2}
+    - target: {fileID: 4093938258581489515, guid: e9fd16dfb0394fc4181e670b48e4bf2d, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 54a36ec3f804a5f44b9a5f11517ef780, type: 2}
     - target: {fileID: 7000186412375891420, guid: e9fd16dfb0394fc4181e670b48e4bf2d, type: 3}
       propertyPath: attachmentName
       value: BarleyPile
@@ -823,11 +873,15 @@ PrefabInstance:
     - target: {fileID: 8407973074151932312, guid: e9fd16dfb0394fc4181e670b48e4bf2d, type: 3}
       propertyPath: input
       value: 
-      objectReference: {fileID: 206920486960742759}
+      objectReference: {fileID: 1871716661008802668}
     - target: {fileID: 8407973074151932312, guid: e9fd16dfb0394fc4181e670b48e4bf2d, type: 3}
       propertyPath: inputObject
       value: 
       objectReference: {fileID: 2900910580430936146}
+    - target: {fileID: 8407973074151932312, guid: e9fd16dfb0394fc4181e670b48e4bf2d, type: 3}
+      propertyPath: inputSelectionType
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8407973074151932312, guid: e9fd16dfb0394fc4181e670b48e4bf2d, type: 3}
       propertyPath: sendOnlyIfAttached
       value: 0
