@@ -39,6 +39,7 @@ public class ZoomInHandler : Singleton<ZoomInHandler>
 
     private IEnumerator ZoomOut()
     {
+        Debug.Log($"Zoom out from: {current.name}");
         WebCommunicator.ZoomOut();
         Game.EffectHandler.Play(zoomOut, gameObject);
         Game.Settings.CurrentZoomLevel = 1f;
@@ -49,6 +50,9 @@ public class ZoomInHandler : Singleton<ZoomInHandler>
             Debug.LogError("No overview found. Make sure you have and active ZoomOverview script with a virtual camera present.");
 
         ChangedZoomIn?.Invoke(false);
+
+        //Hotfix but works
+        overview.Priority = 50;
 
         yield return new WaitForSeconds(0.5f);
 
