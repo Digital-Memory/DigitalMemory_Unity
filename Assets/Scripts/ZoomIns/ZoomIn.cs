@@ -6,7 +6,7 @@ using NaughtyAttributes;
 using UnityEngine;
 
 [RequireComponent(typeof(SphereCollider))]
-public class ZoomIn : MonoBehaviour, IClickable, IHoverable
+public class ZoomIn : InputObject, IClickable, IHoverable
 {
     [SerializeField] CinemachineVirtualCamera cinemachineVirtualCamera;
     [SerializeField] AnimationCurve zoomOutCurve;
@@ -24,10 +24,36 @@ public class ZoomIn : MonoBehaviour, IClickable, IHoverable
     [SerializeField] List<InputObject> InputObjects = new List<InputObject>();
     [SerializeField] private bool isStartingPoint;
 
+    [SerializeField] ActionOnInput actionOnInput;
+    [ShowIf("actionOnInputIsZoomInOnOther")]
+    [SerializeField] ZoomIn otherZoomIn;
+
+    bool actionOnInputIsZoomInOnOther => actionOnInput == ActionOnInput.ZoomInOnOther;
+
+
+    public override bool Try()
+    {
+        if (actionOnInput == ActionOnInput.ZoomOut)
+        {
+            Debug.Log($"ZoomOut Impulse send to {name}.");
+            Game.ZoomInHandler.ForceZoomOut();
+        }
+        else
+        {
+            otherZoomIn.DoZoomIn();
+        }
+
+        return true;
+    }
+
 
     public bool IsNull => this == null;
 
     public int Id { get; internal set; }
+
+    [SerializeField] private bool doesAllowZoomOut = true;
+    public bool DoesAllowZoomOut => doesAllowZoomOut;
+
     private void Awake()
     {
         if (isStartingPoint)
@@ -39,7 +65,7 @@ public class ZoomIn : MonoBehaviour, IClickable, IHoverable
         DoZoomIn();
     }
 
-    private void DoZoomIn()
+    public void DoZoomIn()
     {
         cinemachineVirtualCamera.Priority = 100;
         Game.ZoomInHandler.ZoomIn(this);
@@ -48,6 +74,7 @@ public class ZoomIn : MonoBehaviour, IClickable, IHoverable
 
     private void DoZoomOut()
     {
+        Debug.Log($"{name} set prio to 10.");
         cinemachineVirtualCamera.Priority = 10;
         SendInputObjects(false);
     }
@@ -156,5 +183,11 @@ public class ZoomIn : MonoBehaviour, IClickable, IHoverable
                     Gizmos.DrawLine(inputObject.gameObject.transform.position, transform.position);
             }
         }
+    }
+
+    private enum ActionOnInput
+    {
+        ZoomOut,
+        ZoomInOnOther,
     }
 }

@@ -51,6 +51,29 @@ public class InputSender : MonoBehaviour, IInputSender
         return (input != null && inputObject != null && input.gameObject == inputObject);
     }
 
+    protected void SendSecondaryInput(InputType type, bool boolValue = true, float floatValue = 1f)
+    {
+        if (!hasSecondaryInput)
+            return;
+
+        foreach (InputObject input in secondary)
+        {
+            switch(type)
+            {
+                case InputType.Impulse:
+                    input.Try();
+                    return;
+
+                case InputType.Bool:
+                    input.Try(boolValue);
+                    return;
+
+                case InputType.Float:
+                    input.Try(floatValue);
+                    return;
+            }
+        }
+    }
 
     protected virtual void CallOnSendInputEvents(float value)
     {

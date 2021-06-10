@@ -1,4 +1,5 @@
 using NaughtyAttributes;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -26,7 +27,8 @@ public class AttacherSender : InputSender
         {
             Debug.LogError("AttacherSender added to GameObject without Attacher. Destroyed Automatically.");
             Destroy(this);
-        } else
+        }
+        else
         {
             attacher.OnChangeAttached += OnChangeAttached;
         }
@@ -46,11 +48,17 @@ public class AttacherSender : InputSender
         {
             case InputType.Impulse:
                 if (isAttached || !sendOnlyIfAttached)
-                    input.Try();
-                    return;
+                    if (input.Try())
+                    {
+                        SendSecondaryInput(InputType.Impulse);
+                    }
+                return;
 
             case InputType.Bool:
-                input.Try(isAttached);
+                if (input.Try(isAttached))
+                {
+                    SendSecondaryInput(InputType.Bool, boolValue: isAttached);
+                }
                 return;
 
             default:

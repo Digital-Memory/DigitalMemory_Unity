@@ -55,6 +55,11 @@ public class ZoomInHandler : Singleton<ZoomInHandler>
         IsZoomedIn = false;
     }
 
+    internal void ForceZoomOut()
+    {
+        StartCoroutine(ZoomOut());
+    }
+
     internal void RegisterAsOverview(CinemachineVirtualCamera cinemachineVirtualCamera)
     {
         overview = cinemachineVirtualCamera;
@@ -62,7 +67,7 @@ public class ZoomInHandler : Singleton<ZoomInHandler>
 
     private void Update()
     {
-        if (current == null || Game.UIHandler.EventSystem.IsPointerOverGameObject())
+        if (current == null || Game.UIHandler.EventSystem.IsPointerOverGameObject() || !current.DoesAllowZoomOut)
             return;
 
         var x = Input.mousePosition.x / (float)Screen.width;
@@ -79,16 +84,15 @@ public class ZoomInHandler : Singleton<ZoomInHandler>
     }
 
     //Need to Improve this at some point
-    //Commented it out for now
-    //private void OnGUI()
-    //{
-    //    string str = "";
-    //    foreach (CinemachineVirtualCamera vcam in FindObjectsOfType<CinemachineVirtualCamera>())
-    //    {
-    //        str += (vcam == (FindObjectOfType<CinemachineBrain>().ActiveVirtualCamera as CinemachineVirtualCamera) ? ">>> " : "");
-    //        str += vcam.gameObject.transform.parent ? vcam.gameObject.transform.parent.name : vcam.gameObject.name;
-    //        str += $" - {vcam.Name } - {vcam.Priority.ToString() }\n";
-    //    }
-    //    GUILayout.Box(str, GUILayout.Width(450));
-    //}
+    private void OnGUI()
+    {
+        string str = "";
+        foreach (CinemachineVirtualCamera vcam in FindObjectsOfType<CinemachineVirtualCamera>())
+        {
+            str += (vcam == (FindObjectOfType<CinemachineBrain>().ActiveVirtualCamera as CinemachineVirtualCamera) ? ">>> " : "");
+            str += vcam.gameObject.transform.parent ? vcam.gameObject.transform.parent.name : vcam.gameObject.name;
+            str += $" - {vcam.Name } - {vcam.Priority.ToString() }\n";
+        }
+        GUILayout.Box(str, GUILayout.Width(450));
+    }
 }
