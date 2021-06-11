@@ -11,10 +11,13 @@ public class CollectToInventoryOnClick : ConditionedObject, IClickable, IHoverab
     public event Action OnStartHoverEvent;
     public event Action OnEndHoverEvent;
 
+    public event Action InteractEvent;
+
     public void Click()
     {
         if (CheckAllConditionsForTrue())
         {
+            InteractEvent?.Invoke();
             Game.UIHandler.InventoryAdder.MoveToInventory(dataToMoveToInventory, Input.mousePosition);
             Game.HoverHandler.ForceEndHoverCurrent();
             Destroy(gameObject);
