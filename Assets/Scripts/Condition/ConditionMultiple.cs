@@ -65,12 +65,12 @@ public class ConditionMultiple : ConditionBase
                 }
                 if (i == behaviours.Length)
                 {
-                    Debug.Log($"Conditon check success ({behaviours.Length}) on {gameObject.name}");
+                    //Debug.Log($"Conditon check success ({behaviours.Length}) on {gameObject.name}");
                     return true;
                 }
                 else
                 {
-                    Debug.Log($"Conditon check failed ({i} / {behaviours.Length}) on {gameObject.name}");
+                    //Debug.Log($"Conditon check failed ({i} / {behaviours.Length}) on {gameObject.name}");
                     return false;
                 }
         }

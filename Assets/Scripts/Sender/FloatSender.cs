@@ -152,7 +152,7 @@ public class FloatSender : InputSender
 
     private bool IsInsideInputRange(float newValue)
     {
-        return newValue < MAX_VALUE && newValue > MIN_VALUE;
+        return newValue <= MAX_VALUE && newValue >= MIN_VALUE;
     }
 
 
@@ -171,22 +171,12 @@ public class FloatSender : InputSender
 #if UNITY_EDITOR
         __isGivingInput = true;
 #endif
-
         bool canTryInput = (input == null || input.Try(progress));
 
-        if (canTryInput && hasSecondaryInput && secondary != null && secondary.Length > 0)
-        {
-            foreach (InputObject inputObject in secondary)
-            {
-                if (inputObject == null)
-                    Debug.LogError($"secondary input list contains empty object ({name})");
-
-                inputObject.Try(progress);
-            }
-        }
+        if (canTryInput)
+            SendSecondaryInput(InputType.Float, floatValue: progress);
 
         return canTryInput;
-
     }
 
     void OnDrawGizmos()
