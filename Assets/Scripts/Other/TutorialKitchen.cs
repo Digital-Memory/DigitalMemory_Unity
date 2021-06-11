@@ -8,7 +8,7 @@ public class TutorialKitchen : MonoBehaviour
     [SerializeField] CollectToInventoryOnClick meat;
     [SerializeField] Attacher meatAttacher;
 
-    [SerializeField] List<GameObject> tutorialFrames;
+    [SerializeField] List<TutorialFrame> tutorialFrames;
     private void OnEnable()
     {
         SetTutorialFrame(0);
@@ -34,7 +34,15 @@ public class TutorialKitchen : MonoBehaviour
     {
         for (int i = 0; i < tutorialFrames.Count; i++)
         {
-            tutorialFrames[i].SetActive(i == index);
+            if (index == i)
+            {
+                tutorialFrames[i].gameObject.SetActive(true);
+                tutorialFrames[i].FadeIn();
+            } 
+            else
+            {
+                tutorialFrames[i].FadeOut();
+            }
         }
     }
 }
