@@ -1,15 +1,30 @@
 mergeInto(LibraryManager.library, {
 
   EnterTime: function(time) {
-        window.alert("enter time: " + time);
-    },
-
-  EnterCloseup: function(id) {
-        window.alert("enter CloseUp: " + id);
-    },
-  LeaveCloseup: function() {
-        window.alert("leave CloseUp.");
-    },
-
-
+    const message = {
+      type: 'EnterTime',
+      data: {
+        time: time
+      }
+    }
+    window.postMessage(message, '*')
+  },
+  EnterCloseup: function(closeup) {
+    const message = {
+      type: 'EnterCloseup',
+      data: {
+        closeup: closeUp
+      }
+    }
+    window.postMessage(message, '*')
+  },
+  LeaveCloseup: function(closeup) {
+    const message = {
+      type: 'LeaveCloseup',
+      data: {
+        closeup: closeUp
+      }
+    }
+    window.postMessage(message, '*')
+  },
 });

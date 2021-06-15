@@ -31,6 +31,9 @@ public class AnimatingObject : ChangingOverTimeObject
     {
         if (animator != null && varibleFloat != "")
         {
+            if (progress >= 1)
+                progress = 0.999f;
+
             animator.SetFloat(varibleFloat, progress);
         }
     }

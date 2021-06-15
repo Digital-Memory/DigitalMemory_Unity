@@ -39,6 +39,6 @@ public class EffectHandler : Singleton<EffectHandler>
 
     internal void StopOnAllPotentialAttachables(string attachment)
     {
-        Array.ForEach(Attachers.Where(a => a.CanAttach(attachment)).ToArray(), x => Play(clearVisualEffects, x.gameObject));
+        Array.ForEach(Attachers.Where(a => a.attachmentName == attachment).ToArray(), x => Play(clearVisualEffects, x.gameObject));
     }
 }
