@@ -2,6 +2,7 @@ using NaughtyAttributes;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -9,7 +10,7 @@ using UnityEngine.UI;
 public class InventoryObjectUI : UnityEngine.UI.Button, IDragHandler, IBeginDragHandler
 {
     [SerializeField] private Image imageElement;
-    [SerializeField] private Text amountText;
+    [SerializeField] private TMP_Text amountText;
     private InventoryObjectData data;
     private Inventory inventory;
 
