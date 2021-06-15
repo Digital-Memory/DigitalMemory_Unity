@@ -80,8 +80,8 @@ public class ZoomInHandler : Singleton<ZoomInHandler>
         if (current == null || Game.UIHandler.EventSystem.IsPointerOverGameObject() || !current.DoesAllowZoomOut)
             return;
 
-        var x = Input.mousePosition.x / (float)Screen.width;
-        var y = Input.mousePosition.y / (float)Screen.height;
+        var x = Input.mousePosition.x / Mathf.Max(1,(float)Screen.width);
+        var y = Input.mousePosition.y / Mathf.Max(1,(float)Screen.height);
 
         float factor = Mathf.Max(x < 0.5f ? 1 - x : x, y < 0.5f ? 1 - y : y);
         current.TryChangeFadeoutPreview(factor > 0.9f);
