@@ -107,7 +107,7 @@ public class MouseInteractor : Singleton<MouseInteractor>
         if (dragable.ShouldLockOnDrag())
         {
             raycastDistanceIsLocked = true;
-            lockedRaycastPlane = new Plane(dragable.GetRaycastPlaneLockDirection(), hit.point);
+            lockedRaycastPlane = new Plane(dragable.GetRaycastPlaneLockDirection(hit.point), hit.point);
             DebugDraw.Plane(hit.point, lockedRaycastPlane.normal, 24, 6);
         }
     }

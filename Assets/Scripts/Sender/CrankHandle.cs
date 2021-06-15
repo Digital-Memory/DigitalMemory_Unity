@@ -51,7 +51,7 @@ public class CrankHandle : MonoBehaviour, IDragable, IHoverable, IChargeInput
     {
         return true;
     }
-    public Vector3 GetRaycastPlaneLockDirection()
+    public Vector3 GetRaycastPlaneLockDirection(Vector3 point)
     {
         return Vector3.up;
     }
