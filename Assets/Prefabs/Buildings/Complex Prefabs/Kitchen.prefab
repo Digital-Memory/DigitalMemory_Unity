@@ -2888,7 +2888,7 @@ MonoBehaviour:
   hasSecondaryInput: 0
   secondary: []
   FloatIs: 0
-  toCompareWith: 0
+  toCompareWith: 0.99
 --- !u!1 &9207052731893920191
 GameObject:
   m_ObjectHideFlags: 0
@@ -3586,6 +3586,14 @@ PrefabInstance:
       propertyPath: m_AABB.m_Extent.z
       value: 4.51158
       objectReference: {fileID: 0}
+    - target: {fileID: -3887185075125053422, guid: 5bbbeb96e351fc94caef851043dc74fa, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: d97283ed63890e342b56459fe66a2bc3, type: 2}
+    - target: {fileID: -3887185075125053422, guid: 5bbbeb96e351fc94caef851043dc74fa, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: e7f5aec14854c2d47ad0c0434e9a41b3, type: 2}
     - target: {fileID: -3887185075125053422, guid: 5bbbeb96e351fc94caef851043dc74fa, type: 3}
       propertyPath: m_BlendShapeWeights.Array.size
       value: 1
