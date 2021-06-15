@@ -39,7 +39,7 @@ public class ZoomInHandler : Singleton<ZoomInHandler>
 
     private IEnumerator ZoomOut()
     {
-        Debug.Log($"Zoom out from: {current.name}");
+        //Debug.Log($"Zoom out from: {current.name}");
         WebCommunicator.ZoomOut();
         Game.EffectHandler.Play(zoomOut, gameObject);
         Game.Settings.CurrentZoomLevel = 1f;
