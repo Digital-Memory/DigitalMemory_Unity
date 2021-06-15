@@ -100,7 +100,7 @@ public class Effect : ScriptableObject
     {
         foreach (VisualEffectInstance effect in origin.GetComponentsInChildren<VisualEffectInstance>())
         {
-            effect.Destroy();
+            effect.Destroy(0);
         }
     }
 
@@ -145,7 +145,7 @@ public class VisualEffectData : EffectData
     {
         Vector3 spawnPosition = (spawnRelativeToOrigin ? origin.transform.position : Vector3.zero) + spawnOffset;
         Transform effectInstance = GameObject.Instantiate(prefab, spawnPosition, Quaternion.identity, spawnParented ? origin.transform : null);
-        effectInstance.gameObject.AddComponent<VisualEffectInstance>().DestroyDelayed(destroyDelay);
+        effectInstance.gameObject.AddComponent<VisualEffectInstance>().Destroy(destroyDelay);
     }
 }
 

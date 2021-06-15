@@ -5,23 +5,20 @@ using UnityEngine;
 public class Selfdestroy : MonoBehaviour
 {
     public bool StartCountdownOnStart = false;
-    public float delay;
+    [SerializeField] private float delay;
 
     // Start is called before the first frame update
     void Start()
     {
         if (StartCountdownOnStart)
-            DestroyDelayed(delay);
+            Destroy(delay);
     }
 
-    public void DestroyDelayed(float delay)
+    public void Destroy(float delay)
     {
         if (delay > 0f)
-            Invoke("Destroy",delay);
-    }
-
-    public void Destroy()
-    {
-        Destroy(gameObject);
+            Destroy(gameObject, delay);
+        else
+            Destroy(gameObject);
     }
 }
