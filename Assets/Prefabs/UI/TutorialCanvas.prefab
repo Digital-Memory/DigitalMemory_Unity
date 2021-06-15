@@ -247,7 +247,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 80, y: -20}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6462498317779645055
@@ -331,7 +331,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 3191822467756803089}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 733661660463737595}
+        m_TargetAssemblyTypeName: TutorialKitchen, Assembly-CSharp
+        m_MethodName: GoFrameBack
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1674041484570747356
 GameObject:
   m_ObjectHideFlags: 0
@@ -479,6 +491,8 @@ GameObject:
   - component: {fileID: 5946567444193926674}
   - component: {fileID: 2113384686023573246}
   - component: {fileID: 6761213887972248019}
+  - component: {fileID: 2100199531196222822}
+  - component: {fileID: 8715825407621139579}
   m_Layer: 5
   m_Name: SlotTutorial
   m_TagString: Untagged
@@ -542,6 +556,30 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!225 &2100199531196222822
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2018221750443183887}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
+--- !u!114 &8715825407621139579
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2018221750443183887}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 341323bafe8a012448321be617177f37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2904519859673719715
 GameObject:
   m_ObjectHideFlags: 0
@@ -651,9 +689,9 @@ RectTransform:
   m_Father: {fileID: 8841642641703873384}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0.5, y: 0}
+  m_AnchorMax: {x: 0.5, y: 0}
+  m_AnchoredPosition: {x: 0, y: -35}
   m_SizeDelta: {x: 160, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &9026739146917316679
@@ -737,7 +775,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 5669885831216497631}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 733661660463737595}
+        m_TargetAssemblyTypeName: TutorialKitchen, Assembly-CSharp
+        m_MethodName: ToggleTutorial
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &5652215889175970379
 GameObject:
   m_ObjectHideFlags: 0
@@ -749,6 +799,8 @@ GameObject:
   - component: {fileID: 2105896674063779550}
   - component: {fileID: 6676546671484518231}
   - component: {fileID: 3573800462284582390}
+  - component: {fileID: 8942880665820727129}
+  - component: {fileID: 8343074710122194638}
   m_Layer: 5
   m_Name: PickUpTutorial
   m_TagString: Untagged
@@ -812,6 +864,30 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!225 &8942880665820727129
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5652215889175970379}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
+--- !u!114 &8343074710122194638
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5652215889175970379}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 341323bafe8a012448321be617177f37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5821033741469671934
 GameObject:
   m_ObjectHideFlags: 0
@@ -846,9 +922,9 @@ RectTransform:
   m_Father: {fileID: 8841642641703873384}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 1, y: 0}
+  m_AnchorMax: {x: 1, y: 0}
+  m_AnchoredPosition: {x: -80, y: -20}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4783662341064958254
@@ -932,7 +1008,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1023045863021937402}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 733661660463737595}
+        m_TargetAssemblyTypeName: TutorialKitchen, Assembly-CSharp
+        m_MethodName: GoFrameForward
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &5865262576012142424
 GameObject:
   m_ObjectHideFlags: 0
@@ -1326,6 +1414,7 @@ GameObject:
   - component: {fileID: 7330809610317535072}
   - component: {fileID: 7330809610317535079}
   - component: {fileID: 7330809610317535078}
+  - component: {fileID: 733661660463737595}
   m_Layer: 5
   m_Name: TutorialCanvas
   m_TagString: Untagged
@@ -1414,6 +1503,27 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &733661660463737595
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7330809610317535077}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59f1d643066411d4fa0f50c3a40ccb0f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  meat: {fileID: 0}
+  meatAttacher: {fileID: 0}
+  tutorialFrames:
+  - {fileID: 8343074710122194638}
+  - {fileID: 8715825407621139579}
+  - {fileID: 5425646613503995679}
+  buttonBack: {fileID: 857053747138254888}
+  buttonDone: {fileID: 4304628694400980596}
+  buttonContinue: {fileID: 5821033741469671934}
 --- !u!1 &7330809611114490160
 GameObject:
   m_ObjectHideFlags: 0
@@ -1904,6 +2014,8 @@ GameObject:
   - component: {fileID: 6016908678129158102}
   - component: {fileID: 2493889085155926705}
   - component: {fileID: 3815938964331771194}
+  - component: {fileID: 1676702153370593162}
+  - component: {fileID: 5425646613503995679}
   m_Layer: 5
   m_Name: InteractTutorial
   m_TagString: Untagged
@@ -1967,6 +2079,30 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!225 &1676702153370593162
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8106749994420960980}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
+--- !u!114 &5425646613503995679
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8106749994420960980}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 341323bafe8a012448321be617177f37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8528581360760806575
 GameObject:
   m_ObjectHideFlags: 0
@@ -1976,7 +2112,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8841642641703873384}
-  - component: {fileID: 1376351282224832986}
   m_Layer: 5
   m_Name: Buttons
   m_TagString: Untagged
@@ -2006,32 +2141,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1376351282224832986
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8528581360760806575}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 30649d3a9faa99c48a7b1166b86bf2a0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Padding:
-    m_Left: 0
-    m_Right: 0
-    m_Top: 11
-    m_Bottom: 0
-  m_ChildAlignment: 0
-  m_Spacing: 0
-  m_ChildForceExpandWidth: 1
-  m_ChildForceExpandHeight: 1
-  m_ChildControlWidth: 0
-  m_ChildControlHeight: 0
-  m_ChildScaleWidth: 0
-  m_ChildScaleHeight: 0
-  m_ReverseArrangement: 0
 --- !u!1 &8599740254025579138
 GameObject:
   m_ObjectHideFlags: 0

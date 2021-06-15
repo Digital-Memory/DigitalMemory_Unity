@@ -9,17 +9,25 @@ public class TutorialKitchen : MonoBehaviour
     [SerializeField] Attacher meatAttacher;
 
     [SerializeField] List<TutorialFrame> tutorialFrames;
+
+    [SerializeField] GameObject buttonBack, buttonDone, buttonContinue;
+
+    private Canvas myCanvas;
+    private int currentFrame = 0, unlockedFrames = 0;
     private void OnEnable()
     {
         SetTutorialFrame(0);
         meat.InteractEvent += OnInteractWithMeat;
         meatAttacher.OnChangeAttached += OnAttachMeat;
+        myCanvas = gameObject.GetComponent<Canvas>();
+
     }
 
     private void OnInteractWithMeat()
     {
         meat.InteractEvent -= OnInteractWithMeat;
         SetTutorialFrame(1);
+        unlockedFrames = 1;
     }
     private void OnAttachMeat(bool isAttached, string attachment)
     {
@@ -27,6 +35,7 @@ public class TutorialKitchen : MonoBehaviour
         {
             meatAttacher.OnChangeAttached -= OnAttachMeat;
             SetTutorialFrame(2);
+            unlockedFrames = 2;
         }
     }
 
@@ -38,11 +47,39 @@ public class TutorialKitchen : MonoBehaviour
             {
                 tutorialFrames[i].gameObject.SetActive(true);
                 tutorialFrames[i].FadeIn();
+                currentFrame = i;
             } 
             else
             {
                 tutorialFrames[i].FadeOut();
             }
         }
+
+        UpdateButtons();
+    }
+
+    public void ToggleTutorial()
+    {
+        myCanvas.enabled = !myCanvas.enabled;
+    }
+
+    public void GoFrameBack()
+    {
+        SetTutorialFrame(currentFrame-1);
+        Debug.Log(currentFrame);
+    }
+
+    public void GoFrameForward()
+    {
+        SetTutorialFrame(currentFrame+1);
+    }
+
+    private void UpdateButtons()
+    {
+        buttonBack.SetActive(currentFrame > 0);
+
+        buttonContinue.SetActive(currentFrame < unlockedFrames);
+
+        buttonDone.SetActive(currentFrame == tutorialFrames.Count-1);
     }
 }
