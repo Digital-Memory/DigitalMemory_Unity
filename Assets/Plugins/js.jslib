@@ -13,7 +13,7 @@ mergeInto(LibraryManager.library, {
     const message = {
       type: 'EnterCloseup',
       data: {
-        closeup: closeUp
+        closeup: closeup
       }
     }
     window.postMessage(message, '*')
@@ -22,7 +22,7 @@ mergeInto(LibraryManager.library, {
     const message = {
       type: 'LeaveCloseup',
       data: {
-        closeup: closeUp
+        closeup: closeup
       }
     }
     window.postMessage(message, '*')
