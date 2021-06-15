@@ -74,9 +74,10 @@ public class PullableImageFlippingPlane : MonoBehaviour, IDragable, IPullableIma
     {
         return true;
     }
-    public Vector3 GetRaycastPlaneLockDirection()
+    public Vector3 GetRaycastPlaneLockDirection(Vector3 point)
     {
-        return transform.parent.right;
+        return Game.CameraController.Camera.transform.forward;
+        //return transform.parent.right;
     }
 
     public void StartDrag()
@@ -93,7 +94,7 @@ public class PullableImageFlippingPlane : MonoBehaviour, IDragable, IPullableIma
         if (clickPositonOnStartDrag == Vector3.zero)
             clickPositonOnStartDrag = point;
 
-        float dragDistance = (clickPositonOnStartDrag - point).FilterByAxis(transform.parent.up);
+        float dragDistance = (clickPositonOnStartDrag - point).GetLongestAxis();
         d = dragDistance;
         Quaternion lerp = DistanceToRotation(dragDistance);
         transform.localRotation = (localRotationOnStartDrag * lerp);

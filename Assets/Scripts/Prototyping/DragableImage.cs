@@ -81,7 +81,7 @@ public class DragableImage : MovingObject, IDragable
     {
         return true;
     }
-    public Vector3 GetRaycastPlaneLockDirection()
+    public Vector3 GetRaycastPlaneLockDirection(Vector3 point)
     {
         return forward;
     }

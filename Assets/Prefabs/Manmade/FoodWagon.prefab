@@ -97,8 +97,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.4819733, y: 0.35, z: 0.7378268}
-  m_Center: {x: 0, y: 0.21, z: 0.019398138}
+  m_Size: {x: 0.3, y: 0.1, z: 0.3}
+  m_Center: {x: 0, y: 0.19, z: 0.0067386627}
 --- !u!114 &650973561246069213
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -114,6 +114,7 @@ MonoBehaviour:
   attachmentName: Pot
   isAttached: 0
   attachmentOffset: {x: 0, y: 0.3, z: 0}
+  attachPreviewVector: {x: 0, y: 1, z: 0}
   allowsDetach: 0
   destroyColliderOnAttachment: 1
 --- !u!114 &8775146335598558984
@@ -128,6 +129,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 737a6558c14de5544a4257094b26472e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inputSelectionType: 0
+  inputDropown: {fileID: 0}
   input: {fileID: 0}
   inputObject: {fileID: 0}
   hasSecondaryInput: 0

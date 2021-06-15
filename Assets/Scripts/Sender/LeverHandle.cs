@@ -51,7 +51,7 @@ public class LeverHandle : MonoBehaviour, IDragable
     {
         return true;
     }
-    public Vector3 GetRaycastPlaneLockDirection()
+    public Vector3 GetRaycastPlaneLockDirection(Vector3 point)
     {
         return Vector3.up;
     }

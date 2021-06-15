@@ -52,7 +52,7 @@ public class PullableImageFrame : MonoBehaviour, IDragable
     {
         return true;
     }
-    public Vector3 GetRaycastPlaneLockDirection()
+    public Vector3 GetRaycastPlaneLockDirection(Vector3 point)
     {
         return transform.forward;
     }
