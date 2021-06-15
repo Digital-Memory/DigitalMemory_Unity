@@ -13,8 +13,7 @@ public class Hatch : ConditionedObject
 
     bool isOpen;
     bool isAnimating;
-    float clickedTimestamp;
-    float rotationAnimationDuration;
+    float time;
 
     public override bool Try()
     {
@@ -48,8 +47,6 @@ public class Hatch : ConditionedObject
         if (isOpen)
             return;
 
-        clickedTimestamp = Time.time;
-        rotationAnimationDuration = doorZRotation[doorZRotation.length - 1].time;
         isOpen = true;
         StartAnimating();
 
@@ -62,8 +59,6 @@ public class Hatch : ConditionedObject
         if (!isOpen)
             return;
 
-        clickedTimestamp = Time.time;
-        rotationAnimationDuration = doorZRotation[doorZRotation.length - 1].time;
         isOpen = false;
         StartAnimating();
     }
@@ -77,17 +72,19 @@ public class Hatch : ConditionedObject
     {
         if (isAnimating)
         {
-            if (Time.time > clickedTimestamp + rotationAnimationDuration)
+            time += (isOpen ? 1f : -1f) * Time.deltaTime;
+
+            if (isOpen ? (time < 1f) : (time > 0f))
             {
-                EndAnimating();
-            }
-            else
-            {
-                float rotation = doorZRotation.Evaluate(isOpen ? (Time.time - clickedTimestamp) : ((Time.time - clickedTimestamp) * -1));
+                float rotation = doorZRotation.Evaluate(time);
                 if (doorLeft != null)
                     doorLeft.localRotation = Quaternion.Euler(axisMultiplier * rotation);
                 if (doorRight != null)
                     doorRight.localRotation = Quaternion.Euler(axisMultiplier * -rotation);
+            } else
+            {
+                time = isOpen ? 1 : 0;
+                EndAnimating();
             }
         }
     }
