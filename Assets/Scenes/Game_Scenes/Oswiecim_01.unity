@@ -2546,7 +2546,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: d97283ed63890e342b56459fe66a2bc3, type: 2}
+  - {fileID: 2100000, guid: 707eff00227ea864fbb8c4255f6d1849, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -3430,6 +3430,14 @@ PrefabInstance:
     - target: {fileID: 3859508592664359982, guid: 2eae5a8a753abac45830a79d9efa00ae, type: 3}
       propertyPath: m_Name
       value: OswiecimGreatSynagogueSegmented
+      objectReference: {fileID: 0}
+    - target: {fileID: 6435108215841056657, guid: 2eae5a8a753abac45830a79d9efa00ae, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6696989784408859177, guid: 2eae5a8a753abac45830a79d9efa00ae, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7286536752564350652, guid: 2eae5a8a753abac45830a79d9efa00ae, type: 3}
       propertyPath: m_RootOrder
@@ -10507,9 +10515,17 @@ PrefabInstance:
     m_TransformParent: {fileID: 231080103}
     m_Modifications:
     - target: {fileID: 1980226375714008270, guid: 24479cde7902efa4ea57ba56a504a602, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: c50c9297925fd1f45a2e1e7e522dab12, type: 2}
+    - target: {fileID: 1980226375714008270, guid: 24479cde7902efa4ea57ba56a504a602, type: 3}
       propertyPath: m_Materials.Array.data[1]
       value: 
       objectReference: {fileID: 2100000, guid: ccee3b795dff92641be04e44d0e0283d, type: 2}
+    - target: {fileID: 1980226375714008270, guid: 24479cde7902efa4ea57ba56a504a602, type: 3}
+      propertyPath: m_Materials.Array.data[2]
+      value: 
+      objectReference: {fileID: 2100000, guid: 707eff00227ea864fbb8c4255f6d1849, type: 2}
     - target: {fileID: 1980226375714008270, guid: 24479cde7902efa4ea57ba56a504a602, type: 3}
       propertyPath: m_Materials.Array.data[3]
       value: 
@@ -11226,6 +11242,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[2]
       value: 
       objectReference: {fileID: 2100000, guid: c50c9297925fd1f45a2e1e7e522dab12, type: 2}
+    - target: {fileID: 8522082592500524036, guid: e1a7d9591495a0f4ba84aec181d35782, type: 3}
+      propertyPath: m_Materials.Array.data[4]
+      value: 
+      objectReference: {fileID: 2100000, guid: 707eff00227ea864fbb8c4255f6d1849, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e1a7d9591495a0f4ba84aec181d35782, type: 3}
 --- !u!4 &5826917054225136954
@@ -11971,11 +11991,19 @@ PrefabInstance:
     - target: {fileID: 8912292948463694399, guid: fa3b2d0ee5db05b4091dee35149243cb, type: 3}
       propertyPath: m_Materials.Array.data[1]
       value: 
+      objectReference: {fileID: 2100000, guid: cc109e00351943f408d10bb4dd521ab0, type: 2}
+    - target: {fileID: 8912292948463694399, guid: fa3b2d0ee5db05b4091dee35149243cb, type: 3}
+      propertyPath: m_Materials.Array.data[2]
+      value: 
       objectReference: {fileID: 2100000, guid: c50c9297925fd1f45a2e1e7e522dab12, type: 2}
     - target: {fileID: 8912292948463694399, guid: fa3b2d0ee5db05b4091dee35149243cb, type: 3}
       propertyPath: m_Materials.Array.data[3]
       value: 
       objectReference: {fileID: 2100000, guid: cc109e00351943f408d10bb4dd521ab0, type: 2}
+    - target: {fileID: 8912292948463694399, guid: fa3b2d0ee5db05b4091dee35149243cb, type: 3}
+      propertyPath: m_Materials.Array.data[4]
+      value: 
+      objectReference: {fileID: 2100000, guid: ccee3b795dff92641be04e44d0e0283d, type: 2}
     - target: {fileID: 8912292948463694399, guid: fa3b2d0ee5db05b4091dee35149243cb, type: 3}
       propertyPath: m_Materials.Array.data[5]
       value: 
