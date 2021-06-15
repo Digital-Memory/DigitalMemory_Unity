@@ -2994,6 +2994,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 599858116}
     m_Modifications:
+    - target: {fileID: 4477214404994513106, guid: cfd0b409d16c2d1459553f09f7bdee73, type: 3}
+      propertyPath: input
+      value: 
+      objectReference: {fileID: 2039297511}
+    - target: {fileID: 4477214404994513106, guid: cfd0b409d16c2d1459553f09f7bdee73, type: 3}
+      propertyPath: inputObject
+      value: 
+      objectReference: {fileID: 2039297509}
+    - target: {fileID: 4477214404994513106, guid: cfd0b409d16c2d1459553f09f7bdee73, type: 3}
+      propertyPath: inputSelectionType
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4477214404994513110, guid: cfd0b409d16c2d1459553f09f7bdee73, type: 3}
       propertyPath: m_RootOrder
       value: 11
@@ -7764,7 +7776,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3043921707370419493, guid: b3d9566c29d17404b8557a8763275a1b, type: 3}
       propertyPath: isStartingPoint
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3043921707370419493, guid: b3d9566c29d17404b8557a8763275a1b, type: 3}
       propertyPath: doesAllowZoomOut
@@ -8011,10 +8023,10 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  durationInSeconds: 1
-  startFromEnd: 1
-  animateOnStart: 1
-  resetAtEnd: 0
+  durationInSeconds: 6
+  startFromEnd: 0
+  animateOnStart: 0
+  resetAtEnd: 1
   varibleFloat: 
 --- !u!95 &2039297512
 Animator:
