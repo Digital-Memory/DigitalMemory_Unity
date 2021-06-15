@@ -28,7 +28,7 @@ public class ZoomInHandler : Singleton<ZoomInHandler>
     {
         Debug.Log($"Zoom in on: {zoom.name}");
 
-        WebCommunicator.ZoomIn(zoom.Id);
+        WebCommunicator.ZoomIn(zoom.name);
         Game.EffectHandler.Play(zoomIn, gameObject);
         Game.Settings.CurrentZoomLevel = 0.2f;
 
@@ -39,8 +39,14 @@ public class ZoomInHandler : Singleton<ZoomInHandler>
 
     private IEnumerator ZoomOut()
     {
-        Debug.Log($"Zoom out from: {current.name}");
-        WebCommunicator.ZoomOut();
+        if (current != null)
+        {
+            Debug.Log($"Zoom out from: {current.name}");
+            WebCommunicator.ZoomOut(current.name);
+        } else
+        {
+            Debug.LogWarning("Zoom Out was called even though the previous zoom in was undefined.");
+        }
         Game.EffectHandler.Play(zoomOut, gameObject);
         Game.Settings.CurrentZoomLevel = 1f;
 
