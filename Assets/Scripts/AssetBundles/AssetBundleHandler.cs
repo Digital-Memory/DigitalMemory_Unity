@@ -122,8 +122,8 @@ public class MaterialAssignmentRequest : UnhandeledRequest
         if (tex != null && meshRenderer != null)
         {
             Material[] mat = meshRenderer.materials;
-            mat[1] = new Material(defaultMaterial);
-            mat[1].mainTexture = tex;
+            mat[0] = new Material(defaultMaterial);
+            mat[0].mainTexture = tex;
             meshRenderer.materials = mat;
             Debug.Log($"Loaded texture: {textureName} from asset bundle. ({meshRenderer.materials[1].ToString()})",meshRenderer);
             return true;
