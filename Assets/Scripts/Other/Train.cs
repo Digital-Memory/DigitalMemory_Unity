@@ -17,6 +17,8 @@ public class Train : ConditionedObject
 
     [SerializeField] Effect spawnOswiecimCitizenEffect;
 
+    bool hasGreen = false;
+
     public override bool Try(float progress)
     {
         if (forwardHasGreen)
@@ -34,6 +36,12 @@ public class Train : ConditionedObject
             }
         }
 
+        return true;
+    }
+
+    public override bool Try(bool on)
+    {
+        hasGreen = true;
         return true;
     }
 
@@ -76,6 +84,8 @@ public class Train : ConditionedObject
         {
             facingForward = true;
         }
+
+        hasGreen = false;
     }
 
     private void TurnBack()
@@ -86,11 +96,13 @@ public class Train : ConditionedObject
             {
                 for (int i = 0; i < 3; i++)
                 {
-                    Game.EffectHandler.Play(spawnOswiecimCitizenEffect,gameObject);
+                    Game.EffectHandler.Play(spawnOswiecimCitizenEffect, gameObject);
                 }
             }
             facingForward = false;
         }
+
+        hasGreen = false;
     }
 
     private float Accelerate(float target)
@@ -106,6 +118,6 @@ public class Train : ConditionedObject
 
     private bool CanDrive()
     {
-        return position < 0.1f || position > 0.4f || (facingForward == forwardHasGreen);
+        return position < 0.1f || position > 0.4f || hasGreen;
     }
 }
