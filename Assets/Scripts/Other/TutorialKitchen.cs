@@ -12,14 +12,13 @@ public class TutorialKitchen : MonoBehaviour
 
     [SerializeField] GameObject buttonBack, buttonDone, buttonContinue;
 
-    private Canvas myCanvas;
+    [SerializeField] private Canvas myCanvas;
     private int currentFrame = 0, unlockedFrames = 0;
     private void OnEnable()
     {
         SetTutorialFrame(0);
         meat.InteractEvent += OnInteractWithMeat;
         meatAttacher.OnChangeAttached += OnAttachMeat;
-        myCanvas = gameObject.GetComponent<Canvas>();
 
     }
 
@@ -60,6 +59,7 @@ public class TutorialKitchen : MonoBehaviour
 
     public void ToggleTutorial()
     {
+        Debug.LogWarning($"myCanvas is null: " + myCanvas == null);
         myCanvas.enabled = !myCanvas.enabled;
     }
 
