@@ -7,6 +7,7 @@ public class MouseInteractor : Singleton<MouseInteractor>
 {
     [SerializeField] LayerMask draggingLayerMask, notDraggingLayerMask;
     [SerializeField] Effect onHoverDragableEnter, onHoverDragableExit;
+    [SerializeField] float defaultMaxRaycastDistance;
 
     GameObject currenHoverTEMP;
 
@@ -38,7 +39,7 @@ public class MouseInteractor : Singleton<MouseInteractor>
 
         LayerMask layerMask = Game.DragHandler.IsDragging ? draggingLayerMask : notDraggingLayerMask;
 
-        if (!Physics.Raycast(ray, out hit, raycastDistanceIsLocked ? lockedRaycastDistance : 100f, layerMask))
+        if (!Physics.Raycast(ray, out hit, raycastDistanceIsLocked ? lockedRaycastDistance : defaultMaxRaycastDistance, layerMask))
         {
             hit.point = ray.GetPoint(raycastDistanceIsLocked ? lockedRaycastDistance : FLOOR_RAYCAST_DISTANCE);
         }
