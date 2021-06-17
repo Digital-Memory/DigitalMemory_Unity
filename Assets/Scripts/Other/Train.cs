@@ -9,9 +9,9 @@ public class Train : ConditionedObject
     [SerializeField] Animator animator;
     [AnimatorParam("animator")]
     [SerializeField] string triggerPass, triggerEnter, trainPosition;
-    [ShowNonSerializedField] bool forwardHasGreen;
-    [ShowNonSerializedField] bool facingForward = true;
+    [SerializeField] float horsePower = 0.05f;
     [ShowNonSerializedField] bool switchIsUp = false;
+    [ShowNonSerializedField] bool hasBornPassengers = false;
     [SerializeField] [Range(0, 1)] float position = 0f;
     [ShowNonSerializedField] float acceleration = 0f;
 
@@ -19,35 +19,10 @@ public class Train : ConditionedObject
 
     bool hasGreen = false;
 
-    public override bool Try(float progress)
-    {
-        if (forwardHasGreen)
-        {
-            if (progress < 0.1f)
-            {
-                SetGreenForward(false);
-            }
-        }
-        else
-        {
-            if (progress > 0.9f)
-            {
-                SetGreenForward(true);
-            }
-        }
-
-        return true;
-    }
-
     public override bool Try(bool on)
     {
         hasGreen = true;
         return true;
-    }
-
-    private void SetGreenForward(bool forward)
-    {
-        forwardHasGreen = forward;
     }
 
     private void Update()
@@ -65,12 +40,21 @@ public class Train : ConditionedObject
 
         if (CanDrive())
         {
-            targetSpeed = (facingForward ? 0.1f : -0.1f);
+            targetSpeed = horsePower;
+
+            if (!hasBornPassengers && switchIsUp && position > 0.6f)
+            {
+                Debug.Log($"{name} spawns passengers");
+
+                for (int i = 0; i < 3; i++)
+                {
+                    Game.EffectHandler.Play(spawnOswiecimCitizenEffect, gameObject);
+                }
+                hasBornPassengers = true;
+            }
 
             if (position > 1)
-                TurnBack();
-            else if (position < 0)
-                TurnForward();
+                Reset();
         }
 
 
@@ -78,31 +62,11 @@ public class Train : ConditionedObject
         animator.SetFloat(trainPosition, position);
     }
 
-    private void TurnForward()
+    private void Reset()
     {
-        if (!facingForward)
-        {
-            facingForward = true;
-        }
-
+        position = 0;
         hasGreen = false;
-    }
-
-    private void TurnBack()
-    {
-        if (facingForward)
-        {
-            if (switchIsUp)
-            {
-                for (int i = 0; i < 3; i++)
-                {
-                    Game.EffectHandler.Play(spawnOswiecimCitizenEffect, gameObject);
-                }
-            }
-            facingForward = false;
-        }
-
-        hasGreen = false;
+        hasBornPassengers = false;
     }
 
     private float Accelerate(float target)

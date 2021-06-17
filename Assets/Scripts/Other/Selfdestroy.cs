@@ -16,9 +16,7 @@ public class Selfdestroy : MonoBehaviour
 
     public void Destroy(float delay)
     {
-        if (delay > 0f)
+        if (!(delay < 0f))
             Destroy(gameObject, delay);
-        else
-            Destroy(gameObject);
     }
 }

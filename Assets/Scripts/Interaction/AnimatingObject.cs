@@ -34,7 +34,7 @@ public class AnimatingObject : ChangingOverTimeObject
             if (progress >= 1)
                 progress = 0.999f;
 
-            Debug.Log($"{name} => set animator float ({varibleFloat}) : {progress}");
+            //Debug.Log($"{name} => set animator float ({varibleFloat}) : {progress}");
             animator.SetFloat(varibleFloat, progress);
         }
     }
