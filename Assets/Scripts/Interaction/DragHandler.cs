@@ -80,7 +80,7 @@ public class DragHandler : Singleton<DragHandler>
     private void UpdateDragPreviewRegular(RaycastHit hit, Ray ray)
     {
         //regular drag
-        float dragDistance = Game.Settings.DragDistance;
+        float dragDistance = Game.Settings.DragDistance * Game.Settings.CurrentZoomLevel;
         currentDrag.UpdateDragPositionAndRotation(hit.point, ray.GetPoint(dragDistance), useCustomPivot: false, Quaternion.identity);
     }
 
