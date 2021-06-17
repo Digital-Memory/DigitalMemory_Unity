@@ -22,12 +22,12 @@ public class EffectHandler : Singleton<EffectHandler>
             return attachers;
         }
     }
-    internal void Play(Effect attachEffect, GameObject gameObject)
+    internal void Play(Effect effect, GameObject gameObject)
     {
 
-        if (attachEffect != null && gameObject != null)
+        if (effect != null && gameObject != null)
         {
-            attachEffect.Play(gameObject);
+            effect.Play(gameObject);
         }
     }
 
