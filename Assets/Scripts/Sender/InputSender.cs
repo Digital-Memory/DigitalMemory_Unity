@@ -3,6 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using NaughtyAttributes;
+using UnityEngine.PlayerLoop;
+
 public interface IInputSender
 {
     event System.Action OnSendInput;
@@ -21,6 +23,8 @@ public enum InputSelectionType
 public class InputSender : MonoBehaviour, IInputSender
 {
 #if UNITY_EDITOR
+
+    float activeTime = 0;
 
     [InfoBox("Use dropdowns only for scene references.")]
     [SerializeField] protected InputSelectionType inputSelectionType;
@@ -88,6 +92,10 @@ public class InputSender : MonoBehaviour, IInputSender
 
     protected void SendSecondaryInput(InputType type, bool boolValue = true, float floatValue = 1f)
     {
+#if UNITY_EDITOR
+        activeTime = Time.time;
+#endif
+
         if (!hasSecondaryInput)
             return;
 
@@ -114,4 +122,23 @@ public class InputSender : MonoBehaviour, IInputSender
     {
         OnSendInput?.Invoke();
     }
+
+#if UNITY_EDITOR
+
+    protected void OnDrawGizmos()
+    {
+        Gizmos.color = activeTime + 1 > Time.time ? Color.yellow : Color.gray;
+
+        Gizmos.DrawLine(transform.position, input.transform.position);
+
+        if (!hasSecondaryInput)
+            return;
+
+        foreach (InputObject sec in secondary)
+        {
+            if (sec != null)
+                Gizmos.DrawLine(transform.position, sec.transform.position);
+        }
+    }
+#endif
 }

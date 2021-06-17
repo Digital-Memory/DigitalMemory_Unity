@@ -65,6 +65,7 @@ public class ZoomInHandler : Singleton<ZoomInHandler>
         IsZoomedIn = false;
     }
 
+    [Button]
     internal void ForceZoomOut()
     {
         StartCoroutine(ZoomOut());

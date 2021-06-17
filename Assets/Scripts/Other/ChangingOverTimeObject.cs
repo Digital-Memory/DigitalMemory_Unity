@@ -50,9 +50,9 @@ public class ChangingOverTimeObject : ConditionedObject
     protected void SetAnimating(bool animating)
     {
         if (animating)
-            Debug.Log($"Start Animating: {direction} t: {time}");
+            Debug.Log($"{name} Starts Animating: {direction} t: {time}");
         else
-            Debug.Log($"Finish Animating: {direction} t: {time}");
+            Debug.Log($"{name} Finishes Animating: {direction} t: {time}");
         isAnimating = animating;
     }
 
