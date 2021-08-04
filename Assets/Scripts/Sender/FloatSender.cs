@@ -15,6 +15,7 @@ public class FloatSender : InputSender
     [SerializeField] Transform rotatingWheel;
 
     [Foldout("Effects")] [Expandable] [SerializeField] Effect startUseEffect, endUseEffect, whileChangeEffect, cantChangeEffect, forcedEndDragEffect;
+    [SerializeField] AudioClip whileChangeSound;
 
     public event System.Action<float> OnSendInputValue;
     public event System.Action<float> OnSendCallbackWithFactor;
@@ -96,6 +97,7 @@ public class FloatSender : InputSender
         {
             valueAtWhichPlayedEffectLast = rawValue;
             Game.EffectHandler.Play(whileChangeEffect, gameObject);
+            Game.SoundPlayer.Play(whileChangeSound, volume: 0.5f, pitch: 0.5f + rawValue);
         }
     }
 

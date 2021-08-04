@@ -133,6 +133,7 @@ MonoBehaviour:
   attachmentName: Crank
   isAttached: 0
   attachmentOffset: {x: 0, y: 0, z: 0}
+  attachPreviewVector: {x: 0, y: 1, z: 0}
   allowsDetach: 0
   destroyColliderOnAttachment: 0
 --- !u!114 &3458194863511574890
@@ -147,6 +148,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb28ff5ef79b5844e842845f793281db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inputSelectionType: 0
+  inputDropown: {fileID: 0}
   input: {fileID: 0}
   inputObject: {fileID: 0}
   hasSecondaryInput: 0
@@ -157,9 +160,10 @@ MonoBehaviour:
   rotatingWheel: {fileID: 5277673155107407840}
   startUseEffect: {fileID: 11400000, guid: dcc86490f7173dc478ab67a81d634a56, type: 2}
   endUseEffect: {fileID: 11400000, guid: c3c6b0473111e8c419244edeb37c4666, type: 2}
-  whileChangeEffect: {fileID: 11400000, guid: fb4135650a2d2e64ba3109d397333ab6, type: 2}
+  whileChangeEffect: {fileID: 0}
   cantChangeEffect: {fileID: 0}
   forcedEndDragEffect: {fileID: 0}
+  whileChangeSound: {fileID: 8300000, guid: a7c0e76b55cf1894d88158a4b556cc1d, type: 3}
 --- !u!114 &4569421820086830493
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -172,9 +176,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d931a50ed056c5b48b0782a9a7772d3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  conditions: []
   baseValue: 0
   targetValue: 1
   maxDistanceFromTargetToNotMoveBack: 0.1
+  moveOnInput: 0
+  toBase: 1
 --- !u!135 &5881873877261564058
 SphereCollider:
   m_ObjectHideFlags: 0
