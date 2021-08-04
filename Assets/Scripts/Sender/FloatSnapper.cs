@@ -59,7 +59,7 @@ public class FloatSnapper : MonoBehaviour
         float currentValue = floatSender.CurrentValue;
         snapValue = GetClosestSnapValue(currentValue);
 
-        if (Mathf.Abs(currentValue - snapValue) < snapDistance)
+        if (Mathf.Abs(currentValue - snapValue) <= snapDistance)
         {
             Debug.Log("Start Snap");
             isSnapping = true;
