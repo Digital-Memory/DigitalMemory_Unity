@@ -8,6 +8,9 @@
         },
         {
             "m_Id": "7e017e733a3641839fb71584c11c7f60"
+        },
+        {
+            "m_Id": "41adc60824874b1cb7780e848861d7bf"
         }
     ],
     "m_Keywords": [],
@@ -71,6 +74,9 @@
         },
         {
             "m_Id": "df48ab77aeaa497280daa833b423ae27"
+        },
+        {
+            "m_Id": "667756fd74af47c18200a4175faa0f2e"
         }
     ],
     "m_GroupDatas": [],
@@ -144,6 +150,20 @@
                     "m_Id": "2654b3f33f5d45f99a073d3fe366be9e"
                 },
                 "m_SlotId": 2
+            }
+        },
+        {
+            "m_OutputSlot": {
+                "m_Node": {
+                    "m_Id": "667756fd74af47c18200a4175faa0f2e"
+                },
+                "m_SlotId": 0
+            },
+            "m_InputSlot": {
+                "m_Node": {
+                    "m_Id": "2654b3f33f5d45f99a073d3fe366be9e"
+                },
+                "m_SlotId": 1
             }
         },
         {
@@ -619,10 +639,10 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -1892.0,
-            "y": 424.66668701171877,
+            "x": -1828.666748046875,
+            "y": 405.9999694824219,
             "width": 208.0,
-            "height": 325.9999694824219
+            "height": 326.0000305175781
         }
     },
     "m_Slots": [
@@ -905,6 +925,29 @@
 }
 
 {
+    "m_SGVersion": 1,
+    "m_Type": "UnityEditor.ShaderGraph.Internal.Vector1ShaderProperty",
+    "m_ObjectId": "41adc60824874b1cb7780e848861d7bf",
+    "m_Guid": {
+        "m_GuidSerialized": "86a85d1a-a1ee-4d7d-8efc-8ba3f48e196e"
+    },
+    "m_Name": "Voronoi Angle",
+    "m_DefaultReferenceName": "Vector1_41adc60824874b1cb7780e848861d7bf",
+    "m_OverrideReferenceName": "",
+    "m_GeneratePropertyBlock": true,
+    "m_Precision": 0,
+    "overrideHLSLDeclaration": false,
+    "hlslDeclarationOverride": 0,
+    "m_Hidden": false,
+    "m_Value": 3.25,
+    "m_FloatType": 0,
+    "m_RangeValues": {
+        "x": 0.0,
+        "y": 1.0
+    }
+}
+
+{
     "m_SGVersion": 0,
     "m_Type": "UnityEditor.ShaderGraph.PositionMaterialSlot",
     "m_ObjectId": "4357ab93108b4db5bc55c18565bd866b",
@@ -1024,6 +1067,21 @@
         "m_SerializableColors": []
     },
     "m_SerializedDescriptor": "SurfaceDescription.Smoothness"
+}
+
+{
+    "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.Vector1MaterialSlot",
+    "m_ObjectId": "4df08e4b3694474bae6844c17990f804",
+    "m_Id": 0,
+    "m_DisplayName": "Voronoi Angle",
+    "m_SlotType": 1,
+    "m_Hidden": false,
+    "m_ShaderOutputName": "Out",
+    "m_StageCapability": 3,
+    "m_Value": 0.0,
+    "m_DefaultValue": 0.0,
+    "m_Labels": []
 }
 
 {
@@ -1186,6 +1244,40 @@
     },
     "m_Property": {
         "m_Id": "7fe365b003b243098256e743feb49f41"
+    }
+}
+
+{
+    "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.PropertyNode",
+    "m_ObjectId": "667756fd74af47c18200a4175faa0f2e",
+    "m_Group": {
+        "m_Id": ""
+    },
+    "m_Name": "Property",
+    "m_DrawState": {
+        "m_Expanded": true,
+        "m_Position": {
+            "serializedVersion": "2",
+            "x": -2122.0,
+            "y": 406.0,
+            "width": 152.0001220703125,
+            "height": 34.0
+        }
+    },
+    "m_Slots": [
+        {
+            "m_Id": "4df08e4b3694474bae6844c17990f804"
+        }
+    ],
+    "synonyms": [],
+    "m_Precision": 0,
+    "m_PreviewExpanded": true,
+    "m_CustomColors": {
+        "m_SerializableColors": []
+    },
+    "m_Property": {
+        "m_Id": "41adc60824874b1cb7780e848861d7bf"
     }
 }
 
