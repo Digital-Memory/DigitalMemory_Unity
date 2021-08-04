@@ -54,6 +54,8 @@ public class ZoomIn : InputObject, IClickable, IHoverable
     [SerializeField] private bool doesAllowZoomOut = true;
     public bool DoesAllowZoomOut => doesAllowZoomOut;
 
+    public string WebData = "";
+
     private void Awake()
     {
         if (isStartingPoint)
