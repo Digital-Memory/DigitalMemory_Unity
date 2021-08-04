@@ -77,8 +77,6 @@ public class LeverHandle : MonoBehaviour, IDragable
         float currentRotation = distance * 10;
         float angle = startRotation - currentRotation;
 
-        Debug.LogWarning(distance + " => " + angle);
-
         lever.Turn(angle);
     }
 }
