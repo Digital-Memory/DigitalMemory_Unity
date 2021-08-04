@@ -59,23 +59,7 @@ public class FloatSender : InputSender
 
     public bool TryGiveInputRaw(float rawValue)
     {
-        if (IsInsideInputRange(rawValue) && !IsInsideLimiter(rawValue, limits))
-        {
-            if (TrySendInput(rawValue))
-            {
-                currentValue = rawValue;
-
-                FactorizeAndSendInput(rawValue);
-                TryPlayChangeEffectAt(rawValue);
-
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        }
-        else
+        if (!IsInsideInputRange(rawValue) || !IsInsideLimiter(rawValue, limits))
         {
             if (rawValue < MIN_VALUE && Mathf.Abs(rawValue - MIN_VALUE) > (180f / factor) && rawValue > MAX_VALUE && Mathf.Abs(rawValue - MAX_VALUE) > (180f / factor))
             {
@@ -83,8 +67,27 @@ public class FloatSender : InputSender
                 Game.EffectHandler.Play(forcedEndDragEffect, gameObject);
             }
 
+            rawValue = Mathf.Clamp(rawValue, MIN_VALUE, MAX_VALUE);
+        }
+
+        if (TrySendInput(rawValue))
+        {
+            currentValue = rawValue;
+
+            FactorizeAndSendInput(rawValue);
+            TryPlayChangeEffectAt(rawValue);
+
+            return true;
+        }
+        else
+        {
             return false;
         }
+    }
+
+    internal void OverrideInputReference(InputObject inputObject)
+    {
+        input = inputObject;
     }
 
     private void TryPlayChangeEffectAt(float rawValue)
@@ -142,12 +145,12 @@ public class FloatSender : InputSender
         {
             foreach (FloatLimiter limit in limits)
             {
-                if (limit.IsInside(newValue))
-                    return true;
+                if (!limit.IsInside(newValue))
+                    return false;
             }
         }
 
-        return false;
+        return true;
     }
 
     private bool IsInsideInputRange(float newValue)

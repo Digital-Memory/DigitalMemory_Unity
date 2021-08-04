@@ -9,6 +9,7 @@ public class FactoryProductionAnimatingObject : AnimatingObject
     [HideInInspector] List<ConditionBase> conditions;
     [SerializeField] private List<StageInformation> stageInformation = new List<StageInformation>();
     [SerializeField] ProdctionStage currentStage;
+    [SerializeField] FloatSender crank, lever;
 
     bool moving = false;
     float currentTime, targetTime;
@@ -65,6 +66,8 @@ public class FactoryProductionAnimatingObject : AnimatingObject
     private void MoveToStage(ProdctionStage nextStage, float nextTime)
     {
         Debug.LogWarning("Move to stage " + nextStage.ToString());
+        crank.OverrideInputReference(nextStage == ProdctionStage.Founder ? this : null);
+        lever.OverrideInputReference(nextStage != ProdctionStage.Founder ? this : null);
         targetTime = nextTime;
         targetStage = nextStage;
         moving = true;

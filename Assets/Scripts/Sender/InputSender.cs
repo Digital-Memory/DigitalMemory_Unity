@@ -127,6 +127,9 @@ public class InputSender : MonoBehaviour, IInputSender
 
     protected void OnDrawGizmos()
     {
+        if (!input)
+            return;
+
         Gizmos.color = activeTime + 1 > Time.time ? Color.yellow : Color.gray;
 
         Gizmos.DrawLine(transform.position, input.transform.position);

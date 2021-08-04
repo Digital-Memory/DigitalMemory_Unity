@@ -61,7 +61,7 @@ public class FloatSnapper : MonoBehaviour
 
         if (Mathf.Abs(currentValue - snapValue) < snapDistance)
         {
-            Debug.Log("Start Snap");
+            Debug.Log("Start Snap: current:" + currentValue + " snap: " + snapValue + " dist: " + snapDistance);
             isSnapping = true;
         }
     }
