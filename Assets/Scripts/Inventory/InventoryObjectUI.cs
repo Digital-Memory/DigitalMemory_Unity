@@ -54,13 +54,11 @@ public class InventoryObjectUI : UnityEngine.UI.Button, IDragHandler, IBeginDrag
     public override void OnPointerEnter(PointerEventData eventData)
     {
         Game.UIHandler.Tooltip.Show(gameObject, data.hoverText);
-        base.OnPointerEnter(eventData);
     }
 
     public override void OnPointerExit(PointerEventData eventData)
     {
         Game.UIHandler.Tooltip.TryHide(gameObject);
-        base.OnPointerExit(eventData);
     }
 
     internal void ChangeAmount(int change)
