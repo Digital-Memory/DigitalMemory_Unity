@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class TearDownWallsOnInput : MovingObject
 {
-    int currentStage = 0;
+    [SerializeField] int currentStage = 0;
     [SerializeField] int amountOfStages = 2;
     [SerializeField] List<Vector3> stages = new List<Vector3>();
 
@@ -39,6 +39,7 @@ public class TearDownWallsOnInput : MovingObject
 
         if (base.Try(b))
         {
+            time = b ? 0.01f : 0.99f;
             currentStage++;
             return true;
         }
