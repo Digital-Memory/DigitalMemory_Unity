@@ -72,11 +72,17 @@ public class LeverHandle : MonoBehaviour, IDragable
         if (startPosition == Vector3.zero)
             startPosition = point;
 
-        float distance = (point - startPosition).InvertAxis(Vector3.forward).FilterByAxis(transform.right) * (1 / Game.Settings.CurrentZoomLevel);
+        float distance = (point - startPosition).InvertAxis(Vector3.forward).GetLongestAxis() * (1 / Game.Settings.CurrentZoomLevel);
+        //Debug.LogWarning("filter " + (point - startPosition).InvertAxis(Vector3.forward));
 
         float currentRotation = distance * 10;
         float angle = startRotation - currentRotation;
 
         lever.Turn(angle);
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.DrawLine(transform.position, transform.position + transform.right);
     }
 }

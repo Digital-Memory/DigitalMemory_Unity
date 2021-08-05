@@ -88,6 +88,13 @@ public class TimeMechanism : MovingObject
         }
     }
 
+    public override bool Try()
+    {
+        StopAllCoroutines();
+        StartCoroutine(TimeTravelRoutine());
+        return true;
+    }
+
     private TimePoint GetClosestSelectedTimePoint(float leverPosition)
     {
         TimePoint tp = Game.TimeHandler.CurrentTime;
