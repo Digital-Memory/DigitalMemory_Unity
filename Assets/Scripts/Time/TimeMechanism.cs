@@ -1,3 +1,4 @@
+using NaughtyAttributes;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -13,6 +14,8 @@ public class TimeMechanism : MovingObject
     Dictionary<TimePoint, float> timePoints = new Dictionary<TimePoint, float>();
     [SerializeField] List<TimePoint> tptp;
     [SerializeField] List<float> tpfl;
+    [SerializeField] TimeMechanismNumberDisplayer day1, day2, month1, month2, year1, year2, year3, year4;
+    [SerializeField] Timestamp timestamp;
 
     AttacherTimePlate[] attachersTimePlate;
 
@@ -133,4 +136,54 @@ public class TimeMechanism : MovingObject
             tpfl.Add(item.Value);
         }
     }
+
+    [Button]
+    private void TestTimeTravel()
+    {
+        StopAllCoroutines();
+        StartCoroutine(TimeTravelRoutine());
+    }
+
+    private IEnumerator TimeTravelRoutine()
+    {
+        day1.MoveTo(timestamp.GetDigid(TimestampSpot.Day, 1));
+        yield return new WaitForSeconds(0.1f);
+        day2.MoveTo(timestamp.GetDigid(TimestampSpot.Day, 2));
+        yield return new WaitForSeconds(0.5f);
+        month1.MoveTo(timestamp.GetDigid(TimestampSpot.Month, 1));
+        yield return new WaitForSeconds(0.1f);
+        month2.MoveTo(timestamp.GetDigid(TimestampSpot.Month, 2));
+        yield return new WaitForSeconds(0.5f);
+        year1.MoveTo(timestamp.GetDigid(TimestampSpot.Year, 1));
+        yield return new WaitForSeconds(0.1f);
+        year2.MoveTo(timestamp.GetDigid(TimestampSpot.Year, 2));
+        yield return new WaitForSeconds(0.1f);
+        year3.MoveTo(timestamp.GetDigid(TimestampSpot.Year, 3));
+        yield return new WaitForSeconds(0.1f);
+        year4.MoveTo(timestamp.GetDigid(TimestampSpot.Year, 4), overshoot: 6);
+        yield return new WaitForSeconds(0.1f);
+    }
+}
+
+[System.Serializable]
+public class Timestamp
+{
+    public int day;
+    public int month;
+    public int year;
+
+    public int GetDigid(TimestampSpot spot, int index)
+    {
+        int i = spot == TimestampSpot.Day ? day : spot == TimestampSpot.Month ? month : year;
+        int indexFromLast = (spot == TimestampSpot.Year ? 5 : 3) - index;
+        float pow = Mathf.Pow(10, indexFromLast);
+        return Mathf.FloorToInt((i % pow) / (pow / 10));
+    }
+}
+
+public enum TimestampSpot
+{
+    Day,
+    Month,
+    Year,
 }
