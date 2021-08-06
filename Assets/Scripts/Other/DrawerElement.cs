@@ -4,12 +4,19 @@ using System.Collections.Generic;
 using UnityEngine;
 using NaughtyAttributes;
 
-public class PullableImageFrame : MonoBehaviour, IDragable
+public enum DrawerElementLockDirection
+{
+    Forward,
+    Up,
+}
+
+public class DrawerElement: MonoBehaviour, IDragable
 {
     Vector3 localPositionOnStartDrag;
     Vector3 clickPositonOnStartDrag;
 
     Vector3 localPositionDefault = Vector3.zero;
+    [InfoBox("0 0 0 is takes as default local postion, so make sure it is at 0 0 0.")]
     [SerializeField] Vector3 localPositionPulledOut;
 
     float distanceBetweenUpperAndLower;
@@ -21,6 +28,8 @@ public class PullableImageFrame : MonoBehaviour, IDragable
     public event Action OnEndHoverEvent;
 
     [Foldout("Effects")] [Expandable] [SerializeField] Effect startUseEffect, endUseEffect;
+    [Foldout("Configuration")] [SerializeField] DrawerElementLockDirection lockDirection = DrawerElementLockDirection.Forward;
+    [Foldout("Configuration")] [SerializeField] bool invert = false;
     private void OnEnable()
     {
         distanceBetweenUpperAndLower = Vector3.Distance(localPositionPulledOut, localPositionDefault);
@@ -54,7 +63,10 @@ public class PullableImageFrame : MonoBehaviour, IDragable
     }
     public Vector3 GetRaycastPlaneLockDirection(Vector3 point)
     {
-        return transform.forward;
+        if (lockDirection == DrawerElementLockDirection.Forward)
+            return transform.forward;
+        else
+            return transform.up;
     }
 
     public void StartDrag()
@@ -70,7 +82,7 @@ public class PullableImageFrame : MonoBehaviour, IDragable
         if (clickPositonOnStartDrag == Vector3.zero)
             clickPositonOnStartDrag = point;
 
-        float dragDistance = (clickPositonOnStartDrag - point).FilterByAxis((localPositionPulledOut - localPositionDefault).normalized);
+        float dragDistance = ((invert ? -1 : 1 ) * (clickPositonOnStartDrag - point)).FilterByAxis((localPositionPulledOut - localPositionDefault).normalized);
         Vector3 lerp = (localPositionDefault - localPositionPulledOut) * (dragDistance / distanceBetweenUpperAndLower);
         transform.localPosition = (localPositionOnStartDrag + (lerp)).Clamp(localPositionDefault, localPositionPulledOut);
     }
