@@ -47,14 +47,14 @@ public class HoverHandler : Singleton<HoverHandler>
     {
         Game.EffectHandler.Play(onHoverEnter, startHover.gameObject);
         Game.UIHandler.CustomCursor.SetCursorType(CustomCursorType.DRAGABLE);
-        Debug.Log($"start hover: {startHover}");
+        //Debug.Log($"start hover: {startHover}");
         startHover.StartHover();
     }
 
     private void EndHoverFor(IHoverable endHover)
     {
         Game.EffectHandler.Play(onHoverExit, endHover.gameObject);
-        Debug.Log($"end hover: {endHover}");
+        //Debug.Log($"end hover: {endHover}");
         endHover.EndHover();
     }
 

@@ -34,14 +34,7 @@ public class Button : InputSender, IClickable, IInputSender, IHoverable
             if (canTryInput)
             {
                 CallOnSendInputEvents(0f);
-
-                if (hasSecondaryInput && secondary != null && secondary.Length > 0)
-                {
-                    foreach (InputObject inputObject in secondary)
-                    {
-                        inputObject.Try(true);
-                    }
-                }
+                SendSecondaryInput(InputType.Impulse);
             }
         }
         else

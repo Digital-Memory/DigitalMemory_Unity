@@ -66,7 +66,6 @@ public class CrankHandle : MonoBehaviour, IDragable, IHoverable, IChargeInput
         crank.StartPlayerInput();
 
         OnStartChargeEvent?.Invoke();
-        Debug.Log("Start Drag");
     }
 
     public void UpdateDragPositionAndRotation(Vector3 point, Vector3 vector3, bool useCustomPivot, Quaternion rotation)

@@ -7,6 +7,7 @@ public class TearDownWorkerAnimatingObject : AnimatingObject
 {
     AnimationCurve curve;
     [SerializeField] AnimationCurve chargeCurve, hitCurve;
+    bool isReceivingFloatInput = true;
 
     public override bool Try(bool b)
     {
@@ -14,6 +15,7 @@ public class TearDownWorkerAnimatingObject : AnimatingObject
         {
             time = 0;
             curve = hitCurve;
+            isReceivingFloatInput = false;
             return base.Try(b);
         }
 
@@ -22,6 +24,9 @@ public class TearDownWorkerAnimatingObject : AnimatingObject
 
     public override bool Try(float progress)
     {
+        if (!isReceivingFloatInput)
+            return true;
+
         if (!CheckAllConditionsForTrue())
         {
             curve = chargeCurve;
@@ -31,6 +36,12 @@ public class TearDownWorkerAnimatingObject : AnimatingObject
         }
 
         return true;
+    }
+
+    protected override void OnFinishedAnimating()
+    {
+        isReceivingFloatInput = true;
+        base.OnFinishedAnimating();
     }
 
     protected override void UpdateChange(float progress)

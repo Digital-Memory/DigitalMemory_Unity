@@ -30,8 +30,16 @@ public class TearDownWallsOnInput : MovingObject
         SetAnimating(false);
     }
 
+    public override bool Try()
+    {
+        Debug.Log("Receive inpulse (" + name + ")");
+        return Try(true);
+    }
+
     public override bool Try(bool b)
     {
+        Debug.Log("Try play stage: " + currentStage);
+
         if (currentStage + 1 >= stages.Count)
             return false;
 
@@ -39,6 +47,7 @@ public class TearDownWallsOnInput : MovingObject
 
         if (base.Try(b))
         {
+            Debug.Log("playing stage successfull, next stage: " + (currentStage += 1));
             time = b ? 0.01f : 0.99f;
             currentStage++;
             return true;

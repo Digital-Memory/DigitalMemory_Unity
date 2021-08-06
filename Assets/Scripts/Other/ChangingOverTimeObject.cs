@@ -49,10 +49,10 @@ public class ChangingOverTimeObject : ConditionedObject
 
     protected void SetAnimating(bool animating)
     {
-        if (animating)
-            Debug.Log($"{name} Starts Animating: {direction} t: {time}");
-        else
-            Debug.Log($"{name} Finishes Animating: {direction} t: {time}");
+        //if (animating)
+        //    Debug.Log($"{name} Starts Animating: {direction} t: {time}");
+        //else
+        //    Debug.Log($"{name} Finishes Animating: {direction} t: {time}");
         isAnimating = animating;
     }
 
@@ -99,12 +99,18 @@ public class ChangingOverTimeObject : ConditionedObject
                 time = time > 0.5f != resetAtEnd ? 1f : 0f;
 
                 SetAnimating(false);
+                OnFinishedAnimating();
             }
         }
     }
 
+    protected virtual void OnFinishedAnimating()
+    {
+
+    }
+
     protected virtual void UpdateChange(float progress)
     {
-        //
+        
     }
 }
