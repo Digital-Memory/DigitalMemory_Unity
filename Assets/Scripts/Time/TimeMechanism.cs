@@ -14,7 +14,7 @@ public class TimeMechanism : MovingObject
     Dictionary<TimePoint, float> timePoints = new Dictionary<TimePoint, float>();
     [SerializeField] List<TimePoint> tptp;
     [SerializeField] List<float> tpfl;
-    [SerializeField] TimeMechanismNumberDisplayer day1, day2, month1, month2, year1, year2, year3, year4;
+    [Foldout("References")] [SerializeField] TimeMechanismNumberDisplayer day1, day2, month1, month2, year1, year2, year3, year4;
     [SerializeField] Timestamp timestamp;
 
     AttacherTimePlate[] attachersTimePlate;
