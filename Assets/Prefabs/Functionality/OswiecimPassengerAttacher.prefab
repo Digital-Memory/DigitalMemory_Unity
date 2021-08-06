@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 6272108537984115520}
   - component: {fileID: 6963931642531671269}
-  - component: {fileID: 5134153772014180399}
+  - component: {fileID: 726379325725052830}
   m_Layer: 0
-  m_Name: mesh_OswiecimPassengerAttacher
+  m_Name: OswiecimPassengerAttacher
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -40,8 +40,8 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6647543773184965114}
   m_Mesh: {fileID: 3072692955143339541, guid: 26bcb436fc989bc41a36dbc09b1fce7b, type: 3}
---- !u!23 &5134153772014180399
-MeshRenderer:
+--- !u!137 &726379325725052830
+SkinnedMeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -54,12 +54,15 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
+  m_RayTracingMode: 3
   m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2979718333035984302, guid: 26bcb436fc989bc41a36dbc09b1fce7b, type: 3}
+  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -80,4 +83,15 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_AdditionalVertexStreams: {fileID: 0}
+  serializedVersion: 2
+  m_Quality: 0
+  m_UpdateWhenOffscreen: 1
+  m_SkinnedMotionVectors: 1
+  m_Mesh: {fileID: 2534964839176971238, guid: a150757803e3d6845b7ed9e304d5b779, type: 3}
+  m_Bones: []
+  m_BlendShapeWeights: []
+  m_RootBone: {fileID: 0}
+  m_AABB:
+    m_Center: {x: 0, y: -0.003731005, z: 0}
+    m_Extent: {x: 0.03270365, y: 0.017531337, z: 0.03270365}
+  m_DirtyAABB: 0
