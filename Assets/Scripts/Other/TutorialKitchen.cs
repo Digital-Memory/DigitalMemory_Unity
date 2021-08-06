@@ -13,6 +13,8 @@ public class TutorialKitchen : MonoBehaviour
     [SerializeField] GameObject buttonBack, buttonDone, buttonContinue;
 
     [SerializeField] private Canvas myCanvas;
+    [SerializeField] ZoomIn KitchenZoomInTemp;
+
     private int currentFrame = 0, unlockedFrames = 0;
     private void Start()
     {
@@ -81,5 +83,14 @@ public class TutorialKitchen : MonoBehaviour
         buttonContinue.SetActive(currentFrame < unlockedFrames);
 
         buttonDone.SetActive(currentFrame == tutorialFrames.Count-1);
+    }
+
+    private void OnGUI()
+    {
+        if (GUI.Button(new Rect(50,50,100,50) ,"Skip Tutorial"))
+        {
+            KitchenZoomInTemp.Try();
+            Destroy(gameObject);
+        }
     }
 }
