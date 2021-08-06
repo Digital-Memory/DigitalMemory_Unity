@@ -44,7 +44,7 @@ public class Effect : ScriptableObject
 
     public void Play(GameObject origin)
     {
-        Debug.Log($"Play effect {name} on {((origin != null ) ? origin.name : "null")}");
+        //Debug.Log($"Play effect {name} on {((origin != null ) ? origin.name : "null")}");
 
         if (SoundEffect)
             soundEffect.PlayEffect(origin);

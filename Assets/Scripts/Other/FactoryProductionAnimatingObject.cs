@@ -33,9 +33,11 @@ public class FactoryProductionAnimatingObject : AnimatingObject
     }
 
     //Need to rework this at some point
-    public override bool Try(bool b)
+    public override bool Try()
     {
         if (moving) return false;
+
+        Debug.Log("Try sended to FactoryProductionAnimatingObject");
 
         if (currentStage == ProdctionStage.Stomper)
             MoveToNextStage();

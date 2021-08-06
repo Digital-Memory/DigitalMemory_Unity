@@ -39,12 +39,13 @@ public class FloatSenderMoveBack : ConditionedObject
         StopAllCoroutines();
     }
 
-    public override bool Try(bool on)
+    public override bool Try()
     {
+
         float currentValue = floatSender.CurrentValue;
         StartCoroutine(MoveBackRoutine(currentValue, toBase ? baseValue : targetValue));
 
-        return base.Try(on);
+        return base.Try();
     }
 
     private void TryMoveBack()
@@ -68,7 +69,7 @@ public class FloatSenderMoveBack : ConditionedObject
     private IEnumerator MoveBackRoutine(float currentValue, float targetValue)
     {
         float lastdistance = float.MaxValue;
-        float newDistance = 1f;
+        float newDistance = 100f;
 
         while (newDistance < lastdistance)
         {
