@@ -9,6 +9,9 @@ public class Lever : SimpleAttachable
     FloatSender floatSender;
     FloatSnapper floatSnapper;
 
+    [Foldout("Configuration")] [SerializeField] Vector3 rotationAxis = Vector3.forward;
+    [Foldout("Configuration")] [SerializeField] Vector3 rotationOffsett = Vector3.zero;
+
     public override void Attach(IAttacher toAttachTo)
     {
         base.Attach(toAttachTo);
@@ -24,7 +27,7 @@ public class Lever : SimpleAttachable
 
     private void SetRotationFromAngle(float angle)
     {
-        transform.localRotation = Quaternion.Euler(0, 0, angle);
+        transform.localRotation = Quaternion.Euler(angle * rotationAxis + rotationOffsett);
     }
 
     public override void StartDrag()
@@ -55,11 +58,15 @@ public class Lever : SimpleAttachable
 
     public virtual void Turn(float angle)
     {
+        float a = angle;
+
         if (floatSender != null)
         {
             angle = angle % 360;
             if (angle > 180)
                 angle = angle - 360;
+
+            Debug.LogWarning(a + " => " + angle);
 
             floatSender.TryGiveInput(angle, isAbsolute: true);
         }

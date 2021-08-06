@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class OnTimChangeGameObjectOnOff : MonoBehaviour
+public class OnTimeChangeGameObjectOnOff : MonoBehaviour
 {
     [SerializeField] TimePoint timePointActive;
     [SerializeField] GameObject objectToAffect;
