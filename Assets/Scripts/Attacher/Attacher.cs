@@ -46,6 +46,10 @@ public class Attacher : MonoBehaviour, IAttacher
         IAttachable attachable = GetComponentInChildren<IAttachable>();
         isAttached = attachable != null;
         OnChangeAttached?.Invoke(isAttached, attachable != null ? attachable.GetAttachment() : "");
+        if (isAttached)
+            SparkleEffectHandler.OnAttacherDetach(this);
+        else
+            SparkleEffectHandler.OnAttacherAttach(this);
     }
 
     public bool CanAttach(string attachmentName)
@@ -77,12 +81,14 @@ public class Attacher : MonoBehaviour, IAttacher
     {
         isAttached = true;
         OnChangeAttached?.Invoke(isAttached, attachable.GetAttachment());
+        SparkleEffectHandler.OnAttacherAttach(this);
     }
 
     public virtual void OnDetach()
     {
         isAttached = false;
         OnChangeAttached?.Invoke(isAttached, "");
+        SparkleEffectHandler.OnAttacherDetach(this);
     }
 
     public bool ResetOrientationOnAttach()
