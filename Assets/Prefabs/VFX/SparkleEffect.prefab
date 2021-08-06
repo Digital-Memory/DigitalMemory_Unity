@@ -11,7 +11,8 @@ GameObject:
   - component: {fileID: 3979002863985958525}
   - component: {fileID: 3979002863985958524}
   - component: {fileID: 3979002863985958523}
-  - component: {fileID: 1725465180768499439}
+  - component: {fileID: 300843446}
+  - component: {fileID: 604320634227459532}
   m_Layer: 0
   m_Name: SparkleEffect
   m_TagString: Untagged
@@ -47,7 +48,7 @@ ParticleSystem:
   cullingMode: 0
   ringBufferMode: 0
   ringBufferLoopRange: {x: 0, y: 1}
-  looping: 1
+  looping: 0
   prewarm: 0
   playOnAwake: 1
   useUnscaledTime: 0
@@ -4930,7 +4931,22 @@ ParticleSystemRenderer:
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
   m_MaskInteraction: 0
---- !u!82 &1725465180768499439
+--- !u!114 &300843446
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3979002863985958522}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c573225eb333d7247ab843877f3f6125, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  emptyAttachers: []
+  particleSystem: {fileID: 3979002863985958524}
+  sparkAudio: {fileID: 604320634227459532}
+--- !u!82 &604320634227459532
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -4940,7 +4956,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: b8100d638c7e1934ab7596b829653106, type: 3}
+  m_audioClip: {fileID: 8300000, guid: a910979af8d1ff34d89b6893ee7a8e63, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -4986,7 +5002,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
