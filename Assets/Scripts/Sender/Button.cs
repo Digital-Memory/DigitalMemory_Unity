@@ -29,7 +29,7 @@ public class Button : InputSender, IClickable, IInputSender, IHoverable
         if (input != null)
         {
 
-            bool canTryInput = (input == null || input.Try(true));
+            bool canTryInput = (input == null || input.Try());
 
             if (canTryInput)
             {

@@ -37,6 +37,8 @@ public class FactoryProductionAnimatingObject : AnimatingObject
     {
         if (moving) return false;
 
+        Debug.Log("Try sended to FactoryProductionAnimatingObject");
+
         if (currentStage == ProdctionStage.Stomper)
             MoveToNextStage();
 
