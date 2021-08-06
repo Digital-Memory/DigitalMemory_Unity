@@ -15,6 +15,7 @@ public class TimeMechanism : MovingObject
     [SerializeField] List<TimePoint> tptp;
     [SerializeField] List<float> tpfl;
     [Foldout("References")] [SerializeField] TimeMechanismNumberDisplayer day1, day2, month1, month2, year1, year2, year3, year4;
+    [Foldout("References")] [SerializeField] TimeMechanismLightbulb[] lightbulbs;
     [SerializeField] Timestamp[] timestamps;
 
     AttacherTimePlate[] attachersTimePlate;
@@ -91,7 +92,7 @@ public class TimeMechanism : MovingObject
     public override bool Try()
     {
         StopAllCoroutines();
-        Timestamp timestamp = GetTimestampFromLeverPosition(leverPosition);
+        Timestamp timestamp = timestamps[GetTimestampIndexFromLeverPosition(leverPosition)];
         StartCoroutine(TimeTravelRoutine(timestamp));
         return true;
     }
@@ -129,9 +130,19 @@ public class TimeMechanism : MovingObject
     {
         if (base.Try(progress)) {
             leverPosition = progress;
+            UpdateLightbulbs();
             return true;
         }
         return false;
+    }
+
+    private void UpdateLightbulbs()
+    {
+        int indexActive = GetTimestampIndexFromLeverPosition(leverPosition);
+        for (int i = 0; i < lightbulbs.Length; i++)
+        {
+            lightbulbs[i].SetLightActive(i == indexActive);
+        }
     }
 
     private void Update()
@@ -151,16 +162,16 @@ public class TimeMechanism : MovingObject
         Try();
     }
 
-    private Timestamp GetTimestampFromLeverPosition(float leverPosition)
+    private int GetTimestampIndexFromLeverPosition(float leverPosition)
     {
         if (leverPosition < 0.25f)
-            return timestamps[0];
+            return 3;
         else if (leverPosition < 0.5f)
-            return timestamps[1];
+            return 2;
         else if (leverPosition < 0.75f)
-            return timestamps[2];
+            return 1;
         else
-            return timestamps[3];
+            return 0;
     }
 
     private IEnumerator TimeTravelRoutine(Timestamp timestamp)
