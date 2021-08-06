@@ -15,7 +15,7 @@ public class TimeMechanism : MovingObject
     [SerializeField] List<TimePoint> tptp;
     [SerializeField] List<float> tpfl;
     [Foldout("References")] [SerializeField] TimeMechanismNumberDisplayer day1, day2, month1, month2, year1, year2, year3, year4;
-    [SerializeField] Timestamp timestamp;
+    [SerializeField] Timestamp[] timestamps;
 
     AttacherTimePlate[] attachersTimePlate;
 
@@ -91,7 +91,8 @@ public class TimeMechanism : MovingObject
     public override bool Try()
     {
         StopAllCoroutines();
-        StartCoroutine(TimeTravelRoutine());
+        Timestamp timestamp = GetTimestampFromLeverPosition(leverPosition);
+        StartCoroutine(TimeTravelRoutine(timestamp));
         return true;
     }
 
@@ -147,14 +148,28 @@ public class TimeMechanism : MovingObject
     [Button]
     private void TestTimeTravel()
     {
-        StopAllCoroutines();
-        StartCoroutine(TimeTravelRoutine());
+        Try();
     }
 
-    private IEnumerator TimeTravelRoutine()
+    private Timestamp GetTimestampFromLeverPosition(float leverPosition)
+    {
+        if (leverPosition < 0.25f)
+            return timestamps[0];
+        else if (leverPosition < 0.5f)
+            return timestamps[1];
+        else if (leverPosition < 0.75f)
+            return timestamps[2];
+        else
+            return timestamps[3];
+    }
+
+    private IEnumerator TimeTravelRoutine(Timestamp timestamp)
     {
         day1.MoveTo(timestamp.GetDigid(TimestampSpot.Day, 1));
         yield return new WaitForSeconds(0.1f);
+
+        Game.TimeHandler.SetTime(timestamp.point);
+
         day2.MoveTo(timestamp.GetDigid(TimestampSpot.Day, 2));
         yield return new WaitForSeconds(0.5f);
         month1.MoveTo(timestamp.GetDigid(TimestampSpot.Month, 1));
@@ -178,6 +193,10 @@ public class Timestamp
     public int day;
     public int month;
     public int year;
+
+    public bool enabled;
+
+    public TimePoint point;
 
     public int GetDigid(TimestampSpot spot, int index)
     {
