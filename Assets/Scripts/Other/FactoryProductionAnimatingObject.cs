@@ -33,7 +33,7 @@ public class FactoryProductionAnimatingObject : AnimatingObject
     }
 
     //Need to rework this at some point
-    public override bool Try(bool b)
+    public override bool Try()
     {
         if (moving) return false;
 
