@@ -51,11 +51,11 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -382652638819485698, guid: c173223ee46ad414eb53193a5d5a6807, type: 3}
-  - {fileID: -2505642851634945670, guid: c173223ee46ad414eb53193a5d5a6807, type: 3}
-  - {fileID: 2926557707537190794, guid: c173223ee46ad414eb53193a5d5a6807, type: 3}
+  - {fileID: 2100000, guid: 2b0c9c4764f115143811a137acfba386, type: 2}
+  - {fileID: 2100000, guid: 9b4d25c2c5f4daf4c922ae2433a0af32, type: 2}
+  - {fileID: 2100000, guid: 6236f09064624184d99207faf6bd4a92, type: 2}
   - {fileID: -2653651044934150266, guid: c173223ee46ad414eb53193a5d5a6807, type: 3}
-  - {fileID: -1580535799172915004, guid: c173223ee46ad414eb53193a5d5a6807, type: 3}
+  - {fileID: 2100000, guid: c50c9297925fd1f45a2e1e7e522dab12, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -102,7 +102,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a07be8b19ff419545bedbbe6c4dcd44b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.52
+      value: 0.9
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a07be8b19ff419545bedbbe6c4dcd44b, type: 3}
       propertyPath: m_LocalPosition.y
@@ -110,7 +110,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a07be8b19ff419545bedbbe6c4dcd44b, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1.8
+      value: 1.24
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a07be8b19ff419545bedbbe6c4dcd44b, type: 3}
       propertyPath: m_LocalRotation.w
@@ -165,8 +165,24 @@ PrefabInstance:
       value: 0.954931
       objectReference: {fileID: 0}
     - target: {fileID: -3887185075125053422, guid: a07be8b19ff419545bedbbe6c4dcd44b, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 6236f09064624184d99207faf6bd4a92, type: 2}
+    - target: {fileID: -3887185075125053422, guid: a07be8b19ff419545bedbbe6c4dcd44b, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 04573a3add6ca3d4e8977ae9cf1f825b, type: 2}
+    - target: {fileID: -3887185075125053422, guid: a07be8b19ff419545bedbbe6c4dcd44b, type: 3}
+      propertyPath: m_Materials.Array.data[2]
+      value: 
+      objectReference: {fileID: 2100000, guid: 3cb9d08c65d40c44faa28f67eb76db81, type: 2}
+    - target: {fileID: -3887185075125053422, guid: a07be8b19ff419545bedbbe6c4dcd44b, type: 3}
       propertyPath: m_BlendShapeWeights.Array.size
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: -3887185075125053422, guid: a07be8b19ff419545bedbbe6c4dcd44b, type: 3}
+      propertyPath: m_BlendShapeWeights.Array.data[0]
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -3887185075125053422, guid: a07be8b19ff419545bedbbe6c4dcd44b, type: 3}
       propertyPath: m_BlendShapeWeights.Array.data[1]
@@ -174,6 +190,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -3887185075125053422, guid: a07be8b19ff419545bedbbe6c4dcd44b, type: 3}
       propertyPath: m_BlendShapeWeights.Array.data[2]
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -3887185075125053422, guid: a07be8b19ff419545bedbbe6c4dcd44b, type: 3}
+      propertyPath: m_BlendShapeWeights.Array.data[3]
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: a07be8b19ff419545bedbbe6c4dcd44b, type: 3}
