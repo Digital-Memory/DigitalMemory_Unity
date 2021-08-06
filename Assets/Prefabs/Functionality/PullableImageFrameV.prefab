@@ -269,6 +269,8 @@ MonoBehaviour:
   localPositionPulledOut: {x: 0, y: 4.2, z: 0}
   startUseEffect: {fileID: 0}
   endUseEffect: {fileID: 0}
+  lockDirection: 0
+  invert: 0
 --- !u!65 &182442136
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -515,12 +517,21 @@ MonoBehaviour:
     - serializedVersion: 3
       time: 0.053073883
       value: 0
-      inSlope: 37.318607
-      outSlope: 37.318607
+      inSlope: 126.88732
+      outSlope: 126.88732
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
-      outWeight: 0.051394366
+      outWeight: 0.016407538
+    - serializedVersion: 3
+      time: 2.613587
+      value: 165.06308
+      inSlope: 11.912852
+      outSlope: 11.912852
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.52853644
+      outWeight: 0.33333334
     - serializedVersion: 3
       time: 30
       value: 500
