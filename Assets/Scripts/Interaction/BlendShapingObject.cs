@@ -7,7 +7,7 @@ using NaughtyAttributes;
 public class BlendShapingObject : ChangingOverTimeObject
 {
     [ShowNonSerializedField]
-    SkinnedMeshRenderer skinnedMeshRenderer;
+    protected SkinnedMeshRenderer skinnedMeshRenderer;
 
 #if UNITY_EDITOR
     protected override void Reset()

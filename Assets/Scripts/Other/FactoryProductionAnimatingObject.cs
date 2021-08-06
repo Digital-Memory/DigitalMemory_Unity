@@ -4,7 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FactoryProductionAnimatingObject : AnimatingObject
+public class FactoryProductionAnimatingObject : BlendShapingObject
 {
     [HideInInspector] List<ConditionBase> conditions;
     [SerializeField] private List<StageInformation> stageInformation = new List<StageInformation>();
