@@ -39,7 +39,7 @@ public class Attacher : MonoBehaviour, IAttacher
     public bool destroyColliderOnAttachment = false;
     [HideInInspector] public bool AllowsDetach => allowsDetach;
 
-    protected virtual void Start()
+    protected void OnEnable ()
     {
         //Need to Improve this at some point
         gameObject.layer = 7;
@@ -47,8 +47,14 @@ public class Attacher : MonoBehaviour, IAttacher
         isAttached = attachable != null;
         OnChangeAttached?.Invoke(isAttached, attachable != null ? attachable.GetAttachment() : "");
         if (isAttached)
-            SparkleEffectHandler.OnAttacherDetach(this);
+            SparkleEffectHandler.OnAttacherAttach(this);
         else
+            SparkleEffectHandler.OnAttacherDetach(this);
+    }
+
+    protected void OnDisable()
+    {
+        if (isAttached)
             SparkleEffectHandler.OnAttacherAttach(this);
     }
 
