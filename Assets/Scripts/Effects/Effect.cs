@@ -182,6 +182,9 @@ public class PulsingEffectData : EffectData
 
     public override void PlayEffect(GameObject origin)
     {
+        if (origin.GetComponent<PreventPulsing>())
+            return;
+
         PulsingEffector effector = origin.GetComponent<PulsingEffector>();
         if (effector == null)
         {
@@ -217,6 +220,7 @@ public class ChangeMaterialPropertyEffectData : EffectData
 {
     public string BoolName;
     public bool BoolValue;
+    public bool LoopThroughAllMaterials = false;
 
     public override void PlayEffect(GameObject origin)
     {
@@ -232,7 +236,21 @@ public class ChangeMaterialPropertyEffectData : EffectData
 
         foreach (MeshRenderer meshRenderer in meshRenderers)
         {
-            meshRenderer.material.SetFloat(BoolName, BoolValue ? 1 : 0);
+            if (LoopThroughAllMaterials)
+            {
+                Material[] mats = meshRenderer.materials;
+
+                foreach (var mat in mats)
+                {
+                    mat.SetFloat(BoolName, BoolValue ? 1 : 0);
+                }
+
+                meshRenderer.materials = mats;
+            }
+            else
+            {
+                meshRenderer.material.SetFloat(BoolName, BoolValue ? 1 : 0);
+            }
         }
     }
 }
