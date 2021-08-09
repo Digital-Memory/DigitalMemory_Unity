@@ -6,21 +6,24 @@ using UnityEngine;
 public class TutorialKitchen : MonoBehaviour
 {
     [SerializeField] CollectToInventoryOnClick meat;
-    [SerializeField] Attacher meatAttacher;
+    [SerializeField] Attacher[] foodAttachers;
 
     [SerializeField] List<TutorialFrame> tutorialFrames;
 
     [SerializeField] GameObject buttonBack, buttonDone, buttonContinue;
 
     [SerializeField] private Canvas myCanvas;
-    [SerializeField] ZoomIn KitchenZoomInTemp;
+    [SerializeField] ZoomIn KitchenTableZoomIn, KitchenZoomInTemp;
 
     private int currentFrame = 0, unlockedFrames = 0;
     private void Start()
     {
         SetTutorialFrame(0);
         meat.InteractEvent += OnInteractWithMeat;
-        meatAttacher.OnChangeAttached += OnAttachMeat;
+        foreach (var foodAttacher in foodAttachers)
+        {
+            foodAttacher.OnChangeAttached += OnAttachMeat;
+        }
 
     }
 
@@ -32,9 +35,14 @@ public class TutorialKitchen : MonoBehaviour
     }
     private void OnAttachMeat(bool isAttached, string attachment)
     {
-        if (isAttached)
+        if (isAttached && unlockedFrames == 1)
         {
-            meatAttacher.OnChangeAttached -= OnAttachMeat;
+            foreach (var foodAttacher in foodAttachers)
+            {
+                foodAttacher.OnChangeAttached -= OnAttachMeat;
+            }
+
+            KitchenTableZoomIn.Try();
             SetTutorialFrame(2);
             unlockedFrames = 2;
         }
@@ -49,7 +57,7 @@ public class TutorialKitchen : MonoBehaviour
                 tutorialFrames[i].gameObject.SetActive(true);
                 tutorialFrames[i].FadeIn();
                 currentFrame = i;
-            } 
+            }
             else
             {
                 tutorialFrames[i].FadeOut();
@@ -67,13 +75,13 @@ public class TutorialKitchen : MonoBehaviour
 
     public void GoFrameBack()
     {
-        SetTutorialFrame(currentFrame-1);
+        SetTutorialFrame(currentFrame - 1);
         Debug.Log(currentFrame);
     }
 
     public void GoFrameForward()
     {
-        SetTutorialFrame(currentFrame+1);
+        SetTutorialFrame(currentFrame + 1);
     }
 
     private void UpdateButtons()
@@ -82,12 +90,12 @@ public class TutorialKitchen : MonoBehaviour
 
         buttonContinue.SetActive(currentFrame < unlockedFrames);
 
-        buttonDone.SetActive(currentFrame == tutorialFrames.Count-1);
+        buttonDone.SetActive(currentFrame == tutorialFrames.Count - 1);
     }
 
     private void OnGUI()
     {
-        if (GUI.Button(new Rect(50,50,100,50) ,"Skip Tutorial"))
+        if (GUI.Button(new Rect(50, 50, 100, 50), "Skip Tutorial"))
         {
             KitchenZoomInTemp.Try();
             Destroy(gameObject);
