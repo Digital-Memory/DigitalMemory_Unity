@@ -15,16 +15,16 @@ public class SparkleEffectHandler : MonoBehaviour
 
     private void OnEnable()
     {
-        OnAttacherAttach += RegisterAttacher;
-        OnAttacherDetach += UnregisterAttacher;
+        OnAttacherAttach += UnregisterAttacher;
+        OnAttacherDetach += RegisterAttacher;
 
         StartCoroutine(TeleportSparkRoutine());
     }
 
     private void OnDisable()
     {
-        OnAttacherAttach -= RegisterAttacher;
-        OnAttacherDetach -= UnregisterAttacher;
+        OnAttacherAttach -= UnregisterAttacher;
+        OnAttacherDetach -= RegisterAttacher;
 
         StopAllCoroutines();
     }
