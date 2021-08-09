@@ -19,7 +19,7 @@ public class Train : ConditionedObject
 
     bool hasGreen = false;
 
-    public override bool Try(bool on)
+    public override bool Try()
     {
         hasGreen = true;
         return true;
