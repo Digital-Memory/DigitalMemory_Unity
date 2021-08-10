@@ -14,6 +14,8 @@ public class DragHandler : Singleton<DragHandler>
     public event System.Action<IDragable, RaycastHit> OnStartDrag;
     public event System.Action<IDragable> OnEndDrag;
 
+    float dragDistance;
+
     internal void ShowDragging()
     {
         if (IsDragging)
@@ -79,17 +81,16 @@ public class DragHandler : Singleton<DragHandler>
 
     private void UpdateDragPreviewRegular(RaycastHit hit, Ray ray)
     {
-        //regular drag
-        float dragDistance = Game.Settings.DragDistance * Game.Settings.CurrentZoomLevel;
         currentDrag.UpdateDragPositionAndRotation(hit.point, ray.GetPoint(dragDistance), useCustomPivot: false, Quaternion.identity);
     }
 
-    public void StartDrag(RaycastHit hit, IDragable dragable, IAttachable attachable)
+    public void StartDrag(RaycastHit hit, IDragable dragable, IAttachable attachable, float dragDistance)
     {
         Debug.Log($"start dragging: {dragable.gameObject} + {dragable.gameObject.name} ");
 
         currentDrag = dragable;
         currentAttachable = attachable;
+        this.dragDistance = dragDistance;
 
         IAttacher attacher = (attachable == null ? null : attachable.GetCurrentAttached());
         if (attacher != null)
@@ -105,6 +106,7 @@ public class DragHandler : Singleton<DragHandler>
     {
         currentAttachable = null;
         currentDrag = null;
+        dragDistance = Game.Settings.FallbackDragDistance;
 
         dragable.EndDrag(point + dragable.GetEndDragYOffset() * Vector3.up);
 

@@ -6,7 +6,7 @@ using NaughtyAttributes;
 [CreateAssetMenu]
 public class GameSettings : ScriptableObject
 {
-    public float DragDistance;
+    public float FallbackDragDistance;
     public Vector3 AttachPreviewOffset;
 
     [Scene]

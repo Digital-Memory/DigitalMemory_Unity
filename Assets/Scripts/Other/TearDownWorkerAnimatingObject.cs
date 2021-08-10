@@ -9,16 +9,15 @@ public class TearDownWorkerAnimatingObject : AnimatingObject
     [SerializeField] AnimationCurve chargeCurve, hitCurve;
     bool isReceivingFloatInput = true;
 
-    public override bool Try(bool b)
+    public override bool Try()
     {
         if (CheckAllConditionsForTrue())
         {
-            time = 0;
-            curve = hitCurve;
             isReceivingFloatInput = false;
-            return base.Try(b);
+            time = 0f;
+            curve = hitCurve;
+            return base.Try();
         }
-
         return false;
     }
 

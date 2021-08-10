@@ -15,6 +15,7 @@ public class InventoryObjectData : ScriptableObject
     public Sprite icon;
 
     public float overviewSceneScaleMultiplier = 1f, zoomInSceneScaleMultiplier = 0.2f;
+    public float overviewSceneDistance = 3, zoomInSceneDistance = 1f;
 
     [ResizableTextArea]
     public string hoverText;
