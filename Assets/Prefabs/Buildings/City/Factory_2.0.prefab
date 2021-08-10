@@ -13,7 +13,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   conditions: []
-  dataToMoveToInventory: {fileID: 11400000, guid: a781a1aaeae4f324398d316fd5d7557c, type: 2}
+  dataToMoveToInventory: {fileID: 11400000, guid: d6b12e96e1526f54fa77a1ff6162aec1, type: 2}
+--- !u!136 &7938221907834019014
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 787377215373300028}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.17859618
+  m_Height: 0.6098026
+  m_Direction: 1
+  m_Center: {x: 0, y: 0.03185597, z: 0}
 --- !u!95 &840272787715017583
 Animator:
   serializedVersion: 3
@@ -647,6 +661,10 @@ PrefabInstance:
     - target: {fileID: 1470470239723308815, guid: 31462b95b1ce8d44783ebf0b307a5878, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7277762036587609146, guid: 31462b95b1ce8d44783ebf0b307a5878, type: 3}
+      propertyPath: attachmentName
+      value: LeverSmall
       objectReference: {fileID: 0}
     - target: {fileID: 9138321620747625100, guid: 31462b95b1ce8d44783ebf0b307a5878, type: 3}
       propertyPath: m_Name
