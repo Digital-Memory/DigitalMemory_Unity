@@ -58,7 +58,7 @@ public class TearDownWallsOnInput : MovingObject
 
     private void UpdatePostionsBasedOnStage()
     {
-        Debug.LogWarning($"current stage {currentStage}");
+        Debug.Log($"current wall stage {currentStage}");
         localPositionFalse = stages[currentStage];
         localPositionTrue = stages[currentStage + 1];
     }
