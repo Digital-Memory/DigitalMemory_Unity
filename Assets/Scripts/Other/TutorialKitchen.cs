@@ -129,7 +129,7 @@ public class TutorialKitchen : MonoBehaviour
             if (indexes.Contains(i))
             {
                 tutorialFrames[i].gameObject.SetActive(true);
-                tutorialFrames[i].FadeIn();
+                tutorialFrames[i].FadeIn(duration: 1, delay: 2);
                 currentFrame = i;
             }
             else

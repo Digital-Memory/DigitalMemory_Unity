@@ -48,7 +48,7 @@ public class DragHandler : Singleton<DragHandler>
             if (CanAttach)
             {
                 //attachment preview
-                currentDrag.UpdateDragPositionAndRotation(hit.point, CalculateAnimatedPreviewPosition(hit.point, attacher), useCustomPivot: false, attacher.GetTransform().rotation);
+                currentDrag.UpdateDragPositionAndRotation(hit.point, CalculateAnimatedPreviewPosition(hit.point, attacher, dragDistance), useCustomPivot: false, attacher.GetTransform().rotation);
                 Game.UIHandler.CustomCursor.SetCursorType(CustomCursorType.DRAGGING);
             }
             else
@@ -145,9 +145,9 @@ public class DragHandler : Singleton<DragHandler>
     {
         EndDrag(currentDrag, Vector3.zero);
     }
-    private static Vector3 CalculateAnimatedPreviewPosition(Vector3 hit, IAttacher attacher)
+    private static Vector3 CalculateAnimatedPreviewPosition(Vector3 hit, IAttacher attacher, float dragDistance)
     {
-        return attacher.GetPreviewPosition(hit) + attacher.GetPreviewDirectionVector() * (1f + Mathf.Sin(Time.time * 2f) * 0.2f ) * Game.Settings.CurrentZoomLevel;
+        return attacher.GetPreviewPosition(hit) + attacher.GetPreviewDirectionVector() * (1f + Mathf.Sin(Time.time * 2f) * 0.2f ) * dragDistance * 0.1f;
         //return attacher.GetPreviewPosition(hit) + Game.Settings.AttachPreviewOffset * (3.5f + Mathf.Sin(Time.time * 2f) * 0.5f) * Game.Settings.CurrentZoomLevel;
     }
 }
