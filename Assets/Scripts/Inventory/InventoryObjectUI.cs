@@ -35,12 +35,16 @@ public class InventoryObjectUI : UnityEngine.UI.Button, IDragHandler, IBeginDrag
     {
         OnStartDrag?.Invoke(this);
         GameObject go = Instantiate(data.prefab);
-        float scaleMultiplier = Game.ZoomInHandler.IsZoomedIn ? data.zoomInSceneScaleMultiplier : data.overviewSceneScaleMultiplier;
+
+        bool isZoomedIn = Game.ZoomInHandler.IsZoomedIn;
+
+        float scaleMultiplier = isZoomedIn ? data.zoomInSceneScaleMultiplier : data.overviewSceneScaleMultiplier;
+        float dragDistance = isZoomedIn ? data.zoomInSceneDistance : data.overviewSceneDistance;
         go.transform.localScale = scaleMultiplier * Vector3.one;
         IDragable dragable = go.GetComponent<IDragable>();
         if (dragable != null)
         {
-            Game.DragHandler.StartDrag(new RaycastHit(), dragable, dragable as IAttachable);
+            Game.DragHandler.StartDrag(new RaycastHit(), dragable, dragable as IAttachable, dragDistance);
             ChangeAmount(-1);
         }
         else

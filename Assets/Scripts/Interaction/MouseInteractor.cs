@@ -84,7 +84,7 @@ public class MouseInteractor : Singleton<MouseInteractor>
         if (Input.GetMouseButtonDown(0))
         {
             if (dragable != null && dragable.IsDragable())
-                Game.DragHandler.StartDrag(hit, dragable, attachable);
+                Game.DragHandler.StartDrag(hit, dragable, attachable, Game.Settings.FallbackDragDistance);
             else if (clickable != null && clickable.IsClickable())
                 ClickOn(clickable);
         }
