@@ -18,6 +18,7 @@ public class Button : InputSender, IClickable, IInputSender, IHoverable
 
     public event Action OnStartHoverEvent;
     public event Action OnEndHoverEvent;
+    public event Action OnClickEvent;
 
     public void Click()
     {
@@ -28,7 +29,6 @@ public class Button : InputSender, IClickable, IInputSender, IHoverable
         Game.EffectHandler.Play(onClickEffect, gameObject);
         if (input != null)
         {
-
             bool canTryInput = (input == null || input.Try());
 
             if (canTryInput)
@@ -42,6 +42,7 @@ public class Button : InputSender, IClickable, IInputSender, IHoverable
             CallOnSendInputEvents(0f);
         }
 
+        OnClickEvent?.Invoke();
     }
 
     public bool IsClickable()

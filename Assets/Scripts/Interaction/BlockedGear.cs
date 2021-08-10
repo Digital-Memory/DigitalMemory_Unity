@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,7 +6,8 @@ using UnityEngine;
 public class BlockedGear : MonoBehaviour, IClickable
 {
     bool blocked = true;
-    public event System.Action OnFreeGear;
+    public event Action OnFreeGear;
+    public event Action OnClickEvent;
 
     [SerializeField] AnimationCurve xRotationIfBlocked, xRotationIfFree;
 
@@ -15,6 +17,7 @@ public class BlockedGear : MonoBehaviour, IClickable
     {
         blocked = false;
         OnFreeGear?.Invoke();
+        OnClickEvent?.Invoke();
         clickColliderToDisableObFree.enabled = false;
     }
 

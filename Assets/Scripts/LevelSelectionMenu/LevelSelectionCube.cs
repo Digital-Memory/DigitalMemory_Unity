@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -14,6 +15,8 @@ public class LevelSelectionCube : MonoBehaviour, IClickable
 
     [SerializeField] AnimationCurve lerpCurve;
     [SerializeField] TextMesh textMesh;
+
+    public event Action OnClickEvent;
 
     public void Init(LevelSelection levelSelection,int startIndex, string name)
     {
@@ -32,6 +35,7 @@ public class LevelSelectionCube : MonoBehaviour, IClickable
     public void Click()
     {
         levelSelection.ClickOn(this);
+        OnClickEvent?.Invoke();
     }
 
     public bool IsClickable()

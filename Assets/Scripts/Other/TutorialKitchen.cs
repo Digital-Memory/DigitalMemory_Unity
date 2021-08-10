@@ -1,12 +1,15 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class TutorialKitchen : MonoBehaviour
 {
     [SerializeField] CollectToInventoryOnClick meat;
-    [SerializeField] Attacher[] foodAttachers;
+    [SerializeField] Attacher[] kitchenPotFoodAttachers;
+    [SerializeField] Button[] kitchenButtons;
+    [SerializeField] FloatSender kitchenLever;
 
     [SerializeField] List<TutorialFrame> tutorialFrames;
 
@@ -18,41 +21,112 @@ public class TutorialKitchen : MonoBehaviour
     private int currentFrame = 0, unlockedFrames = 0;
     private void Start()
     {
+        for (int i = 0; i < tutorialFrames.Count; i++)
+        {
+            tutorialFrames[i].gameObject.SetActive(true);
+        }
+
         SetTutorialFrame(0);
-        meat.InteractEvent += OnInteractWithMeat;
-        foreach (var foodAttacher in foodAttachers)
+        meat.OnClickEvent += OnInteractWithMeat;
+        foreach (var foodAttacher in kitchenPotFoodAttachers)
         {
             foodAttacher.OnChangeAttached += OnAttachMeat;
         }
 
+        Inventory.OnAddToInventory += OnAddToInventory;
+
+        foreach (var button in kitchenButtons)
+        {
+            button.OnClickEvent += OnUseButton;
+        }
+
+        kitchenLever.OnSendInputValue += OnUseLever;
+    }
+
+    private void OnAddToInventory(InventoryObjectUI inventoryObject)
+    {
+        inventoryObject.OnStartDrag += OnStartDragInventoryObject;
+        Inventory.OnAddToInventory -= OnAddToInventory;
+    }
+
+    private void OnStartDragInventoryObject(InventoryObjectUI inventoryObject)
+    {
+        inventoryObject.OnStartDrag -= OnStartDragInventoryObject;
+        SetTutorialFrame(2);
+        unlockedFrames = 2;
     }
 
     private void OnInteractWithMeat()
     {
-        meat.InteractEvent -= OnInteractWithMeat;
+        meat.OnClickEvent -= OnInteractWithMeat;
         SetTutorialFrame(1);
         unlockedFrames = 1;
     }
     private void OnAttachMeat(bool isAttached, string attachment)
     {
-        if (isAttached && unlockedFrames == 1)
+        if (isAttached && unlockedFrames == 2)
         {
-            foreach (var foodAttacher in foodAttachers)
+            foreach (var foodAttacher in kitchenPotFoodAttachers)
             {
                 foodAttacher.OnChangeAttached -= OnAttachMeat;
             }
 
             KitchenTableZoomIn.Try();
-            SetTutorialFrame(2);
-            unlockedFrames = 2;
+            SetTutorialFrames(new int[] {3, 4});
+            unlockedFrames = 3;
         }
     }
+
+    private void OnUseButton()
+    {
+        tutorialFrames[3].FadeOut();
+
+        foreach (var button in kitchenButtons)
+        {
+            button.OnClickEvent -= OnUseButton;
+        }
+    }
+
+    private void OnUseLever(float value)
+    {
+        if (value == 1)
+            return;
+
+        kitchenLever.OnSendInputValue -= OnUseLever;
+        tutorialFrames[4].FadeOut();
+    }
+
+
+
+
+
+
+
 
     private void SetTutorialFrame(int index)
     {
         for (int i = 0; i < tutorialFrames.Count; i++)
         {
             if (index == i)
+            {
+                tutorialFrames[i].gameObject.SetActive(true);
+                tutorialFrames[i].FadeIn();
+                currentFrame = i;
+            }
+            else
+            {
+                tutorialFrames[i].FadeOut();
+            }
+        }
+
+        UpdateButtons();
+    }
+
+    private void SetTutorialFrames(int[] indexes)
+    {
+        for (int i = 0; i < tutorialFrames.Count; i++)
+        {
+            if (indexes.Contains(i))
             {
                 tutorialFrames[i].gameObject.SetActive(true);
                 tutorialFrames[i].FadeIn();
