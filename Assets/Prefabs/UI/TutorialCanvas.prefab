@@ -838,7 +838,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 395, y: 26}
+  m_AnchoredPosition: {x: 458, y: 26}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4982202660599857704
@@ -1155,8 +1155,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 110.92, y: 29.332016}
-  m_SizeDelta: {x: 221.845, y: 58.664}
+  m_AnchoredPosition: {x: 158.06, y: 20.668}
+  m_SizeDelta: {x: 192.752, y: 58.664}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4539090234769987850
 CanvasRenderer:
@@ -1186,7 +1186,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "... oder das Ziehen eines Hebels, ver\xE4nderst du die Szene."
+  m_text: Durch das Ziehen eines Hebels...
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c5b71bc7ab82d3b408051a836983bc7a, type: 2}
   m_sharedMaterial: {fileID: 8582651066842977468, guid: c5b71bc7ab82d3b408051a836983bc7a, type: 2}
@@ -1289,8 +1289,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 130, y: 24}
-  m_SizeDelta: {x: 178.856, y: 58.664}
+  m_AnchoredPosition: {x: 169.107, y: 24}
+  m_SizeDelta: {x: 218.819, y: 58.664}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &758145682015699672
 CanvasRenderer:
@@ -1320,7 +1320,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Durch einen Klick auf einen Knopf...
+  m_text: "... oder den Klick auf einen Knopf, ver\xE4nderst du die Szene."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c5b71bc7ab82d3b408051a836983bc7a, type: 2}
   m_sharedMaterial: {fileID: 8582651066842977468, guid: c5b71bc7ab82d3b408051a836983bc7a, type: 2}
@@ -2458,11 +2458,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   meat: {fileID: 0}
-  foodAttachers:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  kitchenPotFoodAttachers: []
+  kitchenButtons: []
+  kitchenLever: {fileID: 0}
   tutorialFrames:
   - {fileID: 7299108301041101157}
   - {fileID: 1500665236894625615}
@@ -4371,7 +4369,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7024983067202827300, guid: 859893ccf6769074c836d724fc6e26d0, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 724.311
+      value: 902.219
       objectReference: {fileID: 0}
     - target: {fileID: 7024983067202827300, guid: 859893ccf6769074c836d724fc6e26d0, type: 3}
       propertyPath: m_SizeDelta.y
@@ -4407,11 +4405,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7024983067202827300, guid: 859893ccf6769074c836d724fc6e26d0, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 92.992
+      value: 158.06
       objectReference: {fileID: 0}
     - target: {fileID: 7024983067202827300, guid: 859893ccf6769074c836d724fc6e26d0, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -14
+      value: -23
       objectReference: {fileID: 0}
     - target: {fileID: 7024983067202827300, guid: 859893ccf6769074c836d724fc6e26d0, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
