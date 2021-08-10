@@ -10,6 +10,8 @@ public class FactoryProductionAnimatingObject : AnimatingObject
     [SerializeField] private List<StageInformation> stageInformation = new List<StageInformation>();
     [SerializeField] ProdctionStage currentStage;
     [SerializeField] FloatSender crank, lever;
+    [SerializeField] BlendShapingObject founderBlendShape, stomperBlendShape;
+    [SerializeField] Material conveirBeltScrollingMaterial;
 
     bool moving = false;
     float currentTime, targetTime;
@@ -26,8 +28,22 @@ public class FactoryProductionAnimatingObject : AnimatingObject
     {
         if (moving) return true;
 
-        if ((currentStage == ProdctionStage.Founder || currentStage == ProdctionStage.Welder) && progress > 0.95f)
+        if (currentStage == ProdctionStage.Founder)
+        {
+            founderBlendShape.Try(progress);
+            if (progress < 0.99f)
+            {
+                founderBlendShape.Try(progress);
+            } else
+            {
+                MoveToNextStage();
+                founderBlendShape.Try(false);
+            }
+        }
+        else if (currentStage == ProdctionStage.Welder && progress > 0.95f)
+        {
             MoveToNextStage();
+        }
 
         return true;
     }
@@ -35,6 +51,8 @@ public class FactoryProductionAnimatingObject : AnimatingObject
     //Need to rework this at some point
     public override bool Try()
     {
+        stomperBlendShape.Try(true);
+
         if (moving) return false;
 
         Debug.Log("Try sended to FactoryProductionAnimatingObject");
@@ -72,6 +90,7 @@ public class FactoryProductionAnimatingObject : AnimatingObject
         lever.OverrideInputReference(nextStage != ProdctionStage.Founder ? this : null);
         targetTime = nextTime;
         targetStage = nextStage;
+        conveirBeltScrollingMaterial.SetFloat("Scrolling", 1);
         moving = true;
     }
 
@@ -86,6 +105,7 @@ public class FactoryProductionAnimatingObject : AnimatingObject
             {
                 Debug.LogError($"reached: {currentTime} => {targetTime}");
                 moving = false;
+                conveirBeltScrollingMaterial.SetFloat("Scrolling", 0);
                 currentStage = targetStage;
             }
         }

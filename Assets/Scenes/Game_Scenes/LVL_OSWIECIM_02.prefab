@@ -4087,6 +4087,9 @@ MonoBehaviour:
   currentStage: 1
   crank: {fileID: 603251455093458056}
   lever: {fileID: 2856082501540706791}
+  founderBlendShape: {fileID: 0}
+  stomperBlendShape: {fileID: 0}
+  conveirBeltScrollingMaterial: {fileID: 0}
   animationSpeed: 0.1
 --- !u!1 &2856082502376261453
 GameObject:
@@ -5697,6 +5700,9 @@ MonoBehaviour:
   startFromEnd: 0
   animateOnStart: 0
   resetAtEnd: 0
+  useCustomBlendShape: 0
+  customMeshRenderer: {fileID: 0}
+  customMeshRendererIndex: 0
 --- !u!1 &4110333036056437524
 GameObject:
   m_ObjectHideFlags: 0
@@ -5848,6 +5854,9 @@ MonoBehaviour:
   startFromEnd: 0
   animateOnStart: 0
   resetAtEnd: 0
+  useCustomBlendShape: 0
+  customMeshRenderer: {fileID: 0}
+  customMeshRendererIndex: 0
 --- !u!114 &2856082502710471750
 MonoBehaviour:
   m_ObjectHideFlags: 0

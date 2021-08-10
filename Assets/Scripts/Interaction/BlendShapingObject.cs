@@ -9,6 +9,10 @@ public class BlendShapingObject : ChangingOverTimeObject
     [ShowNonSerializedField]
     protected SkinnedMeshRenderer skinnedMeshRenderer;
 
+    [SerializeField] bool useCustomBlendShape = false;
+    [ShowIf("useCustomBlendShape")] [SerializeField] SkinnedMeshRenderer customMeshRenderer;
+    [ShowIf("useCustomBlendShape")] [SerializeField] int customMeshRendererIndex;
+
 #if UNITY_EDITOR
     protected override void Reset()
     {
@@ -25,9 +29,20 @@ public class BlendShapingObject : ChangingOverTimeObject
 
     protected override void UpdateChange(float progress)
     {
-        if (skinnedMeshRenderer != null)
+        if (useCustomBlendShape)
         {
-            skinnedMeshRenderer.SetBlendShapeWeight(0,progress * 100f);
+            if (customMeshRenderer != null)
+            {
+                Debug.LogWarning("Update Change: " + progress);
+                customMeshRenderer.SetBlendShapeWeight(customMeshRendererIndex, progress * 100f);
+            }
+        }
+        else
+        {
+            if (skinnedMeshRenderer != null)
+            {
+                skinnedMeshRenderer.SetBlendShapeWeight(0, progress * 100f);
+            }
         }
     }
 }
