@@ -427,7 +427,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1341311771
 GameObject:
@@ -537,7 +537,7 @@ GameObject:
   - component: {fileID: 1417166842}
   - component: {fileID: 1417166841}
   m_Layer: 0
-  m_Name: ww
+  m_Name: whitecube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -617,7 +617,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1553758232
 PrefabInstance:
@@ -632,7 +632,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8319081556374925613, guid: 5ed6a14391ea8e54d8012c242cf99d4b, type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 8319081556374925613, guid: 5ed6a14391ea8e54d8012c242cf99d4b, type: 3}
       propertyPath: m_LocalPosition.x
@@ -827,7 +827,7 @@ Transform:
   m_LocalScale: {x: 1.9535, y: 1, z: 1.6644}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1809611293
 GameObject:
@@ -920,7 +920,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
 --- !u!1001 &1930291532
 PrefabInstance:
@@ -988,7 +988,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2485250826580846885, guid: 3ed3c400b4fc01840ab71bc15ece1026, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2485250826580846885, guid: 3ed3c400b4fc01840ab71bc15ece1026, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1547,6 +1547,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 149905391587801074, guid: b95d0c2692eec7249a02ebe1bcfdae6d, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7447293175205285129, guid: b95d0c2692eec7249a02ebe1bcfdae6d, type: 3}
       propertyPath: m_Name
       value: PullableImageFrameH
@@ -3376,6 +3380,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 357706629542961236, guid: 99f2325037b4d92438e7b2bb1fc9704c, type: 3}
+      propertyPath: m_BlendShapeWeights.Array.data[0]
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4772210721146553623, guid: 99f2325037b4d92438e7b2bb1fc9704c, type: 3}
       propertyPath: m_Name
       value: SSOfficeStatic
