@@ -9,6 +9,8 @@ using UnityEngine.UI;
 
 public class InventoryObjectUI : UnityEngine.UI.Button, IDragHandler, IBeginDragHandler
 {
+    public System.Action<InventoryObjectUI> OnStartDrag;
+
     [SerializeField] private Image imageElement;
     [SerializeField] private TMP_Text amountText;
     private InventoryObjectData data;
@@ -31,6 +33,7 @@ public class InventoryObjectUI : UnityEngine.UI.Button, IDragHandler, IBeginDrag
     }
     public void OnBeginDrag(PointerEventData eventData)
     {
+        OnStartDrag?.Invoke(this);
         GameObject go = Instantiate(data.prefab);
         float scaleMultiplier = Game.ZoomInHandler.IsZoomedIn ? data.zoomInSceneScaleMultiplier : data.overviewSceneScaleMultiplier;
         go.transform.localScale = scaleMultiplier * Vector3.one;

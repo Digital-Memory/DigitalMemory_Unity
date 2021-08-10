@@ -6,6 +6,8 @@ using UnityEngine.UI;
 
 public class Inventory : MonoBehaviour
 {
+    public static System.Action<InventoryObjectUI> OnAddToInventory;
+
     [SerializeField] InventoryObjectUI ItemPrefab;
 
     Dictionary<InventoryObjectData, InventoryObjectUI> content = new Dictionary<InventoryObjectData, InventoryObjectUI>();
@@ -56,6 +58,7 @@ public class Inventory : MonoBehaviour
             InventoryObjectUI uiElement = Instantiate(ItemPrefab, transform);
             uiElement.Init(this,data);
             content.Add(data, uiElement);
+            OnAddToInventory?.Invoke(uiElement);
         }
     }
 

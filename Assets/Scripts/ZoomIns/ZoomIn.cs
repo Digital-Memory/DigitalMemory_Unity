@@ -20,6 +20,7 @@ public class ZoomIn : InputObject, IClickable, IHoverable
 
     public event Action OnStartHoverEvent;
     public event Action OnEndHoverEvent;
+    public event Action OnClickEvent;
 
     [SerializeField] List<InputObject> InputObjects = new List<InputObject>();
     [SerializeField] private bool isStartingPoint;
@@ -65,6 +66,7 @@ public class ZoomIn : InputObject, IClickable, IHoverable
     public void Click()
     {
         DoZoomIn();
+        OnClickEvent?.Invoke();
     }
 
     public void DoZoomIn()

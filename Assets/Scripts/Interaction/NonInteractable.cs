@@ -1,4 +1,5 @@
 using NaughtyAttributes;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -12,11 +13,15 @@ public class NonInteractable : MonoBehaviour, IClickable
     [SerializeField] bool playSound = false;
     [SerializeField] AudioClip sound;
 
+    public event Action OnClickEvent;
+
     public void Click()
     {
-        if(playEffect) Game.EffectHandler.Play(nonInteractable, gameObject);
+        if (playEffect) Game.EffectHandler.Play(nonInteractable, gameObject);
 
         else if (playSound) Game.SoundPlayer.Play(sound);
+
+        OnClickEvent?.Invoke();
 
     }
 

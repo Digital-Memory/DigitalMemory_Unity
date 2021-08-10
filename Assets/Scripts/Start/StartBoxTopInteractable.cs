@@ -10,6 +10,7 @@ public class StartBoxTopInteractable : MonoBehaviour, IClickable, IHoverable
 
     public event Action OnStartHoverEvent;
     public event Action OnEndHoverEvent;
+    public event Action OnClickEvent;
 
     private bool hasMoved = false;
     [SerializeField] private Vector3 moveForce;
@@ -21,6 +22,7 @@ public class StartBoxTopInteractable : MonoBehaviour, IClickable, IHoverable
     {
         hasMoved = true;
         Move();
+        OnClickEvent?.Invoke();
     }
 
     private void Move()
