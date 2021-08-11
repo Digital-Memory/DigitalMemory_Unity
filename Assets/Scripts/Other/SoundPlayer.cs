@@ -6,10 +6,12 @@ using System.Linq;
 
 public class SoundPlayer : Singleton<SoundPlayer>
 {
+    public bool Muted { get; set; }
+
     List<PlayingAudio> currentlyPlaying = new List<PlayingAudio>();
     public void Play(AudioClip clip, GameObject toPlayFrom = null, float volume = 1, float randomPitchRange = 0, bool playOnlyIfFinished = false, float pitch = -1f)
     {
-        if (clip == null)
+        if (clip == null || Muted)
             return;
 
         if (playOnlyIfFinished && ClipIsBeingPlayed(clip))

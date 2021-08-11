@@ -14,6 +14,8 @@ public class MouseInteractor : Singleton<MouseInteractor>
     private bool raycastDistanceIsLocked = false;
     private Plane lockedRaycastPlane;
     private const float FLOOR_RAYCAST_DISTANCE = 15f;
+    public bool InteractionIsBlocked { get; set; }
+
 
     private void OnEnable()
     {
@@ -29,6 +31,9 @@ public class MouseInteractor : Singleton<MouseInteractor>
 
     private void Update()
     {
+        if (InteractionIsBlocked)
+            return;
+
 
         RaycastHit hit;
         Ray ray = Game.CameraController.Camera.ScreenPointToRay(Input.mousePosition);

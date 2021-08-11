@@ -15,6 +15,13 @@ public class IntroFlow : MonoBehaviour
     [SerializeField] GameObject lamp, cone;
     [SerializeField] GameObject offLightPostProcessing;
 
+
+    private void Awake()
+    {
+        Game.MouseInteractor.InteractionIsBlocked = true;
+        Game.SoundPlayer.Muted = true;
+    }
+
     private void SetLightActive(bool value)
     {
         directionalLight.enabled = value;
@@ -33,6 +40,8 @@ public class IntroFlow : MonoBehaviour
     {
         //zoomOverview.gameObject.SetActive(true);
         zoomInAfterFinishIntro.DoZoomIn();
+        Game.MouseInteractor.InteractionIsBlocked = false;
+        Game.SoundPlayer.Muted = false;
     }
 
     private void Update()
