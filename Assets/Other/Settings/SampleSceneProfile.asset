@@ -16,13 +16,13 @@ MonoBehaviour:
   m_AdvancedMode: 0
   lift:
     m_OverrideState: 1
-    m_Value: {x: 0.9510313, y: 0.9684282, z: 1, w: -0.0120723685}
+    m_Value: {x: 0.9510313, y: 0.9684282, z: 1, w: 0.00028093645}
   gamma:
     m_OverrideState: 1
-    m_Value: {x: 0.9583004, y: 0.9947226, z: 1, w: 0.30382112}
+    m_Value: {x: 0.9583004, y: 0.9947226, z: 1, w: 0.14322817}
   gain:
     m_OverrideState: 1
-    m_Value: {x: 1, y: 0.9927558, z: 0.9784782, w: 0.22970176}
+    m_Value: {x: 1, y: 0.9927558, z: 0.9784782, w: 0.11852203}
 --- !u!114 &-3683359030680438697
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -39,10 +39,10 @@ MonoBehaviour:
   m_AdvancedMode: 0
   postExposure:
     m_OverrideState: 1
-    m_Value: -0.5
+    m_Value: 0
   contrast:
     m_OverrideState: 1
-    m_Value: 49
+    m_Value: 25
     min: -100
     max: 100
   colorFilter:
@@ -58,7 +58,7 @@ MonoBehaviour:
     max: 180
   saturation:
     m_OverrideState: 1
-    m_Value: -35
+    m_Value: -20
     min: -100
     max: 100
 --- !u!114 &11400000
@@ -74,28 +74,11 @@ MonoBehaviour:
   m_Name: SampleSceneProfile
   m_EditorClassIdentifier: 
   components:
-  - {fileID: 849379129802519247}
   - {fileID: 2335827475646857899}
   - {fileID: -4132670699576193495}
   - {fileID: -3683359030680438697}
   - {fileID: 4106135970930334588}
---- !u!114 &849379129802519247
-MonoBehaviour:
-  m_ObjectHideFlags: 3
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 97c23e3b12dc18c42a140437e53d3951, type: 3}
-  m_Name: Tonemapping
-  m_EditorClassIdentifier: 
-  active: 1
-  m_AdvancedMode: 0
-  mode:
-    m_OverrideState: 1
-    m_Value: 1
+  - {fileID: 6366867992633583717}
 --- !u!114 &2335827475646857899
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -148,7 +131,7 @@ MonoBehaviour:
   m_AdvancedMode: 0
   temperature:
     m_OverrideState: 1
-    m_Value: 25
+    m_Value: 15
     min: -100
     max: 100
   tint:
@@ -156,3 +139,25 @@ MonoBehaviour:
     m_Value: 2.5
     min: -100
     max: 100
+--- !u!114 &6366867992633583717
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e021b4c809a781e468c2988c016ebbea, type: 3}
+  m_Name: ColorLookup
+  m_EditorClassIdentifier: 
+  active: 1
+  m_AdvancedMode: 0
+  texture:
+    m_OverrideState: 1
+    m_Value: {fileID: 2800000, guid: 5a7b42ce09041584ba4b0bb7c22d9721, type: 3}
+  contribution:
+    m_OverrideState: 1
+    m_Value: 0.5
+    min: 0
+    max: 1
