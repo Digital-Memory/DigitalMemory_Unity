@@ -60,7 +60,7 @@ public class CrankHandle : MonoBehaviour, IDragable, IHoverable, IChargeInput
     {
         isDragging = true;
         handleCollider.enabled = false;
-        Game.UIHandler.CustomCursor.SetCursorForcedState(isForced: true);
+        //Game.UIHandler.CustomCursor.SetCursorForcedState(isForced: true);
 
         crank.ResetAngleBefore();
         crank.StartPlayerInput();
@@ -70,7 +70,7 @@ public class CrankHandle : MonoBehaviour, IDragable, IHoverable, IChargeInput
 
     public void UpdateDragPositionAndRotation(Vector3 point, Vector3 vector3, bool useCustomPivot, Quaternion rotation)
     {
-        Game.UIHandler.CustomCursor.ForceCursorPosition(cursorParent.position);
+        //Game.UIHandler.CustomCursor.ForceCursorPosition(cursorParent.position);
         Vector2 head = crank.transform.position.To2D();
         Vector2 target = point.To2D();
 
@@ -83,7 +83,7 @@ public class CrankHandle : MonoBehaviour, IDragable, IHoverable, IChargeInput
     {
         isDragging = false;
         handleCollider.enabled = true;
-        Game.UIHandler.CustomCursor.SetCursorForcedState(isForced: false);
+        //Game.UIHandler.CustomCursor.SetCursorForcedState(isForced: false);
 
         crank.EndPlayerInput();
 
