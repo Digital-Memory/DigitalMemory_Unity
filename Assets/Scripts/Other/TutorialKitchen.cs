@@ -19,12 +19,12 @@ public class TutorialKitchen : MonoBehaviour
     [SerializeField] ZoomIn KitchenTableZoomIn, KitchenZoomInTemp;
 
     private int currentFrame = 0, unlockedFrames = 0;
-    private void Start()
+    private void OnEnable()
     {
-        for (int i = 0; i < tutorialFrames.Count; i++)
-        {
-            tutorialFrames[i].gameObject.SetActive(true);
-        }
+        //for (int i = 0; i < tutorialFrames.Count; i++)
+        //{
+        //    tutorialFrames[i].gameObject.SetActive(true);
+        //}
 
         SetTutorialFrame(0);
         meat.OnClickEvent += OnInteractWithMeat;
@@ -115,11 +115,10 @@ public class TutorialKitchen : MonoBehaviour
             }
             else
             {
-                tutorialFrames[i].FadeOut();
+                if (tutorialFrames[i].isActiveAndEnabled)
+                    tutorialFrames[i].FadeOut();
             }
         }
-
-        UpdateButtons();
     }
 
     private void SetTutorialFrames(int[] indexes)
@@ -137,8 +136,6 @@ public class TutorialKitchen : MonoBehaviour
                 tutorialFrames[i].FadeOut();
             }
         }
-
-        UpdateButtons();
     }
 
     public void ToggleTutorial()
@@ -156,15 +153,6 @@ public class TutorialKitchen : MonoBehaviour
     public void GoFrameForward()
     {
         SetTutorialFrame(currentFrame + 1);
-    }
-
-    private void UpdateButtons()
-    {
-        buttonBack.SetActive(currentFrame > 0);
-
-        buttonContinue.SetActive(currentFrame < unlockedFrames);
-
-        buttonDone.SetActive(currentFrame == tutorialFrames.Count - 1);
     }
 
     private void OnGUI()

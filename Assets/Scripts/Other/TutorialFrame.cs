@@ -11,6 +11,7 @@ public class TutorialFrame : MonoBehaviour
     private void OnEnable()
     {
         canvasGroup = GetComponent<CanvasGroup>();
+        canvasGroup.alpha = 0f;
     }
 
     public void SetOpacity(float opacity)
