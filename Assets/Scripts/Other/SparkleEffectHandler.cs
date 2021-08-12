@@ -52,7 +52,7 @@ public class SparkleEffectHandler : MonoBehaviour
 
             if (emptyAttachers.Count > 0)
             {
-                if (emptyAttachers[index].enabled == false) Debug.LogError("teleport to disabled attacher...");
+                if (!emptyAttachers[index].isActiveAndEnabled) Debug.LogError("teleport to disabled attacher...");
                 transform.position = emptyAttachers[index].transform.position;
                 transform.localScale = emptyAttachers[index].transform.localScale * 0.5f;
 
