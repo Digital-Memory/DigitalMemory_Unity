@@ -99,29 +99,7 @@ public class InputSender : MonoBehaviour, IInputSender
         if (!hasSecondaryInput)
             return;
 
-        string str = "send " + type.ToString() + " to :";
-
-        foreach (InputObject input in secondary)
-        {
-            switch(type)
-            {
-                case InputType.Impulse:
-                    input.Try();
-                    break;
-
-                case InputType.Bool:
-                    input.Try(boolValue);
-                    break;
-
-                case InputType.Float:
-                    input.Try(floatValue);
-                    break;
-            }
-
-            str += input.name + ", ";
-        }
-
-        Debug.Log(str);
+        InputObject.Try(secondary, type, boolValue, floatValue);
     }
 
     protected virtual void CallOnSendInputEvents(float value)

@@ -9,6 +9,23 @@ public class ConditionedObject : InputObject
     [SerializeField]
     private List<ConditionBase> conditions;
 
+    [SerializeField]
+    private bool sendsFollowupInputWhenAllConditionsAreMet = false;
+    [SerializeField]
+    [ShowIf("sendsFollowupInputWhenAllConditionsAreMet")]
+    private InputObject[] inputObjects;
+    [SerializeField]
+    [ShowIf("sendsFollowupInputWhenAllConditionsAreMet")]
+    private InputType typeToSend;
+
+    [SerializeField] [ShowIf(EConditionOperator.And, "sendsFollowupInputWhenAllConditionsAreMet", "TypeIsBool")] private bool boolValueToSend;
+    [SerializeField] [ShowIf(EConditionOperator.And, "sendsFollowupInputWhenAllConditionsAreMet", "TypeIsFloat")] [Range(0f, 1f)] private float floatValueToSend;
+
+    private const float MAX_DISTANCE_TO_COUNT_AS_EQUAL = 0.1f;
+
+    [HideInInspector] public bool TypeIsBool { get => typeToSend == InputType.Bool; }
+    [HideInInspector] public bool TypeIsFloat { get => typeToSend == InputType.Float; }
+
     protected virtual void OnEnable()
     {
         TryLoadConditions();
@@ -51,6 +68,9 @@ public class ConditionedObject : InputObject
                     return false;
             }
         }
+
+        if (sendsFollowupInputWhenAllConditionsAreMet)
+            Try(inputObjects, typeToSend, boolValue: boolValueToSend, floatValue: floatValueToSend);
 
         return true;
     }
