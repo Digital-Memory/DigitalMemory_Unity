@@ -19,4 +19,30 @@ public class InputObject : MonoBehaviour
         return false;
     }
 
+    public static void Try(InputObject[] objects, InputType type, bool boolValue = true, float floatValue = 1f)
+    {
+        string str = "send " + type.ToString() + " to :";
+
+        foreach (InputObject input in objects)
+        {
+            switch (type)
+            {
+                case InputType.Impulse:
+                    input.Try();
+                    break;
+
+                case InputType.Bool:
+                    input.Try(boolValue);
+                    break;
+
+                case InputType.Float:
+                    input.Try(floatValue);
+                    break;
+            }
+
+            str += input.name + ", ";
+        }
+
+        Debug.Log(str);
+    }
 }
