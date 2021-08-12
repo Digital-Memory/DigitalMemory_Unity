@@ -135,8 +135,8 @@ public class DragHandler : Singleton<DragHandler>
         currentAttachable = null;
         currentDrag = null;
 
-        attacher.OnAttach(attachable);
         attachable.Attach(attacher);
+        attacher.OnAttach(attachable);
 
         OnEndDrag?.Invoke(attachable);
     }

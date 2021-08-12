@@ -66,8 +66,6 @@ public class Lever : SimpleAttachable
             if (angle > 180)
                 angle = angle - 360;
 
-            Debug.LogWarning(a + " => " + angle);
-
             floatSender.TryGiveInput(angle, isAbsolute: true);
         }
     }
