@@ -53,7 +53,7 @@ public class TimeMechanismNumberDisplayer : MonoBehaviour
     public void MoveTo(int targetNumber, int overshoot = 5)
     {
         float ceil = Mathf.Ceil(Mathf.Round(currentNumber) / 10f) * 10f;
-        Debug.LogWarning($" ceil {ceil} + overshoot {overshoot} * 10 => {targetNumber}");
+        //Debug.Log($" ceil {ceil} + overshoot {overshoot} * 10 => {targetNumber}");
         float targetNumberAdded = ceil + (overshoot * 10) + targetNumber;
 
         localPitchOffset = Random.Range(-0.25f, 0.25f);

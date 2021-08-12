@@ -46,16 +46,17 @@ public class Attacher : MonoBehaviour, IAttacher
         IAttachable attachable = GetComponentInChildren<IAttachable>();
         isAttached = attachable != null;
         OnChangeAttached?.Invoke(isAttached, attachable != null ? attachable.GetAttachment() : "");
-        if (isAttached)
-            SparkleEffectHandler.OnAttacherAttach(this);
-        else
+    }
+
+    private void OnEnable()
+    {
+        if (!isAttached)
             SparkleEffectHandler.OnAttacherDetach(this);
     }
 
     protected void OnDisable()
     {
-        if (isAttached)
-            SparkleEffectHandler.OnAttacherAttach(this);
+        SparkleEffectHandler.OnAttacherAttach(this);
     }
 
     public bool CanAttach(string attachmentName)
