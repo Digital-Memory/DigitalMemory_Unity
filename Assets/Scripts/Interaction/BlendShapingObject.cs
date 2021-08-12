@@ -33,7 +33,6 @@ public class BlendShapingObject : ChangingOverTimeObject
         {
             if (customMeshRenderer != null)
             {
-                Debug.LogWarning("Update Change: " + progress);
                 customMeshRenderer.SetBlendShapeWeight(customMeshRendererIndex, progress * 100f);
             }
         }
