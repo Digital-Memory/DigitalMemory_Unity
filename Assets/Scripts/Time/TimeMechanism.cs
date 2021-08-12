@@ -15,30 +15,22 @@ public class TimeMechanism : MovingObject
     [SerializeField] List<TimePoint> tptp;
     [SerializeField] List<float> tpfl;
     [Foldout("References")] [SerializeField] TimeMechanismNumberDisplayer day1, day2, month1, month2, year1, year2, year3, year4;
-    [Foldout("References")] [SerializeField] TimeMechanismLightbulb[] lightbulbs;
+    [Foldout("References")] [SerializeField] Attacher[] lightbulbAttachers;
+    [Foldout("References")] [SerializeField] MovingObject[] lightbulbAttachersBlends;
+    [Foldout("References")] [SerializeField] List<TimeMechanismLightbulb> lightbulbs = new List<TimeMechanismLightbulb>();
     [SerializeField] Timestamp[] timestamps;
 
     AttacherTimePlate[] attachersTimePlate;
 
+
     protected override void OnEnable()
     {
-        attachersTimePlate = FindObjectsOfType<AttacherTimePlate>();
-        foreach (AttacherTimePlate attacher in attachersTimePlate)
+        foreach (Attacher attacher in lightbulbAttachers)
         {
-            attacher.OnAttachPlateOnPosition += OnAttachPlateOnPosition;
-            attacher.OnDetachPlateOnPosition += OnDetachPlateOnPosition;
+            attacher.OnChangeAttached += OnAttachLightbulb;
         }
+
         base.OnEnable();
-    }
-
-
-    private void OnDisable()
-    {
-        foreach (AttacherTimePlate attacher in attachersTimePlate)
-        {
-            attacher.OnAttachPlateOnPosition -= OnAttachPlateOnPosition;
-            attacher.OnDetachPlateOnPosition -= OnDetachPlateOnPosition;
-        }
     }
 
     void OnAttachPlateOnPosition(float associatedLeverPosition, TimePoint pointToSet)
@@ -50,10 +42,44 @@ public class TimeMechanism : MovingObject
 
         UpdateSnapValues();
     }
+    private void OnAttachLightbulb(bool isAttached, string attachment)
+    {
+        if (isAttached)
+        {
+            int numberOfLightbulbs = lightbulbs.Count;
+
+
+            TimeMechanismLightbulb lightbulb = lightbulbAttachers[numberOfLightbulbs].GetComponentInChildren<TimeMechanismLightbulb>();
+            if (lightbulb != null && !lightbulbs.Contains(lightbulb))
+            {
+                lightbulbs.Add(lightbulb);
+                timestamps[numberOfLightbulbs].enabled = true;
+                UpdateSnapValues();
+                UpdateSlotCaps(numberOfLightbulbs + 1);
+            }
+        }
+    }
+
+    private void UpdateSlotCaps(int capIndexToShow)
+    {
+        if (capIndexToShow >= lightbulbAttachersBlends.Length)
+            return;
+
+        //Open the blend for the next Attacher
+        MovingObject blend = lightbulbAttachersBlends[capIndexToShow];
+        if (blend != null)
+            blend.Try(true);
+    }
 
     private void UpdateSnapValues()
     {
-        leverSnapper.DefineSnapValues(new List<float>(timePoints.Values).ToArray());
+        List<float> snaps = new List<float>();
+
+        for (int i = 0; i < timestamps.Length; i++)
+            if (timestamps[i].enabled)
+                snaps.Add(1f - (float)i / 3f);
+
+        leverSnapper.DefineSnapValues(snaps.ToArray());
     }
 
     void OnDetachPlateOnPosition(float position)
@@ -84,7 +110,9 @@ public class TimeMechanism : MovingObject
             StopAllCoroutines();
             StartCoroutine(ResetCrankRoutine());
             return true;
-        } else {
+        }
+        else
+        {
             return false;
         }
     }
@@ -93,8 +121,14 @@ public class TimeMechanism : MovingObject
     {
         StopAllCoroutines();
         Timestamp timestamp = timestamps[GetTimestampIndexFromLeverPosition(leverPosition)];
-        StartCoroutine(TimeTravelRoutine(timestamp));
-        return true;
+
+        if (timestamp.enabled)
+        {
+            StartCoroutine(TimeTravelRoutine(timestamp));
+            return true;
+        }
+
+        return false;
     }
 
     private TimePoint GetClosestSelectedTimePoint(float leverPosition)
@@ -105,7 +139,8 @@ public class TimeMechanism : MovingObject
         foreach (KeyValuePair<TimePoint, float> item in timePoints)
         {
             float dist = Mathf.Abs(leverPosition - item.Value);
-            if (dist < distance) {
+            if (dist < distance)
+            {
                 distance = dist;
                 tp = item.Key;
             }
@@ -119,7 +154,8 @@ public class TimeMechanism : MovingObject
         float t = 0;
         float timeMax = resetCurve.keys[resetCurve.length - 1].time;
 
-        while (time < timeMax) {
+        while (time < timeMax)
+        {
             t += Time.deltaTime;
             crankToReset.TryGiveInputRaw(resetCurve.Evaluate(t));
             yield return null;
@@ -128,7 +164,8 @@ public class TimeMechanism : MovingObject
 
     public override bool Try(float progress)
     {
-        if (base.Try(progress)) {
+        if (base.Try(progress))
+        {
             leverPosition = progress;
             UpdateLightbulbs();
             return true;
@@ -139,9 +176,10 @@ public class TimeMechanism : MovingObject
     private void UpdateLightbulbs()
     {
         int indexActive = GetTimestampIndexFromLeverPosition(leverPosition);
-        for (int i = 0; i < lightbulbs.Length; i++)
+        for (int i = 0; i < lightbulbs.Count; i++)
         {
-            lightbulbs[i].SetLightActive(i == indexActive);
+            if (lightbulbs[i] != null)
+                lightbulbs[i].SetLightActive(i == indexActive);
         }
     }
 

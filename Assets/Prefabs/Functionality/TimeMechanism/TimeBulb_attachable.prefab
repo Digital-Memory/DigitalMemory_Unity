@@ -18,7 +18,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2615126543528192942
 Transform:
   m_ObjectHideFlags: 0
@@ -157,7 +157,7 @@ GameObject:
   - component: {fileID: 7234573417851254415}
   - component: {fileID: 4097273767137120021}
   m_Layer: 0
-  m_Name: TimeBulb_active
+  m_Name: TimeBulb_attachable
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -208,7 +208,7 @@ MeshRenderer:
   m_Materials:
   - {fileID: 2100000, guid: 6ffa79d5ec83bbd48996d52499f7dbb0, type: 2}
   - {fileID: 2100000, guid: 6236f09064624184d99207faf6bd4a92, type: 2}
-  - {fileID: 2100000, guid: 073bb546b0571b94985fe618cba902a2, type: 2}
+  - {fileID: 2100000, guid: af0c9c3b670a4fd479b17e505cf46982, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -246,8 +246,8 @@ MonoBehaviour:
   YOffsetOnDrop: 0
   startDragEffect: {fileID: 0}
   endDragEffect: {fileID: 0}
-  attachment: 
-  inventoryObjectData: {fileID: 0}
+  attachment: Lightbulb
+  inventoryObjectData: {fileID: 11400000, guid: d6b12e96e1526f54fa77a1ff6162aec1, type: 2}
   isAttached: 0
   defaultParent: {fileID: 0}
   attachEffect: {fileID: 0}

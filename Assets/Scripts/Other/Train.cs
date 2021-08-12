@@ -12,12 +12,16 @@ public class Train : ConditionedObject
     [SerializeField] float horsePower = 0.05f;
     [ShowNonSerializedField] bool switchIsUp = false;
     [ShowNonSerializedField] bool hasBornPassengers = false;
+    
     [SerializeField] [Range(0, 1)] float position = 0f;
     [ShowNonSerializedField] float acceleration = 0f;
 
-    [SerializeField] Effect spawnOswiecimCitizenEffect;
+    [SerializeField] Transform trainStation;
+    [SerializeField] InventoryObjectData oswiecimCitizen;
 
     bool hasGreen = false;
+    private int passengersBorn = 0;
+    private float passengerBirthtime;
 
     public override bool Try()
     {
@@ -44,13 +48,17 @@ public class Train : ConditionedObject
 
             if (!hasBornPassengers && switchIsUp && position > 0.6f)
             {
-                Debug.Log($"{name} spawns passengers");
+                passengerBirthtime += Time.deltaTime * 2f;
 
-                for (int i = 0; i < 3; i++)
+                if (Mathf.FloorToInt(passengerBirthtime) == (passengersBorn + 1))
                 {
-                    Game.EffectHandler.Play(spawnOswiecimCitizenEffect, gameObject);
+                    passengersBorn++;
+                    Vector2 pos = Game.CameraController.Camera.WorldToScreenPoint(trainStation.position);
+                    Game.UIHandler.InventoryAdder.MoveToInventory(oswiecimCitizen, pos);
                 }
-                hasBornPassengers = true;
+                
+                if(passengersBorn >= 3)
+                    hasBornPassengers = true;
             }
 
             if (position > 1)
@@ -67,6 +75,8 @@ public class Train : ConditionedObject
         position = 0;
         hasGreen = false;
         hasBornPassengers = false;
+        passengersBorn = 0;
+        passengerBirthtime = 0;
     }
 
     private float Accelerate(float target)
