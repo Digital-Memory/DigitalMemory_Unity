@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-5883714673362050735
+--- !u!114 &-5691211809387576429
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}
@@ -20,8 +20,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: DesaturationEffectMaterial
-  m_Shader: {fileID: -6465566751694194690, guid: ac57c7d744631364b93e592fbcc1f637, type: 3}
+  m_Name: Roofing_02
+  m_Shader: {fileID: -6465566751694194690, guid: ad23abada9aa1c0449ff390c8aab3cdd, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -64,12 +64,20 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _NormalMap:
+        m_Texture: {fileID: 2800000, guid: 792cebe48cc0eba4c87fb8cba62463ab, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _OcclusionMap:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _ParallaxMap:
         m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SampleTexture2D_dc4d8d93f61f4c298d76f0b0888d0b76_Texture_1:
+        m_Texture: {fileID: 2800000, guid: a3e2239140ea6d145b8939414b72070c, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _SpecGlossMap:
@@ -89,8 +97,12 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - Vector1_1aaff390ce37494cbf31f74628bebfa7: -0.05
-    - Vector1_2483012e0edc4a39b7bd8bfb3adcc512: 512
+    - Boolean_21f177e0e8fa4bccb14acbd54ca31303: 1
+    - Boolean_4a292430a56f4367adae282eff48ce2c: 0
+    - Vector1_0eb9749ca00748dc8bb218289c1eeeb1: 0.361
+    - Vector1_253a1e2c75494881a4faf094676c7472: 0.34
+    - Vector1_43056bfa3354487994fa618c2d163b63: 61.12
+    - Vector1_5421892e9c0b403b930c11b2b437a0eb: 0.33
     - _AlphaClip: 0
     - _Blend: 0
     - _BumpScale: 1
@@ -117,13 +129,11 @@ Material:
     - _Surface: 0
     - _WorkflowMode: 1
     - _ZWrite: 1
-    - mask: 0
-    - size: 459.74756
     m_Colors:
-    - Vector2_844b655827ab4286b8409647caecbeaa: {r: 0, g: 0, b: 0, a: 0}
+    - Color_2a41887232a14db68dd8994bfb490b09: {r: 0.34901962, g: 0.15294118, b: 0.15842892, a: 0}
+    - Vector2_fe7d68a2733f4c8eb4ac7875ee8b3558: {r: 1, g: 1, b: 0, a: 0}
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
-    - pos: {r: 1236.9469, g: 440.032, b: 0, a: 0}
   m_BuildTextureStacks: []
