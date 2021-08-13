@@ -136,6 +136,7 @@ MonoBehaviour:
   attachPreviewVector: {x: 0, y: 1, z: 0}
   allowsDetach: 0
   destroyColliderOnAttachment: 0
+  tooltipText: "Steckplatz f\xFCr einen Hebel"
 --- !u!114 &3458194863511574890
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -177,6 +178,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   conditions: []
+  sendsFollowupInputWhenAllConditionsAreMet: 0
+  inputObjects: []
+  typeToSend: 0
+  boolValueToSend: 0
+  floatValueToSend: 0
   baseValue: 0
   targetValue: 1
   maxDistanceFromTargetToNotMoveBack: 0.1
