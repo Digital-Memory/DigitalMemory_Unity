@@ -66,6 +66,7 @@ public class LeverHandle : MonoBehaviour, IDragable
     public void StartDrag()
     {
         startRotation = lever.transform.localRotation.eulerAngles.GetLongestAxis();
+        Debug.Log("fetch start rotation: " + lever.transform.localRotation.eulerAngles + " => " + startRotation);
         if (startRotation > 180)
             startRotation -= 360;
 
@@ -89,11 +90,10 @@ public class LeverHandle : MonoBehaviour, IDragable
         float currentRotation = distance * 10;
 
         float startOffsetDistance = rotationToDistanceCurve.Evaluate(startRotation);
-        float distanceWithStartOffset = startOffsetDistance + distance;
-        Debug.Log(distanceWithStartOffset);
-        //float currentRotation = distanceToRotationCurve.Evaluate( distanceWithStartOffset);
+        float distanceWithStartOffset = startOffsetDistance - distance;
+        float testRotation = distanceToRotationCurve.Evaluate(distanceWithStartOffset);
 
-        DebugDraw.AnimationCurve(rotationToDistanceCurve, startRotation);
+        DebugDraw.AnimationCurve(distanceToRotationCurve, distanceWithStartOffset, startOffsetDistance);
 
         float angle = startRotation - currentRotation;
 
