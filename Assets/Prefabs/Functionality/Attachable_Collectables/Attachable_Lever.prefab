@@ -123,6 +123,7 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   handleCollider: {fileID: 2565178243891227367}
+  tooltipText: 
 --- !u!1 &8985428912084992308
 GameObject:
   m_ObjectHideFlags: 0
@@ -239,8 +240,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   customDragPivot: {fileID: 5700701581110885990}
   YOffsetOnDrop: 0
-  startDragEffect: {fileID: 0}
-  endDragEffect: {fileID: 0}
+  tooltipText: 
+  startDragEffect: {fileID: 11400000, guid: e35e80085f295764ab132193dda44114, type: 2}
+  endDragEffect: {fileID: 11400000, guid: a720cd0da0ecc254c976d221da72e16a, type: 2}
   attachment: Lever
   inventoryObjectData: {fileID: 11400000, guid: 5c8a2c75d100df14a9adf020476f238e, type: 2}
   isAttached: 1

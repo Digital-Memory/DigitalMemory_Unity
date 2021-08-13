@@ -30,6 +30,8 @@ public class Attacher : MonoBehaviour, IAttacher
     [Dropdown("VectorValues")]
     public Vector3 attachPreviewVector = Vector3.up;
     private Vector3[] VectorValues = new Vector3[] { Vector3.right, Vector3.left, Vector3.forward, Vector3.back, Vector3.up, Vector3.down };
+    private SkinnedMeshRenderer skinnedMeshRenderer;
+    private AnimationCurve blendShapeCurve = AnimationCurve.EaseInOut(0, 0, 1, 50);
 
     public event System.Action<bool, string> OnChangeAttached;
     public event Action OnStartHoverEvent;
@@ -57,8 +59,11 @@ public class Attacher : MonoBehaviour, IAttacher
 
     private void OnEnable()
     {
+        skinnedMeshRenderer = GetComponent<SkinnedMeshRenderer>();
+
         if (!isAttached)
             SparkleEffectHandler.OnAttacherDetach(this);
+
     }
 
     protected void OnDisable()
@@ -96,6 +101,8 @@ public class Attacher : MonoBehaviour, IAttacher
         isAttached = true;
         OnChangeAttached?.Invoke(isAttached, attachable.GetAttachment());
         SparkleEffectHandler.OnAttacherAttach(this);
+        StopAllCoroutines();
+        StartCoroutine(AnimateBlendShape(speed: 3f, target: 1f));
     }
 
     public virtual void OnDetach()
@@ -103,6 +110,18 @@ public class Attacher : MonoBehaviour, IAttacher
         isAttached = false;
         OnChangeAttached?.Invoke(isAttached, "");
         SparkleEffectHandler.OnAttacherDetach(this);
+        StopAllCoroutines();
+        StartCoroutine(AnimateBlendShape(speed: -3f, target: 0f));
+    }
+    private IEnumerator AnimateBlendShape(float speed, float target)
+    {
+        float current = 1 - target;
+        while (speed > 0 ? (current < target) : (current > target))
+        {
+            current += Time.deltaTime * speed;
+            skinnedMeshRenderer.SetBlendShapeWeight(0, blendShapeCurve.Evaluate(current));
+            yield return null;
+        }
     }
 
     public bool ResetOrientationOnAttach()
