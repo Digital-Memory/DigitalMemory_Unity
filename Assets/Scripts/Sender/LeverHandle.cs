@@ -1,3 +1,4 @@
+using NaughtyAttributes;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,7 +7,12 @@ public class LeverHandle : MonoBehaviour, IDragable
 {
     [SerializeField] Lever lever;
     [SerializeField] AnimationCurve distanceToRotationCurve;
+    [SerializeField] AnimationCurve rotationToDistanceCurve;
     [SerializeField] Collider handleCollider;
+    [InfoBox("Depending on how zoomed in we are the distance traveled by the mouse is diffent, thereby this multiplier can be used to manually remap the difference.")]
+    [SerializeField] float distanceMultiplier = 1;
+    [SerializeField] float d;
+
     [TextArea] [SerializeField] string tooltipText;
 
     bool isDragging = false;
@@ -60,6 +66,9 @@ public class LeverHandle : MonoBehaviour, IDragable
     public void StartDrag()
     {
         startRotation = lever.transform.localRotation.eulerAngles.GetLongestAxis();
+        if (startRotation > 180)
+            startRotation -= 360;
+
         startPosition = Vector3.zero;
 
         isDragging = true;
@@ -73,10 +82,19 @@ public class LeverHandle : MonoBehaviour, IDragable
         if (startPosition == Vector3.zero)
             startPosition = point;
 
-        float distance = (point - startPosition).InvertAxis(Vector3.forward).GetLongestAxis() * (1 / Game.Settings.CurrentZoomLevel);
+        float distance = (point - startPosition).InvertAxis(Vector3.forward).GetLongestAxis() * (1 / Game.Settings.CurrentZoomLevel) * distanceMultiplier;
+        d = distance;
         //Debug.LogWarning("filter " + (point - startPosition).InvertAxis(Vector3.forward));
 
         float currentRotation = distance * 10;
+
+        float startOffsetDistance = rotationToDistanceCurve.Evaluate(startRotation);
+        float distanceWithStartOffset = startOffsetDistance + distance;
+        Debug.Log(distanceWithStartOffset);
+        //float currentRotation = distanceToRotationCurve.Evaluate( distanceWithStartOffset);
+
+        DebugDraw.AnimationCurve(rotationToDistanceCurve, startRotation);
+
         float angle = startRotation - currentRotation;
 
         lever.Turn(angle);

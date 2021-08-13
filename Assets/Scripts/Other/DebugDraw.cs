@@ -61,4 +61,9 @@ public static class DebugDraw
         Debug.DrawLine(position + new Vector3(size / 2, 0, size / 2), position + new Vector3(-size / 2, 0, -size / 2), color);
         Debug.DrawLine(position + new Vector3(-size / 2, 0, size / 2), position + new Vector3(size / 2, 0, -size / 2), color);
     }
+
+    public static void AnimationCurve(AnimationCurve curve, params float[] timesToHighlight)
+    {
+        Game.CustomTempUIHandler.DrawAnimationCurve(curve, timesToHighlight);
+    }
 }
