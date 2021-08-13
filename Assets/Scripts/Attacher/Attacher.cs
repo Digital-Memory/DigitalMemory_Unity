@@ -102,7 +102,7 @@ public class Attacher : MonoBehaviour, IAttacher
         OnChangeAttached?.Invoke(isAttached, attachable.GetAttachment());
         SparkleEffectHandler.OnAttacherAttach(this);
         StopAllCoroutines();
-        StartCoroutine(AnimateBlendShape(speed: 1f, target: 1f));
+        StartCoroutine(AnimateBlendShape(speed: 3f, target: 1f));
     }
 
     public virtual void OnDetach()
@@ -111,7 +111,7 @@ public class Attacher : MonoBehaviour, IAttacher
         OnChangeAttached?.Invoke(isAttached, "");
         SparkleEffectHandler.OnAttacherDetach(this);
         StopAllCoroutines();
-        StartCoroutine(AnimateBlendShape(speed: -1f, target: 0f));
+        StartCoroutine(AnimateBlendShape(speed: -3f, target: 0f));
     }
     private IEnumerator AnimateBlendShape(float speed, float target)
     {
