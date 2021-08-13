@@ -33,6 +33,7 @@ MonoBehaviour:
   boolValueToSend: 0
   floatValueToSend: 0
   dataToMoveToInventory: {fileID: 11400000, guid: d6b12e96e1526f54fa77a1ff6162aec1, type: 2}
+  tooltipText: "Fehlendes Gl\xFChbirne der Zeitmaschine"
 --- !u!1001 &6561340132595964249
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -104,6 +105,10 @@ PrefabInstance:
     - target: {fileID: 1805579586333742325, guid: c08c77c1f40c8214fa65d40f07699f5e, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4450580819957911584, guid: c08c77c1f40c8214fa65d40f07699f5e, type: 3}
+      propertyPath: m_RootOrder
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7234573417851254415, guid: c08c77c1f40c8214fa65d40f07699f5e, type: 3}
       propertyPath: m_Materials.Array.data[0]

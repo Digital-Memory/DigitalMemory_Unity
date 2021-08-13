@@ -12,6 +12,8 @@ public class CollectToInventoryOnClick : ConditionedObject, IClickable, IHoverab
     public event Action OnEndHoverEvent;
     public event Action OnClickEvent;
 
+    [TextArea] [SerializeField] string tooltipText;
+
     public void Click()
     {
         if (CheckAllConditionsForTrue())
@@ -21,13 +23,16 @@ public class CollectToInventoryOnClick : ConditionedObject, IClickable, IHoverab
             Game.HoverHandler.ForceEndHoverCurrent();
             Destroy(gameObject);
         }
-
-        
     }
 
     public void EndHover()
     {
         OnEndHoverEvent?.Invoke();
+    }
+
+    public string GetTooltipText()
+    {
+        return tooltipText;
     }
 
     public bool IsClickable()

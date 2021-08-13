@@ -114,8 +114,10 @@ MonoBehaviour:
   attachmentName: Lever
   isAttached: 0
   attachmentOffset: {x: 0, y: 0, z: 0}
+  attachPreviewVector: {x: 0, y: 1, z: 0}
   allowsDetach: 0
   destroyColliderOnAttachment: 0
+  tooltipText: "Steckplatz f\xFCr einen Hebel "
 --- !u!114 &976612781
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -128,6 +130,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb28ff5ef79b5844e842845f793281db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inputSelectionType: 0
+  inputDropown: {fileID: 0}
   input: {fileID: 0}
   inputObject: {fileID: 0}
   hasSecondaryInput: 0
@@ -141,6 +145,7 @@ MonoBehaviour:
   whileChangeEffect: {fileID: 11400000, guid: fb4135650a2d2e64ba3109d397333ab6, type: 2}
   cantChangeEffect: {fileID: 11400000, guid: bd6197f47c20b8146ae2ef12019b424d, type: 2}
   forcedEndDragEffect: {fileID: 11400000, guid: bd6197f47c20b8146ae2ef12019b424d, type: 2}
+  whileChangeSound: {fileID: 0}
 --- !u!114 &976612782
 MonoBehaviour:
   m_ObjectHideFlags: 0

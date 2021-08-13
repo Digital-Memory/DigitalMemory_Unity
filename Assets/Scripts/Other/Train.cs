@@ -11,6 +11,7 @@ public class Train : ConditionedObject
     [SerializeField] string triggerPass, triggerEnter, trainPosition;
     [SerializeField] float horsePower = 0.05f;
     [ShowNonSerializedField] bool switchIsUp = false;
+
     [ShowNonSerializedField] bool hasBornPassengers = false;
     
     [SerializeField] [Range(0, 1)] float position = 0f;
@@ -23,8 +24,6 @@ public class Train : ConditionedObject
     bool hasGreen = false;
     private int passengersBorn = 0;
     private float passengerBirthtime;
-    [SerializeField] private float volumeMultiplier;
-    [SerializeField] private float pitchMultiplier;
 
     public override bool Try()
     {
@@ -47,8 +46,6 @@ public class Train : ConditionedObject
 
         if (CanDrive())
         {
-            targetSpeed = horsePower;
-
             if (!hasBornPassengers && switchIsUp && position > 0.6f)
             {
                 passengerBirthtime += Time.deltaTime * 2f;
@@ -62,6 +59,9 @@ public class Train : ConditionedObject
                 
                 if(passengersBorn >= 3)
                     hasBornPassengers = true;
+            } else
+            {
+                targetSpeed = horsePower;
             }
 
             if (position > 1)
@@ -85,8 +85,7 @@ public class Train : ConditionedObject
     private float Accelerate(float target)
     {
         acceleration = Mathf.MoveTowards(acceleration, target, Time.deltaTime * 0.1f);
-        trainAudio.pitch = (acceleration / horsePower) * pitchMultiplier;
-        trainAudio.volume = volumeMultiplier * 0.25f;
+        trainAudio.pitch = (acceleration / horsePower);
         return acceleration;
     }
 
@@ -97,6 +96,11 @@ public class Train : ConditionedObject
 
     private bool CanDrive()
     {
-        return position < 0.1f || position > 0.4f || hasGreen;
+        return position < 0.15f || position > 0.4f || hasGreen;
+    }
+
+    internal float GetTrainPosition()
+    {
+        return position;
     }
 }

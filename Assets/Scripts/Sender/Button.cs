@@ -12,6 +12,9 @@ public class Button : InputSender, IClickable, IInputSender, IHoverable
 
     [SerializeField] AnimationCurve buttonHeightOnClick;
     [SerializeField] Transform button;
+
+    [TextArea] [SerializeField] string tooltipText;
+
     [Expandable] [SerializeField] Effect onClickEffect;
 
     public bool IsNull => this == null;
@@ -82,5 +85,10 @@ public class Button : InputSender, IClickable, IInputSender, IHoverable
     public void EndHover()
     {
         OnEndHoverEvent?.Invoke();
+    }
+
+    public string GetTooltipText()
+    {
+        return tooltipText;
     }
 }

@@ -16,6 +16,9 @@ public class StartBoxTopInteractable : MonoBehaviour, IClickable, IHoverable
     [SerializeField] private Vector3 moveForce;
     [SerializeField] private Vector3 moveTorque;
     [SerializeField] private AudioClip woosh;
+
+    [TextArea] [SerializeField] string tooltipText;
+
     public UnityEvent <StartBoxTopInteractable> OnMove;
 
     public void Click()
@@ -47,5 +50,10 @@ public class StartBoxTopInteractable : MonoBehaviour, IClickable, IHoverable
     public void StartHover()
     {
         OnStartHoverEvent?.Invoke();
+    }
+
+    public string GetTooltipText()
+    {
+        return tooltipText;
     }
 }

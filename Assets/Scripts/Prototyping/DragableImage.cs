@@ -13,6 +13,8 @@ public class DragableImage : MovingObject, IDragable
     public Vector3 forward;
     private Vector3[] VectorValues = new Vector3[] { Vector3.right, Vector3.left, Vector3.forward, Vector3.back, Vector3.up, Vector3.down };
 
+    [TextArea] [SerializeField] string tooltipText;
+
     [Foldout("Effects")] [Expandable] [SerializeField] Effect startUseEffect, endUseEffect;
 
     Vector3 localPositionOnStartDrag;
@@ -124,5 +126,10 @@ public class DragableImage : MovingObject, IDragable
         Gizmos.DrawLine(transform.position + localPositionUpper, transform.position + localPositionUpper + forward);
         Gizmos.DrawLine(transform.position + localPositionTrue, transform.position + localPositionTrue + forward);
         Gizmos.DrawLine(transform.position + localPositionUpper + forward * 0.33f, transform.position + localPositionTrue + forward * 0.33f);
+    }
+
+    public string GetTooltipText()
+    {
+        return tooltipText;
     }
 }
