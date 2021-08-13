@@ -6,7 +6,6 @@ using NaughtyAttributes;
 [System.Serializable]
 public class Condition : ConditionBase
 {
-    [Dropdown("GetConditionListenerBehaviours")]
     [OnValueChanged("OnChangeBehaviourReference")]
     [ValidateInput("BehaviourObjectIsCorrect", "Select a correct behaviour!")]
     public ConditionListenerBehaviour behaviour;

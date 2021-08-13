@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
-public interface IAttacher
+public interface IAttacher : IHoverable
 {
     bool AllowsDetach { get; }
 
@@ -32,12 +32,19 @@ public class Attacher : MonoBehaviour, IAttacher
     private Vector3[] VectorValues = new Vector3[] { Vector3.right, Vector3.left, Vector3.forward, Vector3.back, Vector3.up, Vector3.down };
 
     public event System.Action<bool, string> OnChangeAttached;
+    public event Action OnStartHoverEvent;
+    public event Action OnEndHoverEvent;
 
     public bool IsAttached => isAttached;
 
     public bool allowsDetach = false;
     public bool destroyColliderOnAttachment = false;
+
+    [TextArea] [SerializeField] string tooltipText;
+
     [HideInInspector] public bool AllowsDetach => allowsDetach;
+
+    public bool IsNull => this == null;
 
     protected void Start ()
     {
@@ -130,5 +137,20 @@ public class Attacher : MonoBehaviour, IAttacher
                 Destroy(collider);
             }
         }
+    }
+
+    public void StartHover()
+    {
+        OnStartHoverEvent?.Invoke();
+    }
+
+    public void EndHover()
+    {
+        OnEndHoverEvent?.Invoke();
+    }
+
+    public string GetTooltipText()
+    {
+        return tooltipText;
     }
 }

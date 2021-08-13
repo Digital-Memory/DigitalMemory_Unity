@@ -15,6 +15,7 @@ public class ZoomIn : InputObject, IClickable, IHoverable
     Material desaturationMaterial;
     [ShowNonSerializedField] bool inFadeoutPreview = false;
     [ShowNonSerializedField] bool animate = false;
+    [TextArea] [SerializeField] string tooltipText;
     float current, target;
     int direction;
 
@@ -187,6 +188,11 @@ public class ZoomIn : InputObject, IClickable, IHoverable
                     Gizmos.DrawLine(inputObject.gameObject.transform.position, transform.position);
             }
         }
+    }
+
+    public string GetTooltipText()
+    {
+        return tooltipText;
     }
 
     private enum ActionOnInput

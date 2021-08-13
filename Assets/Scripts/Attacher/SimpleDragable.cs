@@ -12,6 +12,7 @@ public interface IHoverable
     event Action OnStartHoverEvent;
     event Action OnEndHoverEvent;
     GameObject gameObject { get; }
+    string GetTooltipText();
 }
 
 public interface IDragable : IHoverable
@@ -38,6 +39,8 @@ public class SimpleDragable : MonoBehaviour, IDragable
     protected Rigidbody myRigidbody;
     [SerializeField] protected Transform customDragPivot;
     [SerializeField] private float YOffsetOnDrop;
+
+    [TextArea] [SerializeField] string tooltipText;
 
     [Foldout("Effects")] [Expandable] [SerializeField] protected Effect startDragEffect, endDragEffect;
 
@@ -119,5 +122,10 @@ public class SimpleDragable : MonoBehaviour, IDragable
     public Vector3 GetRaycastPlaneLockDirection(Vector3 point)
     {
         return Vector3.zero;
+    }
+
+    public string GetTooltipText()
+    {
+        return tooltipText;
     }
 }

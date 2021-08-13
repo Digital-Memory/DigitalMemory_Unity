@@ -22,6 +22,8 @@ public class PullableImageFlippingPlane : MonoBehaviour, IDragable, IPullableIma
 
     [SerializeField] private MeshRenderer meshRenderer;
     [SerializeField] TMP_Text tMP_Text;
+
+    [TextArea] [SerializeField] string tooltipText;
     public MeshRenderer MeshRenderer => meshRenderer;
 
     public event Action OnStartHoverEvent;
@@ -114,6 +116,11 @@ public class PullableImageFlippingPlane : MonoBehaviour, IDragable, IPullableIma
     public void DisplayText(string str)
     {
         tMP_Text.text = str;
+    }
+
+    public string GetTooltipText()
+    {
+        return tooltipText;
     }
 }
 

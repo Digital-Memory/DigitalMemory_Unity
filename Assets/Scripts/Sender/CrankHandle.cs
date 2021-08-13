@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 public interface IChargeInput
@@ -14,6 +15,7 @@ public class CrankHandle : MonoBehaviour, IDragable, IHoverable, IChargeInput
     [SerializeField] Crank crank;
     [SerializeField] Collider handleCollider;
     [SerializeField] Transform cursorParent;
+    [TextArea] [SerializeField] string tooltipText;
 
     bool isDragging = false;
 
@@ -89,5 +91,10 @@ public class CrankHandle : MonoBehaviour, IDragable, IHoverable, IChargeInput
 
         OnEndChargeEvent?.Invoke();
         Debug.Log("End Drag");
+    }
+
+    public string GetTooltipText()
+    {
+        return tooltipText;
     }
 }
