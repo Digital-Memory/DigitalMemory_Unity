@@ -3,16 +3,21 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class TooltipDisplayer : MonoBehaviour
 {
     [SerializeField] TMP_Text tooltipText;
+    [SerializeField] Image tooltipBackground;
     GameObject toolTipSource;
 
     internal void Show(GameObject source, string hoverText)
     {
         if (tooltipText.enabled == false)
             tooltipText.enabled = true;
+
+        if (tooltipBackground.enabled == false)
+            tooltipBackground.enabled = true;
 
         toolTipSource = source;
         tooltipText.text = hoverText;
@@ -28,6 +33,7 @@ public class TooltipDisplayer : MonoBehaviour
             toolTipSource = null;
             tooltipText.text = "";
             tooltipText.enabled = false;
+            tooltipBackground.enabled = false;
         }
     }
 }
