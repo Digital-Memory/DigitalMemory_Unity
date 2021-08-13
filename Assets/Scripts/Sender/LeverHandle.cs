@@ -94,8 +94,9 @@ public class LeverHandle : MonoBehaviour, IDragable
         float testRotation = distanceToRotationCurve.Evaluate(distanceWithStartOffset);
 
         DebugDraw.AnimationCurve(distanceToRotationCurve, distanceWithStartOffset, startOffsetDistance);
+        Debug.LogWarning(testRotation);
 
-        float angle = startRotation - currentRotation;
+        float angle = testRotation;
 
         lever.Turn(angle);
     }

@@ -66,4 +66,8 @@ public static class DebugDraw
     {
         Game.CustomTempUIHandler.DrawAnimationCurve(curve, timesToHighlight);
     }
+    internal static void AnimationCurves(AnimationCurve curve1, AnimationCurve curve2)
+    {
+        Game.CustomTempUIHandler.DrawAnimationCurves(curve1, curve2);
+    }
 }

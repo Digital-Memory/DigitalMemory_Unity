@@ -1,3 +1,4 @@
+using Autodesk.Fbx;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -7,17 +8,23 @@ public class CustomTempUIHandler : Singleton<CustomTempUIHandler>
 {
     [SerializeField] BoxCollider bounds;
 
-    List<Vector3> points;
+    List<Vector3[]> curves;
     List<HighlightTime> highlights;
 
     public void DrawAnimationCurve(AnimationCurve curve, params float[] timesToHighlight)
+    {
+        curves = new List<Vector3[]>();
+        curves.Add(DrawSingleCurve(curve, timesToHighlight));
+    }
+
+    private Vector3[] DrawSingleCurve(AnimationCurve curve, float[] timesToHighlight)
     {
         int timeSegments = 32;
 
         float curveStartTime = curve.keys[0].time;
         float curveEndTime = curve.keys[curve.length - 1].time;
 
-        points = new List<Vector3>();
+        List<Vector3> points = new List<Vector3>();
 
         for (int i = 0; i <= timeSegments; i++)
         {
@@ -31,6 +38,8 @@ public class CustomTempUIHandler : Singleton<CustomTempUIHandler>
         {
             highlights.Add(new HighlightTime(Remap(new Vector2(time, -1000f), curve), Remap(new Vector2(time, 1000f), curve)));
         }
+
+        return points.ToArray();
     }
 
     private Vector3 Remap(Vector2 value, AnimationCurve inCurve)
@@ -55,13 +64,16 @@ public class CustomTempUIHandler : Singleton<CustomTempUIHandler>
 
     private void OnDrawGizmos()
     {
-        if (points != null)
+        if (curves != null)
         {
-            for (int i = 0; i < points.Count; i++)
+            foreach (Vector3[] points in curves)
             {
-                if (i > 0)
+                for (int i = 0; i < points.Length; i++)
                 {
-                    Gizmos.DrawLine(points[i-1], points[i]);
+                    if (i > 0)
+                    {
+                        Gizmos.DrawLine(points[i - 1], points[i]);
+                    }
                 }
             }
         }
@@ -79,6 +91,16 @@ public class CustomTempUIHandler : Singleton<CustomTempUIHandler>
         }
 
         Gizmos.DrawLine(transform.TransformPoint(-6.5f, -3.5f, 0), transform.TransformPoint(6.5f, -3.5f, 0));
+    }
+
+    internal void DrawAnimationCurves(AnimationCurve curve, params AnimationCurve[] additionalCurves)
+    {
+        curves = new List<Vector3[]>();
+        curves.Add(DrawSingleCurve(curve, new float[0]));
+        foreach (AnimationCurve additionalCurve in additionalCurves)
+        {
+            curves.Add(DrawSingleCurve(additionalCurve, new float[0]));
+        }
     }
 }
 
