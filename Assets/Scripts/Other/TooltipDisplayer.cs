@@ -23,7 +23,8 @@ public class TooltipDisplayer : MonoBehaviour
         tooltipText.text = hoverText;
 
         bool alignLeft = (Input.mousePosition.x / (float)Screen.width) < 0.5f;
-        tooltipText.rectTransform.pivot = alignLeft ? new Vector2(0, 0.5f ) : new Vector2(1, 0.5f);
+        (transform as RectTransform).pivot = alignLeft ? new Vector2(0, 0.5f ) : new Vector2(1, 0.5f);
+        (transform as RectTransform).anchoredPosition = Vector2.zero;
         tooltipText.alignment = alignLeft ? TextAlignmentOptions.MidlineLeft : TextAlignmentOptions.MidlineRight;
     }
 
