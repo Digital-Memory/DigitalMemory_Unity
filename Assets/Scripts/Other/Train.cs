@@ -18,10 +18,13 @@ public class Train : ConditionedObject
 
     [SerializeField] Transform trainStation;
     [SerializeField] InventoryObjectData oswiecimCitizen;
+    [SerializeField] AudioSource trainAudio;
 
     bool hasGreen = false;
     private int passengersBorn = 0;
     private float passengerBirthtime;
+    [SerializeField] private float volumeMultiplier;
+    [SerializeField] private float pitchMultiplier;
 
     public override bool Try()
     {
@@ -82,6 +85,8 @@ public class Train : ConditionedObject
     private float Accelerate(float target)
     {
         acceleration = Mathf.MoveTowards(acceleration, target, Time.deltaTime * 0.1f);
+        trainAudio.pitch = (acceleration / horsePower) * pitchMultiplier;
+        trainAudio.volume = volumeMultiplier * 0.25f;
         return acceleration;
     }
 
