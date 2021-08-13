@@ -263,6 +263,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   customDragPivot: {fileID: 6318288308151497035}
   YOffsetOnDrop: 0
+  tooltipText: 
   startDragEffect: {fileID: 0}
   endDragEffect: {fileID: 0}
   attachment: Lever
@@ -483,9 +484,9 @@ MonoBehaviour:
     m_Curve:
     - serializedVersion: 3
       time: -10
-      value: -85
-      inSlope: 8.496743
-      outSlope: 8.496743
+      value: -35
+      inSlope: 3.5
+      outSlope: 3.5
       tangentMode: 34
       weightedMode: 0
       inWeight: 0
@@ -493,25 +494,27 @@ MonoBehaviour:
     - serializedVersion: 3
       time: 0.006517525
       value: 0.02281189
-      inSlope: -0.010375811
-      outSlope: -0.010375811
+      inSlope: 10.148124
+      outSlope: 10.148124
       tangentMode: 0
       weightedMode: 0
       inWeight: 0.33333334
-      outWeight: 0.21999983
+      outWeight: 0.09689347
     - serializedVersion: 3
       time: 10
-      value: 85
-      inSlope: 8.503261
-      outSlope: 8.503261
-      tangentMode: 34
+      value: 35
+      inSlope: -0
+      outSlope: -0
+      tangentMode: 0
       weightedMode: 0
-      inWeight: 0.33333334
+      inWeight: 0.17340699
       outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
   handleCollider: {fileID: 1117431242487467935}
+  distanceMultiplier: 1
+  tooltipText: 
 --- !u!1 &4164455434505515510
 GameObject:
   m_ObjectHideFlags: 0
@@ -740,6 +743,7 @@ MonoBehaviour:
   attachPreviewVector: {x: 0, y: 1, z: 0}
   allowsDetach: 0
   destroyColliderOnAttachment: 0
+  tooltipText: 
 --- !u!114 &4835876791585125450
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1307,6 +1311,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6274571768750568812}
     m_Modifications:
+    - target: {fileID: 2720366340013129403, guid: 1b3decec290a5964fbf4674a1bfdfe5a, type: 3}
+      propertyPath: distanceMultiplier
+      value: 0.3
+      objectReference: {fileID: 0}
     - target: {fileID: 8985428912084992308, guid: 1b3decec290a5964fbf4674a1bfdfe5a, type: 3}
       propertyPath: m_Name
       value: Attachable_Lever

@@ -134,6 +134,14 @@ public class Game : MonoBehaviour
         }
     }
 
+    public static CustomTempUIHandler CustomTempUIHandler
+    {
+        get
+        {
+            return CustomTempUIHandler.GetInstance();
+        }
+    }
+
     private void Start()
     {
         //Initialize Default Objects
