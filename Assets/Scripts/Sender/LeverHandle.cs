@@ -7,6 +7,7 @@ public class LeverHandle : MonoBehaviour, IDragable
     [SerializeField] Lever lever;
     [SerializeField] AnimationCurve distanceToRotationCurve;
     [SerializeField] Collider handleCollider;
+    [TextArea] [SerializeField] string tooltipText;
 
     bool isDragging = false;
 
@@ -84,5 +85,10 @@ public class LeverHandle : MonoBehaviour, IDragable
     private void OnDrawGizmos()
     {
         Gizmos.DrawLine(transform.position, transform.position + transform.right);
+    }
+
+    public string GetTooltipText()
+    {
+        return tooltipText;
     }
 }

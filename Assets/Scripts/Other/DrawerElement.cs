@@ -19,6 +19,8 @@ public class DrawerElement: MonoBehaviour, IDragable
     [InfoBox("0 0 0 is takes as default local postion, so make sure it is at 0 0 0.")]
     [SerializeField] Vector3 localPositionPulledOut;
 
+    [TextArea] [SerializeField] string tooltipText;
+
     float distanceBetweenUpperAndLower;
     private bool pulledOut;
 
@@ -85,5 +87,10 @@ public class DrawerElement: MonoBehaviour, IDragable
         float dragDistance = ((invert ? -1 : 1 ) * (clickPositonOnStartDrag - point)).FilterByAxis((localPositionPulledOut - localPositionDefault).normalized);
         Vector3 lerp = (localPositionDefault - localPositionPulledOut) * (dragDistance / distanceBetweenUpperAndLower);
         transform.localPosition = (localPositionOnStartDrag + (lerp)).Clamp(localPositionDefault, localPositionPulledOut);
+    }
+
+    public string GetTooltipText()
+    {
+        return tooltipText;
     }
 }
