@@ -12,12 +12,11 @@ public class TimeMechanism : MovingObject
 
     float leverPosition;
     Dictionary<TimePoint, float> timePoints = new Dictionary<TimePoint, float>();
-    [SerializeField] List<TimePoint> tptp;
-    [SerializeField] List<float> tpfl;
     [Foldout("References")] [SerializeField] TimeMechanismNumberDisplayer day1, day2, month1, month2, year1, year2, year3, year4;
     [Foldout("References")] [SerializeField] Attacher[] lightbulbAttachers;
     [Foldout("References")] [SerializeField] MovingObject[] lightbulbAttachersBlends;
     [Foldout("References")] [SerializeField] List<TimeMechanismLightbulb> lightbulbs = new List<TimeMechanismLightbulb>();
+    [Foldout("References")] [SerializeField] AudioClip start;
     [SerializeField] Timestamp[] timestamps;
 
     AttacherTimePlate[] attachersTimePlate;
@@ -29,6 +28,17 @@ public class TimeMechanism : MovingObject
         {
             attacher.OnChangeAttached += OnAttachLightbulb;
         }
+
+        Timestamp timestamp = timestamps[0];
+
+        day1.MoveTo(timestamp.GetDigid(TimestampSpot.Day, 1), overshoot: 1);
+        day2.MoveTo(timestamp.GetDigid(TimestampSpot.Day, 2), overshoot: 1);
+        month1.MoveTo(timestamp.GetDigid(TimestampSpot.Month, 1), overshoot: 1);
+        month2.MoveTo(timestamp.GetDigid(TimestampSpot.Month, 2), overshoot: 1);
+        year1.MoveTo(timestamp.GetDigid(TimestampSpot.Year, 1), overshoot: 1);
+        year2.MoveTo(timestamp.GetDigid(TimestampSpot.Year, 2), overshoot: 1);
+        year3.MoveTo(timestamp.GetDigid(TimestampSpot.Year, 3), overshoot: 1);
+        year4.MoveTo(timestamp.GetDigid(TimestampSpot.Year, 4), overshoot: 1);
 
         base.OnEnable();
     }
@@ -183,17 +193,6 @@ public class TimeMechanism : MovingObject
         }
     }
 
-    private void Update()
-    {
-        tptp = new List<TimePoint>();
-        tpfl = new List<float>();
-        foreach (KeyValuePair<TimePoint, float> item in timePoints)
-        {
-            tptp.Add(item.Key);
-            tpfl.Add(item.Value);
-        }
-    }
-
     [Button]
     private void TestTimeTravel()
     {
@@ -218,6 +217,7 @@ public class TimeMechanism : MovingObject
         yield return new WaitForSeconds(0.1f);
 
         Game.TimeHandler.SetTime(timestamp.point);
+        Game.SoundPlayer.Play(start, gameObject, 0.25f, 0.1f);
 
         day2.MoveTo(timestamp.GetDigid(TimestampSpot.Day, 2));
         yield return new WaitForSeconds(0.5f);

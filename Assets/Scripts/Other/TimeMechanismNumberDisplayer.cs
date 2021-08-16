@@ -13,7 +13,7 @@ public class TimeMechanismNumberDisplayer : MonoBehaviour
     [SerializeField]
     AudioSource audioSource;
     [SerializeField]
-    AudioClip click, start;
+    AudioClip click;
 
     Material material;
     float currentNumber = 0;
@@ -66,7 +66,6 @@ public class TimeMechanismNumberDisplayer : MonoBehaviour
     {
         float distance = float.MaxValue;
 
-        Game.SoundPlayer.Play(start, gameObject, 0.25f, 0.1f);
         audioSource.Play();
 
         while (distance > 0.01f)
