@@ -115,12 +115,15 @@ public class Attacher : MonoBehaviour, IAttacher
     }
     private IEnumerator AnimateBlendShape(float speed, float target)
     {
-        float current = 1 - target;
-        while (speed > 0 ? (current < target) : (current > target))
+        if (skinnedMeshRenderer)
         {
-            current += Time.deltaTime * speed;
-            skinnedMeshRenderer.SetBlendShapeWeight(0, blendShapeCurve.Evaluate(current));
-            yield return null;
+            float current = 1 - target;
+            while (speed > 0 ? (current < target) : (current > target))
+            {
+                current += Time.deltaTime * speed;
+                skinnedMeshRenderer.SetBlendShapeWeight(0, blendShapeCurve.Evaluate(current));
+                yield return null;
+            }
         }
     }
 
