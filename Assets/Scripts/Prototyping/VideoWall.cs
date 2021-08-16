@@ -26,12 +26,27 @@ public class VideoWall : ConditionedObject
     }
 
 
-    public override bool Try(bool on)
+    public override bool Try()
     {
-        if (base.Try(on))
+        if (base.Try())
         {
             if (!playedVideo)
                 PlayVideo();
+            else
+                PauseVideo();
+            return true;
+        }
+
+        return false;
+    }
+
+    public override bool Try(bool on)
+    {
+        if (base.Try())
+        {
+            if (on)
+                if (!playedVideo)
+                    PlayVideo();
             else
                 PauseVideo();
             return true;

@@ -47,6 +47,7 @@ public class ZoomInHandler : Singleton<ZoomInHandler>
         {
             Debug.LogWarning("Zoom Out was called even though the previous zoom in was undefined.");
         }
+        Game.VideoPlayerHandler.Pause();
         Game.EffectHandler.Play(zoomOut, gameObject);
         Game.Settings.CurrentZoomLevel = 1f;
 

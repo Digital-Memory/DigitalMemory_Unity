@@ -42,4 +42,9 @@ public class VideoPlayerHandler : Singleton<VideoPlayerHandler>
     {
         videoPlayer.Pause();
     }
+
+    internal void Pause()
+    {
+        Pause(null);
+    }
 }

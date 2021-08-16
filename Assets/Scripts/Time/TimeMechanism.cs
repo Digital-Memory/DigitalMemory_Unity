@@ -154,9 +154,9 @@ public class TimeMechanism : MovingObject
         float t = 0;
         float timeMax = resetCurve.keys[resetCurve.length - 1].time;
 
-        while (time < timeMax)
+        while (Time < timeMax)
         {
-            t += Time.deltaTime;
+            t += UnityEngine.Time.deltaTime;
             crankToReset.TryGiveInputRaw(resetCurve.Evaluate(t));
             yield return null;
         }

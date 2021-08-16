@@ -18,20 +18,32 @@ public class ChangingOverTimeObject : ConditionedObject
 
     protected virtual void Reset()
     {
-        animationCurve = AnimationCurve.EaseInOut(0,0,1,1);
+        animationCurve = AnimationCurve.EaseInOut(0, 0, 1, 1);
     }
 
 #endif
 
-    protected float time = 1f;
+    private float time = 1f;
     protected float direction = 1;
     protected bool isAnimating = false;
+
+    public System.Action<float> OnTimeChangeEvent;
+
+    public float Time
+    {
+        get => time;
+        set
+        {
+            time = value;
+            OnTimeChangeEvent?.Invoke(time);
+        }
+    }
 
     protected override void OnEnable()
     {
         base.OnEnable();
 
-        time = animateOnStart != startFromEnd ? 0.99f : 0.01f;
+        Time = animateOnStart != startFromEnd ? 0.99f : 0.01f;
         Try(startFromEnd);
     }
 
@@ -92,11 +104,11 @@ public class ChangingOverTimeObject : ConditionedObject
     {
         if (isAnimating)
         {
-            UpdateChange(animationCurve.Evaluate(time));
-            time += (Time.deltaTime / durationInSeconds) * direction;
-            if (time > 1f || time < 0f)
+            UpdateChange(animationCurve.Evaluate(Time));
+            Time += (UnityEngine.Time.deltaTime / durationInSeconds) * direction;
+            if (Time > 1f || Time < 0f)
             {
-                time = time > 0.5f != resetAtEnd ? 1f : 0f;
+                Time = Time > 0.5f != resetAtEnd ? 1f : 0f;
 
                 SetAnimating(false);
                 OnFinishedAnimating();
@@ -111,6 +123,6 @@ public class ChangingOverTimeObject : ConditionedObject
 
     protected virtual void UpdateChange(float progress)
     {
-        
+
     }
 }

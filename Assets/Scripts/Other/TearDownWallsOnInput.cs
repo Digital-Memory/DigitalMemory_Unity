@@ -48,7 +48,7 @@ public class TearDownWallsOnInput : MovingObject
         if (base.Try(b))
         {
             Debug.Log("playing stage successfull, next stage: " + (currentStage + 1));
-            time = b ? 0.01f : 0.99f;
+            Time = b ? 0.01f : 0.99f;
             currentStage++;
             return true;
         }

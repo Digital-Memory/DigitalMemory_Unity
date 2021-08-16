@@ -14,7 +14,7 @@ public class TearDownWorkerAnimatingObject : AnimatingObject
         if (CheckAllConditionsForTrue())
         {
             isReceivingFloatInput = false;
-            time = 0f;
+            Time = 0f;
             curve = hitCurve;
             return base.Try();
         }
@@ -29,7 +29,7 @@ public class TearDownWorkerAnimatingObject : AnimatingObject
         if (!CheckAllConditionsForTrue())
         {
             curve = chargeCurve;
-            time = 0;
+            Time = 0;
             UpdateChange(progress);
             return true;
         }

@@ -98,7 +98,7 @@ public class FactoryProductionAnimatingObject : AnimatingObject
     {
         if (moving)
         {
-            currentTime = Mathf.MoveTowards(currentTime, targetTime, Time.deltaTime * animationSpeed);
+            currentTime = Mathf.MoveTowards(currentTime, targetTime, UnityEngine.Time.deltaTime * animationSpeed);
             UpdateChange(currentTime);
 
             if (Mathf.Abs(currentTime - targetTime) < 0.01f)

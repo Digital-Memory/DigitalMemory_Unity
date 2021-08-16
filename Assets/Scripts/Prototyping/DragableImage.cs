@@ -111,7 +111,7 @@ public class DragableImage : MovingObject, IDragable
     {
         if (pulledOut)
         {
-            objectToMove.localPosition = Vector3.MoveTowards(objectToMove.localPosition, Vector3.Lerp(localPositionFalse, localPositionTrue, progress), Time.deltaTime);
+            objectToMove.localPosition = Vector3.MoveTowards(objectToMove.localPosition, Vector3.Lerp(localPositionFalse, localPositionTrue, progress), UnityEngine.Time.deltaTime);
             if (progress < 0.05f)
                 pulledOut = false;
         }
