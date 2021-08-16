@@ -1,7 +1,6 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using Autodesk.Fbx;
 using Cinemachine;
 using NaughtyAttributes;
 using UnityEngine;
