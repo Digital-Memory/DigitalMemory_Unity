@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 8751922879169171173}
   - component: {fileID: 5682074780458615104}
   - component: {fileID: 7583568785515345290}
+  - component: {fileID: 1549991139299506905}
+  - component: {fileID: 8085369488302365153}
   m_Layer: 0
   m_Name: CarvingPlate
   m_TagString: Untagged
@@ -82,6 +84,32 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &1549991139299506905
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8232232474261738591}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 6.3100414, y: 0.34910527, z: 1.5467684}
+  m_Center: {x: -0.016329886, y: 0.07630665, z: -0.04539681}
+--- !u!114 &8085369488302365153
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8232232474261738591}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e453735f03654c9478731465735b8a09, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tooltipText: 
 --- !u!1 &8828071615024550087
 GameObject:
   m_ObjectHideFlags: 0
