@@ -1,15 +1,24 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Autodesk.Fbx;
 using Cinemachine;
 using NaughtyAttributes;
 using UnityEngine;
+
+public enum ZoomInState
+{
+    ZoomedIn,
+    ZoomingIn,
+    ZoomedOut,
+    ZoomingOut,
+}
 
 public class ZoomInHandler : Singleton<ZoomInHandler>
 {
     CinemachineVirtualCamera overview;
     private ZoomIn current;
-    public bool IsZoomedIn { get; internal set; }
+    public ZoomInState zoomInState = ZoomInState.ZoomedOut;
     public System.Action<bool> ChangedZoomIn;
 
     [Expandable] [SerializeField] Effect zoomIn, zoomOut;
@@ -24,26 +33,50 @@ public class ZoomInHandler : Singleton<ZoomInHandler>
     {
         base.Start();
     }
-    public void ZoomIn(ZoomIn zoom)
+    public void TryZoomIn(ZoomIn zoom)
     {
-        Debug.Log($"Zoom in on: {zoom.name}");
+        if (zoomInState != ZoomInState.ZoomedOut)
+            return;
 
+        Debug.Log($"Zoom in on: {zoom.name}");
+        StopAllCoroutines();
+        StartCoroutine(ZoomInRoutine(zoom));
+    }
+    private void TryZoomOut()
+    {
+        if (zoomInState != ZoomInState.ZoomedIn)
+            return;
+
+        StopAllCoroutines();
+        StartCoroutine(ZoomOutRoutine());
+    }
+
+    private IEnumerator ZoomInRoutine(ZoomIn zoom)
+    {
         WebCommunicator.ZoomIn(zoom.WebData);
         Game.EffectHandler.Play(zoomIn, gameObject);
         Game.Settings.CurrentZoomLevel = 0.2f;
 
         current = zoom;
-        IsZoomedIn = true;
+        zoomInState = ZoomInState.ZoomingIn;
+        Debug.Log($"Zoom in on: {current.name}");
         ChangedZoomIn?.Invoke(true);
+        Game.MouseInteractor.InteractionIsBlocked = true;
+
+        yield return new WaitForSeconds(1f);
+
+        Game.MouseInteractor.InteractionIsBlocked = false;
+        zoomInState = ZoomInState.ZoomedIn;
     }
 
-    private IEnumerator ZoomOut()
+    private IEnumerator ZoomOutRoutine()
     {
         if (current != null)
         {
             Debug.Log($"Zoom out from: {current.name}");
             WebCommunicator.ZoomOut(current.WebData);
-        } else
+        }
+        else
         {
             Debug.LogWarning("Zoom Out was called even though the previous zoom in was undefined.");
         }
@@ -60,16 +93,20 @@ public class ZoomInHandler : Singleton<ZoomInHandler>
 
         //Hotfix but works
         overview.Priority = 50;
+        zoomInState = ZoomInState.ZoomingOut;
+        Game.MouseInteractor.InteractionIsBlocked = true;
 
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(1f);
 
-        IsZoomedIn = false;
+        Game.MouseInteractor.InteractionIsBlocked = false;
+        zoomInState = ZoomInState.ZoomedOut;
     }
 
     [Button]
     internal void ForceZoomOut()
     {
-        StartCoroutine(ZoomOut());
+        StopAllCoroutines();
+        StartCoroutine(ZoomOutRoutine());
     }
 
     internal void RegisterAsOverview(CinemachineVirtualCamera cinemachineVirtualCamera)
@@ -82,14 +119,14 @@ public class ZoomInHandler : Singleton<ZoomInHandler>
         if (current == null || Game.UIHandler.EventSystem.IsPointerOverGameObject() || !current.DoesAllowZoomOut)
             return;
 
-        var x = Input.mousePosition.x / Mathf.Max(1,(float)Screen.width);
-        var y = Input.mousePosition.y / Mathf.Max(1,(float)Screen.height);
+        var x = Input.mousePosition.x / Mathf.Max(1, (float)Screen.width);
+        var y = Input.mousePosition.y / Mathf.Max(1, (float)Screen.height);
 
         float factor = Mathf.Max(x < 0.5f ? 1 - x : x, y < 0.5f ? 1 - y : y);
         current.TryChangeFadeoutPreview(factor > 0.9f);
         if (Input.GetMouseButtonDown(0) && factor > 0.9f)
         {
-            StartCoroutine(ZoomOut());
+            TryZoomOut();
         }
 
         //Debug.Log($"cam: {FindObjectOfType<CinemachineBrain>().ActiveVirtualCamera.Name} with prio {FindObjectOfType<CinemachineBrain>().ActiveVirtualCamera.Priority}");

@@ -36,7 +36,7 @@ public class InventoryObjectUI : UnityEngine.UI.Button, IDragHandler, IBeginDrag
         OnStartDrag?.Invoke(this);
         GameObject go = Instantiate(data.prefab);
 
-        bool isZoomedIn = Game.ZoomInHandler.IsZoomedIn;
+        bool isZoomedIn = Game.ZoomInHandler.zoomInState == ZoomInState.ZoomedIn;
 
         float scaleMultiplier = isZoomedIn ? data.zoomInSceneScaleMultiplier : data.overviewSceneScaleMultiplier;
         float dragDistance = isZoomedIn ? data.zoomInSceneDistance : data.overviewSceneDistance;

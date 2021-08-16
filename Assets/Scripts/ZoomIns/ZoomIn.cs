@@ -54,6 +54,7 @@ public class ZoomIn : InputObject, IClickable, IHoverable
     public int Id { get; internal set; }
 
     [SerializeField] private bool doesAllowZoomOut = true;
+    [SerializeField] private bool blockZoomInOnClick = false;
     public bool DoesAllowZoomOut => doesAllowZoomOut;
 
     public string WebData = "";
@@ -73,7 +74,7 @@ public class ZoomIn : InputObject, IClickable, IHoverable
     public void DoZoomIn()
     {
         cinemachineVirtualCamera.Priority = 100;
-        Game.ZoomInHandler.ZoomIn(this);
+        Game.ZoomInHandler.TryZoomIn(this);
         SendInputObjects(true);
     }
 
@@ -126,12 +127,16 @@ public class ZoomIn : InputObject, IClickable, IHoverable
 
     public bool IsClickable()
     {
-        return !Game.ZoomInHandler.IsZoomedIn;
+        return Game.ZoomInHandler.zoomInState == ZoomInState.ZoomedOut;
     }
 
     private void OnEnable()
     {
         coll = GetComponent<SphereCollider>();
+
+        if (blockZoomInOnClick)
+            coll.enabled = false;
+
         virtualCameraPosition = cinemachineVirtualCamera.transform.position;
         desaturationMaterial = Game.Settings.DesaturationMaterial;
 
@@ -145,7 +150,8 @@ public class ZoomIn : InputObject, IClickable, IHoverable
 
     private void OnChangeZoom(bool isZoomedIn)
     {
-        coll.enabled = !isZoomedIn;
+        if (!blockZoomInOnClick)
+            coll.enabled = !isZoomedIn;
 
         if (!isZoomedIn)
             DoZoomOut();
