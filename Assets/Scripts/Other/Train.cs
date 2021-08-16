@@ -12,7 +12,7 @@ public class Train : ConditionedObject
     [SerializeField] float horsePower = 0.05f;
     [ShowNonSerializedField] bool switchIsUp = false;
 
-    [ShowNonSerializedField] bool hasBornPassengers = false;
+    [ShowNonSerializedField] int passengerGroupsBorn = 0;
     
     [SerializeField] [Range(0, 1)] float position = 0f;
     [ShowNonSerializedField] float acceleration = 0f;
@@ -46,7 +46,7 @@ public class Train : ConditionedObject
 
         if (CanDrive())
         {
-            if (!hasBornPassengers && switchIsUp && position > 0.6f)
+            if (passengerGroupsBorn < 3 && passengersBorn < 3 && switchIsUp && position > 0.6f)
             {
                 passengerBirthtime += Time.deltaTime * 2f;
 
@@ -58,7 +58,7 @@ public class Train : ConditionedObject
                 }
                 
                 if(passengersBorn >= 3)
-                    hasBornPassengers = true;
+                    passengerGroupsBorn += 1;
             } else
             {
                 targetSpeed = horsePower;
@@ -77,7 +77,6 @@ public class Train : ConditionedObject
     {
         position = 0;
         hasGreen = false;
-        hasBornPassengers = false;
         passengersBorn = 0;
         passengerBirthtime = 0;
     }
