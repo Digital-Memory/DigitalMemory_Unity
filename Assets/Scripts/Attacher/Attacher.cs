@@ -173,6 +173,14 @@ public class Attacher : MonoBehaviour, IAttacher
 
     public string GetTooltipText()
     {
-        return tooltipText;
+        if (!IsAttached)
+            return tooltipText;
+
+        IAttachable attachable = GetComponentInChildren<IAttachable>();
+
+        if (attachable != null)
+            return attachable.GetTooltipText();
+
+        return "";
     }
 }
