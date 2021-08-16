@@ -73,7 +73,7 @@ public class ZoomIn : InputObject, IClickable, IHoverable
     public void DoZoomIn()
     {
         cinemachineVirtualCamera.Priority = 100;
-        Game.ZoomInHandler.ZoomIn(this);
+        Game.ZoomInHandler.TryZoomIn(this);
         SendInputObjects(true);
     }
 
@@ -126,7 +126,7 @@ public class ZoomIn : InputObject, IClickable, IHoverable
 
     public bool IsClickable()
     {
-        return !Game.ZoomInHandler.IsZoomedIn;
+        return Game.ZoomInHandler.zoomInState == ZoomInState.ZoomedOut;
     }
 
     private void OnEnable()
