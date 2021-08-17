@@ -25,7 +25,7 @@ public class ZoomInHandler : Singleton<ZoomInHandler>
 
     private void Awake()
     {
-        zoomInState == ZoomInState.ZoomedOut;
+        zoomInState = ZoomInState.ZoomedOut;
         Game.Settings.CurrentZoomLevel = 1f;
         Game.Settings.DesaturationMaterial.SetInt("mask", 0);
     }
