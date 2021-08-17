@@ -443,6 +443,27 @@ MonoBehaviour:
   openningEffect: {fileID: 0}
   axisMultiplier: {x: -1, y: 0, z: 0}
   baseRotation: {x: 0, y: 180, z: 0}
+--- !u!114 &3935387275715782075
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3984806420080061517}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8fdd0f00fe867d84f8653835642e685e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inputSelectionType: 1
+  inputDropown: {fileID: 0}
+  input: {fileID: 7988122491240050043}
+  inputObject: {fileID: 3350939912605386130}
+  hasSecondaryInput: 0
+  secondary: []
+  typeToSend: 0
+  boolValueToSend: 0
+  floatValueToSend: 0
 --- !u!114 &5158628142270050178
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -524,27 +545,6 @@ MonoBehaviour:
   useCustomBlendShape: 0
   customMeshRenderer: {fileID: 0}
   customMeshRendererIndex: 0
---- !u!114 &3935387275715782075
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3984806420080061517}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8fdd0f00fe867d84f8653835642e685e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  inputSelectionType: 1
-  inputDropown: {fileID: 0}
-  input: {fileID: 7988122491240050043}
-  inputObject: {fileID: 3350939912605386130}
-  hasSecondaryInput: 0
-  secondary: []
-  typeToSend: 0
-  boolValueToSend: 0
-  floatValueToSend: 0
 --- !u!1 &4549457064819476950
 GameObject:
   m_ObjectHideFlags: 0
@@ -3453,7 +3453,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 3c31c687f21432740b9f5b84fcb78ce0, type: 3}
       propertyPath: m_Materials.Array.data[1]
       value: 
-      objectReference: {fileID: 2100000, guid: cc109e00351943f408d10bb4dd521ab0, type: 2}
+      objectReference: {fileID: 2100000, guid: 9352ead7578ed9c45b11298009029934, type: 2}
     - target: {fileID: 919132149155446097, guid: 3c31c687f21432740b9f5b84fcb78ce0, type: 3}
       propertyPath: m_Name
       value: mesh_Oswiecim2TrainTracks
@@ -9067,7 +9067,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 3d2601fdb1ee60e4387aecccadca74bc, type: 3}
       propertyPath: m_Materials.Array.data[2]
       value: 
-      objectReference: {fileID: 2100000, guid: cc109e00351943f408d10bb4dd521ab0, type: 2}
+      objectReference: {fileID: 2100000, guid: 2c53ee3b8da70ea4997b77e7e3a40c9a, type: 2}
     - target: {fileID: -7511558181221131132, guid: 3d2601fdb1ee60e4387aecccadca74bc, type: 3}
       propertyPath: m_Materials.Array.data[3]
       value: 
@@ -11590,6 +11590,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8132305368294256955}
     m_Modifications:
+    - target: {fileID: 493716711732424683, guid: 546e99f504babc74b9e6128853abcb82, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 2c53ee3b8da70ea4997b77e7e3a40c9a, type: 2}
     - target: {fileID: 1626120967042618500, guid: 546e99f504babc74b9e6128853abcb82, type: 3}
       propertyPath: m_RootOrder
       value: 7
