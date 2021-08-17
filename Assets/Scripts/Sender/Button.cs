@@ -15,7 +15,7 @@ public class Button : InputSender, IClickable, IInputSender, IHoverable
 
     [TextArea] [SerializeField] string tooltipText;
 
-    [Expandable] [SerializeField] Effect onClickEffect;
+    [Expandable] [SerializeField] Effect onClickEffect, cantClickEffect;
 
     public bool IsNull => this == null;
 
@@ -25,11 +25,7 @@ public class Button : InputSender, IClickable, IInputSender, IHoverable
 
     public void Click()
     {
-        isClicked = true;
-        clickedTimestamp = Time.time;
-        heightAnimationDuration = buttonHeightOnClick[buttonHeightOnClick.length - 1].time;
 
-        Game.EffectHandler.Play(onClickEffect, gameObject);
         if (input != null)
         {
             bool canTryInput = (input == null || input.Try());
@@ -38,11 +34,20 @@ public class Button : InputSender, IClickable, IInputSender, IHoverable
             {
                 CallOnSendInputEvents(0f);
                 SendSecondaryInput(InputType.Impulse);
+                isClicked = true;
+                clickedTimestamp = Time.time;
+                heightAnimationDuration = buttonHeightOnClick[buttonHeightOnClick.length - 1].time;
+                Game.EffectHandler.Play(onClickEffect, gameObject);
+            }
+            else
+            {
+                Game.EffectHandler.Play(cantClickEffect, gameObject);
             }
         }
         else
         {
             CallOnSendInputEvents(0f);
+            Game.EffectHandler.Play(cantClickEffect, gameObject);
         }
 
         OnClickEvent?.Invoke();
