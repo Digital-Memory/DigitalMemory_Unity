@@ -81,9 +81,12 @@ public class AssetBundleHandler : Singleton<AssetBundleHandler>
 #else
 
         string path = localAssetPath + bundleName.ToLower();
-        var assetBundleCreateRequest = AssetBundle.LoadFromFileAsync(path);
-        yield return assetBundleCreateRequest;
-        callback(assetBundleCreateRequest.assetBundle);
+        if (File.Exists(path))
+        {
+            var assetBundleCreateRequest = AssetBundle.LoadFromFileAsync(path);
+            yield return assetBundleCreateRequest;
+            callback(assetBundleCreateRequest.assetBundle);
+        }
 #endif
     }
 

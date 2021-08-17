@@ -74,8 +74,6 @@ public class TimeMechanismNumberDisplayer : MonoBehaviour
 
             currentNumber = Mathf.SmoothDamp(currentNumber, targetNumber, ref currentVelocity, dullness, maxSpeed);
 
-            Debug.Log("current: " + currentNumber);
-
             material.SetFloat("Number", currentNumber);
 
             audioSource.pitch = Remap(currentVelocity, 0, 25, 0.5f, 2 + localPitchOffset);
