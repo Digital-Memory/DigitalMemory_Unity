@@ -28,6 +28,7 @@ public class ChangingOverTimeObject : ConditionedObject
     protected bool isAnimating = false;
 
     public System.Action<float> OnTimeChangeEvent;
+    public System.Action OnFinishedAnimatingEvent;
 
     public float Time
     {

@@ -95,6 +95,8 @@ public class Condition : ConditionBase
                 break;
         }
 
+        Debug.Log($"Conditon {name} is not met.");
+
         return false;
     }
 }

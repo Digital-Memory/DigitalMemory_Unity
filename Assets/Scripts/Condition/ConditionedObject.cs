@@ -60,17 +60,23 @@ public class ConditionedObject : InputObject
 
     protected bool CheckAllConditionsForTrue()
     {
+
         if (conditions != null)
         {
             foreach (ConditionBase condition in conditions)
             {
                 if (!condition.IsMet())
+                {
+                    Debug.Log($"condition {condition.name} is FALSE");
                     return false;
+                }
             }
         }
 
         if (sendsFollowupInputWhenAllConditionsAreMet)
             Try(inputObjects, typeToSend, boolValue: boolValueToSend, floatValue: floatValueToSend);
+
+        Debug.Log("All conditions are TRUE");
 
         return true;
     }
