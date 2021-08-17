@@ -7,6 +7,7 @@ public class TearDownWorkerAnimatingObject : AnimatingObject
 {
     AnimationCurve curve;
     [SerializeField] AnimationCurve chargeCurve, hitCurve;
+    [SerializeField] AudioClip teardownSound;
     bool isReceivingFloatInput = true;
 
     public override bool Try()
@@ -16,6 +17,7 @@ public class TearDownWorkerAnimatingObject : AnimatingObject
             isReceivingFloatInput = false;
             Time = 0f;
             curve = hitCurve;
+            Game.SoundPlayer.Play(teardownSound, volume: 0.66f, randomPitchRange: 0.1f);
             return base.Try();
         }
         return false;
