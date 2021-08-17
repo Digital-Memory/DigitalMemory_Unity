@@ -62,13 +62,13 @@ public class Attacher : MonoBehaviour, IAttacher
         skinnedMeshRenderer = GetComponent<SkinnedMeshRenderer>();
 
         if (!isAttached)
-            SparkleEffectHandler.OnAttacherDetach(this);
+            SparkleEffectHandler.OnAttacherDetach?.Invoke(this);
 
     }
 
     protected void OnDisable()
     {
-        SparkleEffectHandler.OnAttacherAttach(this);
+        SparkleEffectHandler.OnAttacherAttach?.Invoke(this);
     }
 
     public bool CanAttach(string attachmentName)

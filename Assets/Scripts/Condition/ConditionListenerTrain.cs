@@ -18,6 +18,9 @@ public class ConditionListenerTrain : ConditionListenerBehaviour
 
     public override bool GetBool()
     {
+        if (train == null)
+            return false;
+
         float pos = train.GetTrainPosition();
         return pos < 0.3f || pos > 0.6f;
     }
