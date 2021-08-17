@@ -23,7 +23,7 @@ public class ChangingOverTimeObject : ConditionedObject
 
 #endif
 
-    private float time = 1f;
+    [ShowNonSerializedField] private float time = 1f;
     protected float direction = 1;
     protected bool isAnimating = false;
 
