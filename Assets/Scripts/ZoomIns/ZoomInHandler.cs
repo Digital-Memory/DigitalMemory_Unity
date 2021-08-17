@@ -30,8 +30,18 @@ public class ZoomInHandler : Singleton<ZoomInHandler>
 
     protected override void Start()
     {
+        Game.Settings.DesaturationMaterial.SetInt("mask", 0);
         base.Start();
     }
+
+    protected virtual void OnDestroy()
+    {
+        Game.Settings.DesaturationMaterial.SetInt("mask", 0);
+        Game.Settings.DesaturationMaterial.SetVector("pos", Vector4.zero);
+        Game.Settings.DesaturationMaterial.SetFloat("size", 0);
+    }
+
+
     public void TryZoomIn(ZoomIn zoom)
     {
         if (zoomInState != ZoomInState.ZoomedOut)
