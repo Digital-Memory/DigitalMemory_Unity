@@ -157,7 +157,7 @@ public class ZoomIn : InputObject, IClickable, IHoverable
 
     private void OnChangeZoom(bool isZoomedIn)
     {
-        if (!blockZoomInOnClick)
+        if (!blockZoomInOnClick || isZoomedIn)
             coll.enabled = !isZoomedIn;
 
         if (!isZoomedIn)
