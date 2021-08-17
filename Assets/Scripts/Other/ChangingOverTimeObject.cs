@@ -112,6 +112,7 @@ public class ChangingOverTimeObject : ConditionedObject
                 Time = Time > 0.5f != resetAtEnd ? 1f : 0f;
 
                 SetAnimating(false);
+                Debug.LogWarning("Finished Animating");
                 OnFinishedAnimating();
             }
         }
@@ -119,7 +120,7 @@ public class ChangingOverTimeObject : ConditionedObject
 
     protected virtual void OnFinishedAnimating()
     {
-
+        OnFinishedAnimatingEvent?.Invoke();
     }
 
     protected virtual void UpdateChange(float progress)

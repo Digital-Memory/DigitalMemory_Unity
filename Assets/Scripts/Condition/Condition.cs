@@ -77,6 +77,8 @@ public class Condition : ConditionBase
 
     public override bool IsMet()
     {
+        if (!behaviour) Debug.LogError($"Behaviour on condition {name} is NULL");
+
         switch (type)
         {
             case ConditionType.BOOL:

@@ -41,6 +41,7 @@ public class ConditionListenerChangeOverTimeObject : ConditionListenerBehaviour
 
     public override float GetFloat()
     {
+        Debug.Log($"Float check on {name} returned time: {time}");
         return time;
     }
 }

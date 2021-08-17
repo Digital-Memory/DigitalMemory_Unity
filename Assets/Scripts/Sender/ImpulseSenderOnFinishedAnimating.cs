@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using NaughtyAttributes;
 using System;
+using UnityEngine.Events;
 
 [RequireComponent(typeof(ChangingOverTimeObject))]
 public class ImpulseSenderOnFinishedAnimating : InputSender
 {
     ChangingOverTimeObject changingOverTimeObject;
+    [SerializeField] private float delay = 0f;
 
     [SerializeField] private InputType typeToSend;
 
@@ -16,6 +18,7 @@ public class ImpulseSenderOnFinishedAnimating : InputSender
 
     [HideInInspector] public bool TypeIsBool { get => typeToSend == InputType.Bool; }
     [HideInInspector] public bool TypeIsFloat { get => typeToSend == InputType.Float; }
+
 
     void OnEnable()
     {
@@ -35,6 +38,28 @@ public class ImpulseSenderOnFinishedAnimating : InputSender
     }
 
     private void OnFinishedAnimating()
+    {
+        if (!input)
+            return;
+
+        Debug.Log($"OnFinishedAnimating send input to {input.name} from {name} delay: {delay}");
+
+        if (delay > 0)
+        {
+            StopAllCoroutines();
+            StartCoroutine(SendImpulseDelayedRoutine(delay));
+        }
+        else
+            SendImpulseNow();
+    }
+
+    private IEnumerator SendImpulseDelayedRoutine(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        SendImpulseNow();
+    }
+
+    public void SendImpulseNow()
     {
         input.Try(typeToSend, boolValueToSend, floatValueToSend);
     }

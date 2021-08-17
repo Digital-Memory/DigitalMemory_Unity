@@ -11,6 +11,7 @@ public class FloatSenderMoveBack : ConditionedObject
     [SerializeField] float baseValue = 0, targetValue = 1, maxDistanceFromTargetToNotMoveBack = 0.1f;
 
     [SerializeField] bool moveOnInput = false;
+    [SerializeField] float moveBackSpeed = 1f;
     [SerializeField] [ShowIf("moveOnInput")] bool toBase = true;
 
     protected override void OnEnable()
@@ -68,6 +69,8 @@ public class FloatSenderMoveBack : ConditionedObject
 
     private IEnumerator MoveBackRoutine(float currentValue, float targetValue)
     {
+        Debug.Log($"{name} start moving back from {currentValue} to {targetValue}");
+
         float lastdistance = float.MaxValue;
         float newDistance = 100f;
 
@@ -77,7 +80,7 @@ public class FloatSenderMoveBack : ConditionedObject
             lastdistance = newDistance;
             newDistance = Mathf.Abs(currentValue - targetValue);
 
-            currentValue = Mathf.MoveTowards(currentValue, targetValue, Time.deltaTime);
+            currentValue = Mathf.MoveTowards(currentValue, targetValue, Time.deltaTime * moveBackSpeed);
             floatSender.TryGiveInputRaw(currentValue);
         }
 

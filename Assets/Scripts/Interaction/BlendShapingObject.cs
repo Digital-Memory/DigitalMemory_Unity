@@ -9,9 +9,9 @@ public class BlendShapingObject : ChangingOverTimeObject
     [ShowNonSerializedField]
     protected SkinnedMeshRenderer skinnedMeshRenderer;
 
-    [SerializeField] bool useCustomBlendShape = false;
-    [ShowIf("useCustomBlendShape")] [SerializeField] SkinnedMeshRenderer customMeshRenderer;
-    [ShowIf("useCustomBlendShape")] [SerializeField] int customMeshRendererIndex;
+    [SerializeField] protected bool useCustomBlendShape = false;
+    [ShowIf("useCustomBlendShape")] [SerializeField] protected SkinnedMeshRenderer customMeshRenderer;
+    [ShowIf("useCustomBlendShape")] [SerializeField] protected int customMeshRendererIndex;
 
 #if UNITY_EDITOR
     protected override void Reset()
