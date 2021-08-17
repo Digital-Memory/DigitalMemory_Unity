@@ -68,7 +68,7 @@ public class ZoomInHandler : Singleton<ZoomInHandler>
 
         current = zoom;
         zoomInState = ZoomInState.ZoomingIn;
-        Debug.Log($"Zoom in on: {current.name}");
+        Debug.LogWarning($"Zoom in on: {current.name}");
         ChangedZoomIn?.Invoke(true);
         Game.MouseInteractor.InteractionIsBlocked = true;
 

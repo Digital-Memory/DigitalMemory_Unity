@@ -148,6 +148,7 @@ public class ZoomIn : InputObject, IClickable, IHoverable
         desaturationMaterial = Game.Settings.DesaturationMaterial;
 
         Game.ZoomInHandler.ChangedZoomIn += OnChangeZoom;
+        Debug.LogWarning($"{name} subscribed to ChangedZoomIn.");
     }
 
     private void OnDisable()
