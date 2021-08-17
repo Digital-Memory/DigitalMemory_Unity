@@ -23,14 +23,15 @@ public class ZoomInHandler : Singleton<ZoomInHandler>
     [Expandable] [SerializeField] Effect zoomIn, zoomOut;
 
 
-    private void OnEnable()
+    private void Awake()
     {
+        zoomInState == ZoomInState.ZoomedOut;
         Game.Settings.CurrentZoomLevel = 1f;
+        Game.Settings.DesaturationMaterial.SetInt("mask", 0);
     }
 
     protected override void Start()
     {
-        Game.Settings.DesaturationMaterial.SetInt("mask", 0);
         base.Start();
     }
 
