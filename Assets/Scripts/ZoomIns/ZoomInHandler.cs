@@ -7,10 +7,10 @@ using UnityEngine;
 
 public enum ZoomInState
 {
-    ZoomedIn,
-    ZoomingIn,
     ZoomedOut,
     ZoomingOut,
+    ZoomedIn,
+    ZoomingIn,
 }
 
 public class ZoomInHandler : Singleton<ZoomInHandler>
