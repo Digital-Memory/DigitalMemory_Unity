@@ -26,12 +26,18 @@ public class TutorialFrame : MonoBehaviour
 
     public void FadeIn(float duration = 1f, float delay = 0f)
     {
+        if (!isActiveAndEnabled)
+            gameObject.SetActive(true);
+
         StopAllCoroutines();
         StartCoroutine(FadeRoutine(canvasGroup.alpha, 1, duration, delay));
     }
 
     public void FadeOut(float duration = 1f, float delay = 0f)
     {
+        if (!isActiveAndEnabled)
+            return;
+
         StopAllCoroutines();
         StartCoroutine(FadeRoutine(canvasGroup.alpha, 0, duration, delay));
     }
