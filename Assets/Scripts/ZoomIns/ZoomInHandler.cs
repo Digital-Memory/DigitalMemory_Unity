@@ -44,10 +44,13 @@ public class ZoomInHandler : Singleton<ZoomInHandler>
 
     public void TryZoomIn(ZoomIn zoom)
     {
-        if (zoomInState != ZoomInState.ZoomedOut)
-            return;
 
-        Debug.Log($"Zoom in on: {zoom.name}");
+        if (zoomInState != ZoomInState.ZoomedOut)
+        {
+            Debug.LogWarning($"Tried zooming in on {zoom.name} but state was {zoomInState}.");
+            return;
+        }
+
         StopAllCoroutines();
         StartCoroutine(ZoomInRoutine(zoom));
     }

@@ -82,6 +82,7 @@ public class ZoomIn : InputObject, IClickable, IHoverable
     {
         cinemachineVirtualCamera.Priority = 100;
         Game.ZoomInHandler.TryZoomIn(this);
+        Debug.LogWarning($"Zoom in received on {name} forwarded to ZoomInHandler.");
         SendInputObjects(true);
     }
 
