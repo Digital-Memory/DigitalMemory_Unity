@@ -15,6 +15,13 @@ public class ZoomIn : InputObject, IClickable, IHoverable
     Material desaturationMaterial;
     [ShowNonSerializedField] bool inFadeoutPreview = false;
     [ShowNonSerializedField] bool animate = false;
+
+    internal void OverrideVirtualCamera(CinemachineVirtualCamera camera)
+    {
+        cinemachineVirtualCamera = camera;
+        virtualCameraPosition = cinemachineVirtualCamera.transform.position;
+    }
+
     [TextArea] [SerializeField] string tooltipText;
     float current, target;
     int direction;

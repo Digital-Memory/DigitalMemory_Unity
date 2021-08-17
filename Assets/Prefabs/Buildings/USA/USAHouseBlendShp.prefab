@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 861728758469373035}
   - component: {fileID: 5076173627394347922}
+  - component: {fileID: 3873530890134911534}
   m_Layer: 0
   m_Name: USAHouseBlendShp
   m_TagString: Untagged
@@ -91,6 +92,55 @@ SkinnedMeshRenderer:
     m_Center: {x: 0.15872884, y: 0.70320106, z: -2.1957994}
     m_Extent: {x: 5.3756657, y: 5.783991, z: 6.59335}
   m_DirtyAABB: 0
+--- !u!114 &3873530890134911534
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 53666139946776273}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c5b2af0e9c107343ac5aaf32cb91f87, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  conditions: []
+  sendsFollowupInputWhenAllConditionsAreMet: 0
+  inputObjects: []
+  typeToSend: 0
+  boolValueToSend: 0
+  floatValueToSend: 0
+  animationCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  durationInSeconds: 1
+  startFromEnd: 1
+  animateOnStart: 1
+  resetAtEnd: 0
+  useCustomBlendShape: 0
+  customMeshRenderer: {fileID: 0}
+  customMeshRendererIndex: 0
 --- !u!1 &1406363558948892489
 GameObject:
   m_ObjectHideFlags: 0
