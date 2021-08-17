@@ -45,7 +45,15 @@ public class ChangingOverTimeObject : ConditionedObject
         base.OnEnable();
 
         Time = animateOnStart != startFromEnd ? 0.99f : 0.01f;
-        Try(startFromEnd);
+        if (animateOnStart)
+        {
+            direction = Time > 0.5f ? -1f : 1f;
+            SetAnimating(true);
+        } else
+        {
+            UpdateChange(Time);
+        }
+        //Try(startFromEnd);
     }
 
     public override bool Try()
