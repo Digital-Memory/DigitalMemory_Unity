@@ -1,4 +1,5 @@
 using NaughtyAttributes;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -99,6 +100,10 @@ public class LeverHandle : MonoBehaviour, IDragable
         float angle = testRotation;
 
         lever.Turn(angle);
+    }
+    internal void SetCustomMouseDistanceMultiplier(float customSpeed)
+    {
+        distanceMultiplier = customSpeed;
     }
 
     private void OnDrawGizmos()
