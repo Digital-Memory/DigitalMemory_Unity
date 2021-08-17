@@ -10,6 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 6489342240959600594}
   - component: {fileID: 1696043807273936939}
+  - component: {fileID: 3935387275715782075}
+  - component: {fileID: 5158628142270050178}
+  - component: {fileID: 5158628142270050179}
+  - component: {fileID: 5158628142270050180}
   m_Layer: 0
   m_Name: Oswiecim03_DoorSoldiers
   m_TagString: Untagged
@@ -24,7 +28,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5856111965573074280}
-  m_LocalRotation: {x: -0, y: -0.28216982, z: -0, w: 0.95936453}
+  m_LocalRotation: {x: 0, y: -0.2821739, z: 0, w: 0.9593633}
   m_LocalPosition: {x: -37.33, y: 0, z: 4.0753036}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -86,3 +90,106 @@ SkinnedMeshRenderer:
     m_Center: {x: -0.013020396, y: 0.69629765, z: -2.0833132}
     m_Extent: {x: 0.5152416, y: 0.6937289, z: 2.2217124}
   m_DirtyAABB: 0
+--- !u!114 &3935387275715782075
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5856111965573074280}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8fdd0f00fe867d84f8653835642e685e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inputSelectionType: 1
+  inputDropown: {fileID: 0}
+  input: {fileID: 0}
+  inputObject: {fileID: 0}
+  hasSecondaryInput: 0
+  secondary: []
+  delay: 0
+  typeToSend: 0
+  boolValueToSend: 0
+  floatValueToSend: 0
+--- !u!114 &5158628142270050178
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5856111965573074280}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 85c5ecc1bdd2b0747a1d4070cda6bf17, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &5158628142270050179
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5856111965573074280}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a51a1d086a1b8541becd2e3767b4af8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  behaviour: {fileID: 0}
+  behaviourObject: {fileID: 0}
+  type: 1
+  MustBeTrue: 0
+  FloatIs: 2
+  toCompareWith: 1
+--- !u!114 &5158628142270050180
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5856111965573074280}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c5b2af0e9c107343ac5aaf32cb91f87, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  conditions:
+  - {fileID: 5158628142270050179}
+  sendsFollowupInputWhenAllConditionsAreMet: 0
+  inputObjects:
+  - {fileID: 0}
+  typeToSend: 1
+  boolValueToSend: 1
+  floatValueToSend: 0
+  animationCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  durationInSeconds: 0.25
+  startFromEnd: 1
+  animateOnStart: 1
+  resetAtEnd: 0
+  useCustomBlendShape: 0
+  customMeshRenderer: {fileID: 0}
+  customMeshRendererIndex: 0
