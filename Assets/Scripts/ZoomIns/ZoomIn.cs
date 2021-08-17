@@ -157,8 +157,13 @@ public class ZoomIn : InputObject, IClickable, IHoverable
 
     private void OnChangeZoom(bool isZoomedIn)
     {
+        Debug.LogWarning($"{name} changed zoom in to {isZoomedIn}");
+
         if (!blockZoomInOnClick || isZoomedIn)
+        {
             coll.enabled = !isZoomedIn;
+            Debug.LogWarning($"{name} set collider {((!isZoomedIn) ? "enabled" : "disabled")}");
+        }
 
         if (!isZoomedIn)
             DoZoomOut();
