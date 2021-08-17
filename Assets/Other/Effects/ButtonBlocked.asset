@@ -1,0 +1,76 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c8b6a931fb936dc4d85362f97739cf34, type: 3}
+  m_Name: ButtonBlocked
+  m_EditorClassIdentifier: 
+  effectType: 1
+  soundEffect:
+    clip: {fileID: 8300000, guid: b8100d638c7e1934ab7596b829653106, type: 3}
+    playFromOrigin: 1
+    playOnlyIfFinished: 1
+    volume: 0.5
+    randomPitchRange: 0.25
+  ClearVisualEffect: 0
+  visualEffect:
+    prefab: {fileID: 0}
+    spawnRelativeToOrigin: 0
+    spawnParented: 0
+    spawnOffset: {x: 0, y: 0, z: 0}
+    destroyDelay: -1
+  changeShaderEffect:
+    shader: {fileID: 0}
+    boolName: 
+    boolValue: 0
+  ClearChangeMaterialEffect: 0
+  changeMaterialEffect:
+    ToChangeTo: {fileID: 0}
+  changeMaterialPropertyEffect:
+    BoolName: 
+    BoolValue: 0
+    LoopThroughAllMaterials: 0
+  ClearPulsingEffect: 0
+  pulsingEffect:
+    loopPulsing: 0
+    pulseCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: -2.0001523
+        outSlope: -2.0001523
+        tangentMode: 34
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.06341882
+        value: -0.1268473
+        inSlope: -0.8548027
+        outSlope: -0.8548027
+        tangentMode: 34
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.5
+        value: 0
+        inSlope: 0.29054686
+        outSlope: 0.29054686
+        tangentMode: 34
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    type: 5
