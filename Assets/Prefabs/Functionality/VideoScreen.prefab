@@ -62,7 +62,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 2ef7cfd8da8c82d4f8812598bc6c91c5, type: 2}
+  - {fileID: 2100000, guid: 6236f09064624184d99207faf6bd4a92, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -96,6 +96,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c827704651f0bf94d97c38d3d9c9dd95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inputSelectionType: 0
+  inputDropown: {fileID: 0}
   input: {fileID: 0}
   inputObject: {fileID: 0}
   hasSecondaryInput: 0
@@ -134,7 +136,9 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   button: {fileID: 150895825}
+  tooltipText: 
   onClickEffect: {fileID: 11400000, guid: 333e70e8b2f81c442a5cb2fbe259d4f8, type: 2}
+  cantClickEffect: {fileID: 0}
 --- !u!65 &38150445
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -276,6 +280,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   conditions: []
+  sendsFollowupInputWhenAllConditionsAreMet: 0
+  inputObjects: []
+  typeToSend: 0
+  boolValueToSend: 0
+  floatValueToSend: 0
   url: https://l-boe.de/p/dm/kitchen_sholent.mp4
   meshRenderer: {fileID: 6665852254248536719}
   projectorEffects: {fileID: 0}
@@ -292,6 +301,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   conditions: []
+  sendsFollowupInputWhenAllConditionsAreMet: 0
+  inputObjects: []
+  typeToSend: 0
+  boolValueToSend: 0
+  floatValueToSend: 0
   animationCurve:
     serializedVersion: 2
     m_Curve:
@@ -465,7 +479,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: f63b110fd80726445921512f110f1c85, type: 2}
+  - {fileID: 2100000, guid: 36a48b2e151ccf545aa75aa79b0813d7, type: 2}
   - {fileID: 2100000, guid: 78f1fbfca859cef4f8d8968d9fb8f532, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
@@ -629,7 +643,7 @@ PrefabInstance:
     - target: {fileID: 6396788095161846190, guid: 92d5622a16c9a9e4fad0401f593e8e3a, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: f63b110fd80726445921512f110f1c85, type: 2}
+      objectReference: {fileID: 2100000, guid: 9352ead7578ed9c45b11298009029934, type: 2}
     - target: {fileID: 6396788095161846190, guid: 92d5622a16c9a9e4fad0401f593e8e3a, type: 3}
       propertyPath: m_Materials.Array.data[1]
       value: 
@@ -699,7 +713,7 @@ PrefabInstance:
     - target: {fileID: 6396788095161846190, guid: 92d5622a16c9a9e4fad0401f593e8e3a, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: f63b110fd80726445921512f110f1c85, type: 2}
+      objectReference: {fileID: 2100000, guid: 9352ead7578ed9c45b11298009029934, type: 2}
     - target: {fileID: 6396788095161846190, guid: 92d5622a16c9a9e4fad0401f593e8e3a, type: 3}
       propertyPath: m_Materials.Array.data[1]
       value: 
