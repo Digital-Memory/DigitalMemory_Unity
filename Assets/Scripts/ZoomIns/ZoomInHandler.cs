@@ -129,7 +129,7 @@ public class ZoomInHandler : Singleton<ZoomInHandler>
 
     private void Update()
     {
-        if (current == null || Game.UIHandler.EventSystem.IsPointerOverGameObject() || !current.DoesAllowZoomOut)
+        if (current == null || !current.DoesAllowZoomOut)
             return;
 
         var x = Input.mousePosition.x / Mathf.Max(1, (float)Screen.width);
@@ -140,7 +140,7 @@ public class ZoomInHandler : Singleton<ZoomInHandler>
 
         var cursor = Game.UIHandler.CustomCursor;
 
-        if (factor > 0.9f)
+        if (factor > 0.9f && !Game.UIHandler.EventSystem.IsPointerOverGameObject())
         {
             if (!cursor.IsType(CustomCursorType.ZOOMOUT))
                 cursor.SetCursorType(CustomCursorType.ZOOMOUT);
