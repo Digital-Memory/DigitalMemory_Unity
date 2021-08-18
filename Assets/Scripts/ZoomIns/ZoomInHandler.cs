@@ -165,6 +165,9 @@ public class ZoomInHandler : Singleton<ZoomInHandler>
             if (Input.GetMouseButtonDown(0))
             {
                 TryZoomOut();
+
+                if (cursor.IsType(CustomCursorType.ZOOMOUT))
+                    cursor.ResetCursor(CustomCursorType.DEFAULT, CustomCursorType.DRAGABLE, CustomCursorType.DRAGGING, CustomCursorType.MANUAL, CustomCursorType.X);
             }
         }
         else
