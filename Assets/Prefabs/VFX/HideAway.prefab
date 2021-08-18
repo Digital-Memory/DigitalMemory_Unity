@@ -176,6 +176,8 @@ GameObject:
   - component: {fileID: 3375166324177194039}
   - component: {fileID: 3375166324177194033}
   - component: {fileID: 3375166324177194032}
+  - component: {fileID: 187682712529276777}
+  - component: {fileID: 5053631765040716413}
   m_Layer: 0
   m_Name: HideAway
   m_TagString: Untagged
@@ -230,6 +232,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   conditions: []
+  sendsFollowupInputWhenAllConditionsAreMet: 0
+  inputObjects: []
+  typeToSend: 0
+  boolValueToSend: 0
+  floatValueToSend: 0
   animationCurve:
     serializedVersion: 2
     m_Curve:
@@ -259,6 +266,38 @@ MonoBehaviour:
   animateOnStart: 1
   resetAtEnd: 0
   varibleFloat: time
+--- !u!114 &187682712529276777
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3375166324177194038}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a175c311b80004f00a0f13c409a6aeba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!205 &5053631765040716413
+LODGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3375166324177194038}
+  serializedVersion: 2
+  m_LocalReferencePoint: {x: 1.2499976, y: -5.5, z: 0.0000023841858}
+  m_Size: 11
+  m_FadeMode: 0
+  m_AnimateCrossFading: 0
+  m_LastLODIsBillboard: 0
+  m_LODs:
+  - screenRelativeHeight: 0.10141802
+    fadeTransitionWidth: 0
+    renderers:
+    - renderer: {fileID: 3375166323675615906}
+    - renderer: {fileID: 3375166323697785328}
+  m_Enabled: 1
 --- !u!1 &3375166325072763989
 GameObject:
   m_ObjectHideFlags: 0
