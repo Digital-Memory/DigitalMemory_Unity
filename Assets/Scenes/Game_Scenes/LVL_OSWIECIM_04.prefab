@@ -278,26 +278,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &3718693960960692663
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6240700553599695378}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c9c2e10d3842c33429a5785e65896289, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  inputSelectionType: 1
-  inputDropown: {fileID: 0}
-  input: {fileID: 8107038658238552563}
-  inputObject: {fileID: 4346639405486315702}
-  hasSecondaryInput: 0
-  secondary: []
-  FloatIs: 2
-  toCompareWith: 1
 --- !u!1 &1615792984158598476
 GameObject:
   m_ObjectHideFlags: 0
@@ -1230,6 +1210,26 @@ MonoBehaviour:
         m_Calls: []
   m_LegacyBlendHint: 0
   m_ComponentOwner: {fileID: 8162013533947955786}
+--- !u!114 &3718693960960692663
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6240700553599695378}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9c2e10d3842c33429a5785e65896289, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inputSelectionType: 1
+  inputDropown: {fileID: 0}
+  input: {fileID: 8107038658238552563}
+  inputObject: {fileID: 4346639405486315702}
+  hasSecondaryInput: 0
+  secondary: []
+  FloatIs: 2
+  toCompareWith: 1
 --- !u!114 &1073121281
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2869,6 +2869,18 @@ PrefabInstance:
       propertyPath: tooltipText
       value: Israel
       objectReference: {fileID: 0}
+    - target: {fileID: 3043921707370419493, guid: b3d9566c29d17404b8557a8763275a1b, type: 3}
+      propertyPath: websiteInformationId.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3043921707370419493, guid: b3d9566c29d17404b8557a8763275a1b, type: 3}
+      propertyPath: websiteInformationId.Array.data[0]
+      value: 04_02
+      objectReference: {fileID: 0}
+    - target: {fileID: 3043921707370419493, guid: b3d9566c29d17404b8557a8763275a1b, type: 3}
+      propertyPath: websiteInformationId.Array.data[1]
+      value: 04_05
+      objectReference: {fileID: 0}
     - target: {fileID: 3043921707370419494, guid: b3d9566c29d17404b8557a8763275a1b, type: 3}
       propertyPath: m_Name
       value: ZoomInAreaGroupHouse
@@ -3237,6 +3249,14 @@ PrefabInstance:
       propertyPath: tooltipText
       value: Amerika
       objectReference: {fileID: 0}
+    - target: {fileID: 3043921707370419493, guid: b3d9566c29d17404b8557a8763275a1b, type: 3}
+      propertyPath: websiteInformationId.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3043921707370419493, guid: b3d9566c29d17404b8557a8763275a1b, type: 3}
+      propertyPath: websiteInformationId.Array.data[0]
+      value: 04_06
+      objectReference: {fileID: 0}
     - target: {fileID: 3043921707370419494, guid: b3d9566c29d17404b8557a8763275a1b, type: 3}
       propertyPath: m_Name
       value: ZoomInAreaSoloHouse
@@ -3486,6 +3506,14 @@ PrefabInstance:
     - target: {fileID: 3043921707370419493, guid: b3d9566c29d17404b8557a8763275a1b, type: 3}
       propertyPath: tooltipText
       value: Barracken
+      objectReference: {fileID: 0}
+    - target: {fileID: 3043921707370419493, guid: b3d9566c29d17404b8557a8763275a1b, type: 3}
+      propertyPath: websiteInformationId.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3043921707370419493, guid: b3d9566c29d17404b8557a8763275a1b, type: 3}
+      propertyPath: websiteInformationId.Array.data[0]
+      value: 04_04
       objectReference: {fileID: 0}
     - target: {fileID: 3043921707370419494, guid: b3d9566c29d17404b8557a8763275a1b, type: 3}
       propertyPath: m_Name
@@ -4073,6 +4101,14 @@ PrefabInstance:
       propertyPath: InputObjects.Array.data[0]
       value: 
       objectReference: {fileID: 2980740598901031011}
+    - target: {fileID: 3043921707370419493, guid: b3d9566c29d17404b8557a8763275a1b, type: 3}
+      propertyPath: websiteInformationId.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3043921707370419493, guid: b3d9566c29d17404b8557a8763275a1b, type: 3}
+      propertyPath: websiteInformationId.Array.data[0]
+      value: 04_01
+      objectReference: {fileID: 0}
     - target: {fileID: 3043921707370419494, guid: b3d9566c29d17404b8557a8763275a1b, type: 3}
       propertyPath: m_Name
       value: ZoomInAreaMuseum
@@ -4986,6 +5022,14 @@ PrefabInstance:
     - target: {fileID: 3043921707370419493, guid: b3d9566c29d17404b8557a8763275a1b, type: 3}
       propertyPath: tooltipText
       value: Amerika
+      objectReference: {fileID: 0}
+    - target: {fileID: 3043921707370419493, guid: b3d9566c29d17404b8557a8763275a1b, type: 3}
+      propertyPath: websiteInformationId.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3043921707370419493, guid: b3d9566c29d17404b8557a8763275a1b, type: 3}
+      propertyPath: websiteInformationId.Array.data[0]
+      value: 04_03
       objectReference: {fileID: 0}
     - target: {fileID: 3043921707370419494, guid: b3d9566c29d17404b8557a8763275a1b, type: 3}
       propertyPath: m_Name
