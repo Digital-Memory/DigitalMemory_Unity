@@ -8,7 +8,7 @@ public class IntroFlow : MonoBehaviour
     [SerializeField] ZoomIn zoomInAfterFinishIntro;
     [SerializeField] GameObject TutorialCanavas;
 
-    private bool lightActive;
+    private bool lightActive = true;
     [SerializeField] public bool LightActive;
 
     [SerializeField] Light directionalLight;
@@ -24,10 +24,10 @@ public class IntroFlow : MonoBehaviour
 
     private void SetLightActive(bool value)
     {
-        directionalLight.enabled = value;
-        lamp.SetActive(value);
-        cone.SetActive(value);
-        offLightPostProcessing.SetActive(!value);
+        directionalLight.enabled = !value;
+        lamp.SetActive(!value);
+        cone.SetActive(!value);
+        offLightPostProcessing.SetActive(value);
     }
 
     private void DestroyTutorial()
