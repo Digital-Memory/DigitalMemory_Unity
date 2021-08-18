@@ -66,7 +66,16 @@ public class ZoomInHandler : Singleton<ZoomInHandler>
 
     private IEnumerator ZoomInRoutine(ZoomIn zoom)
     {
-        WebCommunicator.ZoomIn(zoom.WebData);
+        var zoomInWebsiteInformation = zoom.websiteInformationId;
+        if (zoomInWebsiteInformation != null)
+        {
+            foreach (var item in zoomInWebsiteInformation)
+            {
+                if (item != "")
+                    WebCommunicator.ZoomIn(item);
+            }
+        }
+
         Game.EffectHandler.Play(zoomIn, gameObject);
         Game.Settings.CurrentZoomLevel = 0.2f;
 
@@ -87,7 +96,15 @@ public class ZoomInHandler : Singleton<ZoomInHandler>
         if (current != null)
         {
             Debug.Log($"Zoom out from: {current.name}");
-            WebCommunicator.ZoomOut(current.WebData);
+            var zoomInWebsiteInformation = current.websiteInformationId;
+            if (zoomInWebsiteInformation != null)
+            {
+                foreach (var item in zoomInWebsiteInformation)
+                {
+                    if (item != "")
+                        WebCommunicator.ZoomOut(item);
+                }
+            }
         }
         else
         {
@@ -149,7 +166,8 @@ public class ZoomInHandler : Singleton<ZoomInHandler>
             {
                 TryZoomOut();
             }
-        } else
+        }
+        else
         {
             if (cursor.IsType(CustomCursorType.ZOOMOUT))
                 cursor.ResetCursor(CustomCursorType.DEFAULT, CustomCursorType.DRAGABLE, CustomCursorType.DRAGGING, CustomCursorType.MANUAL, CustomCursorType.X);

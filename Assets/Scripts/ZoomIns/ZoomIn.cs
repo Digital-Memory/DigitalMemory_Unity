@@ -23,6 +23,7 @@ public class ZoomIn : InputObject, IClickable, IHoverable
     }
 
     [TextArea] [SerializeField] string tooltipText;
+    [SerializeField] public string[] websiteInformationId;
     float current, target;
     int direction;
 
