@@ -109,7 +109,10 @@ public class CustomCursorHandler : Image
         }
     }
 
-
+    public bool IsType(CustomCursorType type)
+    {
+        return currentType == type;
+    }
 
 #if UNITY_EDITOR
     [SerializeField] CustomCursorType previewType;
@@ -125,10 +128,7 @@ public class CustomCursorHandler : Image
         }
     }
 
-    internal bool IsType(CustomCursorType type)
-    {
-        return currentType == type;
-    }
+
 
 #endif
 }

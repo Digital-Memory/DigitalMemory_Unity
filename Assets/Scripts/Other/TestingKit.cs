@@ -46,4 +46,22 @@ public class TestingKit : MonoBehaviour
 
         Debug.LogWarning(sb.ToString());
     }
+
+    [SerializeField] Material materialToSearchFor;
+    [SerializeField] MeshRenderer[] renderers;
+
+    [Button]
+    private void FindMaterialReferences()
+    {
+        List<MeshRenderer> meshRenderers = new List<MeshRenderer>();
+
+        foreach (MeshRenderer renderer in FindObjectsOfType<MeshRenderer>())
+        {
+            if (renderer.sharedMaterials.Contains(materialToSearchFor))
+                meshRenderers.Add(renderer);
+        }
+
+        renderers = meshRenderers.ToArray();
+    }
+
 }
