@@ -152,12 +152,12 @@ public class ZoomInHandler : Singleton<ZoomInHandler>
         var x = Input.mousePosition.x / Mathf.Max(1, (float)Screen.width);
         var y = Input.mousePosition.y / Mathf.Max(1, (float)Screen.height);
 
-        float factor = Mathf.Max(x < 0.5f ? 1 - x : x, y < 0.5f ? 1 - y : y);
-        current.TryChangeFadeoutPreview(factor > 0.9f);
+        float factor = Mathf.Max(x < 0.5f ? 1 - x : 0.5f, y < 0.5f ? 1 - y : y);
+        current.TryChangeFadeoutPreview(factor > 0.98f);
 
         var cursor = Game.UIHandler.CustomCursor;
 
-        if (factor > 0.9f && !Game.UIHandler.EventSystem.IsPointerOverGameObject())
+        if (factor > 0.98f && !Game.UIHandler.EventSystem.IsPointerOverGameObject())
         {
             if (!cursor.IsType(CustomCursorType.ZOOMOUT))
                 cursor.SetCursorType(CustomCursorType.ZOOMOUT);
