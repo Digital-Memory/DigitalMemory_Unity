@@ -44,10 +44,10 @@ LODGroup:
   m_LocalReferencePoint: {x: 0.0000009536743, y: 3.679293, z: -0.08036375}
   m_Size: 15.668871
   m_FadeMode: 1
-  m_AnimateCrossFading: 0
+  m_AnimateCrossFading: 1
   m_LastLODIsBillboard: 0
   m_LODs:
-  - screenRelativeHeight: 0.5982339
+  - screenRelativeHeight: 0.5012345
     fadeTransitionWidth: 0
     renderers:
     - renderer: {fileID: 7612395753647632872}
@@ -117,6 +117,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4403896345421996948, guid: fe70bb7f6a467674bbc5e6b3d2aa3890, type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4403896345421996948, guid: fe70bb7f6a467674bbc5e6b3d2aa3890, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 3e153246d4ab59645b380cb652c70430, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fe70bb7f6a467674bbc5e6b3d2aa3890, type: 3}
 --- !u!4 &4594464403687660374 stripped
