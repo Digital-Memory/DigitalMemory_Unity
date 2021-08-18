@@ -4258,7 +4258,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3100891553781665242, guid: 5f5b112bdf2cfe04e965f6d8c4701895, type: 3}
       propertyPath: m_Name
-      value: Locomotive
+      value: Transporter
       objectReference: {fileID: 0}
     - target: {fileID: 3100891553781665243, guid: 5f5b112bdf2cfe04e965f6d8c4701895, type: 3}
       propertyPath: m_RootOrder
@@ -4274,7 +4274,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3100891553781665243, guid: 5f5b112bdf2cfe04e965f6d8c4701895, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.05
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3100891553781665243, guid: 5f5b112bdf2cfe04e965f6d8c4701895, type: 3}
       propertyPath: m_LocalRotation.w
@@ -4304,6 +4304,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4380034112607649620, guid: 5f5b112bdf2cfe04e965f6d8c4701895, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 4c7a325c57b4080458b83b9a56750754, type: 2}
+    - target: {fileID: 4380034112607649620, guid: 5f5b112bdf2cfe04e965f6d8c4701895, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: eb297412c4d36804ba7e44bed3f622df, type: 2}
+    - target: {fileID: 4380034112607649620, guid: 5f5b112bdf2cfe04e965f6d8c4701895, type: 3}
+      propertyPath: m_Materials.Array.data[2]
+      value: 
+      objectReference: {fileID: 2100000, guid: 7552d40b1bd72f54a9712b7b3dd19aeb, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5f5b112bdf2cfe04e965f6d8c4701895, type: 3}
 --- !u!4 &1183652211852863916 stripped
