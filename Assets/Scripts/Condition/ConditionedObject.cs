@@ -67,7 +67,7 @@ public class ConditionedObject : InputObject
             {
                 if (!condition.IsMet())
                 {
-                    Debug.Log($"condition {condition.name} is FALSE");
+                    //Debug.Log($"condition {condition.name} is FALSE");
                     return false;
                 }
             }
@@ -76,7 +76,7 @@ public class ConditionedObject : InputObject
         if (sendsFollowupInputWhenAllConditionsAreMet)
             Try(inputObjects, typeToSend, boolValue: boolValueToSend, floatValue: floatValueToSend);
 
-        Debug.Log("All conditions are TRUE");
+        //Debug.Log("All conditions are TRUE");
 
         return true;
     }
