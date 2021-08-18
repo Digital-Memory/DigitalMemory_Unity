@@ -77,17 +77,24 @@ public class Hatch : ConditionedObject
 
             if (isOpen ? (time < 1f) : (time > 0f))
             {
-                float rotation = doorZRotation.Evaluate(time);
-                if (doorLeft != null)
-                    doorLeft.localRotation = Quaternion.Euler(axisMultiplier * rotation + baseRotation);
-                if (doorRight != null)
-                    doorRight.localRotation = Quaternion.Euler(axisMultiplier * -rotation + baseRotation);
-            } else
+                SetRotationFromTime(time);
+            }
+            else
             {
                 time = isOpen ? 1 : 0;
+                SetRotationFromTime(time);
                 EndAnimating();
             }
         }
+    }
+
+    private void SetRotationFromTime(float time)
+    {
+        float rotation = doorZRotation.Evaluate(time);
+        if (doorLeft != null)
+            doorLeft.localRotation = Quaternion.Euler(axisMultiplier * rotation + baseRotation);
+        if (doorRight != null)
+            doorRight.localRotation = Quaternion.Euler(axisMultiplier * -rotation + baseRotation);
     }
 
     protected virtual void StartAnimating()
