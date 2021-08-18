@@ -13,6 +13,7 @@ public class InventoryObjectUI : UnityEngine.UI.Button, IDragHandler, IBeginDrag
 
     [SerializeField] private Image imageElement;
     [SerializeField] private TMP_Text amountText;
+    [SerializeField] private GameObject amountDisplay;
     private InventoryObjectData data;
     private Inventory inventory;
 
@@ -80,7 +81,16 @@ public class InventoryObjectUI : UnityEngine.UI.Button, IDragHandler, IBeginDrag
         }
         else
         {
-            amountText.text = amount.ToString();
+            if (amount > 1)
+                SetDisplayAmount(amount.ToString());
+            else
+                SetDisplayAmount("");
         }
+    }
+
+    private void SetDisplayAmount(string toDisplay)
+    {
+        amountDisplay.SetActive(toDisplay != "");
+        amountText.text = toDisplay;
     }
 }
