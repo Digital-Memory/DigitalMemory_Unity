@@ -35,6 +35,7 @@ public class DragHandler : Singleton<DragHandler>
 
     public void UpdateDrag(RaycastHit hit, Ray ray)
     {
+
         IAttacher attacher = null;
 
         if (hit.collider != null)

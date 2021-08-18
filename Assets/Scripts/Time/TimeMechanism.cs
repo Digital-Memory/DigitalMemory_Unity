@@ -29,6 +29,11 @@ public class TimeMechanism : MovingObject
             attacher.OnChangeAttached += OnAttachLightbulb;
         }
 
+        base.OnEnable();
+    }
+
+    protected virtual void Start()
+    {
         Timestamp timestamp = timestamps[0];
 
         day1.MoveTo(timestamp.GetDigid(TimestampSpot.Day, 1), overshoot: 1);
@@ -39,8 +44,6 @@ public class TimeMechanism : MovingObject
         year2.MoveTo(timestamp.GetDigid(TimestampSpot.Year, 2), overshoot: 1);
         year3.MoveTo(timestamp.GetDigid(TimestampSpot.Year, 3), overshoot: 1);
         year4.MoveTo(timestamp.GetDigid(TimestampSpot.Year, 4), overshoot: 1);
-
-        base.OnEnable();
     }
 
     void OnAttachPlateOnPosition(float associatedLeverPosition, TimePoint pointToSet)

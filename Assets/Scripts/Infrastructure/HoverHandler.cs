@@ -108,6 +108,7 @@ public class HoverHandler : Singleton<HoverHandler>
         ForceEndHoverCurrent();
     }
 
+#if UNITY_EDITOR
     private void OnDrawGizmos()
     {
         if (currentHover != null && currentHover.gameObject != null)
@@ -123,4 +124,6 @@ public class HoverHandler : Singleton<HoverHandler>
             currentHover.gameObject.name : "";
         GUI.Box(new Rect(10, 10, 100, 50), name);
     }
+
+#endif
 }

@@ -19,35 +19,11 @@ public class TimeMechanismNumberDisplayer : MonoBehaviour
     float currentNumber = 0;
     float localPitchOffset = 0.1f;
     [SerializeField] float currentVelocity = 0;
-    private void OnEnable()
+    private void Awake()
     {
         MeshRenderer meshRenderer = GetComponent<MeshRenderer>();
         material = new Material(meshRenderer.material);
         meshRenderer.material = material;
-    }
-
-    [Button]
-    private void Test2()
-    {
-        MoveTo(2, overshoot: 0);
-    }
-
-    [Button]
-    private void Test4()
-    {
-        MoveTo(4, overshoot: 1);
-    }
-
-    [Button]
-    private void Test6()
-    {
-        MoveTo(6, overshoot: 3);
-    }
-
-    [Button]
-    private void Test8()
-    {
-        MoveTo(8, overshoot: 10);
     }
 
     public void MoveTo(int targetNumber, int overshoot = 5)
