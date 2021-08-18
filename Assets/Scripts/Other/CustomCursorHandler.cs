@@ -12,6 +12,8 @@ public enum CustomCursorType
     DRAGGING,
     MANUAL,
     X,
+    ZOOMIN,
+    ZOOMOUT,
 }
 
 public class CustomCursorHandler : Image
@@ -20,6 +22,7 @@ public class CustomCursorHandler : Image
     CustomCursorType beforeType;
 
     bool cursorIsFree = true;
+    bool rotateToLookAwayFromCenter = false;
 
     protected override void Start()
     {
@@ -36,6 +39,7 @@ public class CustomCursorHandler : Image
         {
             CustomCursorData data = GetCursorDataByType(customCursorType);
             Sprite cursorSprite = customCursorType == CustomCursorType.MANUAL ? sprite : data.sprite;
+            rotateToLookAwayFromCenter = customCursorType == CustomCursorType.ZOOMOUT;
             Vector2 pivot = new Vector2(data.offset.x / rectTransform.sizeDelta.x,1 + (data.offset.y / rectTransform.sizeDelta.y));
             SetCursor(customCursorType, cursorSprite, size, pivot);
         }
@@ -56,6 +60,10 @@ public class CustomCursorHandler : Image
     {
         if (cursorIsFree)
             transform.position = Input.mousePosition;
+
+        var vectorAwayFromCenter = ((Vector2)Input.mousePosition - new Vector2(Screen.width / 2, Screen.height / 2)).normalized;
+
+        transform.up = rotateToLookAwayFromCenter ? (Vector3)vectorAwayFromCenter : Vector3.up;
     }
 
     public void ResetCursor(params CustomCursorType[] allowedTypes)
@@ -77,6 +85,8 @@ public class CustomCursorHandler : Image
             this.sprite = sprite;
             rectTransform.pivot = pivot;
             currentType = type;
+
+            rotateToLookAwayFromCenter = currentType == CustomCursorType.ZOOMOUT;
 
             transform.localScale = Vector3.one * size;
         }
@@ -113,6 +123,11 @@ public class CustomCursorHandler : Image
             this.sprite = data.sprite;
             Gizmos.DrawWireSphere(transform.position + (Vector3)data.offset, 10f);
         }
+    }
+
+    internal bool IsType(CustomCursorType type)
+    {
+        return currentType == type;
     }
 
 #endif

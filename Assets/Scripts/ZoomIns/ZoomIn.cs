@@ -175,12 +175,14 @@ public class ZoomIn : InputObject, IClickable, IHoverable
     {
         StartCoroutine(HoverRoutine());
         OnStartHoverEvent?.Invoke();
+        Game.UIHandler.CustomCursor.SetCursorType(CustomCursorType.ZOOMIN);
     }
     public void EndHover()
     {
         StopAllCoroutines();
         desaturationMaterial.SetInt("mask", 0);
         OnEndHoverEvent?.Invoke();
+        Game.UIHandler.CustomCursor.ResetCursor(CustomCursorType.DEFAULT, CustomCursorType.DRAGABLE, CustomCursorType.MANUAL);
     }
 
     private IEnumerator HoverRoutine()

@@ -137,9 +137,22 @@ public class ZoomInHandler : Singleton<ZoomInHandler>
 
         float factor = Mathf.Max(x < 0.5f ? 1 - x : x, y < 0.5f ? 1 - y : y);
         current.TryChangeFadeoutPreview(factor > 0.9f);
-        if (Input.GetMouseButtonDown(0) && factor > 0.9f)
+
+        var cursor = Game.UIHandler.CustomCursor;
+
+        if (factor > 0.9f)
         {
-            TryZoomOut();
+            if (!cursor.IsType(CustomCursorType.ZOOMOUT))
+                cursor.SetCursorType(CustomCursorType.ZOOMOUT);
+
+            if (Input.GetMouseButtonDown(0))
+            {
+                TryZoomOut();
+            }
+        } else
+        {
+            if (cursor.IsType(CustomCursorType.ZOOMOUT))
+                cursor.ResetCursor(CustomCursorType.DEFAULT, CustomCursorType.DRAGABLE, CustomCursorType.DRAGGING, CustomCursorType.MANUAL, CustomCursorType.X);
         }
 
         //Debug.Log($"cam: {FindObjectOfType<CinemachineBrain>().ActiveVirtualCamera.Name} with prio {FindObjectOfType<CinemachineBrain>().ActiveVirtualCamera.Priority}");
