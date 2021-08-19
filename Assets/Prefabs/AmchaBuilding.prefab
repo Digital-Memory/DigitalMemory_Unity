@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &8771903855282144331
+--- !u!1 &7151156364217443509
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,36 +8,36 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 8284301936804011761}
-  - component: {fileID: 4571303162359406856}
+  - component: {fileID: 7527153798289309199}
+  - component: {fileID: 2734418099875987958}
   m_Layer: 0
-  m_Name: USAHouse_02
+  m_Name: AmchaBuilding
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &8284301936804011761
+--- !u!4 &7527153798289309199
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8771903855282144331}
+  m_GameObject: {fileID: 7151156364217443509}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!137 &4571303162359406856
+--- !u!137 &2734418099875987958
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8771903855282144331}
+  m_GameObject: {fileID: 7151156364217443509}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -50,20 +50,13 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: cc109e00351943f408d10bb4dd521ab0, type: 2}
-  - {fileID: 2100000, guid: ccee3b795dff92641be04e44d0e0283d, type: 2}
-  - {fileID: 2100000, guid: 2b0c9c4764f115143811a137acfba386, type: 2}
-  - {fileID: 2100000, guid: 03818678c9a8d3240ae639f0c82ab257, type: 2}
-  - {fileID: 2100000, guid: ccee3b795dff92641be04e44d0e0283d, type: 2}
-  - {fileID: 2100000, guid: 707eff00227ea864fbb8c4255f6d1849, type: 2}
-  - {fileID: 2100000, guid: 03818678c9a8d3240ae639f0c82ab257, type: 2}
-  - {fileID: 2100000, guid: 2b0c9c4764f115143811a137acfba386, type: 2}
-  - {fileID: 2100000, guid: 0788085b3e1e1ff4e8209d97ae48d664, type: 2}
-  - {fileID: 2100000, guid: cc109e00351943f408d10bb4dd521ab0, type: 2}
-  - {fileID: 2100000, guid: 0788085b3e1e1ff4e8209d97ae48d664, type: 2}
-  - {fileID: 2100000, guid: ccee3b795dff92641be04e44d0e0283d, type: 2}
-  - {fileID: 2100000, guid: 2b0c9c4764f115143811a137acfba386, type: 2}
-  - {fileID: 2100000, guid: cc109e00351943f408d10bb4dd521ab0, type: 2}
+  - {fileID: 5561349426305759274, guid: 711a77aefd7921d4bb91f663d07d0589, type: 3}
+  - {fileID: -8502847539763084173, guid: 711a77aefd7921d4bb91f663d07d0589, type: 3}
+  - {fileID: 8368722655750445499, guid: 711a77aefd7921d4bb91f663d07d0589, type: 3}
+  - {fileID: 8835375900034463047, guid: 711a77aefd7921d4bb91f663d07d0589, type: 3}
+  - {fileID: -5396234901987582864, guid: 711a77aefd7921d4bb91f663d07d0589, type: 3}
+  - {fileID: 243882013029295292, guid: 711a77aefd7921d4bb91f663d07d0589, type: 3}
+  - {fileID: -1982724781499954792, guid: 711a77aefd7921d4bb91f663d07d0589, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -88,12 +81,12 @@ SkinnedMeshRenderer:
   m_Quality: 0
   m_UpdateWhenOffscreen: 1
   m_SkinnedMotionVectors: 1
-  m_Mesh: {fileID: -8738750297268821301, guid: 1f158a282aa95b04db93130c5da91acd, type: 3}
+  m_Mesh: {fileID: 1941332063991758964, guid: 711a77aefd7921d4bb91f663d07d0589, type: 3}
   m_Bones: []
   m_BlendShapeWeights:
   - 0
   m_RootBone: {fileID: 0}
   m_AABB:
-    m_Center: {x: 2.3213162, y: 1.5204481, z: 0.56695414}
-    m_Extent: {x: 6.4804626, y: 3.7895212, z: 3.830595}
+    m_Center: {x: 1.0861511, y: 1.9679224, z: -0.45506358}
+    m_Extent: {x: 6.6066003, y: 5.556736, z: 6.0506105}
   m_DirtyAABB: 0
