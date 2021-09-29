@@ -153,7 +153,7 @@ public class ZoomInHandler : Singleton<ZoomInHandler>
         var y = Input.mousePosition.y / Mathf.Max(1, (float)Screen.height);
 
         float factor = Mathf.Max(x < 0.5f ? 1 - x : 0.5f, y < 0.5f ? 1 - y : y);
-        current.TryChangeFadeoutPreview(factor > 0.98f);
+        current.TryChangeFadeoutPreview(factor > 0.90f);
 
         var cursor = Game.UIHandler.CustomCursor;
 
