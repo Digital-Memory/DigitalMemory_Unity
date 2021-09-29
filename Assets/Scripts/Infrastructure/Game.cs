@@ -146,8 +146,6 @@ public class Game : MonoBehaviour
     {
         //Initialize Default Objects
         LevelHandler.Init();
-
-        GoAmount = FindObjectsOfType<GameObject>().Length;
     }
 
     public static Game GetInstance()
@@ -170,10 +168,5 @@ public class Game : MonoBehaviour
     private static GameSettings LoadGameSettings()
     {
         return Resources.LoadAll<GameSettings>("Settings")[0];
-    }
-
-    void OnGUI ()
-    {
-        GUI.Box(new Rect(Screen.width / 2 - 50, 25, 200, 50), "GameObjects: " + GoAmount + " \n" +((int)(1.0f / Mathf.Max(Time.smoothDeltaTime, 0.0000001f))).ToString());
     }
 }
