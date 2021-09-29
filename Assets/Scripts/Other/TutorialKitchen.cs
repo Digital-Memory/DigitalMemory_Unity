@@ -21,10 +21,6 @@ public class TutorialKitchen : MonoBehaviour
     private int currentFrame = 0, unlockedFrames = 0;
     private void OnEnable()
     {
-        //for (int i = 0; i < tutorialFrames.Count; i++)
-        //{
-        //    tutorialFrames[i].gameObject.SetActive(true);
-        //}
 
         SetTutorialFrame(0);
         meat.OnClickEvent += OnInteractWithMeat;
@@ -41,6 +37,24 @@ public class TutorialKitchen : MonoBehaviour
         }
 
         kitchenLever.OnSendInputValue += OnUseLever;
+    }
+
+    private void OnDisable()
+    {
+        meat.OnClickEvent -= OnInteractWithMeat;
+        foreach (var foodAttacher in kitchenPotFoodAttachers)
+        {
+            foodAttacher.OnChangeAttached -= OnAttachMeat;
+        }
+
+        Inventory.OnAddToInventory -= OnAddToInventory;
+
+        foreach (var button in kitchenButtons)
+        {
+            button.OnClickEvent -= OnUseButton;
+        }
+
+        kitchenLever.OnSendInputValue -= OnUseLever;
     }
 
     private void OnAddToInventory(InventoryObjectUI inventoryObject)
@@ -105,6 +119,7 @@ public class TutorialKitchen : MonoBehaviour
 
     private void SetTutorialFrame(int index)
     {
+
         for (int i = 0; i < tutorialFrames.Count; i++)
         {
             if (index == i)
