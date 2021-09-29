@@ -40,8 +40,6 @@ public class ImpulseSenderOnFloatReach : InputSender
             {
                 CallOnSendInputEvents(0f);
             }
-
-            Debug.Log($"Send Impulse from {gameObject.name} : returned {ReturnedTrue} ");
         }
     }
 

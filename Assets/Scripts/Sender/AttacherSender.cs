@@ -42,8 +42,6 @@ public class AttacherSender : InputSender
 
     private void OnChangeAttached(bool isAttached, string attachment)
     {
-        Debug.Log($"Attacher: {gameObject.name} send attach input: {isAttached}");
-
         switch (typeToSend)
         {
             case InputType.Impulse:

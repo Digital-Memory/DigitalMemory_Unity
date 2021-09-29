@@ -90,7 +90,6 @@ public class CrankHandle : MonoBehaviour, IDragable, IHoverable, IChargeInput
         crank.EndPlayerInput();
 
         OnEndChargeEvent?.Invoke();
-        Debug.Log("End Drag");
     }
 
     public string GetTooltipText()

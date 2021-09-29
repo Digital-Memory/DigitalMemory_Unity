@@ -49,11 +49,9 @@ public class ChangingOverTimeObject : ConditionedObject
         {
             direction = Time > 0.5f ? -1f : 1f;
             SetAnimating(true);
-            Debug.Log($"{name} animates from {Time} in direction: {direction}");
         } else
         {
             UpdateChange(Time);
-            Debug.Log($"{name} set Time to {Time}");
         }
         //Try(startFromEnd);
     }
@@ -72,10 +70,6 @@ public class ChangingOverTimeObject : ConditionedObject
 
     protected void SetAnimating(bool animating)
     {
-        if (animating)
-            Debug.Log($"{name} Starts Animating: {direction} t: {time}");
-        else
-            Debug.Log($"{name} Finishes Animating: {direction} t: {time}");
         isAnimating = animating;
     }
 

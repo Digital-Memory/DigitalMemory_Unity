@@ -64,8 +64,6 @@ public class LevelSelectionCube : MonoBehaviour, IClickable
         float t = lerpCurve[lerpCurve.length - 1].time;
         while ((t-=Time.deltaTime) >= 0)
         {
-            Debug.Log("Lerp");
-
             float lerpAmount = lerpCurve.Evaluate(t);
             transform.position = Vector3.Lerp(targetPosition, startPosition, lerpAmount);
             transform.rotation = Quaternion.Lerp(Quaternion.Euler(targetRotation), startRotation, lerpAmount);

@@ -69,8 +69,6 @@ public class FloatSenderMoveBack : ConditionedObject
 
     private IEnumerator MoveBackRoutine(float currentValue, float targetValue)
     {
-        Debug.Log($"{name} start moving back from {currentValue} to {targetValue}");
-
         float lastdistance = float.MaxValue;
         float newDistance = 100f;
 

@@ -87,8 +87,6 @@ public class DragHandler : Singleton<DragHandler>
 
     public void StartDrag(RaycastHit hit, IDragable dragable, IAttachable attachable, float dragDistance)
     {
-        Debug.Log($"start dragging: {dragable.gameObject} + {dragable.gameObject.name} ");
-
         currentDrag = dragable;
         currentAttachable = attachable;
         this.dragDistance = dragDistance;

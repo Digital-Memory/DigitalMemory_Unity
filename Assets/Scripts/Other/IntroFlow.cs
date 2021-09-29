@@ -39,7 +39,6 @@ public class IntroFlow : MonoBehaviour
     void FinishedIntro()
     {
         //zoomOverview.gameObject.SetActive(true);
-        Debug.LogWarning("Do zoom in on " + zoomInAfterFinishIntro);
         zoomInAfterFinishIntro.DoZoomIn();
         Game.MouseInteractor.InteractionIsBlocked = false;
         Game.SoundPlayer.Muted = false;

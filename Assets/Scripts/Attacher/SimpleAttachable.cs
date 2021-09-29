@@ -85,7 +85,6 @@ public class SimpleAttachable : SimpleDragable, IAttachable
             else
             {
                 transform.parent = null;
-                Debug.LogWarning("No default parent defined unparenting impossible, please define one or ignore this warning.");
             }
         }
     }

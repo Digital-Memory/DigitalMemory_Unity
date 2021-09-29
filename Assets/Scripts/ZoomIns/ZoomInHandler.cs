@@ -48,7 +48,6 @@ public class ZoomInHandler : Singleton<ZoomInHandler>
 
         if (zoomInState != ZoomInState.ZoomedOut)
         {
-            Debug.LogWarning($"Tried zooming in on {zoom.name} but state was {zoomInState}.");
             return;
         }
 
@@ -69,10 +68,13 @@ public class ZoomInHandler : Singleton<ZoomInHandler>
         var zoomInWebsiteInformation = zoom.websiteInformationId;
         if (zoomInWebsiteInformation != null)
         {
-            foreach (var item in zoomInWebsiteInformation)
+            foreach (var info in zoomInWebsiteInformation)
             {
-                if (item != "")
-                    WebCommunicator.ZoomIn(item);
+                if (info != "")
+                {
+                    Debug.Log("send message to front end: " + info);
+                    WebCommunicator.ZoomIn(info);
+                }
             }
         }
 
@@ -81,7 +83,6 @@ public class ZoomInHandler : Singleton<ZoomInHandler>
 
         current = zoom;
         zoomInState = ZoomInState.ZoomingIn;
-        Debug.LogWarning($"Zoom in on: {current.name}");
         ChangedZoomIn?.Invoke(true);
         Game.MouseInteractor.InteractionIsBlocked = true;
 
@@ -95,7 +96,6 @@ public class ZoomInHandler : Singleton<ZoomInHandler>
     {
         if (current != null)
         {
-            Debug.Log($"Zoom out from: {current.name}");
             var zoomInWebsiteInformation = current.websiteInformationId;
             if (zoomInWebsiteInformation != null)
             {
@@ -106,10 +106,6 @@ public class ZoomInHandler : Singleton<ZoomInHandler>
                 }
             }
         }
-        else
-        {
-            Debug.LogWarning("Zoom Out was called even though the previous zoom in was undefined.");
-        }
         Game.VideoPlayerHandler.Pause();
         Game.EffectHandler.Play(zoomOut, gameObject);
         Game.Settings.CurrentZoomLevel = 1f;
@@ -117,7 +113,7 @@ public class ZoomInHandler : Singleton<ZoomInHandler>
         current = null;
 
         if (overview == null)
-            Debug.LogError("No overview found. Make sure you have and active ZoomOverview script with a virtual camera present.");
+            Debug.LogWarning("No overview found. Make sure you have and active ZoomOverview script with a virtual camera present.");
 
         ChangedZoomIn?.Invoke(false);
 

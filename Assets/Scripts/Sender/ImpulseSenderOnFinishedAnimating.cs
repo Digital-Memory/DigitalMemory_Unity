@@ -42,8 +42,6 @@ public class ImpulseSenderOnFinishedAnimating : InputSender
         if (!input)
             return;
 
-        Debug.Log($"OnFinishedAnimating send input to {input.name} from {name} delay: {delay}");
-
         if (delay > 0)
         {
             StopAllCoroutines();

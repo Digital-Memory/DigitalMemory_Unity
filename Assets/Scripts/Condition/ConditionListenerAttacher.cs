@@ -31,7 +31,6 @@ public class ConditionListenerAttacher : ConditionListenerBehaviour
 
     private void AttacherChangeAttached(bool isAttached, string attachment)
     {
-        Debug.Log($"Attacher: {gameObject.name} changed attached to: {isAttached}");
         IsAttached = isAttached;
     }
 }

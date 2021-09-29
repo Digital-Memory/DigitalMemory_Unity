@@ -16,7 +16,6 @@ public class Crank : SimpleAttachable
         floatSender = GetComponentInParent<FloatSender>();
         if (floatSender != null)
             floatSender.OnSendCallbackWithFactor += SetRotationFromAngle;
-        Debug.LogWarning("attached to " + toAttachTo.GetTransform().gameObject.name);
         ResetAngleBefore();
     }
 
@@ -32,7 +31,6 @@ public class Crank : SimpleAttachable
     {
         if (floatSender == null)
         {
-            Debug.LogError("No parent attacher found...");
             return;
         }
 

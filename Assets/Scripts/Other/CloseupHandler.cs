@@ -24,7 +24,6 @@ public class CloseupHandler : Singleton<CloseupHandler>
     public bool IsInCloseup { get => (currentCloseupable != null); }
     public void StartCloseup(ICloseupable newCloseupable)
     {
-        Debug.Log("start closeup");
         currentCloseupable = newCloseupable;
         offsetToTheLeftToMakeSpaceForInspectionText = newCloseupable.ShouldOffset();
         Game.SoundPlayer.Play(startCloseupSound, randomPitchRange: 0.15f);
@@ -36,7 +35,6 @@ public class CloseupHandler : Singleton<CloseupHandler>
 
     public void EndCloseup(ICloseupable currentCloseupable)
     {
-        Debug.Log("end closeup");
         Game.SoundPlayer.Play(endCloseupSound, randomPitchRange: 0.15f);
         StartCoroutine(PanBackRoutine(currentCloseupable));
     }

@@ -105,7 +105,6 @@ public class MouseInteractor : Singleton<MouseInteractor>
 
     private void ClickOn(IClickable clickable)
     {
-        Debug.Log("Clicked On");
         clickable.Click();
     }
 

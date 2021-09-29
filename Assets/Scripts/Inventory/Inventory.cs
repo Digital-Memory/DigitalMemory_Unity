@@ -64,16 +64,12 @@ public class Inventory : MonoBehaviour
 
     public void OnMouseEnter()
     {
-        Debug.Log("Start Hover Inventory");
-
         Game.HoverHandler.EnterUI();
         mouseAbove = true;
     }
 
     public void OnMouseExit()
     {
-        Debug.Log("End Hover Inventory");
-
         Game.HoverHandler.ExitUI();
         mouseAbove = false;
     }

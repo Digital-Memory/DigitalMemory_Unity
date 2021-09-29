@@ -45,7 +45,6 @@ public class ZoomIn : InputObject, IClickable, IHoverable
     {
         if (actionOnInput == ActionOnInput.ZoomOut)
         {
-            Debug.Log($"ZoomOut Impulse send to {name}.");
             Game.ZoomInHandler.ForceZoomOut();
         }
         else
@@ -83,13 +82,11 @@ public class ZoomIn : InputObject, IClickable, IHoverable
     {
         cinemachineVirtualCamera.Priority = 100;
         Game.ZoomInHandler.TryZoomIn(this);
-        Debug.LogWarning($"Zoom in received on {name} forwarded to ZoomInHandler.");
         SendInputObjects(true);
     }
 
     private void DoZoomOut()
     {
-        Debug.Log($"{name} set prio to 10.");
         cinemachineVirtualCamera.Priority = 10;
         SendInputObjects(false);
     }
@@ -150,7 +147,6 @@ public class ZoomIn : InputObject, IClickable, IHoverable
         desaturationMaterial = Game.Settings.DesaturationMaterial;
 
         Game.ZoomInHandler.ChangedZoomIn += OnChangeZoom;
-        Debug.LogWarning($"{name} subscribed to ChangedZoomIn.");
     }
 
     private void OnDisable()
@@ -160,12 +156,10 @@ public class ZoomIn : InputObject, IClickable, IHoverable
 
     private void OnChangeZoom(bool isZoomedIn)
     {
-        Debug.LogWarning($"{name} changed zoom in to {isZoomedIn}");
 
         if (!blockZoomInOnClick || isZoomedIn)
         {
             coll.enabled = !isZoomedIn;
-            Debug.LogWarning($"{name} set collider {((!isZoomedIn) ? "enabled" : "disabled")}");
         }
 
         if (!isZoomedIn)

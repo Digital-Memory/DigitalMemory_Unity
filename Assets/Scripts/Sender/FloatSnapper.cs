@@ -50,7 +50,6 @@ public class FloatSnapper : MonoBehaviour
 
     internal void StopAnySnap()
     {
-        Debug.Log("End Snap");
         isSnapping = false;
     }
 
@@ -61,7 +60,6 @@ public class FloatSnapper : MonoBehaviour
 
         if (Mathf.Abs(currentValue - snapValue) <= snapDistance)
         {
-            Debug.Log("Start Snap");
             isSnapping = true;
         }
     }

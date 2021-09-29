@@ -39,8 +39,6 @@ public class BoolSenderIfFloatReached : InputSender
             //Need to rework this at some point
             CallOnSendInputEvents(0f);
         }
-
-        Debug.Log($"Send Impulse from {gameObject.name} : returned {ReturnedTrue} ");
     }
 
     private bool CheckConditions(float value)

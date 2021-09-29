@@ -82,7 +82,6 @@ public class ConditionMultiple : ConditionBase
     {
         if (behaviour == null)
         {
-            Debug.LogWarning("Behaviour on ConditionMultiple was null, returned true for that one");
             return true;
         }
 

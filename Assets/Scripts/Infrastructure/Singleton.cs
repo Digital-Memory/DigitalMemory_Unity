@@ -33,7 +33,7 @@ public class Singleton<T> : MonoBehaviour where T : Singleton<T>
 
             if (instance == null)
             {
-                Debug.Log("spawn new instance of type " + typeof(T).ToString());
+                //Debug.Log("spawn new instance of type " + typeof(T).ToString());
                 if (usePrefab)
                 {
                     string name = (prefabName == "") ? typeof(T).ToString() : prefabName;

@@ -39,8 +39,6 @@ public class InputObject : MonoBehaviour
 
     public static void Try(InputObject[] objects, InputType type, bool boolValue = true, float floatValue = 1f)
     {
-        string str = "send " + type.ToString() + " to :";
-
         foreach (InputObject input in objects)
         {
             switch (type)
@@ -58,9 +56,7 @@ public class InputObject : MonoBehaviour
                     break;
             }
 
-            str += input.name + ", ";
         }
 
-        Debug.Log(str);
     }
 }

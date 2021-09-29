@@ -155,7 +155,6 @@ public class TutorialKitchen : MonoBehaviour
 
     public void ToggleTutorial()
     {
-        Debug.LogWarning($"myCanvas is null: {myCanvas == null}");
         myCanvas.enabled = !myCanvas.enabled;
     }
 

@@ -55,8 +55,6 @@ public class FactoryProductionAnimatingObject : AnimatingObject
 
         if (moving) return false;
 
-        Debug.Log("Try sended to FactoryProductionAnimatingObject");
-
         if (currentStage == ProdctionStage.Stomper)
             MoveToNextStage();
 
@@ -67,7 +65,6 @@ public class FactoryProductionAnimatingObject : AnimatingObject
     {
         ProdctionStage nextStage = (ProdctionStage)(((int)currentStage) + 1);
         ProdctionStage stage = currentStage == ProdctionStage.Finished ? ProdctionStage.Finished : nextStage;
-        Debug.Log($"current: {currentStage} => next: {stage}");
         float nextTime = GetTimeOfStage(stage);
         MoveToStage(stage, nextTime);
     }
@@ -85,7 +82,6 @@ public class FactoryProductionAnimatingObject : AnimatingObject
 
     private void MoveToStage(ProdctionStage nextStage, float nextTime)
     {
-        Debug.LogWarning("Move to stage " + nextStage.ToString());
         crank.OverrideInputReference(nextStage == ProdctionStage.Founder ? this : null);
         lever.OverrideInputReference(nextStage != ProdctionStage.Founder ? this : null);
         targetTime = nextTime;
@@ -103,7 +99,6 @@ public class FactoryProductionAnimatingObject : AnimatingObject
 
             if (Mathf.Abs(currentTime - targetTime) < 0.01f)
             {
-                Debug.LogError($"reached: {currentTime} => {targetTime}");
                 moving = false;
                 conveirBeltScrollingMaterial.SetFloat("Scrolling", 0);
                 currentStage = targetStage;

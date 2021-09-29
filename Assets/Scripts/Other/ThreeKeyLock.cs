@@ -40,7 +40,6 @@ public class ThreeKeyLock : MonoBehaviour
 
     IEnumerator AnimateStageRoutine(int stage)
     {
-        Debug.LogWarning($"Start Animate Stage {stage}");
 
         float t = 0;
         while (t < 1f)
@@ -49,7 +48,5 @@ public class ThreeKeyLock : MonoBehaviour
             lockMeshRenderer.SetBlendShapeWeight(stage, curve.Evaluate(t));
             yield return null;
         }
-
-        Debug.LogWarning($"End Animate Stage {stage}");
     }
 }
